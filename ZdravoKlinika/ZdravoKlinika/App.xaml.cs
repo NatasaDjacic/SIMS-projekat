@@ -24,7 +24,13 @@ namespace ZdravoKlinika
             PatientController patientController = new PatientController(patientService);
 
             patientController.Create("Veljko", "Todorovic", "1231231231231231", "123", "todorovicveljko1@gmail.com", "Srbija", "Kraljevo", "Todorovica  38", Gender.Male, BloodType.A_Pos, new List<string>());
-        
+           
+            RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
+            RoomService roomService = new RoomService(roomRepository);
+            RoomController roomController = new RoomController(roomService);
+
+            roomController.Create("5", "Soba", "Soba za operaciju", "Soba za operaciju");
+
         }
     }
 }

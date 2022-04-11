@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
     <Folder Include="UI\Doctor\" />
     <Folder Include="UI\Manager\" />
     <Folder Include="UI\Secretary\" />
