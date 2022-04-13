@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ZdravoKlinika.UI.Doctor
+namespace ZdravoKlinika.UI.DoctorUI
 {
     /// <summary>
     /// Interaction logic for DoctorMainWindow.xaml

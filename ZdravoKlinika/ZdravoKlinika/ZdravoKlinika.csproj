@@ -8,10 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UI\Doctor\" />
-    <Folder Include="UI\Manager\" />
-    <Folder Include="UI\Secretary\" />
-    <Folder Include="UI\Patient\" />
+    <Folder Include="UI\DoctorUI\" />
   </ItemGroup>
 
   <ItemGroup>
