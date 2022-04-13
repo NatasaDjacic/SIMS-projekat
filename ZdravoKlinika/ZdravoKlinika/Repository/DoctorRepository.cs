@@ -31,7 +31,8 @@ namespace ZdravoKlinika.Repository
       
       public Doctor GetById(string id)
       {
-         throw new NotImplementedException();
+         var values = this.GetAll();
+         return values.Find(value => id.Equals(value.JMBG));
       }
       
       public bool DeleteById(string id)
