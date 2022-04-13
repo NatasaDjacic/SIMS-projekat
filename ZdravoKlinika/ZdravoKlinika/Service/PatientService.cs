@@ -18,11 +18,15 @@ namespace ZdravoKlinika.Service
         }
         public bool Create(Patient patient)
         {
-            if (this.patientRepository.GetById(patient.JMBG) is null)
-            {
-                return this.patientRepository.Save(patient); ;
+            var allPatients = patientRepository.GetAll();
+            if(allPatients.FindAll(p => p.username.Equals(patient.username)).Count != 0) {
+                throw new Exception("Same username.");
             }
-            return false;
+            if (this.patientRepository.GetById(patient.JMBG) is not null)
+            {
+                throw new Exception("Same JMBG.");
+            }
+            return this.patientRepository.Save(patient);
         }
         public bool Update(Patient patient)
         {
