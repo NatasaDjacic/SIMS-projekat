@@ -1,7 +1,10 @@
 
 
+using Newtonsoft.Json;
 using System;
-
+using System.Collections.Generic;
+using System.IO;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
@@ -29,7 +32,7 @@ namespace ZdravoKlinika.Repository
          throw new NotImplementedException();
       }
       
-      public Doctor GetById(string id)
+      public Doctor? GetById(string id)
       {
          var values = this.GetAll();
          return values.Find(value => id.Equals(value.JMBG));
