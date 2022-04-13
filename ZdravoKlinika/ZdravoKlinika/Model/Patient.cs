@@ -1,39 +1,74 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZdravoKlinika.Model.Enums;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-namespace ZdravoKlinika.Model
-{
-    public class Patient : User
-    {
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using ZdravoKlinika.Model.Enums;
+
+namespace ZdravoKlinika.Model {
+    public class Patient : User {
 
         [JsonConverter(typeof(StringEnumConverter))]
         public Gender? gender { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public BloodType? bloodType { get; set; }
-        public List<string> allergens { get; set; } 
+        public List<string> allergens { get; set; }
 
-        public Patient(string firstName, string lastName, string jmbg, string? password, string? phone,
+        public Patient(string firstName, string lastName, string jmbg, string? username, string? password, string? phone,
             string? email, string? country, string? city, string? address,
-            Gender? gender, BloodType? bloodType, List<string>? allergens): base(firstName, lastName, jmbg, password, phone, email, country,city, address)
-        {
-            this.gender = gender;
-            this.bloodType = bloodType;
+            Gender? gender, BloodType? bloodType, List<string>? allergens) : base(firstName, lastName, jmbg, username, password, phone, email, country, city, address) {
+            this.gender = gender ?? Gender.None;
+            this.bloodType = bloodType ?? BloodType.None;
             this.allergens = allergens ?? new List<string>();
         }
-        public Patient(string firstName, string lastName, string jmbg) : base(firstName, lastName, jmbg, null,null,null,null,null,null)
-        {
+        public Patient(string firstName, string lastName, string jmbg) : base(firstName, lastName, jmbg, null, null, null, null, null, null, null) {
+            this.allergens = new List<string>();
+            this.bloodType = BloodType.None;
+            this.gender = Gender.None;
+        }
+
+        public Patient() : base() {
             this.allergens = new List<string>();
         }
 
-        public Patient() : base()
-        {
-            this.allergens = new List<string>();
+        public void ValidateGuest() {
+            var nameReg = new Regex(@"^[a-zA-Z]{3,}$");
+            var jmbgReg = new Regex(@"^\d{13}$");
+
+            if (!nameReg.IsMatch(this.firstName)) {
+                throw new Exception("Not valid first name.");
+            }
+            if (!nameReg.IsMatch(this.lastName)) {
+                throw new Exception("Not valid last name.");
+            }
+            if (!jmbgReg.IsMatch(this.JMBG)) {
+                throw new Exception("Not valid JMBG.");
+            }
+        }
+        public void Validate() {
+            this.ValidateGuest();
+            var usernameReg = new Regex(@"^[a-zA-Z0-9]{3,}$");
+            var emailReg = new Regex(@"^\S+@\S+\.\S+$");
+
+            if (!usernameReg.IsMatch(this.username)) {
+                throw new Exception("Not valid username.");
+            }
+            if (!emailReg.IsMatch(this.email)) {
+                throw new Exception("Not valid email.");
+            }
+            if(gender == Gender.None) {
+                throw new Exception("Gender must be set.");
+            }
+            if(city.Trim().Length == 0) {
+                throw new Exception("City must be set.");
+            }
+            if (country.Trim().Length == 0) {
+                throw new Exception("Country must be set.");
+            }
+            if (address.Trim().Length == 0) {
+                throw new Exception("Address must be set.");
+            }
         }
     }
 }

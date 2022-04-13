@@ -18,6 +18,7 @@ namespace ZdravoKlinika.Controller
         public bool CreateGuestAccount(string fName, string lName, string jmbg)
         {
             var patient = new Patient(fName, lName, jmbg);
+            patient.ValidateGuest();
             return patientService.Create(patient);
         }
 

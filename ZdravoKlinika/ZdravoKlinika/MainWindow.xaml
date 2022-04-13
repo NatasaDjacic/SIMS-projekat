@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <Button Content="Doctor" Margin="10" Height="32" Click="Button_Click"></Button>
+                <Button Content="Manager" Margin="10" Height="32" Click="Button_Click_1"></Button>
+                <Button Content="Patient" Margin="10" Height="32" Click="Button_Click_2"></Button>
+                <Button Content="Secretary" Margin="10" Height="32" Click="Button_Click_3"></Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
