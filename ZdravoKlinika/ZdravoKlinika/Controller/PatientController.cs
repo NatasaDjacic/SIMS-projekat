@@ -14,9 +14,9 @@ namespace ZdravoKlinika.Controller
             this.patientService = patientSevice;
         }
 
-        public bool Create(string fName, string lName, string jmbg,string username, string phone, string email, string country, string city, string address, Gender gender, BloodType bloodType, List<string> allergens)
+        public bool Create(string fName, string lName, string jmbg,string username, DateTime dateOfBirth, string phone, string email, string country, string city, string address, Gender gender, BloodType bloodType, List<string> allergens)
         {
-            var patient = new Patient(fName, lName, jmbg, username, null, phone, email, country, city, address, gender, bloodType, allergens);
+            var patient = new Patient(fName, lName, jmbg, username, dateOfBirth, null, phone, email, country, city, address, gender, bloodType, allergens);
             patient.Validate();
             return this.patientService.Create(patient);
         }

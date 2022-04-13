@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "gender": "Male",
+    "bloodType": "A_Pos",
+    "dateOfBirth": "0001-01-01T00:00:00",
+    "allergens": [],
+    "firstName": "VeljkoV",
+    "lastName": "TodorovicV",
+    "JMBG": "1231231231231",
+    "username": "todorovicveljko1",
+    "password": "zdravo",
+    "phone": "123",
+    "email": "todorovicveljko1@gmail.com",
+    "country": "Srbija",
+    "city": "Kraljevo",
+    "address": "Todorovica  38"
+  },
+  {
+    "gender": "Female",
+    "bloodType": "B_Neg",
+    "dateOfBirth": "2022-04-13T23:13:48.869217+02:00",
+    "allergens": [
+      "Marko"
+    ],
+    "firstName": "AAAA",
+    "lastName": "AAAA",
+    "JMBG": "1231231231235",
+    "username": "1231231231235",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "A",
+    "city": "A",
+    "address": "A"
+  }
+]

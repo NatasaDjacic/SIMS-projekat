@@ -24,7 +24,7 @@ namespace ZdravoKlinika.Service {
             return false;
         }
 
-        public Appointment GetAppointmentById(int id) {
+        public Appointment? GetAppointmentById(int id) {
             return this.appointmentRepository.GetById(id);
         }
 

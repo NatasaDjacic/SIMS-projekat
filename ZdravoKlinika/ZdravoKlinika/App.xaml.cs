@@ -23,7 +23,7 @@ namespace ZdravoKlinika
             PatientService patientService = new PatientService(patientRepository);
             PatientController patientController = new PatientController(patientService);
             try {
-                patientController.Create("Veljko", "Todorovic", "1231231231231", "todorovicveljko1", "123", "todorovicveljko1@gmail.com", "Srbija", "Kraljevo", "Todorovica  38", Gender.Male, BloodType.A_Pos, new List<string>());
+                patientController.Create("Veljko", "Todorovic", "1231231231231", "todorovicveljko1", DateTime.Now, "123", "todorovicveljko1@gmail.com", "Srbija", "Kraljevo", "Todorovica  38", Gender.Male, BloodType.A_Pos, new List<string>());
             } catch (Exception ex) { 
                 Console.WriteLine(ex.Message);
             }
