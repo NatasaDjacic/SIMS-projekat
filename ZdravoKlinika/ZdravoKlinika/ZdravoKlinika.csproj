@@ -16,12 +16,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UI\ManagerUI\View\EditRoom.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\SecretaryUI\View\EditPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="UI\ManagerUI\View\AddRoom.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="UI\ManagerUI\View\EditRoom.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\ManagerUI\View\Rooms.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="UI\SecretaryUI\View\EditPatient.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
