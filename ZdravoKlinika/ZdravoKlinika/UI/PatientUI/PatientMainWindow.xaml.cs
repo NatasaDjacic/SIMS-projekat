@@ -19,6 +19,8 @@ namespace ZdravoKlinika.UI.PatientUI {
     public partial class PatientMainWindow : Window {
         public PatientMainWindow() {
             InitializeComponent();
+            ContentFrame.Navigate(new View.Appointments());
         }
     }
 }
+

@@ -1,0 +1,32 @@
+[
+  {
+    "specialization": "regular",
+    "roomId": "5",
+    "gender": 1,
+    "firstName": "Mika",
+    "lastName": "Mikic",
+    "JMBG": "3213213213213",
+    "username": "mikamikic",
+    "password": "zdravo",
+    "phone": "321",
+    "email": "miki@gmail.com",
+    "country": "Srbija",
+    "city": "Kraljevo",
+    "address": "Todorovica  55"
+  },
+  {
+    "specialization": "regular",
+    "roomId": "5",
+    "gender": 2,
+    "firstName": "Ana",
+    "lastName": "Anic",
+    "JMBG": "1111111111111",
+    "username": "anna",
+    "password": "zdravo",
+    "phone": "111",
+    "email": "ana@gmail.com",
+    "country": "Srbija",
+    "city": "Beograd",
+    "address": "Nikole Pasica 4"
+  }
+]

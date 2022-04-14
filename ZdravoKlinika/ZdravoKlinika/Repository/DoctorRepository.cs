@@ -29,8 +29,21 @@ namespace ZdravoKlinika.Repository
       
       public bool Save(Doctor doctor)
       {
-         throw new NotImplementedException();
-      }
+            bool added = false;
+            var values = this.GetAll();
+            var found = values.FindIndex(value => doctor.JMBG.Equals(value.JMBG));
+            if (found != -1)
+            {
+                values[found] = doctor;
+            }
+            else
+            {
+                values.Add(doctor);
+                added = true;
+            }
+            File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
+            return added;
+        }
       
       public Doctor? GetById(string id)
       {

@@ -11,12 +11,18 @@ namespace ZdravoKlinika.Service {
         public DoctorService(DoctorRepository doctorRepository) {
             this.doctorRepository = doctorRepository;
         }
+
+        public DoctorService() { }
         public List<Doctor> GetAll() {
             return this.doctorRepository.GetAll();
         }
 
         public bool Save(Doctor doctor) {
-            throw new NotImplementedException();
+            if (this.doctorRepository.GetById(doctor.JMBG) is null)
+            {
+                return this.doctorRepository.Save(doctor); ;
+            }
+            return false;
         }
 
         public Doctor? GetById(string id) {

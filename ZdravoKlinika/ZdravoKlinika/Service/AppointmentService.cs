@@ -49,6 +49,11 @@ namespace ZdravoKlinika.Service {
 
         }
 
+        public int GenerateNewId()
+        {
+            return this.appointmentRepository.GenerateNewId();
+        }
+
 
     }
 }
