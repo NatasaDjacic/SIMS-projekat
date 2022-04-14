@@ -71,9 +71,11 @@ namespace ZdravoKlinika.UI.PatientUI.View
             {
                 if (a is not null)
                 {
-                    duration = a.duration;
-                    doctorJMBG = a.doctorJMBG;
-                    startTime = a.startTime;
+                    a.duration=duration;
+                    a.doctorJMBG= doctorJMBG ;
+                    a.startTime= startTime ;
+
+                    appointmentController.MoveAppointmentById(a.id, a.startTime);
                 }
                 NavigationService.Navigate(new Appointments());
 

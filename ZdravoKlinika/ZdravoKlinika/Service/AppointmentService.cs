@@ -44,6 +44,7 @@ namespace ZdravoKlinika.Service {
             }
 
             old.startTime = newtime;
+            
             return this.appointmentRepository.Save(old);
 
 
