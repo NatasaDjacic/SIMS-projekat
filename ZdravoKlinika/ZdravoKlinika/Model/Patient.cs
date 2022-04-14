@@ -9,21 +9,24 @@ namespace ZdravoKlinika.Model {
     public class Patient : User {
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public Gender? gender { get; set; }
+        public Gender gender { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public BloodType? bloodType { get; set; }
+        public BloodType bloodType { get; set; }
+        public  DateTime dateOfBirth { get; set; }
         public List<string> allergens { get; set; }
 
-        public Patient(string firstName, string lastName, string jmbg, string? username, string? password, string? phone,
+        public Patient(string firstName, string lastName, string jmbg, string? username,DateTime? dateOfBirth, string? password, string? phone,
             string? email, string? country, string? city, string? address,
             Gender? gender, BloodType? bloodType, List<string>? allergens) : base(firstName, lastName, jmbg, username, password, phone, email, country, city, address) {
             this.gender = gender ?? Gender.None;
+            this.dateOfBirth = dateOfBirth ?? DateTime.Now;
             this.bloodType = bloodType ?? BloodType.None;
             this.allergens = allergens ?? new List<string>();
         }
         public Patient(string firstName, string lastName, string jmbg) : base(firstName, lastName, jmbg, null, null, null, null, null, null, null) {
             this.allergens = new List<string>();
+            this.dateOfBirth = DateTime.Now;
             this.bloodType = BloodType.None;
             this.gender = Gender.None;
         }
@@ -54,7 +57,7 @@ namespace ZdravoKlinika.Model {
             if (!usernameReg.IsMatch(this.username)) {
                 throw new Exception("Not valid username.");
             }
-            if (!emailReg.IsMatch(this.email)) {
+            if (!emailReg.IsMatch(this.email) && this.email.Trim() != "") {
                 throw new Exception("Not valid email.");
             }
             if(gender == Gender.None) {

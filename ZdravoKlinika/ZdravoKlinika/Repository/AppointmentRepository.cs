@@ -47,7 +47,7 @@ namespace ZdravoKlinika.Repository
             return added;
       }
       
-      public Appointment GetById(int id)
+      public Appointment? GetById(int id)
       {
             var values = this.GetAll();
             return values.Find(value => id==value.id);
@@ -63,7 +63,9 @@ namespace ZdravoKlinika.Repository
       
       public int GenerateNewId()
       {
-         return GetAll().Max(a=> a.id)+1;
+
+           return GetAll().Max(a=> a.id)+1;
+           
 
       }
    

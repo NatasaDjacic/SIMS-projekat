@@ -23,7 +23,7 @@ namespace ZdravoKlinika
             PatientService patientService = new PatientService(patientRepository);
             PatientController patientController = new PatientController(patientService);
             try {
-                patientController.Create("Veljko", "Todorovic", "1231231231231", "todorovicveljko1", "123", "todorovicveljko1@gmail.com", "Srbija", "Kraljevo", "Todorovica  38", Gender.Male, BloodType.A_Pos, new List<string>());
+                patientController.Create("Veljko", "Todorovic", "1231231231231", "todorovicveljko1", DateTime.Now, "123", "todorovicveljko1@gmail.com", "Srbija", "Kraljevo", "Todorovica  38", Gender.Male, BloodType.A_Pos, new List<string>());
             } catch (Exception ex) { 
                 Console.WriteLine(ex.Message);
             }
@@ -32,6 +32,39 @@ namespace ZdravoKlinika
             RoomController roomController = new RoomController(roomService);
 
             roomController.Create("5", "Soba", "Soba za operaciju", "Soba za operaciju");
+
+            DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
+            DoctorService doctorService = new DoctorService(doctorRepository);
+            DoctorController doctorController = new DoctorController(doctorService);
+
+
+            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
+            AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService);
+
+
+
+            try
+            {
+                doctorController.Create("Mika", "Mikic", "3213213213213", "mikamikic", "321", "miki@gmail.com", "Srbija", "Kraljevo", "Todorovica  55", Gender.Male, "regular", "6");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                doctorController.Create("Ana", "Anic", "1111111111111", "anna", "111", "ana@gmail.com", "Srbija", "Beograd", "Nikole Pasica 4", Gender.Female, "regular", "5");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+            DateTime date = new DateTime(2022, 04, 20);
+            appointmentController.CreateAppointmentPatient(date, 30, "1111111111111");
 
         }
     }

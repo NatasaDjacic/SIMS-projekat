@@ -19,12 +19,11 @@ namespace ZdravoKlinika.Service
         public bool Create(Patient patient)
         {
             var allPatients = patientRepository.GetAll();
-            if(allPatients.FindAll(p => p.username.Equals(patient.username)).Count != 0) {
-                throw new Exception("Same username.");
-            }
-            if (this.patientRepository.GetById(patient.JMBG) is not null)
-            {
+            if (allPatients.FindAll(p => p.JMBG.Equals(patient.JMBG)).Count != 0) {
                 throw new Exception("Same JMBG.");
+            }
+            if (allPatients.FindAll(p => p.username.Equals(patient.username)).Count != 0) {
+                throw new Exception("Same username.");
             }
             return this.patientRepository.Save(patient);
         }
