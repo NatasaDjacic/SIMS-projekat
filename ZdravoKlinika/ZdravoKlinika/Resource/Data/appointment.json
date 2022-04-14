@@ -28,5 +28,15 @@
     "patientJMBG": "1231231231231",
     "doctorJMBG": "1111111111111",
     "roomId": "5"
+  },
+  {
+    "id": 4,
+    "startTime": "2022-04-20T00:00:00",
+    "duration": 30,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "1111111111111",
+    "roomId": "5"
   }
 ]
