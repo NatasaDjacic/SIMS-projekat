@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.UI.ManagerUI"
         mc:Ignorable="d"
-        Title="ManagerMainWindow" Height="450" Width="800">
+        Title="ManagerMainWindow" Height="768" Width="1024">
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Ordinacija" Click="MenuItem_Click">
+                </MenuItem>
+                <MenuItem Margin="630, 0, 0, 0" Header="Promena teme">
+                    <MenuItem Header="Svetla" />
+                    <MenuItem Header="Tamna" />
+                </MenuItem>
+                <MenuItem Header="Srpski"></MenuItem>
+                <MenuItem Header="English"></MenuItem>
+                <MenuItem Header="Ruski"></MenuItem>
+                <MenuItem Header="Logovanje" Click="MenuItem_Click"></MenuItem>
+            </Menu>
+            
+            <TextBox AcceptsReturn="True" Name="txtEditor" />
+        </DockPanel>
     </Grid>
 </Window>

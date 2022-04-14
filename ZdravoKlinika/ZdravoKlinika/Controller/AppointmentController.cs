@@ -6,7 +6,7 @@ using ZdravoKlinika.Service;
 namespace ZdravoKlinika.Controller {
     public class AppointmentController {
 
-        public AppointmentService appointmentService
+        public AppointmentService appointmentService;
 
         public AppointmentController(AppointmentService appointmentService) {
             this.appointmentService = appointmentService;

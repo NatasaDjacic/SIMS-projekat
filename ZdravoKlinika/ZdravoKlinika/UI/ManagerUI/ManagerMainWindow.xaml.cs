@@ -20,5 +20,11 @@ namespace ZdravoKlinika.UI.ManagerUI {
         public ManagerMainWindow() {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            RoomWindow roomWindow = new RoomWindow();
+            roomWindow.Show();
+        }
     }
 }
