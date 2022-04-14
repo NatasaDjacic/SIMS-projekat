@@ -16,24 +16,6 @@
     "address": "Todorovica  38"
   },
   {
-    "gender": "Female",
-    "bloodType": "B_Neg",
-    "dateOfBirth": "2022-04-13T23:13:48.869217+02:00",
-    "allergens": [
-      "Marko"
-    ],
-    "firstName": "AAAA",
-    "lastName": "AAAA",
-    "JMBG": "1231231231235",
-    "username": "1231231231235",
-    "password": "zdravo",
-    "phone": "",
-    "email": "",
-    "country": "A",
-    "city": "A",
-    "address": "A"
-  },
-  {
     "gender": "Male",
     "bloodType": "A_Pos",
     "dateOfBirth": "2022-04-14T12:50:55.6551392+02:00",
@@ -64,5 +46,6 @@
     "country": "",
     "city": "",
     "address": ""
-  }
+  },
+  
 ]

@@ -57,7 +57,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
             AppointmentService appointmentService = new AppointmentService(appointmentRepository);
             DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
             DoctorService doctorService = new DoctorService(doctorRepository);
-            AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService);
+            appointmentController = new AppointmentController(appointmentService, doctorService);
             AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
             this.DataContext = this;
             InitializeComponent();
@@ -78,12 +78,13 @@ namespace ZdravoKlinika.UI.PatientUI.View
             string? id = ((Button)sender).Tag as string;
             Console.WriteLine(id);
             if (id is null) return;
+            NavigationService.Navigate(new EditAppointment(Int32.Parse(id)));
 
         }
 
         private void Button_Click_New(object sender, RoutedEventArgs e)
         {
-            
+            NavigationService.Navigate(new NewAppointment());
 
         }
 
