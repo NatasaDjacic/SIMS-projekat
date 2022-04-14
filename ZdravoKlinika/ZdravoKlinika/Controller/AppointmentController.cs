@@ -22,7 +22,7 @@ namespace ZdravoKlinika.Controller {
         }
 
 
-        public Appointment GetAppointmentById(int id) {
+        public Appointment? GetAppointmentById(int id) {
             return appointmentService.GetAppointmentById(id);
         }
 
