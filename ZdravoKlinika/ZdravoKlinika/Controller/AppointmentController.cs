@@ -51,6 +51,7 @@ namespace ZdravoKlinika.Controller {
             appointment.duration = duration;
             appointment.id = appointmentService.GenerateNewId();
 
+            appointment.Validate();
 
 
             return appointmentService.SaveAppointment(appointment);

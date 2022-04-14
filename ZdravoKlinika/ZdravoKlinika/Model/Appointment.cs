@@ -1,6 +1,9 @@
 
 using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using ZdravoKlinika.Model.Enums;
+
 
 namespace ZdravoKlinika.Model {
     public class Appointment {
@@ -25,6 +28,25 @@ namespace ZdravoKlinika.Model {
             this.patientJMBG = patientJMBG;
             this.doctorJMBG = doctorJMBG;
             this.roomId = roomId;
+        }
+
+
+        public void Validate()
+        {
+            var durationReg = new Regex("^[0-9]+$");
+
+
+            if (!durationReg.IsMatch(this.duration.ToString()))
+            {
+                throw new Exception("Not valid duration.");
+            }
+
+
+            if (doctorJMBG.Trim().Length == 0)
+            {
+                throw new Exception("Doctor JMBG must be applied");
+            }
+           
         }
     }
 }
