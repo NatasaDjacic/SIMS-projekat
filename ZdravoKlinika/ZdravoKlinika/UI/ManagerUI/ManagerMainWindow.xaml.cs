@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ZdravoKlinika.UI.ManagerUI {
+namespace ZdravoKlinika.UI.ManagerUI
+{
     /// <summary>
-    /// Interaction logic for ManagerMainWindow.xaml
+    /// Interaction logic for SecretaryMainWindow.xaml
     /// </summary>
-    public partial class ManagerMainWindow : Window {
-        public ManagerMainWindow() {
-            InitializeComponent();
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+    public partial class ManagerMainWindow : Window
+    {
+        public ManagerMainWindow()
         {
-            RoomWindow roomWindow = new RoomWindow();
-            roomWindow.Show();
+            InitializeComponent();
+            ContentFrame.Navigate(new View.Rooms());
         }
     }
 }

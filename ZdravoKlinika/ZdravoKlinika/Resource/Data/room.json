@@ -1,14 +1,20 @@
 [
   {
+    "roomId": "3",
+    "name": "da",
+    "description": "",
+    "type": "tipppssssssssssss"
+  },
+  {
     "roomId": "5",
-    "name": "Soba",
-    "description": "Soba za operaciju",
-    "type": "Soba za operaciju"
+    "name": "fggg",
+    "description": "s",
+    "type": "s"
   },
   {
     "roomId": "6",
-    "name": "Soba",
-    "description": "Soba za operaciju",
-    "type": "Soba za operaciju"
+    "name": "d",
+    "description": "",
+    "type": "d"
   }
 ]

@@ -25,5 +25,26 @@ namespace ZdravoKlinika.Model
         {
         }
 
-    }
+        public void Validate()
+        {
+            
+            if (name.Trim().Length == 0)
+            {
+                throw new Exception("Morate uneti ime.");
+            }
+            if (description.Trim().Length == 0)
+            {
+                throw new Exception("Morate uneti opis.");
+            }
+            if (type.Trim().Length == 0)
+            {
+                throw new Exception("Morate uneti tip prostorije.");
+            }
+            if (roomId.Trim().Length == 0)
+            {
+                throw new Exception("Morate uneti id.");
+            }
+        }
+    
+}
 }
