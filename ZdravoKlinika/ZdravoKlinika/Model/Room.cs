@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace ZdravoKlinika.Model {
     public class Room {
@@ -18,6 +19,7 @@ namespace ZdravoKlinika.Model {
         }
 
         public void Validate() {
+          
 
             if (name.Trim().Length == 0) {
                 throw new Exception("Morate uneti ime.");

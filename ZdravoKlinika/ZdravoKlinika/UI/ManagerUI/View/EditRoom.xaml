@@ -13,7 +13,7 @@
     
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Margin="10">
-            <TextBlock Text="Edit Patient" Grid.Column="0" FontSize="32" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="Izmena sobe" Grid.Column="0" FontSize="32" FontWeight="Bold"></TextBlock>
         </StackPanel>
         <Grid DockPanel.Dock="Bottom" Margin="10">
             <Grid.ColumnDefinitions>

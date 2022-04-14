@@ -1,20 +1,26 @@
 [
   {
     "roomId": "3",
-    "name": "da",
-    "description": "",
-    "type": "tipppssssssssssss"
+    "name": "Soba1",
+    "description": "Velika soba",
+    "type": "Sala za operacije"
   },
   {
     "roomId": "5",
-    "name": "fgggfff",
-    "description": "s",
-    "type": "s"
+    "name": "Soba2",
+    "description": "Srednja soba",
+    "type": "Kancelarija"
   },
   {
     "roomId": "6",
-    "name": "d",
-    "description": "",
-    "type": "d"
+    "name": "Soba3",
+    "description": "Velika soba",
+    "type": "Sala za sastanke"
+  },
+  {
+    "roomId": "10",
+    "name": "Soba4",
+    "description": "Srednja soba",
+    "type": "Sala za operaciju"
   }
 ]
