@@ -17,7 +17,6 @@ namespace ZdravoKlinika.Controller
         {
             this.doctorService = doctorService;
         }
-
         public bool Create(string fName, string lName, string jmbg, string username, string phone, string email, string country, string city, string address, Gender gender, string specialization, string roomId)
         {
             var doctor = new Doctor(fName, lName, jmbg, username, null, phone, email, country, city, address, gender, specialization, roomId);
