@@ -33,20 +33,20 @@ namespace ZdravoKlinika
 
             roomController.Create("5", "Soba", "Soba za operaciju", "Soba za operaciju");
 
-
-
-            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
-            AppointmentController appointmentController = new AppointmentController(appointmentService);
-
-
             DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
             DoctorService doctorService = new DoctorService(doctorRepository);
             DoctorController doctorController = new DoctorController(doctorService);
 
+
+            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
+            AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService);
+
+
+
             try
             {
-                doctorController.Create("Mika", "Mikic", "3213213213213", "mikamikic", "321", "miki@gmail.com", "Srbija", "Kraljevo", "Todorovica  55", Gender.Male, "regular", "5");
+                doctorController.Create("Mika", "Mikic", "3213213213213", "mikamikic", "321", "miki@gmail.com", "Srbija", "Kraljevo", "Todorovica  55", Gender.Male, "regular", "6");
             }
             catch (Exception ex)
             {

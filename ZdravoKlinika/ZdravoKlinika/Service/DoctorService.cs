@@ -12,7 +12,6 @@ namespace ZdravoKlinika.Service {
             this.doctorRepository = doctorRepository;
         }
 
-        public DoctorService() { }
         public List<Doctor> GetAll() {
             return this.doctorRepository.GetAll();
         }

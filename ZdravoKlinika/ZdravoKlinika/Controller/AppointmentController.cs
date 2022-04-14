@@ -8,11 +8,12 @@ namespace ZdravoKlinika.Controller {
     public class AppointmentController {
 
         public AppointmentService appointmentService;
-        public DoctorService doctorService = new DoctorService();
+        public DoctorService doctorService;
         
 
-        public AppointmentController(AppointmentService appointmentService) {
+        public AppointmentController(AppointmentService appointmentService, DoctorService doctorService) {
             this.appointmentService = appointmentService;
+            this.doctorService = doctorService;
         }
 
 
@@ -36,14 +37,15 @@ namespace ZdravoKlinika.Controller {
         public bool CreateAppointmentPatient(DateTime startTime, int duration, string doctorJMBG)
         {
 
-            //var doctor = doctorService.GetById(doctorJMBG);
-            //var roomId = doctor.roomId;
+            var doctor = doctorService.GetById(doctorJMBG);
+            if (doctor == null) throw new Exception("Doctor not found");
 
             Appointment appointment = new Appointment();
             appointment.startTime = startTime;
+            // Get from authService
             appointment.patientJMBG = "1231231231231";
             appointment.doctorJMBG = doctorJMBG;
-            appointment.roomId = "5";
+            appointment.roomId = doctor.roomId;
             appointment.urgency = false;
             appointment.appointmentType = AppointmentType.regular;
             appointment.duration = duration;
