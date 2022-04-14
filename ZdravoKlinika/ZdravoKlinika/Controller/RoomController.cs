@@ -18,6 +18,7 @@ namespace ZdravoKlinika.Controller
         public bool Create(string roomId, string name, string description, string type)
         {
             var room = new Room(roomId,name, description, type);
+            room.Validate();
             return this.roomService.Create(room);
         }
 
@@ -28,6 +29,7 @@ namespace ZdravoKlinika.Controller
 
         public bool Update(Room room)
         {
+            room.Validate();
             return this.roomService.Update(room);
         }
 

@@ -2,7 +2,7 @@
   {
     "roomId": "3",
     "name": "da",
-    "description": "opissssdsssss",
+    "description": "",
     "type": "tipppssssssssssss"
   },
   {
@@ -10,5 +10,11 @@
     "name": "fggg",
     "description": "s",
     "type": "s"
+  },
+  {
+    "roomId": "6",
+    "name": "d",
+    "description": "",
+    "type": "d"
   }
 ]
