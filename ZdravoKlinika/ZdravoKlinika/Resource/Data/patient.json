@@ -4,8 +4,8 @@
     "bloodType": "A_Pos",
     "dateOfBirth": "0001-01-01T00:00:00",
     "allergens": [],
-    "firstName": "VeljkoV",
-    "lastName": "TodorovicV",
+    "firstName": "Veljko",
+    "lastName": "Todorovic",
     "JMBG": "1231231231231",
     "username": "todorovicveljko1",
     "password": "zdravo",
@@ -32,5 +32,37 @@
     "country": "A",
     "city": "A",
     "address": "A"
+  },
+  {
+    "gender": "Male",
+    "bloodType": "A_Pos",
+    "dateOfBirth": "2022-04-14T12:50:55.6551392+02:00",
+    "allergens": [],
+    "firstName": "Mitar",
+    "lastName": "Miric",
+    "JMBG": "1234567890123",
+    "username": "1234567890123",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "Srbija",
+    "city": "NOvi sad",
+    "address": "Neka adres 123"
+  },
+  {
+    "gender": "None",
+    "bloodType": "None",
+    "dateOfBirth": "2022-04-14T12:51:20.9701247+02:00",
+    "allergens": [],
+    "firstName": "PPP",
+    "lastName": "PPPP",
+    "JMBG": "1234567890124",
+    "username": "1234567890124",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "",
+    "city": "",
+    "address": ""
   }
 ]
