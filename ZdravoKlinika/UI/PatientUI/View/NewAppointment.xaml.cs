@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +21,9 @@ using System.ComponentModel;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
-    /// <summary>
-    /// Interaction logic for Patients.xaml
-    /// </summary>
-    public partial class Appointments : Page, INotifyPropertyChanged
+    public partial class NewAppointment : Page, INotifyPropertyChanged
     {
+
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
@@ -36,55 +33,59 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-        private ObservableCollection<Appointment> appointments;
-        public ObservableCollection<Appointment> AppointmentCollection
-        {
-            get => appointments;
-            set
-            {
-                if (appointments != value)
-                {
-                    appointments = value;
-                    OnPropertyChanged("PatientsCollection");
-                }
-            }
-        }
-        public AppointmentController appointmentController;
-        public Appointments()
-        {
 
+
+        private int _duration = 0;
+        private string _doctorJMBG = "";
+        private DateTime _startTime = DateTime.Now;
+        
+
+        public int duration { get { return _duration; } set { _duration = value; OnPropertyChanged("duration"); } }
+        public string doctorJMBG { get { return _doctorJMBG; } set { _doctorJMBG = value; OnPropertyChanged("doctorJMBG"); } }
+        public DateTime startTime { get { return _startTime; } set { _startTime = value; OnPropertyChanged("startTime"); } }
+      
+
+        public AppointmentController appointmentController;
+        public NewAppointment()
+        {
+            this.DataContext = this;
             AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
             AppointmentService appointmentService = new AppointmentService(appointmentRepository);
             DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
             DoctorService doctorService = new DoctorService(doctorRepository);
             appointmentController = new AppointmentController(appointmentService, doctorService);
-            AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
-            this.DataContext = this;
             InitializeComponent();
-
         }
 
-        private void Button_Click_Remove(object sender, RoutedEventArgs e) {
-            int id = Convert.ToInt32(((Button)sender).Tag);
-            Console.WriteLine(id);
-            appointmentController.DeleteAppointmentById(id);
-            AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
-        }
-
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
-            int id = Convert.ToInt32(((Button)sender).Tag);
-            Console.WriteLine(((Button)sender).Tag);
-            NavigationService.Navigate(new EditAppointment(id));
-
+            NavigationService.GoBack();
         }
 
-        private void Button_Click_New(object sender, RoutedEventArgs e)
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewAppointment());
+            try
+            {
+                
+                appointmentController.CreateAppointmentPatient(startTime, duration, doctorJMBG);
+                NavigationService.Navigate(new Appointments());
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
         }
+
+
+
+
+
 
 
     }
+
+
 }

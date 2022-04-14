@@ -1,0 +1,60 @@
+﻿<Page x:Class="ZdravoKlinika.UI.PatientUI.View.EditAppointment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditAppointments" >
+
+    <DockPanel >
+        <Grid DockPanel.Dock="Top" Margin="0 15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="New appointment" Grid.Column="0" FontSize="32" FontWeight="Bold"></TextBlock>
+            <TextBox Grid.Column="1" Width="250"  FontSize="24" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Stretch"></TextBox>
+        </Grid>
+        <StackPanel DockPanel.Dock="Bottom">
+            <Button  Width="240" Background="Red" Foreground="White" Content="Cancel" FontSize="24" HorizontalAlignment="Left"  FontWeight="SemiBold" Click="Button_Click_Cancel" VerticalAlignment="Center"></Button>
+            <Button  Width="240" Background="Green" Foreground="White" HorizontalAlignment="Right"  Content="Save"  FontSize="24" FontWeight="SemiBold" Click="Button_Click_Save" VerticalAlignment="Stretch"></Button>
+
+        </StackPanel>
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="660" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="10">
+                <Label>Date:</Label>
+                <DatePicker Grid.Column="1" Margin="0,0,0,10" Text="{Binding startTime, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
+                <Label Grid.Row="1">Duration(min):</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Text="{Binding duration, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,0,10">
+                <Label Grid.Row="2">Doctor JMBG:</Label>
+                <TextBox Text="{Binding doctorJMBG, UpdateSourceTrigger=PropertyChanged}" Height="100"/>
+            </StackPanel>
+
+
+        </Grid>
+
+
+
+    </DockPanel>
+</Page>
+
