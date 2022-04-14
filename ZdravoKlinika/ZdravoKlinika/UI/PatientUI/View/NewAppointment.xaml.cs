@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,12 +21,8 @@ using System.ComponentModel;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
-    /// <summary>
-    /// Interaction logic for Patients.xaml
-    /// </summary>
-    public partial class Appointments : Page, INotifyPropertyChanged
+    public partial class NewAppointment : Page, INotifyPropertyChanged
     {
-
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -37,7 +32,8 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
         private ObservableCollection<Appointment> appointments;
-        public ObservableCollection<Appointment> AppointmentCollection
+
+        public ObservableCollection<Appointment> NewAppointmentCollection
         {
             get => appointments;
             set
@@ -50,43 +46,28 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
         public AppointmentController appointmentController;
-        public Appointments()
+        public NewAppointment()
         {
 
             AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
             AppointmentService appointmentService = new AppointmentService(appointmentRepository);
-            DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
-            DoctorService doctorService = new DoctorService(doctorRepository);
-            AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService);
-            AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
+            AppointmentController appointmentController = new AppointmentController(appointmentService);
+            NewAppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
             this.DataContext = this;
             InitializeComponent();
 
         }
 
-        private void Button_Click_Remove(object sender, RoutedEventArgs e)
-        {
-            string? id = ((Button)sender).Tag as string;
-            Console.WriteLine(id);
-            if (id is null) return;
-            appointmentController.DeleteAppointmentById(Int32.Parse(id));
-            AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
-        }
-
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
-        {
-            string? id = ((Button)sender).Tag as string;
-            Console.WriteLine(id);
-            if (id is null) return;
-
-        }
-
         private void Button_Click_New(object sender, RoutedEventArgs e)
         {
-            
-
+            string? id = ((Button)sender).Tag as string;
+            Console.WriteLine(id);
+            if (id is null) return;
         }
+
 
 
     }
+
+
 }
