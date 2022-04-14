@@ -9,10 +9,10 @@ namespace ZdravoKlinika.Model {
     public class Patient : User {
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public Gender? gender { get; set; }
+        public Gender gender { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public BloodType? bloodType { get; set; }
+        public BloodType bloodType { get; set; }
         public  DateTime dateOfBirth { get; set; }
         public List<string> allergens { get; set; }
 

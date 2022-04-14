@@ -60,7 +60,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             if (p is not null) {
                 FirstName = p.firstName;
                 LastName = p.lastName;
-                Gender = p.gender ?? Gender.None;
+                Gender = p.gender;
                 Email = p.email ?? "";
                 BirthDate = p.dateOfBirth;
                 Country = p.country;
@@ -69,7 +69,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                 JMBG = p.JMBG;
                 Allergy = String.Join("\r\n", p.allergens);
                 Phone = p.phone;
-                BloodType = p.bloodType ?? BloodType.None;
+                BloodType = p.bloodType;
             } else { NavigationService.GoBack(); }
             InitializeComponent();
         }
