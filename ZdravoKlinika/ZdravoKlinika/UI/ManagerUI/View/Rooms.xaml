@@ -3,78 +3,122 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.UI.SecretaryUI.View"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Patients">
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="Upravljanje sobama">
 
-    <DockPanel Margin="10">
+    <DockPanel Margin="10" Background="Snow">
+       
         <Grid DockPanel.Dock="Top" Margin="0 15" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Prikaz soba" Grid.Column="0" FontSize="32" FontWeight="Bold"></TextBlock>
-            <TextBox Grid.Column="1" Width="250"  FontSize="24" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Stretch"></TextBox>
-        </Grid>
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Dodaj sobu" Width="175" HorizontalAlignment="Right" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Click="Button_Click_New" ></Button>
-        </StackPanel>
-        <DataGrid ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="*"  Binding="{Binding roomId}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Naziv"   Binding="{Binding name}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Opis"  Binding="{Binding description}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Tip" Width="*"  Binding="{Binding type}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-        
-                <DataGridTemplateColumn Header="Izmeni" Width="200">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Tag="{Binding roomId}" Content="Izmeni"  Margin="0 5 10 5" Padding="10 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Izbriši" Width="200">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Tag="{Binding roomId}" Content="Izbriši"  Margin="10 5" Padding="10 0" Click="Button_Click_Remove" Background="Red" Foreground="White"></Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
 
-            </DataGrid.Columns>
-        </DataGrid>
+        </Grid>
+        
+      
+        <Grid Margin="0 15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DockPanel HorizontalAlignment="Left" Width="auto" >
+                <Grid Margin="50 0 0 0" Background="AliceBlue">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="10 0 0 20">Upravljanje sobama</Label>
+                <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged" Margin="20 0 25 0" MinWidth="350" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Width="auto"  Binding="{Binding roomId}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="5 0" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Naziv" Width="auto"  Binding="{Binding name}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="5 0" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Opis" Width="*"  Binding="{Binding description}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="5 0" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Tip" Width="*"  Binding="{Binding type}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="5 0" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTemplateColumn Header="Izmeni" Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Tag="{Binding roomId}" Content="Izmeni"  Margin="5 5" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Izbriši" Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Tag="{Binding roomId}" Content="Izbriši"  Margin="5 5" Padding="5 0" Click="Button_Click_Remove" Background="Red" Foreground="White"></Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                    <StackPanel Grid.Row="2" DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="Dodaj sobu" Width="auto" HorizontalAlignment="Right" Margin="0 15 25 0"  FontSize="13" FontWeight="SemiBold" Click="Button_Click_New" ></Button>
+                    </StackPanel>
+                </Grid>
+            </DockPanel>
+            <StackPanel  Grid.Column="1" Width="auto">
+                <Grid Background="AliceBlue" Margin="20 0 0 0" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.ColumnSpan="2" FontWeight="Bold" FontSize="17" Margin="0 0 0 20">Kreiranje izveštaja o zauzetosti prostorija</Label>
+                    <Label Grid.Column="0" Grid.Row="1">Odaberite početni datum provere</Label>
+                    <Label Grid.Column="0" Grid.Row="2">Odaberite krajnji datum provere</Label>
+                    <DatePicker Grid.Column="1" Grid.Row="1" SelectedDate = "{x:Static sys:DateTime.Now}"></DatePicker>
+                    <DatePicker Grid.Column="1" Grid.Row="2" SelectedDate ="{x:Static sys:DateTime.Now}"></DatePicker>
+                    <Button FontWeight="SemiBold" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="30" >Kreiraj izvešraj</Button>
+                </Grid>
+                
+            </StackPanel>
+        </Grid>
+
+
+
     </DockPanel>
 </Page>
