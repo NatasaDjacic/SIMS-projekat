@@ -6,12 +6,6 @@
     "type": "Sala za operacije"
   },
   {
-    "roomId": "5",
-    "name": "Soba2",
-    "description": "Srednja soba",
-    "type": "Kancelarija"
-  },
-  {
     "roomId": "6",
     "name": "Soba3",
     "description": "Velika soba",
@@ -22,5 +16,23 @@
     "name": "Soba4",
     "description": "Srednja soba",
     "type": "Sala za operaciju"
+  },
+  {
+    "roomId": "11",
+    "name": "Soba1",
+    "description": "Srednja soba",
+    "type": "Kancelarija"
+  },
+  {
+    "roomId": "5",
+    "name": "Soba",
+    "description": "Soba za operaciju",
+    "type": "Soba za operaciju"
+  },
+  {
+    "roomId": "AH2",
+    "name": "Soba7",
+    "description": "Najbitnija soba za spavanje i odmor",
+    "type": "Soba za releksaciju"
   }
 ]
