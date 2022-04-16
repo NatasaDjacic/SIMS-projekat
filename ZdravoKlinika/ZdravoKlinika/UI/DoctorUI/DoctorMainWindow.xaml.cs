@@ -25,7 +25,6 @@ namespace ZdravoKlinika.UI.DoctorUI
     {
 
         public AppointmentController appointmentController;
-        public DoctorController doctorController;
         public DoctorMainWindow()
         {
             InitializeComponent();
@@ -35,7 +34,6 @@ namespace ZdravoKlinika.UI.DoctorUI
             DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
             DoctorService doctorService = new DoctorService(doctorRepository);
             appointmentController = new AppointmentController(appointmentService, doctorService);
-            doctorController = new DoctorController(doctorService,appointmentService);
             string DOCTORJMBG = "1111111111111";
             string DOCTORROOM = "5";
             int choice = 0;
@@ -44,12 +42,12 @@ namespace ZdravoKlinika.UI.DoctorUI
             do {
                 Console.WriteLine("1. Appointments");
                 Console.WriteLine("2. Create Appointments");
-                Console.WriteLine("3. Edit Appointments");
+                Console.WriteLine("3. Move Appointments");
                 Console.WriteLine("4. Delete Appointments");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice) {
                     case 1:
-                        var aps = doctorController.GetMyAppointments();
+                        var aps = appointmentController.GetDoctorAppointments();
                         foreach(var a in aps) {
                             Console.WriteLine("ID: "+ a.id.ToString());
                             Console.WriteLine("PatientJMBG: " + a.patientJMBG);
@@ -86,12 +84,16 @@ namespace ZdravoKlinika.UI.DoctorUI
                             app.appointmentType = Model.Enums.AppointmentType.regular;
 
                         }
-                        doctorController.CreateAppointment(app.startTime, app.duration, app.patientJMBG, app.doctorJMBG, app.roomId, false, app.appointmentType);
+                        try {
+                            appointmentController.CreateAppointmentDoctor(app.startTime, app.duration, app.patientJMBG, app.doctorJMBG, app.roomId, false, app.appointmentType);
+                        } catch (Exception ex) {
+                            Console.WriteLine(ex.Message);
+                        }
                         break;
                     case 3:
-                        Console.WriteLine("Enter ID of appointment to delete:");
+                        Console.WriteLine("Enter ID of appointment to move:");
                         id = Convert.ToInt32(Console.ReadLine());
-                        if (!doctorController.IsMyAppointment(id)) {
+                        if (!appointmentController.IsDoctorAppointment(id)) {
                             Console.WriteLine("You doesn't have access to this appointment.");
                             break;
                         }
@@ -114,7 +116,7 @@ namespace ZdravoKlinika.UI.DoctorUI
                     case 4:
                         Console.WriteLine("Enter ID of appointment to delete:");
                         id = Convert.ToInt32(Console.ReadLine());
-                        if (doctorController.IsMyAppointment(id)) {
+                        if (appointmentController.IsDoctorAppointment(id)) {
                             appointmentController.DeleteAppointmentById(id);
                             Console.WriteLine("Appointment deleted.");
                         } else {

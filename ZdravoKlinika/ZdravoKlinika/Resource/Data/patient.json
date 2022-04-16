@@ -18,33 +18,36 @@
   {
     "gender": "Male",
     "bloodType": "A_Pos",
-    "dateOfBirth": "2022-04-14T00:00:00",
+    "dateOfBirth": "1990-04-14T00:00:00",
     "allergens": [],
-    "firstName": "Mitar",
-    "lastName": "Miriccc",
+    "firstName": "Pera",
+    "lastName": "Peric",
     "JMBG": "1234567890123",
     "username": "1234567890123",
     "password": "zdravo",
     "phone": "",
     "email": "",
     "country": "Srbija",
-    "city": "NOvi sad",
+    "city": "Novi sad",
     "address": "Neka adres 123"
   },
   {
-    "gender": "None",
-    "bloodType": "None",
-    "dateOfBirth": "2022-04-14T13:05:20.6684974+02:00",
-    "allergens": [],
-    "firstName": "PPPPPp",
-    "lastName": "PPPPPPPPp",
-    "JMBG": "1231231231230",
-    "username": "1231231231230",
+    "gender": "Male",
+    "bloodType": "B_Pos",
+    "dateOfBirth": "1980-04-15T00:00:00",
+    "allergens": [
+      "Alergija 1",
+      "Alergija 2"
+    ],
+    "firstName": "Mitar",
+    "lastName": "Miric",
+    "JMBG": "1234512345123",
+    "username": "1234512345123",
     "password": "zdravo",
-    "phone": "",
-    "email": "",
-    "country": "",
-    "city": "",
-    "address": ""
+    "phone": "345345",
+    "email": "mitarmiric@gmail.com",
+    "country": "Srbija",
+    "city": "Kraljevo",
+    "address": "Aressa 123"
   }
 ]

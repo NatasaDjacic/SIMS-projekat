@@ -9,7 +9,7 @@ namespace ZdravoKlinika.Controller {
 
         public AppointmentService appointmentService;
         public DoctorService doctorService;
-        
+        private string DOCTORJMBG = "1111111111111";
 
         public AppointmentController(AppointmentService appointmentService, DoctorService doctorService) {
             this.appointmentService = appointmentService;
@@ -57,6 +57,20 @@ namespace ZdravoKlinika.Controller {
             return appointmentService.SaveAppointment(appointment);
 
         }
+        public List<Appointment> GetDoctorAppointments() {
+            return this.appointmentService.GetAllAppointments().FindAll(a => a.doctorJMBG.Equals(DOCTORJMBG));
 
+        }
+
+        public bool CreateAppointmentDoctor(DateTime startTime, int duration, string patientJMBG, string doctorJMBG, string roomId, bool urgency, AppointmentType appointmentType) {
+            Appointment app = new Appointment(appointmentService.GenerateNewId(), startTime, duration, urgency, appointmentType, patientJMBG, doctorJMBG, roomId);
+
+            return this.appointmentService.SaveAppointment(app);
+        }
+
+        public bool IsDoctorAppointment(int id) {
+            var app = this.appointmentService.GetAppointmentById(id);
+            return app is not null && app.doctorJMBG.Equals(DOCTORJMBG);
+        }
     }
 }

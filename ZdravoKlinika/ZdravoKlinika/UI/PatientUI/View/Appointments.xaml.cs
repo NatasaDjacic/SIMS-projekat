@@ -45,7 +45,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 if (appointments != value)
                 {
                     appointments = value;
-                    OnPropertyChanged("PatientsCollection");
+                    OnPropertyChanged("AppointmentCollection");
                 }
             }
         }

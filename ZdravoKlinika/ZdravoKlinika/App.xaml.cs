@@ -40,7 +40,7 @@ namespace ZdravoKlinika
             AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
             AppointmentService appointmentService = new AppointmentService(appointmentRepository);
 
-            DoctorController doctorController = new DoctorController(doctorService, appointmentService);
+            DoctorController doctorController = new DoctorController(doctorService);
             AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService);
 
 
@@ -65,10 +65,10 @@ namespace ZdravoKlinika
 
 
             DateTime date = new DateTime(2022, 04, 20);
-            appointmentController.CreateAppointmentPatient(date, 30, "1111111111111");
+            //appointmentController.CreateAppointmentPatient(date, 30, "1111111111111");
 
             DateTime date1 = new DateTime(2022, 04, 26);
-            appointmentController.MoveAppointmentById(1,date1);
+            //appointmentController.MoveAppointmentById(1,date1);
 
         }
     }
