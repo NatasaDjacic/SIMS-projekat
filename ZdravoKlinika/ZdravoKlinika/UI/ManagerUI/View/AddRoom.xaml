@@ -9,54 +9,54 @@
       xmlns:converters="clr-namespace:ZdravoKlinika.UI.ManagerUI"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="AddPatient" FontSize="24">
-    
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Margin="10">
-            <TextBlock Text="Dodavanje sobe" Grid.Column="0" FontSize="32" FontWeight="Bold"></TextBlock>
-        </StackPanel>
+      Title="AddPatient" FontSize="15">
+
+    <DockPanel Background="Snow">
+
         <Grid DockPanel.Dock="Bottom" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="100" Background="Red" Foreground="White" Content="Cancel" FontSize="24" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
-            <Button Grid.Column="1" Width="100" Background="Green" Foreground="White" HorizontalAlignment="Right" Content="Save"  FontSize="24" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
         </Grid>
-        <Grid DockPanel.Dock="Left">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Center" Margin="0 50 0 0">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Grid.Column="0">
+            <Grid Grid.Row="0" Grid.Column="0" Background="AliceBlue">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="11*"/>
+                    <ColumnDefinition Width="69*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
-                    <Label>Id*</Label>
-                    <TextBox Width="270" Text="{Binding RoomId, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.Column="1" Margin="10">
-                    <Label>Naziv*</Label>
-                    <TextBox Width="270"  Text="{Binding _Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
-                    <Label>Opis*</Label>
-                    <TextBox Width="270" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
-                    <Label>Tip*</Label>
-                    <TextBox Width="270"  Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                </StackPanel>
+                <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20">Kreiranje nove prostorije</Label>
+
+                <Label  Margin="10,10,0,10" Grid.Row="1" Grid.Column="0">Id*</Label>
+                <TextBox x:Name="IdTb"  Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Text="{Binding RoomId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" ></TextBox>
+
+                <Label  Margin="10,10,0,10" Grid.Row="2" Grid.Column="0">Naziv*</Label>
+                <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220"  Text="{Binding _Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                <Label  Margin="10,10,0,10" Grid.Row="3" Grid.Column="0">Opis*</Label>
+                <TextBox  Margin="20,10,20,10" Grid.Row="3" Grid.Column="1" Width="220" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                <Label  Margin="10,10,0,10" Grid.Row="4" Grid.Column="0">Tip*</Label>
+                <TextBox  Margin="20,10,20,10" Grid.Row="4" Grid.Column="1" Width="220"  Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                <Button Grid.Row="5" Grid.Column="0" Margin="10,20,0,10" Width="75" Background="Red" Foreground="White" Content="Poništi" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
+                <Button Grid.Row="5" Grid.Column="2" Margin="0 20 20 10" Width="75" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="Potvrdi" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
+
             </Grid>
         </Grid>
     </DockPanel>
