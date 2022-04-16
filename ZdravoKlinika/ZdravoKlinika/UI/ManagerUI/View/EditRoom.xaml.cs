@@ -69,5 +69,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             }
 
         }
+
+      
     }
 }

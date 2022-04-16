@@ -49,6 +49,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
             InitializeComponent();
+            IdTb.Focus();
         }
 
         private void Button_Click_Cancel(object sender, RoutedEventArgs e) {
@@ -66,5 +67,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             }
 
         }
+
+        
     }
 }
