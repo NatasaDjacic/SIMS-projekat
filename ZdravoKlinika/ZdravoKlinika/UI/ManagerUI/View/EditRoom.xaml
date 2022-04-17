@@ -42,7 +42,7 @@
                 <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20">Izmena prostorije</Label>
 
                 <Label  Margin="10,10,0,10" Grid.Row="1" Grid.Column="0">Id*</Label>
-                <TextBox Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Text="{Binding RoomId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+                <TextBox Name="Idtb" Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Text="{Binding RoomId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
                 <Label  Margin="10,10,0,10" Grid.Row="2" Grid.Column="0">Naziv*</Label>
                 <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220"  Text="{Binding _Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>

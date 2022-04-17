@@ -6,17 +6,39 @@
         mc:Ignorable="d"
         Title="Upravnik Početni ekran" Height="768" Width="1024" FontSize="24" FontWeight="SemiBold">
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Exit" />
+        <Menu FontWeight="SemiBold" Padding="0 5 0 0" Height="35" FontSize="15" DockPanel.Dock="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="Ordinacija"/>
+
+            <MenuItem Header="Upravljanje sobama"/>
+
+            <MenuItem Header="Renoviranje ▼">
+                <MenuItem Header="Renoviranje" />
+                <MenuItem Header="Spajanje sala" />
+                <MenuItem Header="Razdvajanje sala" />
             </MenuItem>
-            <MenuItem Header="_Tools">
-                <MenuItem Header="_Manage users" />
-                <MenuItem Header="_Manage users" />
-                <MenuItem Header="_Manage users" />
-                <MenuItem Header="_Manage users" />
-                <MenuItem Header="_Show groups" IsCheckable="True" IsChecked="True" />
+            <MenuItem Header="Pregled lekova"/>
+            <MenuItem Header="Ankete ▼">
+                <MenuItem Header="Ankete bolnice" />
+                <MenuItem Header="Ankete lekara" />
             </MenuItem>
+            <MenuItem Header="Pregled opreme"/>
+            <MenuItem Header="Promena teme ▼">
+                <MenuItem Click="LightTheme_Click" Name="LightTheme" Header="Svetla" IsCheckable="True" IsChecked="True" />
+                <MenuItem Click="DarkTheme_Click" Name="DarkTheme" Header="Tamna" IsCheckable="True" IsChecked="False"/>
+            </MenuItem>
+            <MenuItem Header="Izbor jezika ▼">
+                <MenuItem Click="Serbian_Click" Name="SerbianMenu" Header="Srpski" IsCheckable="True" IsChecked="True" />
+                <MenuItem Click="English_Click" Name="EnglishMenu" Header="English" IsCheckable="True" IsChecked="False" />
+                <MenuItem Click="Russian_Click" Name="RussianMenu" Header="Русский" IsCheckable="True" IsChecked="False" />
+            </MenuItem>
+            <MenuItem Header="Profil"/>
+            <MenuItem HorizontalAlignment="Right" Header="Odjava"/>
+
         </Menu>
         <Frame x:Name="ContentFrame" DockPanel.Dock="Left" NavigationUIVisibility="Hidden"></Frame>
     </DockPanel>

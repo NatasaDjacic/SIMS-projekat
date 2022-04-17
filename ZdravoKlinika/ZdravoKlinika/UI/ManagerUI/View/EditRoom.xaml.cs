@@ -45,6 +45,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
                 Type = r.type;
             } else { NavigationService.GoBack(); }
             InitializeComponent();
+            Idtb.Focus();
         }
 
         private void Button_Click_Cancel(object sender, RoutedEventArgs e) {

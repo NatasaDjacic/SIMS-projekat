@@ -23,6 +23,42 @@ namespace ZdravoKlinika.UI.ManagerUI
         {
             InitializeComponent();
             ContentFrame.Navigate(new View.Rooms());
+            
         }
+
+        private void Serbian_Click(object sender, RoutedEventArgs e)
+        {
+
+                SerbianMenu.IsChecked = true;
+                EnglishMenu.IsChecked = false;
+                RussianMenu.IsChecked = false;
+        }
+        private void English_Click(object sender, RoutedEventArgs e)
+        {
+
+            SerbianMenu.IsChecked = false;
+            EnglishMenu.IsChecked = true;
+            RussianMenu.IsChecked = false;
+        }
+        private void Russian_Click(object sender, RoutedEventArgs e)
+        {
+
+            SerbianMenu.IsChecked = false;
+            EnglishMenu.IsChecked = false;
+            RussianMenu.IsChecked = true;
+        }
+        private void LightTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+            DarkTheme.IsChecked = false;
+            LightTheme.IsChecked = true;
+        }
+        private void DarkTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+            DarkTheme.IsChecked = true;
+            LightTheme.IsChecked = false;
+        }
+        
     }
 }
