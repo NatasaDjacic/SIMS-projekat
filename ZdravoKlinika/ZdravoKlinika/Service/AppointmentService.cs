@@ -8,8 +8,11 @@ namespace ZdravoKlinika.Service {
 
         public AppointmentRepository appointmentRepository { get; set; }
 
-        public AppointmentService(AppointmentRepository appointmentRepository) {
+        public DoctorService doctorService { get; set; }
+
+        public AppointmentService(AppointmentRepository appointmentRepository, DoctorService doctorService) {
             this.appointmentRepository = appointmentRepository;
+            this.doctorService = doctorService;
         }
 
 
@@ -53,6 +56,7 @@ namespace ZdravoKlinika.Service {
         {
             return this.appointmentRepository.GenerateNewId();
         }
+        #region AppointmentSugestion
         public List<DateTime[]> GetFreeAppointmentIntervals(List<Appointment> appointments, DateTime startTime, DateTime endTime, int duration) {
             // if we don't have appointments whole intervals if free
             if (appointments.Count == 0) return new List<DateTime[]>() { new DateTime[] { startTime, endTime.AddMinutes(-duration) } };
@@ -84,21 +88,39 @@ namespace ZdravoKlinika.Service {
             return intervals;
         }
 
-        public List<DateTime> GetAppointmentSuggestionDT(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
+        public List<DateTime> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
+            // Find all appointments with given patient, doctor and room within given time interval
             var appointments = this.GetAllAppointments().FindAll(a =>
                 (a.patientJMBG == patientJMBG ||
                 a.doctorJMBG == doctorJMBG ||
                 a.roomId == roomId) && (a.startTime.AddMinutes(a.duration) > startTime && a.startTime < endTime));
             var freeIntervals = this.GetFreeAppointmentIntervals(appointments, startTime, endTime, duration);
-            return ConvertFromIntervalsToDTs(freeIntervals);
+            return ConvertFromIntervalsToDateTimes(freeIntervals);
         }
-        public List<DateTime> GetAppointmentSuggestionWithTimePriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
-            return new List<DateTime>();
+        public List<(Doctor,List<DateTime>)> GetAppointmentSuggestionsWithTimePriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
+            string? specialization = doctorService.GetById(doctorJMBG)?.specialization;
+            if (specialization is null) throw new Exception("Doctor with JMBG not found");
+            // Get all doctors with same specialization
+            List<Doctor> doctors = doctorService.GetAll().FindAll(d => d.specialization == specialization && d.JMBG != doctorJMBG);
+            var doctorDateTimes = new List<(Doctor, List<DateTime>)>();
+            doctors.ForEach(doctor => {
+                doctorDateTimes.Add((doctor, this.GetAppointmentSuggestions(patientJMBG,doctor.JMBG, doctor.roomId ?? roomId, startTime, endTime, duration)));
+            });
+            return doctorDateTimes;
+        }
+        public List<DateTime> GetAppointmentSuggestionsWithDoctorPriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
+            var startDateTimes = new List<DateTime>();
+            int weeks = 0;
+            while (startDateTimes.Count < 5) {
+                ++weeks;
+                startDateTimes.AddRange(this.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, startTime.AddDays(7*weeks), endTime.AddDays(7 * weeks), duration));
+            }
+            return startDateTimes;
         }
 
         // This function can be changed base on how you want to extract start times from the interval
         // DON'T CHANGE WITHOUT PERMISSION
-        private List<DateTime> ConvertFromIntervalsToDTs(List<DateTime[]> intervals) {
+        private List<DateTime> ConvertFromIntervalsToDateTimes(List<DateTime[]> intervals) {
 
             const int ST_SHIFT = 30;
             const int ST_MAX_PER_INTERVAL = 5;
@@ -114,5 +136,6 @@ namespace ZdravoKlinika.Service {
             });
             return startDateTimes;
         }
+        #endregion
     }
 }
