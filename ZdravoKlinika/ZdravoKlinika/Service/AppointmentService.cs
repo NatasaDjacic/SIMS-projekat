@@ -82,7 +82,7 @@ namespace ZdravoKlinika.Service {
                 intervals[i][0] = intervals[i][1];
                 intervals[i][1] = intervals[i + 1][0].AddMinutes(-duration);
             }
-            // Remove inverse intervals
+            // Remove intervals that are not valid
             intervals.RemoveAt(intervals.Count - 1);
             intervals = intervals.FindAll(dt => dt[1] >= dt[0]);
             return intervals;
@@ -111,7 +111,9 @@ namespace ZdravoKlinika.Service {
         public List<DateTime> GetAppointmentSuggestionsWithDoctorPriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
             var startDateTimes = new List<DateTime>();
             int weeks = 0;
-            while (startDateTimes.Count < 5) {
+            const int ST_MAX = 5;
+            // find suggestions for next week until you find some amount
+            while (startDateTimes.Count < ST_MAX) {
                 ++weeks;
                 startDateTimes.AddRange(this.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, startTime.AddDays(7*weeks), endTime.AddDays(7 * weeks), duration));
             }
