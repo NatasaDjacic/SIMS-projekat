@@ -72,5 +72,10 @@ namespace ZdravoKlinika.Controller {
             var app = this.appointmentService.GetAppointmentById(id);
             return app is not null && app.doctorJMBG.Equals(DOCTORJMBG);
         }
+
+
+        
+
+
     }
 }

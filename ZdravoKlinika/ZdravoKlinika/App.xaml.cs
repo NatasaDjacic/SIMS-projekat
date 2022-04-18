@@ -69,7 +69,9 @@ namespace ZdravoKlinika
 
             DateTime date1 = new DateTime(2022, 04, 26);
             //appointmentController.MoveAppointmentById(1,date1);
-
+            Console.WriteLine(new DateTime(2022, 04, 20,11,0,0));
+            Console.WriteLine(new DateTime(2022, 04, 21,18,0,0));
+            appointmentService.GetAppointmentSuggestionDT("1231231231231", "1111111111111", "5", new DateTime(2022, 04, 20, 11, 0, 0), new DateTime(2022, 04, 20, 18, 0, 0), 30);
         }
     }
 }
