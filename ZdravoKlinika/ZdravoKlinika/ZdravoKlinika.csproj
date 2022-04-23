@@ -8,11 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Remove="Resource\Dictionary\StringResources.en.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="UI\DoctorUI\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Dictionary\StringResources.en.xaml" />
   </ItemGroup>
 
   <ItemGroup>

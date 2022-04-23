@@ -18,8 +18,8 @@
             </Grid.ColumnDefinitions>
 
         </Grid>
-        
-      
+
+
         <Grid Margin="0 15" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

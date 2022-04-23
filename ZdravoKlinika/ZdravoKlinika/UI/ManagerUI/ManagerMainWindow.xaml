@@ -12,32 +12,32 @@
                     <DockPanel HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="Ordinacija"/>
+            <MenuItem Header="{DynamicResource StrRoomMan}"/>
 
-            <MenuItem Header="Upravljanje sobama"/>
+            <MenuItem Header="{DynamicResource StrHos}"/>
 
-            <MenuItem Header="Renoviranje ▼">
-                <MenuItem Header="Renoviranje" />
-                <MenuItem Header="Spajanje sala" />
-                <MenuItem Header="Razdvajanje sala" />
+            <MenuItem Header="{DynamicResource StrRen}">
+                <MenuItem Header="{DynamicResource StrRen}" />
+                <MenuItem Header="{DynamicResource StrMer}" />
+                <MenuItem Header="{DynamicResource StrSep}" />
             </MenuItem>
-            <MenuItem Header="Pregled lekova"/>
-            <MenuItem Header="Ankete ▼">
-                <MenuItem Header="Ankete bolnice" />
-                <MenuItem Header="Ankete lekara" />
+            <MenuItem Header="{DynamicResource StrMed}"/>
+            <MenuItem Header="{DynamicResource StrPools}">
+                <MenuItem Header="{DynamicResource StrHosPools}" />
+                <MenuItem Header="{DynamicResource StrDocPools}" />
             </MenuItem>
-            <MenuItem Header="Pregled opreme"/>
-            <MenuItem Header="Promena teme ▼">
-                <MenuItem Click="LightTheme_Click" Name="LightTheme" Header="Svetla" IsCheckable="True" IsChecked="True" />
-                <MenuItem Click="DarkTheme_Click" Name="DarkTheme" Header="Tamna" IsCheckable="True" IsChecked="False"/>
+            <MenuItem Header="{DynamicResource StrEquip}"/>
+            <MenuItem Header="{DynamicResource StrTheme}">
+                <MenuItem Click="LightTheme_Click" Name="LightTheme" Header="{DynamicResource StrLight}" IsCheckable="True" IsChecked="True" />
+                <MenuItem Click="DarkTheme_Click" Name="DarkTheme" Header="{DynamicResource StrDark}" IsCheckable="True" IsChecked="False"/>
             </MenuItem>
-            <MenuItem Header="Izbor jezika ▼">
+            <MenuItem Header="{DynamicResource StrLangChoose}">
                 <MenuItem Click="Serbian_Click" Name="SerbianMenu" Header="Srpski" IsCheckable="True" IsChecked="True" />
-                <MenuItem Click="English_Click" Name="EnglishMenu" Header="English" IsCheckable="True" IsChecked="False" />
+                <MenuItem Click="English_Click" Name="EnglishMenu" Header="{DynamicResource StrEnglish }" IsCheckable="True" IsChecked="False" />
                 <MenuItem Click="Russian_Click" Name="RussianMenu" Header="Русский" IsCheckable="True" IsChecked="False" />
             </MenuItem>
-            <MenuItem Header="Profil"/>
-            <MenuItem HorizontalAlignment="Right" Header="Odjava"/>
+            <MenuItem Header="{DynamicResource StrProfil}"/>
+            <MenuItem HorizontalAlignment="Right" Header="{DynamicResource StrSignOut}"/>
 
         </Menu>
         <Frame x:Name="ContentFrame" DockPanel.Dock="Left" NavigationUIVisibility="Hidden"></Frame>
