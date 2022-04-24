@@ -32,7 +32,9 @@
     <system:String x:Key="StrName*">Naziv*</system:String>
     <system:String x:Key="StrDesc*">Opis*</system:String>
     <system:String x:Key="StrType*">Tip*</system:String>
+    <system:String x:Key="StrType">Tip</system:String>
     <system:String x:Key="StrId*">Id*</system:String>
+    <system:String x:Key="StrId">Id</system:String>
     <system:String x:Key="StrNewRoom">Kreiranje nove prostorije</system:String>
     <system:String x:Key="StrCancel">Poništi</system:String>
     <system:String x:Key="StrSubmit">Potvrdi</system:String>

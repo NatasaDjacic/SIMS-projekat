@@ -31,8 +31,10 @@
     <system:String x:Key="StrManager">Manager</system:String>
     <system:String x:Key="StrName*">Name*</system:String>
     <system:String x:Key="StrDesc*">Description*</system:String>
+    <system:String x:Key="StrType">Type</system:String>
     <system:String x:Key="StrType*">Type*</system:String>
     <system:String x:Key="StrId*">Id*</system:String>
+    <system:String x:Key="StrId">Id</system:String>
     <system:String x:Key="StrNewRoom">Creating a new room</system:String>
     <system:String x:Key="StrCancel">Cancel</system:String>
     <system:String x:Key="StrSubmit">Submit</system:String>

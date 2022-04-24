@@ -36,7 +36,10 @@
                     <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="10 30 0 20" Content="{DynamicResource StrRoomManage}"></Label>
                     <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Width="auto"  Binding="{Binding roomId}" >
+                            <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrId}"/>
+                                </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -44,7 +47,10 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource StrName}" Width="auto"  Binding="{Binding name}" >
+                            <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrName}"/>
+                                </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -52,7 +58,10 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource StrDesc}" Width="*"  Binding="{Binding description}" >
+                            <DataGridTextColumn Width="*"  Binding="{Binding description}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrDesc}"/>
+                                </DataGridTextColumn.Header> 
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -60,7 +69,11 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Tip" Width="*"  Binding="{Binding type}" >
+                            
+                            <DataGridTextColumn Binding="{Binding type}" Width="*">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrType}"/>
+                                </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -69,16 +82,22 @@
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTemplateColumn Header="{DynamicResource StrModify}" Width="60">
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrModify}"/>
+                                </DataGridTemplateColumn.Header>
                                 <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Button Tag="{Binding roomId}" Content="{DynamicResource StrModify}"  Margin="5 5" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Button Tag="{Binding roomId}" Content="{DynamicResource StrModify}"  Margin="5 5" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource StrDelete}" Width="60">
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.Header>
+                                <TextBlock Text="{DynamicResource StrDelete}" />
+                                </DataGridTemplateColumn.Header>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

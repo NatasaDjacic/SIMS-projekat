@@ -31,6 +31,7 @@
     <system:String x:Key="StrManager">Менеджер</system:String>
     <system:String x:Key="StrName*">Имя*</system:String>
     <system:String x:Key="StrDesc*">Описание*</system:String>
+    <system:String x:Key="StrType">Тип</system:String>
     <system:String x:Key="StrType*">Тип*</system:String>
     <system:String x:Key="StrId">Ид</system:String>
     <system:String x:Key="StrId*">Ид*</system:String>
