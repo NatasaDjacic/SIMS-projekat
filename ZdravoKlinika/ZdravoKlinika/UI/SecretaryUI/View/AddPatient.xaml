@@ -11,12 +11,19 @@
       d:DesignHeight="668" d:DesignWidth="1004"
       Title="AddPatient" FontSize="24">
     <Page.Resources>
-        <ObjectDataProvider x:Key="bloodTypeFromEnum" MethodName="GetValues"
+       
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <ObjectDataProvider x:Key="bloodTypeFromEnum" MethodName="GetValues"
                             ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:BloodType"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enums:BloodType"/>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>
     </Page.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Margin="10">

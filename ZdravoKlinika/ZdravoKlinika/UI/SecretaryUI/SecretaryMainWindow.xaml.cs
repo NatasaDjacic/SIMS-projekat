@@ -19,7 +19,11 @@ namespace ZdravoKlinika.UI.SecretaryUI {
     public partial class SecretaryMainWindow : Window {
         public SecretaryMainWindow() {
             InitializeComponent();
-            ContentFrame.Navigate(new View.Patients());
+            ContentFrame.Navigate(new View.Dashboard());
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e) {
+            ContentFrame.NavigationService.Navigate(new View.Dashboard());
         }
     }
 }
