@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Repository;
 
 namespace ZdravoKlinika.Service {
@@ -57,7 +58,29 @@ namespace ZdravoKlinika.Service {
             return this.appointmentRepository.GenerateNewId();
         }
         #region AppointmentSugestion
-        public List<DateTime[]> GetFreeAppointmentIntervals(List<Appointment> appointments, DateTime startTime, DateTime endTime, int duration) {
+
+        public List<Appointment> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
+            List<Appointment> result = new List<Appointment>();
+            List<(Doctor, List<DateTime>)> startDateTimes = new List<(Doctor, List<DateTime>)>();
+            Doctor? doctor = this.doctorService.GetById(doctorJMBG);
+            if (doctor == null) throw new Exception("Doctor with JMBG not found");
+            startDateTimes.Add((doctor, this.GetAppointmentStartSuggestions(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration)));
+            if (startDateTimes[0].Item2.Count == 0) {
+                startDateTimes.Clear();
+                if (priority == "TIME") {
+                    startDateTimes = this.GetAppointmentStartSuggestionsWithTimePriority(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration);
+                } else if (priority == "DOCTOR") {
+                    startDateTimes.Add((doctor, this.GetAppointmentStartSuggestionsWithDoctorPriority(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration)));
+                }
+            }
+            foreach (var pair in startDateTimes) {
+                foreach (var start in pair.Item2) {
+                    result.Add(new Appointment(-1, start, duration, false, appointmentType, patientJMBG, pair.Item1.JMBG, pair.Item1.roomId ?? roomId));
+                }
+            }
+            return result;
+        }
+        private List<DateTime[]> GetFreeAppointmentIntervals(List<Appointment> appointments, DateTime startTime, DateTime endTime, int duration) {
             // if we don't have appointments whole intervals if free
             if (appointments.Count == 0) return new List<DateTime[]>() { new DateTime[] { startTime, endTime.AddMinutes(-duration) } };
             // sort by starting time
@@ -88,7 +111,9 @@ namespace ZdravoKlinika.Service {
             return intervals;
         }
 
-        public List<DateTime> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
+
+
+        private List<DateTime> GetAppointmentStartSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
             // Find all appointments with given patient, doctor and room within given time interval
             var appointments = this.GetAllAppointments().FindAll(a =>
                 (a.patientJMBG == patientJMBG ||
@@ -97,25 +122,25 @@ namespace ZdravoKlinika.Service {
             var freeIntervals = this.GetFreeAppointmentIntervals(appointments, startTime, endTime, duration);
             return ConvertFromIntervalsToDateTimes(freeIntervals);
         }
-        public List<(Doctor,List<DateTime>)> GetAppointmentSuggestionsWithTimePriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
+        private List<(Doctor,List<DateTime>)> GetAppointmentStartSuggestionsWithTimePriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
             string? specialization = doctorService.GetById(doctorJMBG)?.specialization;
             if (specialization is null) throw new Exception("Doctor with JMBG not found");
             // Get all doctors with same specialization
             List<Doctor> doctors = doctorService.GetAll().FindAll(d => d.specialization == specialization && d.JMBG != doctorJMBG);
             var doctorDateTimes = new List<(Doctor, List<DateTime>)>();
             doctors.ForEach(doctor => {
-                doctorDateTimes.Add((doctor, this.GetAppointmentSuggestions(patientJMBG,doctor.JMBG, doctor.roomId ?? roomId, startTime, endTime, duration)));
+                doctorDateTimes.Add((doctor, this.GetAppointmentStartSuggestions(patientJMBG,doctor.JMBG, doctor.roomId ?? roomId, startTime, endTime, duration)));
             });
             return doctorDateTimes;
         }
-        public List<DateTime> GetAppointmentSuggestionsWithDoctorPriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
+        private List<DateTime> GetAppointmentStartSuggestionsWithDoctorPriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
             var startDateTimes = new List<DateTime>();
             int weeks = 0;
             const int ST_MAX = 5;
             // find suggestions for next week until you find some amount
             while (startDateTimes.Count < ST_MAX) {
                 ++weeks;
-                startDateTimes.AddRange(this.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, startTime.AddDays(7*weeks), endTime.AddDays(7 * weeks), duration));
+                startDateTimes.AddRange(this.GetAppointmentStartSuggestions(patientJMBG, doctorJMBG, roomId, startTime.AddDays(7*weeks), endTime.AddDays(7 * weeks), duration));
             }
             return startDateTimes;
         }
