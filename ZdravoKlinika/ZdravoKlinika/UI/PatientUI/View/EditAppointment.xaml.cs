@@ -39,13 +39,12 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         Appointment? a;
 
-        public EditAppointment(int id)
-        {
-            this.DataContext = this;
-            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
+        public EditAppointment(int id) {
             DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
             DoctorService doctorService = new DoctorService(doctorRepository);
+            this.DataContext = this;
+            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService);
             appointmentController = new AppointmentController(appointmentService, doctorService);
 
             a = appointmentController.GetAppointmentById(id);

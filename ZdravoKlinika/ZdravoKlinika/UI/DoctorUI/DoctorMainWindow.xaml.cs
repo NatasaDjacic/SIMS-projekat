@@ -29,10 +29,10 @@ namespace ZdravoKlinika.UI.DoctorUI
         {
             InitializeComponent();
 
-            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
             DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
             DoctorService doctorService = new DoctorService(doctorRepository);
+            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService);
             appointmentController = new AppointmentController(appointmentService, doctorService);
             string DOCTORJMBG = "1111111111111";
             string DOCTORROOM = "5";

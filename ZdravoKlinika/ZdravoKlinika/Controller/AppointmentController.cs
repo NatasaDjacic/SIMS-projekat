@@ -72,5 +72,12 @@ namespace ZdravoKlinika.Controller {
             var app = this.appointmentService.GetAppointmentById(id);
             return app is not null && app.doctorJMBG.Equals(DOCTORJMBG);
         }
+
+        public List<Appointment> getSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
+            return this.appointmentService.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType);
+        }
+        
+
+
     }
 }

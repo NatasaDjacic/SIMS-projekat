@@ -53,10 +53,10 @@ namespace ZdravoKlinika.UI.PatientUI.View
         public Appointments()
         {
 
-            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
             DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
             DoctorService doctorService = new DoctorService(doctorRepository);
+            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
+            AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService);
             appointmentController = new AppointmentController(appointmentService, doctorService);
             AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
             this.DataContext = this;
