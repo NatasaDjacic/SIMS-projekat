@@ -98,6 +98,10 @@ namespace ZdravoKlinika.UI.ManagerUI
             DarkTheme.IsChecked = true;
             LightTheme.IsChecked = false;
         }
-        
+        private void Equip_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Equipments());
+        }
+
     }
 }

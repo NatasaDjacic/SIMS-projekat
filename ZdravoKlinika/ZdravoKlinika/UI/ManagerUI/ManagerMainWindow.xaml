@@ -26,7 +26,7 @@
                 <MenuItem Header="{DynamicResource StrHosPools}" />
                 <MenuItem Header="{DynamicResource StrDocPools}" />
             </MenuItem>
-            <MenuItem Header="{DynamicResource StrEquip}"/>
+            <MenuItem Click="Equip_Click" Header="{DynamicResource StrEquip}"/>
             <MenuItem Header="{DynamicResource StrTheme}">
                 <MenuItem Click="LightTheme_Click" Name="LightTheme" Header="{DynamicResource StrLight}" IsCheckable="True" IsChecked="True" />
                 <MenuItem Click="DarkTheme_Click" Name="DarkTheme" Header="{DynamicResource StrDark}" IsCheckable="True" IsChecked="False"/>
