@@ -33,6 +33,15 @@ namespace ZdravoKlinika
 
             roomController.Create("5", "Soba", "Soba za operaciju", "Soba za operaciju");
 
+            EquipmentRepository equipmentRepository = new EquipmentRepository(@"..\..\..\Resource\Data\equipment.json");
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository);
+            EquipmentController equipmentController = new EquipmentController(equipmentService);
+
+            try
+            {
+                equipmentController.Create(7, "Stalak za infuziju", "10", "Složena", 100);
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
             DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
             DoctorService doctorService = new DoctorService(doctorRepository);
 

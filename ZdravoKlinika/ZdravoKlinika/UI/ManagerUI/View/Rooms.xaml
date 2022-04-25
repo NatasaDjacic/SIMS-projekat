@@ -6,7 +6,7 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="{DynamicResource StrRoomManage}" Background ="Snow">
+      Title="{DynamicResource StrRoomManage}" Name="startScreen" Background ="Snow">
 
     <DockPanel Margin="10">
 
