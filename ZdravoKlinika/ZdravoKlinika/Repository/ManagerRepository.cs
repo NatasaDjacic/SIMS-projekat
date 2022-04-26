@@ -9,7 +9,7 @@ using System.IO;
 
 namespace ZdravoKlinika.Repository
 {
-    internal class ManagerRepository
+    public class ManagerRepository
     {
         private string fileLocation { get; set; }
 
