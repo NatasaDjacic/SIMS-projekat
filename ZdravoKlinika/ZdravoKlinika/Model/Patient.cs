@@ -16,6 +16,8 @@ namespace ZdravoKlinika.Model {
         public  DateTime dateOfBirth { get; set; }
         public List<string> allergens { get; set; }
 
+        public List<Report> reports { get; set; }
+
         public Patient(string firstName, string lastName, string jmbg, string? username,DateTime? dateOfBirth, string? password, string? phone,
             string? email, string? country, string? city, string? address,
             Gender? gender, BloodType? bloodType, List<string>? allergens) : base(firstName, lastName, jmbg, username, password, phone, email, country, city, address) {
@@ -23,16 +25,19 @@ namespace ZdravoKlinika.Model {
             this.dateOfBirth = dateOfBirth ?? DateTime.Now;
             this.bloodType = bloodType ?? BloodType.None;
             this.allergens = allergens ?? new List<string>();
+            this.reports = new List<Report>();
         }
         public Patient(string firstName, string lastName, string jmbg) : base(firstName, lastName, jmbg, null, null, null, null, null, null, null) {
             this.allergens = new List<string>();
             this.dateOfBirth = DateTime.Now;
             this.bloodType = BloodType.None;
             this.gender = Gender.None;
+            this.reports = new List<Report>();
         }
 
         public Patient() : base() {
             this.allergens = new List<string>();
+            this.reports = new List<Report>();
         }
 
         public void ValidateGuest() {
