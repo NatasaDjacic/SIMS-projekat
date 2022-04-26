@@ -30,11 +30,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                 }
             }
         }
-        public PatientController patientController;
+        public PatientController patientController = GLOBALS.patientController;
         public Patients() {
-            PatientRepository patientRepository = new PatientRepository(@"..\..\..\Resource\Data\patient.json");
-            PatientService patientService = new PatientService(patientRepository);
-            patientController = new PatientController(patientService);
             PatientsCollection = new ObservableCollection<Patient>(patientController.GetAll());
             this.DataContext = this;
             InitializeComponent();

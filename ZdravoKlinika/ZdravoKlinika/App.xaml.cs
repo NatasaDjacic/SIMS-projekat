@@ -19,39 +19,26 @@ namespace ZdravoKlinika
     {
         public App() : base()
         {
-            PatientRepository patientRepository = new PatientRepository(@"..\..\..\Resource\Data\patient.json");
-            PatientService patientService = new PatientService(patientRepository);
-            PatientController patientController = new PatientController(patientService);
+            PatientController patientController = GLOBALS.patientController;
             try {
                 patientController.Create("Veljko", "Todorovic", "1231231231231", "todorovicveljko1", DateTime.Now, "123", "todorovicveljko1@gmail.com", "Srbija", "Kraljevo", "Todorovica  38", Gender.Male, BloodType.A_Pos, new List<string>());
             } catch (Exception ex) { 
                 Console.WriteLine(ex.Message);
             }
-            RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
-            RoomService roomService = new RoomService(roomRepository);
-            RoomController roomController = new RoomController(roomService);
+            RoomController roomController = GLOBALS.roomController;
 
             roomController.Create("5", "Soba", "Soba za operaciju", "Soba za operaciju");
 
-            EquipmentRepository equipmentRepository = new EquipmentRepository(@"..\..\..\Resource\Data\equipment.json");
-            EquipmentService equipmentService = new EquipmentService(equipmentRepository);
-            EquipmentController equipmentController = new EquipmentController(equipmentService);
+            EquipmentController equipmentController = GLOBALS.equipmentController;
 
             try
             {
                 equipmentController.Create(7, "Stalak za infuziju", "10", "Složena", 100);
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
-            DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
-            DoctorService doctorService = new DoctorService(doctorRepository);
 
-
-            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService);
-
-            DoctorController doctorController = new DoctorController(doctorService);
-            AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService);
-
+            DoctorController doctorController = GLOBALS.doctorController;
+            AppointmentController appointmentController = GLOBALS.appointmentController;
 
 
             try
@@ -80,6 +67,9 @@ namespace ZdravoKlinika
             //appointmentController.MoveAppointmentById(1,date1);
             Console.WriteLine(new DateTime(2022, 04, 20,11,0,0));
             Console.WriteLine(new DateTime(2022, 04, 21,18,0,0));
+            AuthService authService = GLOBALS.authService;
+            Console.WriteLine(authService.login("mikamikic", "zdravo"));
+            Console.WriteLine(authService.user_role);
             //appointmentService.GetAppointmentStartSuggestions("1231231231231", "1111111111111", "5", new DateTime(2022, 04, 20, 11, 0, 0), new DateTime(2022, 04, 20, 18, 0, 0), 30);
         }
     }
