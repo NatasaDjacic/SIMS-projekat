@@ -14,9 +14,10 @@ namespace ZdravoKlinika.Controller
             this.patientService = patientSevice;
         }
 
-        public bool Create(string fName, string lName, string jmbg, string phone, string email, string country, string city, string address, Gender gender, BloodType bloodType, List<string> allergens)
+        public bool Create(string fName, string lName, string jmbg,string username, DateTime dateOfBirth, string phone, string email, string country, string city, string address, Gender gender, BloodType bloodType, List<string> allergens)
         {
-            var patient = new Patient(fName, lName, jmbg, null, phone, email, country, city, address, gender, bloodType, allergens);
+            var patient = new Patient(fName, lName, jmbg, username, dateOfBirth, null, phone, email, country, city, address, gender, bloodType, allergens);
+            patient.Validate();
             return this.patientService.Create(patient);
         }
 
@@ -27,6 +28,7 @@ namespace ZdravoKlinika.Controller
 
         public bool Update(Patient patient)
         {
+            patient.Validate();
             return this.patientService.Update(patient);
         }
 
@@ -38,6 +40,12 @@ namespace ZdravoKlinika.Controller
         public List<Patient> GetAll()
         {
             return this.patientService.GetAll();
+        }
+
+        public bool CreateGuestAccount(string fName, string lName, string jmbg) {
+            var patient = new Patient(fName, lName, jmbg);
+            patient.ValidateGuest();
+            return patientService.Create(patient);
         }
 
     }

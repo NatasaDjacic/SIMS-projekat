@@ -8,6 +8,7 @@ namespace ZdravoKlinika.Model.Enums
 {
     public enum BloodType
     {
+        None,
         O_Pos,
         O_Neg,
         A_Pos,
