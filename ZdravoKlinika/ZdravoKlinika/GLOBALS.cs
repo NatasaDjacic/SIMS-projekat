@@ -19,6 +19,7 @@ namespace ZdravoKlinika
         public static ManagerRepository managerRepository = new ManagerRepository(@"..\..\..\Resource\Data\manager.json");
         public static RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
         public static SecretaryRepository secretaryRepository = new SecretaryRepository(@"..\..\..\Resource\Data\secretary.json");
+        public static NotificationRepository notificationRepository = new NotificationRepository(@"..\..\..\Resource\Data\notification.json");
 
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
         public static DoctorService doctorService = new DoctorService(doctorRepository);
@@ -26,13 +27,16 @@ namespace ZdravoKlinika
         public static EquipmentService equipmentService =  new EquipmentService(equipmentRepository);
         public static PatientService patientService = new PatientService(patientRepository);
         public static RoomService roomService = new RoomService(roomRepository);
+        public static NotificationService notificationService = new NotificationService(notificationRepository, authService);
 
 
 
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
-        public static AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService);
+        public static AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService, authService);
         public static EquipmentController equipmentController = new EquipmentController(equipmentService);
         public static RoomController roomController = new RoomController(roomService);
+        public static AuthController authController = new AuthController(authService);
+        public static NotificationController notificationController = new NotificationController(notificationService);
     }
 }
