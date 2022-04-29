@@ -58,12 +58,9 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         public string Phone { get { return _phone; } set { _phone = value; OnPropertyChanged("Phone"); } }
         public string Allergy { get { return _allergy; } set { _allergy = value; OnPropertyChanged("Allergy"); } }
 
-        public PatientController patientController;
+        public PatientController patientController = GLOBALS.patientController;
         public AddPatient() {
             this.DataContext = this;
-            PatientRepository patientRepository = new PatientRepository(@"..\..\..\Resource\Data\patient.json");
-            PatientService patientService = new PatientService(patientRepository);
-            patientController = new PatientController(patientService);
             InitializeComponent();
         }
 

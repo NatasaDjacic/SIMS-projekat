@@ -6,10 +6,10 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="Upravljanje sobama">
+      Title="{DynamicResource StrRoomManage}" Name="startScreen" Background ="Snow">
 
-    <DockPanel Margin="10" Background="Snow">
-       
+    <DockPanel Margin="10">
+
         <Grid DockPanel.Dock="Top" Margin="0 15" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -22,79 +22,99 @@
 
         <Grid Margin="0 15" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="502*"/>
+                <ColumnDefinition Width="157*"/>
+                <ColumnDefinition Width="345*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel HorizontalAlignment="Left" Width="auto" >
+            <StackPanel HorizontalAlignment="Center" Width="auto" >
                 <Grid Margin="50 0 0 0" Background="AliceBlue">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="10 30 0 20">Upravljanje sobama</Label>
-                <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged" Margin="30 0 30 0" MinWidth="350" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="auto"  Binding="{Binding roomId}" >
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="VerticalAlignment" Value="Center" />
-                                    <Setter Property="Padding" Value="5 0" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Naziv" Width="auto"  Binding="{Binding name}" >
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="VerticalAlignment" Value="Center" />
-                                    <Setter Property="Padding" Value="5 0" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Opis" Width="*"  Binding="{Binding description}" >
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="VerticalAlignment" Value="Center" />
-                                    <Setter Property="Padding" Value="5 0" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Tip" Width="*"  Binding="{Binding type}" >
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="VerticalAlignment" Value="Center" />
-                                    <Setter Property="Padding" Value="5 0" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="10 30 0 20" Content="{DynamicResource StrRoomManage}"></Label>
+                    <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged" Margin="30 0 30 0" MinWidth="350" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrId}"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrName}"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="*"  Binding="{Binding description}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrDesc}"/>
+                                </DataGridTextColumn.Header> 
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            
+                            <DataGridTextColumn Binding="{Binding type}" Width="*">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrType}"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
 
-                        <DataGridTemplateColumn Header="Izmeni" Width="60">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Tag="{Binding roomId}" Content="Izmeni"  Margin="5 5" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Izbriši" Width="60">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Tag="{Binding roomId}" Content="Izbriši"  Margin="5 5" Padding="5 0" Click="Button_Click_Remove" Background="Red" Foreground="White"></Button>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrModify}"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Button Tag="{Binding roomId}" Content="{DynamicResource StrModify}"  Margin="5 5" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.Header>
+                                <TextBlock Text="{DynamicResource StrDelete}" />
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Tag="{Binding roomId}" Content="{DynamicResource StrDelete}"  Margin="5 5" Padding="5 0" Click="Button_Click_Remove" Background="Red" Foreground="White"></Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                    </DataGrid.Columns>
-                </DataGrid>
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <StackPanel Grid.Row="2" DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button  Content="Dodaj sobu" Width="auto" HorizontalAlignment="Right" Margin="30"  FontSize="13" FontWeight="SemiBold" Click="Button_Click_New" ></Button>
+                        <Button  Content="{DynamicResource StrAddRoom}" Width="auto" HorizontalAlignment="Right" Margin="30"  FontSize="13" FontWeight="SemiBold" Click="Button_Click_New" ></Button>
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <StackPanel  Grid.Column="1" Width="auto">
+            <StackPanel  Grid.Column="1" Width="auto" Grid.ColumnSpan="2">
                 <Grid Background="AliceBlue" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -107,14 +127,14 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="2" FontWeight="Bold" FontSize="17" Margin="0 30 0 20">Kreiranje izveštaja o zauzetosti prostorija</Label>
-                    <Label Grid.Column="0" Grid.Row="1">Odaberite početni datum provere</Label>
-                    <Label Grid.Column="0" Grid.Row="2">Odaberite krajnji datum provere</Label>
+                    <Label Grid.ColumnSpan="2" FontWeight="Bold" FontSize="17" Margin="30" Content="{DynamicResource StrRoomReport}"/>
+                    <Label Grid.Column="0" Grid.Row="1" Content="{DynamicResource StrStartDate}"></Label>
+                    <Label Grid.Column="0" Grid.Row="2" Content="{DynamicResource StrEndDate}"/>
                     <DatePicker Grid.Column="1" Grid.Row="1" SelectedDate = "{x:Static sys:DateTime.Now}"></DatePicker>
                     <DatePicker Grid.Column="1" Grid.Row="2" SelectedDate ="{x:Static sys:DateTime.Now}"></DatePicker>
-                    <Button FontWeight="SemiBold" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="30" >Kreiraj izvešraj</Button>
+                    <Button FontWeight="SemiBold" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="30" Content="{DynamicResource StrReport}"></Button>
                 </Grid>
-                
+
             </StackPanel>
         </Grid>
 

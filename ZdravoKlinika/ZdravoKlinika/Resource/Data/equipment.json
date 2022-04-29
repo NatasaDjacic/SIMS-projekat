@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Oprema1",
+    "roomId": "10",
+    "type": "Prosta",
+    "quantity": 10
+  },
+  {
+    "id": 2,
+    "name": "Oprema1",
+    "roomId": "10",
+    "type": "Prosta",
+    "quantity": 6
+  },
+  {
+    "id": 3,
+    "name": "Oprema1",
+    "roomId": "6",
+    "type": "Prosta",
+    "quantity": 10
+  },
+  {
+    "id": 4,
+    "name": "Oprema1",
+    "roomId": "3",
+    "type": "Prosta",
+    "quantity": 3
+  },
+  {
+    "id": 7,
+    "name": "Stalak za infuziju",
+    "roomId": "10",
+    "type": "Složena",
+    "quantity": 100
+  }
+]

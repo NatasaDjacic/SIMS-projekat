@@ -18,6 +18,27 @@
     <system:String x:Key="StrLight">Огни</system:String>
     <system:String x:Key="StrDark">Темный</system:String>
     <system:String x:Key="StrSignOut">Bыход</system:String>
+    <system:String x:Key="StrStartDate">Выберите дату начала проверки</system:String>
+    <system:String x:Key="StrEndDate">Выберите дату окончания проверки</system:String>
+    <system:String x:Key="StrAddRoom">Добавить комнату</system:String>
+    <system:String x:Key="StrDelete">Удалить</system:String>
+    <system:String x:Key="StrModify">Изменить</system:String>
+    <system:String x:Key="StrDesc">Описание</system:String>
+    <system:String x:Key="StrName">Имя</system:String>
+    <system:String x:Key="StrRoomManage">Управление номером</system:String>
+    <system:String x:Key="StrReport">Создать отчет</system:String>
+    <system:String x:Key="StrRoomReport">Создание отчетов о занятости номеров</system:String>
+    <system:String x:Key="StrManager">Менеджер</system:String>
+    <system:String x:Key="StrName*">Имя*</system:String>
+    <system:String x:Key="StrDesc*">Описание*</system:String>
+    <system:String x:Key="StrType">Тип</system:String>
+    <system:String x:Key="StrType*">Тип*</system:String>
+    <system:String x:Key="StrId">Ид</system:String>
+    <system:String x:Key="StrId*">Ид*</system:String>
+    <system:String x:Key="StrNewRoom">Создание новой комнаты</system:String>
+    <system:String x:Key="StrCancel">Отмена</system:String>
+    <system:String x:Key="StrSubmit">Отправить</system:String>
+    <system:String x:Key="StrRoomChange">Смена комнаты</system:String>
 
 
 </ResourceDictionary>

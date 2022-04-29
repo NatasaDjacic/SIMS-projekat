@@ -18,6 +18,30 @@
     <system:String x:Key="StrLight">Svetla</system:String>
     <system:String x:Key="StrDark">Tamna</system:String>
     <system:String x:Key="StrSignOut">Odjava</system:String>
+    <system:String x:Key="StrStartDate">Odaberite početni datum provere</system:String>
+    <system:String x:Key="StrEndDate">Odaberite krajnji datum provere</system:String>
+    <system:String x:Key="StrAddRoom">Dodaj sobu</system:String>
+    <system:String x:Key="StrDelete">Izbriši</system:String>
+    <system:String x:Key="StrModify">Izmeni</system:String>
+    <system:String x:Key="StrDesc">Opis</system:String>
+    <system:String x:Key="StrName">Naziv</system:String>
+    <system:String x:Key="StrRoomManage">Upravljanje sobama</system:String>
+    <system:String x:Key="StrReport">Kreiraj izveštaj</system:String>
+    <system:String x:Key="StrRoomReport">Kreiranje izveštaja o zauzetosti prostorija</system:String>
+    <system:String x:Key="StrManager">Upravnik</system:String>
+    <system:String x:Key="StrName*">Naziv*</system:String>
+    <system:String x:Key="StrDesc*">Opis*</system:String>
+    <system:String x:Key="StrType*">Tip*</system:String>
+    <system:String x:Key="StrType">Tip</system:String>
+    <system:String x:Key="StrId*">Id*</system:String>
+    <system:String x:Key="StrId">Id</system:String>
+    <system:String x:Key="StrNewRoom">Kreiranje nove prostorije</system:String>
+    <system:String x:Key="StrCancel">Poništi</system:String>
+    <system:String x:Key="StrSubmit">Potvrdi</system:String>
+    <system:String x:Key="StrRoomChange">Izmena prostorije</system:String>
+
+
+
 
 
 

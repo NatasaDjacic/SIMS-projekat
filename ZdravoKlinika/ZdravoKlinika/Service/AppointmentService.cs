@@ -58,7 +58,6 @@ namespace ZdravoKlinika.Service {
             return this.appointmentRepository.GenerateNewId();
         }
         #region AppointmentSugestion
-
         public List<Appointment> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
             List<Appointment> result = new List<Appointment>();
             List<(Doctor, List<DateTime>)> startDateTimes = new List<(Doctor, List<DateTime>)>();
