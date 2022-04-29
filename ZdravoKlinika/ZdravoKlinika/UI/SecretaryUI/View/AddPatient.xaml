@@ -8,7 +8,7 @@
       xmlns:enums="clr-namespace:ZdravoKlinika.Model.Enums"
       xmlns:converters="clr-namespace:ZdravoKlinika.UI.SecretaryUI"
       mc:Ignorable="d" 
-      d:DesignHeight="668" d:DesignWidth="1004"
+      d:DesignHeight="668" d:DesignWidth="1024"
       Title="AddPatient" FontSize="24">
     <Page.Resources>
        

@@ -25,7 +25,7 @@
         "duration": 30,
         "urgency": false,
         "appointmentType": 1,
-        "patientJMBG": "1231231231231",
+        "patientJMBG": "1234567890123",
         "doctorJMBG": "1111111111111",
         "roomId": "5"
     },
