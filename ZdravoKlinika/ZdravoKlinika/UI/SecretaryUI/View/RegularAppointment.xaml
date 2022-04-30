@@ -1,0 +1,133 @@
+﻿<Page x:Class="ZdravoKlinika.UI.SecretaryUI.View.RegularAppointment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKlinika.UI.SecretaryUI.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="668" d:DesignWidth="1024"
+      Title="RegularAppointment">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Page.Resources>
+    <DockPanel Margin="10">
+        <Grid DockPanel.Dock="Top" Margin="0 15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="New Patient Appointments" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="32" FontWeight="Bold"></TextBlock>
+            <StackPanel Margin="0 0 24 0" Grid.Row="1" Grid.Column="0" Width="280">
+                <StackPanel  Margin="0 12">
+                    <Label>Patient JMBG:*</Label>
+                    <TextBox Text="{Binding JMBG, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                </StackPanel>
+                <StackPanel  Margin="0 15">
+                    <Label>Doctor:*</Label>
+                    <ComboBox ItemsSource="{Binding doctors}" SelectedItem="{Binding SelectedDoctor}">
+                        <ComboBox.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                            </GroupStyle>
+                        </ComboBox.GroupStyle>
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="firstName" />
+                                            <Binding Path="lastName" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel >
+                <StackPanel  Margin="0 15">
+                    <Label>Date from:*</Label>
+                    <DatePicker FontSize="20" SelectedDate="{Binding FromDate}"></DatePicker>
+                </StackPanel>
+                <StackPanel  Margin="0 15">
+                    <Label>Duration (in minutes):*</Label>
+                    <TextBox Text="{Binding Duration}"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 0" Grid.Row="1" Grid.Column="1" Width="280">
+                <StackPanel  Margin="0 12">
+                    <TextBlock x:Name="PatientTB" Foreground="Gray" Margin="0 44 0 0">-------------------------------</TextBlock>
+                </StackPanel>
+                <StackPanel  Margin="0 15">
+                    <Label>Room:*</Label>
+                    <ComboBox x:Name="RoomCB" ItemsSource="{Binding rooms}" SelectedItem="{Binding SelectedRoom}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel >
+                <StackPanel  Margin="0 15">
+                    <Label>Date to:*</Label>
+                    <DatePicker FontSize="20" SelectedDate="{Binding ToDate}"></DatePicker>
+                </StackPanel>
+                <StackPanel Margin="0 15 0 0">
+                    <Label>Priority:*</Label>
+                    <RadioButton GroupName="Priority" Checked="RadioButton_Checked" IsChecked="True" Content="time" Margin="0 2" VerticalContentAlignment="Center" FontSize="24" FontWeight="SemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        
+                    </RadioButton>
+                    <RadioButton GroupName="Priority" Checked="RadioButton_Checked" Content="doctor" Margin="0 2" VerticalContentAlignment="Center" FontSize="24" FontWeight="SemiBold">
+                        
+                    </RadioButton>
+                </StackPanel>
+            </StackPanel>
+            <Button Click="Button_Click" Margin="0 24 0 0" Grid.Column="1" Height="40" Background="#009E0F" Foreground="#FFF" Grid.Row="2">Find appointment time</Button>
+            <Border Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" BorderBrush="Gray" BorderThickness="1" Width="2" Margin="24 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+            <Grid Margin="0 12 0 0" Grid.Column="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0">Pick appointment time:*</Label>
+                <ListBox FontSize="20" FontWeight="SemiBold"  Grid.Row="1" ItemsSource="{Binding AppointmentsList}" SelectedItem="{Binding SelectedAppointment}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}Dr. {0} | {1}">
+                                        <Binding Path="doctorJMBG"/>
+                                        <Binding Path="startTime" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="0 24 0 0" Width="120" Grid.Column="0" Background="#CF2A27" Foreground="#FFF" Click="Button_Click_1">Cancel</Button>
+                <Button Margin="0 24 0 0" Width="120" Grid.Column="1" HorizontalAlignment="Right" Background="#009E0F" Foreground="#FFF" Click="Button_Click_2">Save</Button>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Page>

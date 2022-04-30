@@ -29,8 +29,13 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             NavigationService.Navigate(new View.AddPatient());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void Appointments_Click(object sender, RoutedEventArgs e) {
             NavigationService.Navigate(new View.Appointments());
+        }
+
+        private void RegularAppointment_Click(object sender, RoutedEventArgs e) {
+
+            NavigationService.Navigate(new View.RegularAppointment());
         }
     }
 }

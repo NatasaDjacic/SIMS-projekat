@@ -63,8 +63,8 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Background="#00FFFF" Content="Patient Appointments" Margin="0 20 15 10" Click="Button_Click"></Button>
-                    <Button Grid.Row="1" Background="#00FFFF" Content="New Patient Appointment" Margin="0 0 15 10"></Button>
+                    <Button Grid.Row="0" Background="#00FFFF" Content="Patient Appointments" Margin="0 20 15 10" Click="Appointments_Click"></Button>
+                    <Button Grid.Row="1" Background="#00FFFF" Content="New Patient Appointment" Margin="0 0 15 10" Click="RegularAppointment_Click"></Button>
                     <Button Grid.Row="2" Background="#00FFFF" Content="Emergency Patient Appointment" Margin="0 0 15 10"></Button>
                     </Grid>
                 

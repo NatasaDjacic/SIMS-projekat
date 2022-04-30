@@ -13,4 +13,8 @@
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
+    <Style TargetType="ComboBox">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
 </ResourceDictionary>
