@@ -34,6 +34,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         DoctorController doctorController = GLOBALS.doctorController;
         RoomController roomController = GLOBALS.roomController;
         AppointmentController appointmentController = GLOBALS.appointmentController;
+        PatientController patientController = GLOBALS.patientController;
 
         public List<string> period { get; set;}
         private string selectedPeriod;
@@ -122,6 +123,9 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             this.jmbg = "";
             this.DataContext = this;
             InitializeComponent();
+            RemoveBtn.Visibility = Visibility.Hidden;
+            MoveBtn.Visibility = Visibility.Hidden;
+            DetailSP.Visibility = Visibility.Hidden;
         }
 
         private void Show_Click(object sender, RoutedEventArgs e) {
@@ -134,9 +138,26 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         }
         private void ShowDetails() {
             if (this.selectedAppointment != null) {
-                Console.WriteLine(this.selectedAppointment.doctorJMBG);
+                var doc = this.doctors.Find(d => d.JMBG == this.selectedAppointment.doctorJMBG);
+                var pat = patientController.GetById(this.selectedAppointment.patientJMBG);
+                var room = this.rooms.Find(r => r.roomId == this.selectedAppointment.roomId);
+                DoctorTB.Text = doc != null ? (doc.firstName+" "+doc.lastName+" - "+doc.specialization):this.selectedAppointment.doctorJMBG;
+                PatienteTB.Text = pat != null ? (pat.firstName + " "+pat.lastName): this.selectedAppointment.patientJMBG;
+                RoomTB.Text = room!= null ? (room.name): this.selectedAppointment.roomId;
+                StartDateTB.Text = this.selectedAppointment.startTime.ToString();
+                RemoveBtn.Visibility = Visibility.Visible;
+                MoveBtn.Visibility = Visibility.Visible;
+                DetailSP.Visibility = Visibility.Visible;
             } else {
-                Console.WriteLine("NULL");
+                DoctorTB.Text = "";
+                PatienteTB.Text = "";
+                RoomTB.Text = "";
+                StartDateTB.Text = "";
+                RemoveBtn.Visibility = Visibility.Hidden;
+                MoveBtn.Visibility = Visibility.Hidden;
+                DetailSP.Visibility = Visibility.Hidden;
+
+
             }
         }
 
