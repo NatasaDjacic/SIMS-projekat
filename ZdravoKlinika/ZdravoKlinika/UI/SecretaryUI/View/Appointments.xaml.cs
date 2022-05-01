@@ -129,7 +129,6 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         }
 
         private void Show_Click(object sender, RoutedEventArgs e) {
-            Console.WriteLine(this.jmbg);
             this.AppointmentsList = appointmentController.GetAllAppointments().FindAll(a =>
                (a.startTime > this.selectedDate && a.startTime < this.selectedDate.AddDays(this.selectedPeriod == "weekly" ? 7 : 30)) &&
                (this.selectedDoctor == null || a.doctorJMBG == this.selectedDoctor.JMBG) &&
@@ -168,6 +167,13 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                 this.SelectedAppointment = null;
             }
         }
+
+        private void MoveBtn_Click(object sender, RoutedEventArgs e) {
+            if (this.SelectedAppointment != null) {
+                NavigationService.Navigate(new MoveAppointment(this.SelectedAppointment));
+            }
+        }
+
     }
     
 }

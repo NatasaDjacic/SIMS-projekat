@@ -21,7 +21,7 @@ using ZdravoKlinika.Service;
 
 namespace ZdravoKlinika.UI.SecretaryUI.View {
 
-    public partial class RegularAppointment : Page, INotifyPropertyChanged {
+    public partial class MoveAppointment : Page, INotifyPropertyChanged {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name) {
             if (PropertyChanged != null) {
@@ -113,24 +113,33 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             get => selectedAppointment;
             set {
                 if (selectedAppointment != value) {
+                    Console.WriteLine("TEST");
                     selectedAppointment = value;
                     OnPropertyChanged("SelectedAppointment");
 
                 }
             }
         }
-        public RegularAppointment() {
+        private Appointment original;
+        public MoveAppointment(Appointment app) {
+            original = app;
+            // Remove to get sugestions
             this.appointments = new List<Appointment>();
-            this.jmbg = "";
-            this.FromDate = DateTime.Today;
-            this.ToDate = DateTime.Today.AddDays(7);
-            this.Duration = 30;
+            this.jmbg = app.patientJMBG;
+            this.FromDate = app.startTime;
+            this.ToDate = app.startTime.AddDays(7);
+            this.Duration = app.duration;
             this.doctors = new ListCollectionView(doctorController.GetAll());
             this.doctors.GroupDescriptions.Add(new PropertyGroupDescription("specialization"));
             this.rooms = roomController.GetAll();
             this.DataContext = this;
+            GLOBALS.appointmentRepository.DeleteById(app.id);
+            AppointmentsList = appointmentController.getSuggestions(JMBG, app.doctorJMBG, app.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
+            GLOBALS.appointmentRepository.Save(app);
             InitializeComponent();
             CheckDoctorRoom();
+            CheckPatientJMBG();
+            this.SelectedDoctor = doctors.Cast<Doctor>().First(p=>p.JMBG == app.doctorJMBG);
         }
 
         private void CheckPatientJMBG() {
@@ -162,8 +171,10 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             if(selectedDoctor != null && selectedRoom != null && patientFound) {
-                var asss=appointmentController.getSuggestions(JMBG, selectedDoctor.JMBG, selectedRoom.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
-                AppointmentsList = asss;
+
+                GLOBALS.appointmentRepository.DeleteById(original.id);
+                AppointmentsList = appointmentController.getSuggestions(JMBG, selectedDoctor.JMBG, selectedRoom.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
+                GLOBALS.appointmentRepository.Save(original);
             }
         }
 
@@ -173,17 +184,17 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e) {
             var b = sender as RadioButton;
-            if(b != null) {
+            if(b != null)
                 priority = b.Content as string ?? "time";
-            }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e) {
             if (SelectedAppointment != null) {
-                // Todo create controler method
-                SelectedAppointment.id = GLOBALS.appointmentService.GenerateNewId();
-                GLOBALS.appointmentService.SaveAppointment(SelectedAppointment);
-                NavigationService.GoBack();
+                // Controler methods
+                original.startTime = SelectedAppointment.startTime;
+                GLOBALS.appointmentRepository.Save(original);
+                NavigationService.Navigate(new Appointments());
+
             }
         }
     }
