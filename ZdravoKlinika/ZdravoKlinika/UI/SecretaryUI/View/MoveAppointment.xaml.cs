@@ -33,6 +33,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         RoomController roomController = GLOBALS.roomController;
         AppointmentController appointmentController = GLOBALS.appointmentController;
         PatientController patientController = GLOBALS.patientController;
+        SuggestionController suggestionController = GLOBALS.suggestionController;
+
         private bool patientFound = false;
         private string jmbg;
         public string JMBG {
@@ -134,7 +136,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             this.rooms = roomController.GetAll();
             this.DataContext = this;
             GLOBALS.appointmentRepository.DeleteById(app.id);
-            AppointmentsList = appointmentController.getSuggestions(JMBG, app.doctorJMBG, app.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
+            AppointmentsList = suggestionController.getAppointmentSuggestion(JMBG, app.doctorJMBG, app.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
             GLOBALS.appointmentRepository.Save(app);
             InitializeComponent();
             CheckDoctorRoom();
@@ -173,7 +175,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             if(selectedDoctor != null && selectedRoom != null && patientFound) {
 
                 GLOBALS.appointmentRepository.DeleteById(original.id);
-                AppointmentsList = appointmentController.getSuggestions(JMBG, selectedDoctor.JMBG, selectedRoom.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
+                AppointmentsList = suggestionController.getAppointmentSuggestion(JMBG, selectedDoctor.JMBG, selectedRoom.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
                 GLOBALS.appointmentRepository.Save(original);
             }
         }

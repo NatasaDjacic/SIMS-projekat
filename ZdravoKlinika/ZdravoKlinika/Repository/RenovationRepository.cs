@@ -9,61 +9,61 @@ using Newtonsoft.Json;
 
 namespace ZdravoKlinika.Repository
 {
-   public class AppointmentRepository
+   public class RenovationRepository
    {
       private string fileLocation{ get; set; }
 
-      public AppointmentRepository(string fileLocation)
+      public RenovationRepository(string fileLocation)
         {
             this.fileLocation = fileLocation;
         }
 
       
-      public List<Appointment> GetAll()
+      public List<Renovation> GetAll()
       {
-         var values = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(fileLocation));
+         var values = JsonConvert.DeserializeObject<List<Renovation>>(File.ReadAllText(fileLocation));
             if (values == null)
             {
-                values = new List<Appointment>();
+                values = new List<Renovation>();
             }
             return values;
       }
       
-      public bool Save(Appointment appointment)
+      public bool Save(Renovation ren)
       {
             bool added = false;
             var values = this.GetAll();
-            var found = values.FindIndex(value => appointment.id==value.id);
+            var found = values.FindIndex(value => ren.renovationId==value.renovationId);
             if (found != -1)
             {
-                values[found] = appointment;
+                values[found] = ren;
             }
             else
             {
-                values.Add(appointment);
+                values.Add(ren);
                 added = true;
             }
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return added;
       }
       
-      public Appointment? GetById(int id)
+      public Renovation? GetById(int id)
       {
             var values = this.GetAll();
-            return values.Find(value => id==value.id);
+            return values.Find(value => id==value.renovationId);
       }
       
       public bool DeleteById(int id)
       {
             var values = this.GetAll();
-            var deleted = values.RemoveAll(value => value.id==id);
+            var deleted = values.RemoveAll(value => value.renovationId==id);
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return deleted > 0;
       }
       
       public int GenerateNewId()
       {
-           return GetAll().Max(a=> a.id)+1;
+           return GetAll().Max(a=> a.renovationId)+1;
       }
    
    }
