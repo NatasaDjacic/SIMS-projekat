@@ -21,7 +21,11 @@ namespace ZdravoKlinika.UI.SecretaryUI {
         private AuthController authController = GLOBALS.authController;
         public SecretaryMainWindow() {
             InitializeComponent();
-            ContentFrame.Navigate(new View.Patients());
+            ContentFrame.Navigate(new View.Dashboard());
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e) {
+            ContentFrame.NavigationService.Navigate(new View.Dashboard());
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e) {

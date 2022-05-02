@@ -66,9 +66,9 @@ namespace ZdravoKlinika.Service {
             startDateTimes.Add((doctor, this.GetAppointmentStartSuggestions(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration)));
             if (startDateTimes[0].Item2.Count == 0) {
                 startDateTimes.Clear();
-                if (priority == "TIME") {
+                if (priority == "time") {
                     startDateTimes = this.GetAppointmentStartSuggestionsWithTimePriority(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration);
-                } else if (priority == "DOCTOR") {
+                } else if (priority == "doctor") {
                     startDateTimes.Add((doctor, this.GetAppointmentStartSuggestionsWithDoctorPriority(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration)));
                 }
             }
@@ -117,7 +117,7 @@ namespace ZdravoKlinika.Service {
             var appointments = this.GetAllAppointments().FindAll(a =>
                 (a.patientJMBG == patientJMBG ||
                 a.doctorJMBG == doctorJMBG ||
-                a.roomId == roomId) && (a.startTime.AddMinutes(a.duration) > startTime && a.startTime < endTime));
+                a.roomId == roomId) && (a.startTime.AddMinutes(a.duration) >= startTime && a.startTime <= endTime));
             var freeIntervals = this.GetFreeAppointmentIntervals(appointments, startTime, endTime, duration);
             return ConvertFromIntervalsToDateTimes(freeIntervals);
         }
@@ -138,8 +138,8 @@ namespace ZdravoKlinika.Service {
             const int ST_MAX = 5;
             // find suggestions for next week until you find some amount
             while (startDateTimes.Count < ST_MAX) {
+                startDateTimes.AddRange(this.GetAppointmentStartSuggestions(patientJMBG, doctorJMBG, roomId, startTime.AddDays(7*weeks), endTime.AddDays(7 * (weeks+1)), duration));
                 ++weeks;
-                startDateTimes.AddRange(this.GetAppointmentStartSuggestions(patientJMBG, doctorJMBG, roomId, startTime.AddDays(7*weeks), endTime.AddDays(7 * weeks), duration));
             }
             return startDateTimes;
         }
