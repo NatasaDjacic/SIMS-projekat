@@ -13,12 +13,23 @@ namespace ZdravoKlinika.Service {
 
         AppointmentService appointmentService;
         DoctorService doctorService;
-        public SuggestionService(AppointmentService appointmentService, DoctorService doctorService) { 
+        RenovationService renovationService;
+        public SuggestionService(AppointmentService appointmentService, DoctorService doctorService,RenovationService renovationService) { 
             this.appointmentService = appointmentService;
             this.doctorService = doctorService;
+            this.renovationService = renovationService;
         }
-
-
+        #region renovation_sugestion
+        public List<Renovation> GetRenovationSuggestions(string roomId, DateTime startTime, DateTime endTime, int duration) {
+            List<DateTime[]> busyIntervals = this.getRoomBusyInterval(roomId, startTime, endTime);
+            var renStartTime = this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(busyIntervals, startTime, endTime, duration * 60));
+            List<Renovation> renovations = new List<Renovation>();
+            foreach(var rs in renStartTime) {
+                renovations.Add(new Renovation(-1, roomId, rs, duration));
+            }
+            return renovations;
+        }
+        #endregion
         #region appointment_sugestion
         public List<Appointment> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
             List<Appointment> result = new List<Appointment>();
@@ -79,12 +90,22 @@ namespace ZdravoKlinika.Service {
         #region busy_intervals
         private List<DateTime[]> getRoomBusyInterval(string roomId, DateTime startTime, DateTime endTime) {
             List<DateTime[]> intervals = new List<DateTime[]>();
+
+            // Appointment 
             List<Appointment> appointments = appointmentService.GetAllAppointments().FindAll(a =>
                 a.roomId == roomId && (a.startTime.AddMinutes(a.duration) >= startTime && a.startTime <= endTime)
             );
             foreach (Appointment a in appointments) {
                 intervals.Add(new DateTime[] { a.startTime, a.startTime.AddMinutes(a.duration) });
             }
+            // Renovations
+            List<Renovation> renovations = renovationService.GetAll().FindAll(r=>
+                r.roomId == roomId && (r.startTime.AddMinutes(r.duration) >= startTime && r.startTime <= endTime)
+            );
+            foreach (var r in renovations) {
+                intervals.Add(new DateTime[] { r.startTime, r.startTime.AddMinutes(r.duration*60) });
+            }
+
             intervals.Sort((a, b) => a[0].CompareTo(b[0]));
 
             return reduceListOfIntervals(intervals);

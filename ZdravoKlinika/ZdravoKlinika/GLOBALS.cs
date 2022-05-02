@@ -20,6 +20,8 @@ namespace ZdravoKlinika
         public static RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
         public static SecretaryRepository secretaryRepository = new SecretaryRepository(@"..\..\..\Resource\Data\secretary.json");
         public static NotificationRepository notificationRepository = new NotificationRepository(@"..\..\..\Resource\Data\notification.json");
+        public static RenovationRepository renovationRepository = new RenovationRepository(@"..\..\..\Resource\Data\renovation.json");
+
 
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
         public static DoctorService doctorService = new DoctorService(doctorRepository);
@@ -28,7 +30,8 @@ namespace ZdravoKlinika
         public static PatientService patientService = new PatientService(patientRepository);
         public static RoomService roomService = new RoomService(roomRepository);
         public static NotificationService notificationService = new NotificationService(notificationRepository, authService);
-        public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService);
+        public static RenovationService renovationService = new RenovationService(renovationRepository);
+        public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService);
 
 
         public static PatientController patientController = new PatientController(patientService);
@@ -38,5 +41,6 @@ namespace ZdravoKlinika
         public static RoomController roomController = new RoomController(roomService);
         public static AuthController authController = new AuthController(authService);
         public static NotificationController notificationController = new NotificationController(notificationService);
+        public static SuggestionController suggestionController = new SuggestionController(suggestionService);
     }
 }

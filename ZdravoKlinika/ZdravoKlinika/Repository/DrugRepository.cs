@@ -59,5 +59,8 @@ namespace ZdravoKlinika.Repository
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return deleted > 0; ;
         }
+        public int GenerateNewId() {
+            return GetAll().Max(a => a.drugId) + 1;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace ZdravoKlinika.Model
         public string name { get; set; }
         public List<string> ingredients { get; set; }
         public bool approved { get; set; }
-        public int checkedBy { get; set; }
+        public string checkedBy { get; set; }
         public string comment { get; set; }
 
         public Drug(string name) {

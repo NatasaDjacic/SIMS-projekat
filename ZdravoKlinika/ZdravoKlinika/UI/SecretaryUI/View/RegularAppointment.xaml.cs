@@ -33,6 +33,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         RoomController roomController = GLOBALS.roomController;
         AppointmentController appointmentController = GLOBALS.appointmentController;
         PatientController patientController = GLOBALS.patientController;
+        SuggestionController suggestionController = GLOBALS.suggestionController;
+
         private bool patientFound = false;
         private string jmbg;
         public string JMBG {
@@ -162,8 +164,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             if(selectedDoctor != null && selectedRoom != null && patientFound) {
-                var asss=appointmentController.getSuggestions(JMBG, selectedDoctor.JMBG, selectedRoom.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
-                AppointmentsList = asss;
+                AppointmentsList = suggestionController.getAppointmentSuggestion(JMBG, selectedDoctor.JMBG, selectedRoom.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
             }
         }
 
