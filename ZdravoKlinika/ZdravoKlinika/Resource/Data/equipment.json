@@ -1,37 +1,37 @@
 [
   {
     "id": 1,
-    "name": "Oprema1",
-    "roomId": "10",
-    "type": "Prosta",
-    "quantity": 10
+    "name": "Operacijski sto",
+    "roomId": "3",
+    "type": "Staticka",
+    "quantity": 1
   },
   {
     "id": 2,
-    "name": "Oprema1",
-    "roomId": "10",
-    "type": "Prosta",
-    "quantity": 6
+    "name": "Operacijski sto",
+    "roomId": "3",
+    "type": "Staticka",
+    "quantity": 1
   },
   {
     "id": 3,
-    "name": "Oprema1",
+    "name": "Polica sa instrumentima",
     "roomId": "6",
-    "type": "Prosta",
-    "quantity": 10
+    "type": "Staticka",
+    "quantity": 1
   },
   {
     "id": 4,
-    "name": "Oprema1",
-    "roomId": "3",
-    "type": "Prosta",
-    "quantity": 3
+    "name": "Pomocni sto",
+    "roomId": "5",
+    "type": "Staticka",
+    "quantity": 1
   },
   {
     "id": 7,
     "name": "Stalak za infuziju",
     "roomId": "10",
-    "type": "Složena",
+    "type": "Dinamicka",
     "quantity": 100
   }
 ]
