@@ -57,6 +57,7 @@ namespace ZdravoKlinika.Service {
         {
             return this.appointmentRepository.GenerateNewId();
         }
+        // Legacy
         #region AppointmentSugestion
         public List<Appointment> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
             List<Appointment> result = new List<Appointment>();

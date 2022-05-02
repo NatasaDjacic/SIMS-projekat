@@ -10,10 +10,12 @@ namespace ZdravoKlinika.Controller {
         private AppointmentService appointmentService;
         private DoctorService doctorService;
         private AuthService authService;
-        public AppointmentController(AppointmentService appointmentService, DoctorService doctorService, AuthService authService) {
+        private SuggestionService suggestionService;
+        public AppointmentController(AppointmentService appointmentService, DoctorService doctorService, AuthService authService, SuggestionService suggestionService) {
             this.appointmentService = appointmentService;
             this.authService = authService;
             this.doctorService = doctorService;
+            this.suggestionService = suggestionService;
         }
 
 
@@ -81,7 +83,7 @@ namespace ZdravoKlinika.Controller {
         }
 
         public List<Appointment> getSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
-            return this.appointmentService.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType);
+            return this.suggestionService.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType);
         }
         
 
