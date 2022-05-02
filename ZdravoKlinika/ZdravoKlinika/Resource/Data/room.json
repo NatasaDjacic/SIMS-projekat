@@ -19,13 +19,13 @@
   },
   {
     "roomId": "11",
-    "name": "Soba1",
+    "name": "Soba5",
     "description": "Srednja soba",
     "type": "Kancelarija"
   },
   {
     "roomId": "5",
-    "name": "Soba",
+    "name": "Soba9",
     "description": "Soba za operaciju",
     "type": "Soba za operaciju"
   },
