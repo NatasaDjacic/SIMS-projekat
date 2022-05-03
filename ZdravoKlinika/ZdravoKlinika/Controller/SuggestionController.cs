@@ -16,7 +16,7 @@ namespace ZdravoKlinika.Controller {
         }
 
         public List<Renovation> getRenovationSuggestion(string roomId, DateTime startTime, DateTime endTime, int duration) {
-            return this.suggestionService.GetRenovationSuggestions(roomId, startTime, endTime, duration);
+            return this.suggestionService.GetRenovationSuggestions(roomId, startTime, endTime, duration);   
         }
     }
 }

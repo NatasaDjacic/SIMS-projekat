@@ -63,7 +63,14 @@ namespace ZdravoKlinika.Repository
       
       public int GenerateNewId()
       {
-           return GetAll().Max(a=> a.renovationId)+1;
+            try
+            {
+                return GetAll().Max(a => a.renovationId) + 1;
+            }
+            catch
+            {
+                return 1;
+            }
       }
    
    }

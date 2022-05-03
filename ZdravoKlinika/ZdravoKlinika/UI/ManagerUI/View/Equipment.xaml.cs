@@ -167,7 +167,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             EquipmentsRoomCollection = new ObservableCollection<EquipRoomGroupDTO>(g);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {

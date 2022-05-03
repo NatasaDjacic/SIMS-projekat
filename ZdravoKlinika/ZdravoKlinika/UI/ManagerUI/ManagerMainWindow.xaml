@@ -17,7 +17,7 @@
             <MenuItem Header="{DynamicResource StrHos}"/>
 
             <MenuItem Header="{DynamicResource StrRen}">
-                <MenuItem Header="{DynamicResource StrRen}" />
+                <MenuItem Click="Renovation_Click" Header="{DynamicResource StrRen}" />
                 <MenuItem Header="{DynamicResource StrMer}" />
                 <MenuItem Header="{DynamicResource StrSep}" />
             </MenuItem>
