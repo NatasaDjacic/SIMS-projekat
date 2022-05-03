@@ -183,9 +183,11 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
             Console.Write("Enter index: ");
             val = Console.ReadLine();
+            Console.WriteLine("Enter description: ");
+            string desc = Console.ReadLine();
             int index = Convert.ToInt32(val);
             var first = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration)[index];
-            renovationController.SaveRenovation(first.startTime, first.duration, first.roomId);
+            renovationController.SaveRenovation(first.startTime, first.duration, first.roomId, desc);
 
 
 

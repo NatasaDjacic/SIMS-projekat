@@ -25,7 +25,7 @@ namespace ZdravoKlinika.Service {
             var renStartTime = this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(busyIntervals, startTime, endTime, duration * 60));
             List<Renovation> renovations = new List<Renovation>();
             foreach(var rs in renStartTime) {
-                renovations.Add(new Renovation(-1, roomId, rs, duration));
+                renovations.Add(new Renovation(-1, roomId, rs, duration, ""));
             }
             return renovations;
         }

@@ -72,6 +72,13 @@ namespace ZdravoKlinika.Repository
                 return 1;
             }
       }
-   
+      /*public string DescriptionAdd(string description, int id)
+        {
+            var value = this.GetById(id);
+            value.description = description;
+            return null;
+        }*/
+
+
    }
 }

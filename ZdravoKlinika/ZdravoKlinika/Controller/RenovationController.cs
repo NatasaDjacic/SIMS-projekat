@@ -16,14 +16,16 @@ namespace ZdravoKlinika.Controller
             this.renovationService = renovationService;
         }
 
-        public bool SaveRenovation(DateTime startTime, int duration, string roomId)
+        public bool SaveRenovation(DateTime startTime, int duration, string roomId, string description)
         {
           
             Renovation renovation = new Renovation();
             renovation.startTime = startTime;
             renovation.duration = duration;
             renovation.roomId = roomId;
-            renovation.renovationId = renovationService.GenerateNewId();
+            var id = renovation.renovationId = renovationService.GenerateNewId();
+            renovation.description = description;
+
 
 
             return renovationService.Save(renovation);

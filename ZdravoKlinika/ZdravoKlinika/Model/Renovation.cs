@@ -11,11 +11,13 @@ namespace ZdravoKlinika.Model {
         public string roomId;
         public DateTime startTime;
         public int duration;
-        public Renovation(int id, string roomId, DateTime startTime, int duration) { 
+        public string description;
+        public Renovation(int id, string roomId, DateTime startTime, int duration, string description) { 
             this.renovationId = id;
             this.roomId = roomId;
             this.startTime = startTime;
             this.duration = duration;
+            this.description = description;
         }
         public Renovation() { }
 

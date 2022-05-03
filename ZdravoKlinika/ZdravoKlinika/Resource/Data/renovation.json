@@ -1,0 +1,23 @@
+[
+  {
+    "renovationId": 1,
+    "roomId": "3",
+    "startTime": "2022-05-04T00:00:00",
+    "duration": 1,
+    "description": "sd"
+  },
+  {
+    "renovationId": 2,
+    "roomId": "6",
+    "startTime": "2022-05-04T02:00:00",
+    "duration": 1,
+    "description": "Krecenje"
+  },
+  {
+    "renovationId": 3,
+    "roomId": "6",
+    "startTime": "2022-05-05T08:30:00",
+    "duration": 240,
+    "description": "Nove plocice"
+  }
+]
