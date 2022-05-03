@@ -15,7 +15,7 @@ namespace ZdravoKlinika.Model
         // 7 - useDurations, 3 - useFrequenc, 1 - useAmmount
         public int useDuration { get; set; }
         public int useFrequency { get; set; }
-        public int useAmount { get; set; }
+        public double useAmount { get; set; }
 
         public Prescription(int drugId, string description, int useDuration, int useFrequency, int useAmount)
         {
