@@ -193,8 +193,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         private void Button_Click_2(object sender, RoutedEventArgs e) {
             if (SelectedAppointment != null) {
                 // Controler methods
-                original.startTime = SelectedAppointment.startTime;
-                GLOBALS.appointmentRepository.Save(original);
+                this.appointmentController.MoveAppointmentSecretary(original, SelectedAppointment.startTime);
                 NavigationService.Navigate(new Appointments());
 
             }

@@ -11,11 +11,13 @@ namespace ZdravoKlinika.Controller {
         private DoctorService doctorService;
         private AuthService authService;
         private SuggestionService suggestionService;
-        public AppointmentController(AppointmentService appointmentService, DoctorService doctorService, AuthService authService, SuggestionService suggestionService) {
+        private NotificationService notificationService;
+        public AppointmentController(AppointmentService appointmentService, DoctorService doctorService, AuthService authService, SuggestionService suggestionService, NotificationService notificationService) {
             this.appointmentService = appointmentService;
             this.authService = authService;
             this.doctorService = doctorService;
             this.suggestionService = suggestionService;
+            this.notificationService = notificationService;
         }
 
 
@@ -86,6 +88,22 @@ namespace ZdravoKlinika.Controller {
             return this.suggestionService.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType);
         }
         
+
+        public void CreateAppointmentFromSuggestion(Appointment app) {
+            app.id = this.appointmentService.GenerateNewId();
+            this.appointmentService.SaveAppointment(app);
+            this.notificationService.NotificationForAppointmentCreated(app);
+        }
+        public void MoveAppointmentSecretary(Appointment app, DateTime newTime ) {
+            var old = new DateTime(app.startTime.Ticks);
+            app.startTime = newTime;
+            Console.WriteLine(this.appointmentService.SaveAppointment(app));
+            this.notificationService.NotificationForAppointmentMoved(app, old);
+        }
+        public void RemoveAppointmentSecretary(Appointment app) {
+            this.appointmentService.DeleteAppointmentById(app.id);
+            this.notificationService.NotificationForAppointmentCancel(app);
+        }
 
 
     }

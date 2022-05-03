@@ -26,7 +26,7 @@ namespace ZdravoKlinika.Repository {
         public bool Save(Notification notification) {
             bool added = false;
             var values = this.GetAll();
-            var found = values.FindIndex(value => notification.JMBG.Equals(value.JMBG));
+            var found = values.FindIndex(value => notification.id == (value.id));
             if (found != -1) {
                 values[found] = notification;
             } else {
@@ -37,19 +37,23 @@ namespace ZdravoKlinika.Repository {
             return added;
         }
 
-        public Notification? GetById(string id) {
+        public Notification? GetById(int id) {
             var values = this.GetAll();
-            return values.Find(value => id.Equals(value.JMBG));
+            return values.Find(value => id == (value.id));
         }
 
-        public bool DeleteById(string id) {
+        public bool DeleteById(int id) {
             var values = this.GetAll();
-            var deleted = values.RemoveAll(value => value.JMBG.Equals(id));
+            var deleted = values.RemoveAll(value => value.id == id);
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return deleted > 0;
         }
         public int GenerateNewId() {
-            return GetAll().Max(a => a.id) + 1;
+            try { 
+                return GetAll().Max(a => a.id) + 1;
+            }catch(Exception ex) {
+                return 1;
+            }
         }
     }
 }

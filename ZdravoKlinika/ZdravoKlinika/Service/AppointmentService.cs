@@ -22,10 +22,9 @@ namespace ZdravoKlinika.Service {
         }
 
         public bool SaveAppointment(Appointment appointment) {
-            if (this.appointmentRepository.GetById(appointment.id) is null) {
-                return this.appointmentRepository.Save(appointment);
-            }
-            return false;
+          
+            return this.appointmentRepository.Save(appointment);
+            
         }
 
         public Appointment? GetAppointmentById(int id) {

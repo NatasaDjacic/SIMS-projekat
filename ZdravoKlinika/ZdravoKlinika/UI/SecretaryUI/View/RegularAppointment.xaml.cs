@@ -182,8 +182,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         private void Button_Click_2(object sender, RoutedEventArgs e) {
             if (SelectedAppointment != null) {
                 // Todo create controler method
-                SelectedAppointment.id = GLOBALS.appointmentService.GenerateNewId();
-                GLOBALS.appointmentService.SaveAppointment(SelectedAppointment);
+                appointmentController.CreateAppointmentFromSuggestion(SelectedAppointment);
                 NavigationService.GoBack();
             }
         }

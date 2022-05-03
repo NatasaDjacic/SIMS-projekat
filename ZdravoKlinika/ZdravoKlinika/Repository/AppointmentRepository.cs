@@ -50,7 +50,7 @@ namespace ZdravoKlinika.Repository
       public Appointment? GetById(int id)
       {
             var values = this.GetAll();
-            return values.Find(value => id==value.id);
+            return values.Find(value => id == value.id);
       }
       
       public bool DeleteById(int id)
