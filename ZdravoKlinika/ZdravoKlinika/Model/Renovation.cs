@@ -17,6 +17,7 @@ namespace ZdravoKlinika.Model {
             this.startTime = startTime;
             this.duration = duration;
         }
+        public Renovation() { }
 
     }
 }

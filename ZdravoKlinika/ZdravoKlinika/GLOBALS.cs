@@ -45,5 +45,7 @@ namespace ZdravoKlinika
         public static NotificationController notificationController = new NotificationController(notificationService);
         public static SuggestionController suggestionController = new SuggestionController(suggestionService);
         public static EquipMovingController equipMovingController = new EquipMovingController(equipMovingService, roomService);
+        public static RenovationController renovationController = new RenovationController(renovationService);
+    
     }
 }

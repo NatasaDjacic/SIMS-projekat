@@ -197,7 +197,7 @@ namespace ZdravoKlinika.Service {
             return startDateTimes;
         }
         private List<DateTime[]> ConvertFromBusyToFreeIntervals(List<DateTime[]> intervals, DateTime startTime, DateTime endTime, int duration) {
-            if(intervals.Count == 0) new List<DateTime[]>() { new DateTime[] { startTime, endTime.AddMinutes(-duration) } };
+            if(intervals.Count == 0) return new List<DateTime[]>() { new DateTime[] { startTime, endTime.AddMinutes(-duration) } };
             if (intervals[0][0] > startTime) intervals.Insert(0, new DateTime[] { startTime.AddMinutes(-duration), startTime });
             if (intervals[intervals.Count - 1][1] < endTime) intervals.Add(new DateTime[] { endTime.AddMinutes(duration), endTime });
             for (int i = 0; i < intervals.Count - 1; i++) {

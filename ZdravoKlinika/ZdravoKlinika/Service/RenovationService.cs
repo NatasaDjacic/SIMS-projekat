@@ -16,6 +16,13 @@ namespace ZdravoKlinika.Service {
         public List<Renovation> GetAll() {
             return this.renovationRepository.GetAll();
         }
-
+        public int GenerateNewId()
+        {
+            return this.renovationRepository.GenerateNewId();
+        }
+        public bool Save(Renovation ren)
+        {
+            return this.renovationRepository.Save(ren);
+        }
     }
 }

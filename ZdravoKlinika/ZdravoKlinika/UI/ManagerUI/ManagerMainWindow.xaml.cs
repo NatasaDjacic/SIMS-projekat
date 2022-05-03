@@ -102,6 +102,9 @@ namespace ZdravoKlinika.UI.ManagerUI
         {
             ContentFrame.NavigationService.Navigate(new View.Equipments());
         }
-
+        private void Renovation_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Renovations("srb"));
+        }
     }
 }
