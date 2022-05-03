@@ -31,7 +31,7 @@ namespace ZdravoKlinika.Service
             return this.reportRepository.GetAll();
         }
 
-        public Equipment GetById(int id)
+        public Report? GetById(int id)
         {
             return this.reportRepository.GetById(id);
         }
@@ -60,4 +60,3 @@ namespace ZdravoKlinika.Service
         }
     }
 }
-s

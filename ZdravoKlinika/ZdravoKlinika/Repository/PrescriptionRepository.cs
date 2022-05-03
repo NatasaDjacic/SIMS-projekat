@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
-using ZdravoKlinika.Service;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace ZdravoKlinika.Repository
 {

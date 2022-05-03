@@ -11,19 +11,17 @@ namespace ZdravoKlinika.Controller;
 
 public class ReportController
 {
-    public Service.ReportService reportService;
+    public ReportService reportService;
 
     public ReportController(ReportService reportService)
     {
         this.reportService = reportService;
     }
 
-    private PatientService patientService;
-    private AuthService authService;
 
-    public bool Create(int reportId, string diagnostica, DateTime date)
+    public bool Create(int reportId, string diagnostica, string description, DateTime date)
     {
-        var report = new Report(reportId, diagnostica, date);
+        var report = new Report(reportId, diagnostica, description, date);
         return this.reportService.Create(report);
     }
 
@@ -37,7 +35,7 @@ public class ReportController
         return this.reportService.Update(report);
     }
 
-    public Report GetById(int id)
+    public Report? GetById(int id)
     {
         return reportService.GetById(id);
     }

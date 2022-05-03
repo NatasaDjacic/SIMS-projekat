@@ -15,8 +15,9 @@ namespace ZdravoKlinika.Model
         public string patient_note { get; set; }
         public List<Prescription> prescriptions { get; set; }
 
-        public Report(string diagnostica, string description, DateTime date)
+        public Report(int reportId, string diagnostica, string description, DateTime date)
         {
+            this.reportId = reportId;
             this.diagnostica = diagnostica;
             this.description = description;
             this.date = date;
