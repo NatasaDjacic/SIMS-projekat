@@ -12,6 +12,7 @@ namespace ZdravoKlinika.Service
     {
         public PatientRepository patientRepository { get; set; }
 
+        
         public PatientService(PatientRepository patientRepository)
         {
             this.patientRepository = patientRepository;
@@ -45,6 +46,8 @@ namespace ZdravoKlinika.Service
         {
             return this.patientRepository.GetById(jmbg);
         }
+
+        
 
         public List<Patient> GetAll()
         {

@@ -103,5 +103,9 @@ namespace ZdravoKlinika.UI.ManagerUI
             ContentFrame.NavigationService.Navigate(new View.Equipments());
         }
 
+        private void ContentFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+
+        }
     }
 }
