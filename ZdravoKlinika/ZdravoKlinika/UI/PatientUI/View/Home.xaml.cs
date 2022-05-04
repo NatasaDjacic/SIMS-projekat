@@ -10,19 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
+using ZdravoKlinika.Repository;
+using ZdravoKlinika.Service;
+using ZdravoKlinika.Model;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
-namespace ZdravoKlinika.UI.PatientUI {
-    /// <summary>
-    /// Interaction logic for PatientMainWindow.xaml
-    /// </summary>
-    public partial class PatientMainWindow : Window {
-        public PatientMainWindow() {
+namespace ZdravoKlinika.UI.PatientUI.View
+{
+    public partial class Home
+    {
+        public Home()
+        {
             InitializeComponent();
-            ContentFrame.Navigate(new View.Home());
         }
 
-        
     }
 }
 

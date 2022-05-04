@@ -41,12 +41,17 @@ namespace ZdravoKlinika.Service {
                 return false;
             }
 
+            if(DateTime.Compare(old.startTime.AddDays(-1), DateTime.Now)<0)
+            {
+                return false;
+            }
 
             if (DateTime.Compare(old.startTime.AddDays(4), newtime) < 0) {
                 return false;
             }
 
             old.startTime = newtime;
+            
             
             return !this.appointmentRepository.Save(old);
 

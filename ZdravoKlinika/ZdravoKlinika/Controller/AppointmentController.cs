@@ -65,6 +65,8 @@ namespace ZdravoKlinika.Controller {
             return appointmentService.SaveAppointment(appointment);
 
         }
+
+
         public List<Appointment> GetDoctorAppointments() {
             if (authService.user == null) throw new Exception("Not logged in");
             if (authService.user_role != AuthService.ROLE.DOCTOR) throw new Exception("Not doctore role");

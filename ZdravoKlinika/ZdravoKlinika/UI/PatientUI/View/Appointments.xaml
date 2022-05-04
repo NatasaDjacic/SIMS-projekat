@@ -9,18 +9,14 @@
       Title="Appointments" >
 
     <DockPanel >
-        <Grid DockPanel.Dock="Top" Margin="0 15" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Appointments" Grid.Column="0" FontSize="32" FontWeight="Bold"></TextBlock>
-            <TextBox Grid.Column="1" Width="250"  FontSize="24" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Stretch"></TextBox>
-        </Grid>
-        <StackPanel DockPanel.Dock="Bottom">
+        <StackPanel DockPanel.Dock="Top" Margin="10">
+            <TextBlock Text="Appointments" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="74"></TextBlock>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Height="79"  RenderTransformOrigin="0.502,-0.397" HorizontalAlignment="Stretch">
             <Button   Click="Button_Click_New" Content="New Appointment" Width="240" HorizontalAlignment="Right" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
         </StackPanel>
-        <DataGrid ItemsSource="{Binding Path=AppointmentCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+
+        <DataGrid   Height="460" Width="800" ItemsSource="{Binding Path=AppointmentCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding id}" >
                     <DataGridTextColumn.ElementStyle>
