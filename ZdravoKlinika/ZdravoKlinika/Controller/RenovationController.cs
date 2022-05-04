@@ -26,8 +26,6 @@ namespace ZdravoKlinika.Controller
             var id = renovation.renovationId = renovationService.GenerateNewId();
             renovation.description = description;
 
-
-
             return renovationService.Save(renovation);
 
         }

@@ -30,6 +30,10 @@ namespace ZdravoKlinika.Service
         {
             return this.equipmentRepository.GetAll();
         }
+        public List<Equipment> GetAllDynamic()
+        {
+            return this.equipmentRepository.GetAllDynamic();
+        }
 
         public Equipment? GetById(int id)
         {
