@@ -12,6 +12,7 @@ namespace ZdravoKlinika.Controller;
 public class ReportController
 {
     public ReportService reportService;
+    public PatientService patientService;
 
     public ReportController(ReportService reportService)
     {
@@ -19,30 +20,12 @@ public class ReportController
     }
 
 
-    public bool Create(int reportId, string diagnostica, string description, DateTime date)
+   /* public bool Create(Patient patient, int reportId, string diagnostica, string description, DateTime date, List<Prescription> prescriptions)
     {
-        var report = new Report(reportId, diagnostica, description, date);
+        var report = new Report(patient, reportId, diagnostica, description, date, prescriptions);
         return this.reportService.Create(report);
-    }
+    }*/
 
-    public bool Delete(int id)
-    {
-        return this.reportService.Delete(id);
-    }
-
-    public bool Update(Report report)
-    {
-        return this.reportService.Update(report);
-    }
-
-    public Report? GetById(int id)
-    {
-        return reportService.GetById(id);
-    }
-
-    public List<Report> GetAll()
-    {
-        return reportService.GetAll();
-    }
+    
 
 }

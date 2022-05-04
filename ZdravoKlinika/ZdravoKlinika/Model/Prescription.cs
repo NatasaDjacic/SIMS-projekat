@@ -17,7 +17,7 @@ namespace ZdravoKlinika.Model
         public int useFrequency { get; set; }
         public double useAmount { get; set; }
 
-        public Prescription(int drugId, string description, int useDuration, int useFrequency, int useAmount)
+        public Prescription(int drugId, string description, int useDuration, int useFrequency, double useAmount)
         {
             this.drugId = drugId;
             this.description = description;
