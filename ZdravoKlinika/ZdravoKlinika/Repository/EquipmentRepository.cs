@@ -26,6 +26,15 @@ namespace ZdravoKlinika.Repository
             }
             return values;
         }
+        public List<Equipment> GetAllDynamic()
+        {
+            var values = JsonConvert.DeserializeObject<List<Equipment>>(File.ReadAllText(fileLocation));
+            if (values == null)
+            {
+                values = new List<Equipment>();
+            }
+            return GetAll().FindAll(e=>e.type == "Dinamicka");
+        }
 
         public bool Save(Equipment equipment)
         {

@@ -111,7 +111,53 @@
 
         </Grid>
 
+        <Grid Margin="50 0 0 0" Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="10 30 0 20" Content="Pregled opreme"></Label>
+            <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=DynamicEquipmentCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
+                <DataGrid.Columns>
 
+                    <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Naziv"/>
+                        </DataGridTextColumn.Header>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="*"  Binding="{Binding roomId}" >
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Soba"/>
+                        </DataGridTextColumn.Header>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Binding="{Binding quantity}" Width="*">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Količina"/>
+                        </DataGridTextColumn.Header>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
 
     </DockPanel>
 </Page>

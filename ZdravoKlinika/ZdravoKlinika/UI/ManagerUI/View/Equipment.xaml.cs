@@ -138,6 +138,11 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         public Equipments()
         {
+            EquipmentRepository equipmentRepository = new EquipmentRepository(@"..\..\..\Resource\Data\equipment.json");
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository);
+            equipmentController = new EquipmentController(equipmentService);
+            DynamicEquipmentCollection = new ObservableCollection<Equipment>(equipmentController.GetAllDynamic());
+
             equipMovingController.CheckEquipMoving();
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
@@ -174,6 +179,19 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 equipMovingController.CreateEquipMovingRoomFrom(SelectedDate, SelectedRoom.roomId, SelectedRoomTo.roomId, equipMovingController.GetEquipIdsForMove(Equip.equipIds, int.Parse(EquipQuantity)));
             }
             catch (Exception ex) { Console.WriteLine("Not enough equip in selected room."); };
+        }
+        private ObservableCollection<Equipment> dynEquips;
+        public ObservableCollection<Equipment> DynamicEquipmentCollection
+        {
+            get => dynEquips;
+            set
+            {
+                if (dynEquips != value)
+                {
+                    dynEquips = value;
+                    OnPropertyChanged("DynamicEquipmentCollection");
+                }
+            }
         }
     }
 }

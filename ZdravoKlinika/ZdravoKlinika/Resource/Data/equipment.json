@@ -2,14 +2,14 @@
   {
     "id": 1,
     "name": "Operacijski sto",
-    "roomId": "3",
+    "roomId": "6",
     "type": "Staticka",
     "quantity": 1
   },
   {
     "id": 2,
     "name": "Operacijski sto",
-    "roomId": "3",
+    "roomId": "6",
     "type": "Staticka",
     "quantity": 1
   },
