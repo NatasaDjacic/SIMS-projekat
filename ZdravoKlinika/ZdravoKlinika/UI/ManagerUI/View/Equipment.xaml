@@ -1,0 +1,163 @@
+﻿<Page x:Class="ZdravoKlinika.UI.ManagerUI.View.Equipments"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="Upravljanje opremom" Background ="Snow">
+
+    <DockPanel Margin="10">
+
+        <Grid DockPanel.Dock="Top" Margin="0 15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+
+
+        <Grid Margin="0 15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="502*"/>
+                <ColumnDefinition Width="157*"/>
+                <ColumnDefinition Width="345*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Center" Width="auto" >
+                <Grid Margin="50 0 0 0" Background="AliceBlue">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="10 30 0 20" Content="Pregled opreme"></Label>
+                    <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=EquipmentsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
+                        <DataGrid.Columns>
+                           
+                            <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Naziv"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="*"  Binding="{Binding roomId}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Soba"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding equipIds.Count}" Width="*">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Količina"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                
+            </StackPanel>
+            <StackPanel  Grid.Column="1" Width="auto" Grid.ColumnSpan="2">
+                <Grid Background="AliceBlue" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="15" Margin="30" Content="Prebacivanje opreme"/>
+                    <Label Grid.Column="0" Grid.Row="1" Margin="5" Content="Odaberite sobu iz koje se prebacuje"></Label>
+                    <Label Grid.Column="0" Grid.Row="2" Margin="5" Content="Odaberite opremu"></Label>
+                    <Label Grid.Column="0" Grid.Row="3" Margin="5" Content="Količina"></Label>
+                    <Label Grid.Column="0" Grid.Row="4" Margin="5" Content="Odaberite sobu u koju prebacujete"></Label>
+                    <Label Grid.Column="0" Grid.Row="5" Margin="5" Content="Datum"></Label>
+
+                    <ComboBox Grid.Column="1" Grid.Row="1" Margin="5" ItemsSource="{Binding RoomsCollection}" SelectedItem="{Binding SelectedRoom}"  DisplayMemberPath="name"></ComboBox>
+                    <ComboBox Grid.Column="1" Grid.Row="2" Margin="5" ItemsSource="{Binding EquipmentsRoomCollection}" SelectedItem="{Binding Equip}" DisplayMemberPath="name"></ComboBox>
+                    <TextBox Grid.Column="1" Grid.Row="3" Margin="5" Text="{Binding EquipQuantity}"></TextBox>
+                    <ComboBox Grid.Column="1" Grid.Row="4" Margin="5" ItemsSource="{Binding RoomsCollection}" SelectedItem="{Binding SelectedRoomTo}"  DisplayMemberPath="name"></ComboBox>
+                    <DatePicker Grid.Column="1" Grid.Row="5"  Margin="5" SelectedDate="{Binding SelectedDate}"></DatePicker>
+                    <Button Grid.ColumnSpan="2" Grid.Row="6" Width="100" Margin="30" Click="Button_Click">Potvrdi</Button>
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Margin="50 0 0 0" Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="10 30 0 20" Content="Pregled opreme"></Label>
+            <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=DynamicEquipmentCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Naziv"/>
+                        </DataGridTextColumn.Header>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="*"  Binding="{Binding roomId}" >
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Soba"/>
+                        </DataGridTextColumn.Header>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Binding="{Binding quantity}" Width="*">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Količina"/>
+                        </DataGridTextColumn.Header>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+    </DockPanel>
+</Page>

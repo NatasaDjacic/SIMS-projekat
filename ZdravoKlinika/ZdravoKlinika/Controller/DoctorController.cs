@@ -17,6 +17,11 @@ namespace ZdravoKlinika.Controller {
             var doctor = new Doctor(fName, lName, jmbg, username, null, phone, email, country, city, address, gender, specialization, roomId);
             return this.doctorService.Save(doctor);
         }
-        
+        public Doctor? GetById(string jmbg) {
+            return this.doctorService.GetById(jmbg);
+        }
+        public List<Doctor> GetAll() { 
+            return this.doctorService.GetAll();
+        }
     }
 }

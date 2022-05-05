@@ -43,11 +43,32 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         public string RoomId { get { return _roomId; } set { _roomId = value; OnPropertyChanged("RoomId"); } }
 
         public RoomController roomController;
-        public AddRoom() {
+        public AddRoom(string value) {
             this.DataContext = this;
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
+
             InitializeComponent();
             IdTb.Focus();
         }
@@ -59,7 +80,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         private void Button_Click_Save(object sender, RoutedEventArgs e) {
             try {
                 roomController.Create(RoomId, _Name, Description, Type);
-                NavigationService.Navigate(new Rooms());
+                NavigationService.Navigate(new Rooms("srb"));
                 
 
             } catch (Exception ex) {

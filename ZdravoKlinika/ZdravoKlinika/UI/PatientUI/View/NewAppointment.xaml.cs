@@ -45,15 +45,10 @@ namespace ZdravoKlinika.UI.PatientUI.View
         public DateTime startTime { get { return _startTime; } set { _startTime = value; OnPropertyChanged("startTime"); } }
       
 
-        public AppointmentController appointmentController;
+        public AppointmentController appointmentController = GLOBALS.appointmentController;
         public NewAppointment()
         {
             this.DataContext = this;
-            AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
-            AppointmentService appointmentService = new AppointmentService(appointmentRepository);
-            DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
-            DoctorService doctorService = new DoctorService(doctorRepository);
-            appointmentController = new AppointmentController(appointmentService, doctorService);
             InitializeComponent();
         }
 

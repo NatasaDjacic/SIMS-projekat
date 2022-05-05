@@ -11,15 +11,31 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
 
 namespace ZdravoKlinika.UI.SecretaryUI {
     /// <summary>
     /// Interaction logic for SecretaryMainWindow.xaml
     /// </summary>
     public partial class SecretaryMainWindow : Window {
+        private AuthController authController = GLOBALS.authController;
         public SecretaryMainWindow() {
             InitializeComponent();
-            ContentFrame.Navigate(new View.Patients());
+            ContentFrame.Navigate(new View.Dashboard());
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e) {
+            ContentFrame.NavigationService.Navigate(new View.Dashboard());
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e) {
+            authController.Logout();
+            var window = new MainWindow();
+            this.Hide();
+            Application.Current.MainWindow = window;
+            window.Show();
+            this.Close();
+
         }
     }
 }

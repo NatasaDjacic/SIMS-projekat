@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Remove="Resource\Dictionary\StringResources.en.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="UI\DoctorUI\" />
   </ItemGroup>
 
@@ -16,10 +20,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resource\Dictionary\StringResources.en.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="UI\ManagerUI\View\EditRoom.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UI\SecretaryUI\View\EditPatient.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\SecretaryUI\View\MoveAppointment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -36,6 +47,10 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
     <Page Update="UI\SecretaryUI\View\EditPatient.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\SecretaryUI\View\MoveAppointment.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

@@ -18,7 +18,7 @@ namespace ZdravoKlinika.Service
         {
             if (this.roomRepository.GetById(room.roomId) is null)
             {
-                return this.roomRepository.Save(room); ;
+                return this.roomRepository.Save(room);
             }
             return false;
         }

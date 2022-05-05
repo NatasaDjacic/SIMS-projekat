@@ -12,12 +12,14 @@ using ZdravoKlinika.Service;
 namespace ZdravoKlinika.UI.ManagerUI.View {
    
     public partial class Rooms : Page, INotifyPropertyChanged {
+        string val = string.Empty;
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+     
         private ObservableCollection<Room> rooms;
         public ObservableCollection<Room> RoomsCollection {
             get => rooms;
@@ -29,12 +31,34 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             }
         }
         public RoomController roomController;
-        public Rooms() {
+        public Rooms(string value) {
+            val = value;
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
+            Console.WriteLine(value);
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
             InitializeComponent();
 
         }
@@ -51,16 +75,17 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             string? roomId = ((Button)sender).Tag as string;
             Console.WriteLine(roomId);
             if (roomId is null) return;
-            NavigationService.Navigate(new EditRoom(roomId));
+            NavigationService.Navigate(new EditRoom(roomId, val));
         }
 
         private void Button_Click_New(object sender, RoutedEventArgs e) {
-            NavigationService.Navigate(new AddRoom());
+            NavigationService.Navigate(new AddRoom(val));
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+      
     }
 }

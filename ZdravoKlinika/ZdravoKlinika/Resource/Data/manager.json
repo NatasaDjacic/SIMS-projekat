@@ -1,0 +1,14 @@
+[
+    {
+        "firstName": "Manager",
+        "lastName": "Manager",
+        "JMBG": "0509000112469",
+        "username": "manager",
+        "password": "zdravo",
+        "phone": "123",
+        "email": "manager@gmail.com",
+        "country": "Srbija",
+        "city": "Kraljevo",
+        "address": "Manager Manager 38"
+    }
+]

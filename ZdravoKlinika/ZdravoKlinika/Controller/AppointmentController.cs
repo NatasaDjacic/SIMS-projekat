@@ -7,13 +7,17 @@ using ZdravoKlinika.Model.Enums;
 namespace ZdravoKlinika.Controller {
     public class AppointmentController {
 
-        public AppointmentService appointmentService;
-        public DoctorService doctorService;
-        private string DOCTORJMBG = "1111111111111";
-
-        public AppointmentController(AppointmentService appointmentService, DoctorService doctorService) {
+        private AppointmentService appointmentService;
+        private DoctorService doctorService;
+        private AuthService authService;
+        private SuggestionService suggestionService;
+        private NotificationService notificationService;
+        public AppointmentController(AppointmentService appointmentService, DoctorService doctorService, AuthService authService, SuggestionService suggestionService, NotificationService notificationService) {
             this.appointmentService = appointmentService;
+            this.authService = authService;
             this.doctorService = doctorService;
+            this.suggestionService = suggestionService;
+            this.notificationService = notificationService;
         }
 
 
@@ -38,12 +42,16 @@ namespace ZdravoKlinika.Controller {
         {
 
             var doctor = doctorService.GetById(doctorJMBG);
+
             if (doctor == null) throw new Exception("Doctor not found");
+            if (authService.user == null) throw new Exception("Not logged in");
+            if (authService.user_role != AuthService.ROLE.PATIENT) throw new Exception("Not patient role");
+            
 
             Appointment appointment = new Appointment();
             appointment.startTime = startTime;
             // Get from authService
-            appointment.patientJMBG = "1231231231231";
+            appointment.patientJMBG = authService.user.JMBG;
             appointment.doctorJMBG = doctorJMBG;
             appointment.roomId = doctor.roomId;
             appointment.urgency = false;
@@ -57,20 +65,48 @@ namespace ZdravoKlinika.Controller {
             return appointmentService.SaveAppointment(appointment);
 
         }
+
+
         public List<Appointment> GetDoctorAppointments() {
-            return this.appointmentService.GetAllAppointments().FindAll(a => a.doctorJMBG.Equals(DOCTORJMBG));
+            if (authService.user == null) throw new Exception("Not logged in");
+            if (authService.user_role != AuthService.ROLE.DOCTOR) throw new Exception("Not doctore role");
+            return this.appointmentService.GetAllAppointments().FindAll(a => a.doctorJMBG.Equals(authService.user.JMBG));
 
         }
 
         public bool CreateAppointmentDoctor(DateTime startTime, int duration, string patientJMBG, string doctorJMBG, string roomId, bool urgency, AppointmentType appointmentType) {
             Appointment app = new Appointment(appointmentService.GenerateNewId(), startTime, duration, urgency, appointmentType, patientJMBG, doctorJMBG, roomId);
-
             return this.appointmentService.SaveAppointment(app);
         }
 
         public bool IsDoctorAppointment(int id) {
+            if (authService.user == null) throw new Exception("Not logged in");
+            if (authService.user_role != AuthService.ROLE.DOCTOR) throw new Exception("Not doctore role");
             var app = this.appointmentService.GetAppointmentById(id);
-            return app is not null && app.doctorJMBG.Equals(DOCTORJMBG);
+            return app is not null && app.doctorJMBG.Equals(authService.user.JMBG);
         }
+
+        public List<Appointment> getSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
+            return this.suggestionService.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType);
+        }
+        
+
+        public void CreateAppointmentFromSuggestion(Appointment app) {
+            app.id = this.appointmentService.GenerateNewId();
+            this.appointmentService.SaveAppointment(app);
+            this.notificationService.NotificationForAppointmentCreated(app);
+        }
+        public void MoveAppointmentSecretary(Appointment app, DateTime newTime ) {
+            var old = new DateTime(app.startTime.Ticks);
+            app.startTime = newTime;
+            Console.WriteLine(this.appointmentService.SaveAppointment(app));
+            this.notificationService.NotificationForAppointmentMoved(app, old);
+        }
+        public void RemoveAppointmentSecretary(Appointment app) {
+            this.appointmentService.DeleteAppointmentById(app.id);
+            this.notificationService.NotificationForAppointmentCancel(app);
+        }
+
+
     }
 }

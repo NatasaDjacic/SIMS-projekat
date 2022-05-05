@@ -28,10 +28,6 @@ namespace ZdravoKlinika.Service {
             return this.doctorRepository.GetById(id);
         }
 
-        public bool DeleteById(string id) {
-            throw new NotImplementedException();
-        }
-
 
 
     }
