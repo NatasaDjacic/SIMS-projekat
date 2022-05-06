@@ -33,8 +33,8 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-        private ObservableCollection<Prescription> prescriptions;
-        public ObservableCollection<Prescription> PrescriptionsCollection
+        private ObservableCollection<Notification> prescriptions;
+        public ObservableCollection<Notification> PrescriptionsCollection
         {
             get => prescriptions;
             set
@@ -46,10 +46,13 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 }
             }
         }
-        public PrescriptionController prescriptionController;
+
+        NotificationService notificationService= GLOBALS.notificationService;
         public Notifications()
         {
-          //  PrescriptionsCollection = new ObservableCollection<Prescription>(prescriptionController.GetAll());
+            
+
+            PrescriptionsCollection = new ObservableCollection<Notification>(notificationService.getPatientPrescriptionNotifications());
             this.DataContext = this;
             InitializeComponent();
 

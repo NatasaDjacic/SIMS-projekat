@@ -18,7 +18,7 @@
 
         <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=PrescriptionsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding id}" >
+                <DataGridTextColumn Header="Title" Width="60" Binding="{Binding title}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -26,7 +26,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Width="450"   Binding="{Binding description}" >
+                <DataGridTextColumn Header="Message" Width="450"   Binding="{Binding message}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -34,7 +34,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Amount" Width="*"   Binding="{Binding useAmount}" >
+                <DataGridTextColumn Header="Date" Width="*"   Binding="{Binding showDate}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
