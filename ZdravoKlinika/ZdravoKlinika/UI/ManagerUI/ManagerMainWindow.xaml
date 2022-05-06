@@ -37,7 +37,7 @@
                 <MenuItem Click="Russian_Click" Name="RussianMenu" Header="Русский" IsCheckable="True" IsChecked="False" />
             </MenuItem>
             <MenuItem Header="{DynamicResource StrProfil}"/>
-            <MenuItem HorizontalAlignment="Right" Header="{DynamicResource StrSignOut}"/>
+            <MenuItem HorizontalAlignment="Right" Click="SignOut_Click" Header="{DynamicResource StrSignOut}"/>
 
         </Menu>
         <Frame x:Name="ContentFrame" DockPanel.Dock="Left" NavigationUIVisibility="Hidden"></Frame>

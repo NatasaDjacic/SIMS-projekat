@@ -52,6 +52,8 @@ namespace ZdravoKlinika.Controller
             equipMoving.id = equipMovingService.GenerateNewId();
             equipMoving.equipments = equips;
 
+            equipMoving.Validate();
+
             return equipMovingService.SaveEquipMoving(equipMoving);
         }
         public void CheckEquipMoving()

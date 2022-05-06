@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
 
 namespace ZdravoKlinika.UI.ManagerUI
 {
@@ -19,22 +20,22 @@ namespace ZdravoKlinika.UI.ManagerUI
     /// </summary>
     public partial class ManagerMainWindow : Window
     {
-       
+        AuthController authController = GLOBALS.authController;
         public ManagerMainWindow()
         {
             InitializeComponent();
             SwitchLanguage("srb");
             //ContentFrame.NavigationService.Navigate(new View.Rooms("srb"));
             //ContentFrame.Navigate(new View.Rooms());
-            
+
         }
 
         private void Serbian_Click(object sender, RoutedEventArgs e)
         {
 
-                SerbianMenu.IsChecked = true;
-                EnglishMenu.IsChecked = false;
-                RussianMenu.IsChecked = false;
+            SerbianMenu.IsChecked = true;
+            EnglishMenu.IsChecked = false;
+            RussianMenu.IsChecked = false;
 
 
             SwitchLanguage("srb");
@@ -85,7 +86,7 @@ namespace ZdravoKlinika.UI.ManagerUI
             }
             this.Resources.MergedDictionaries.Add(dictionary);
         }
-      
+
         private void LightTheme_Click(object sender, RoutedEventArgs e)
         {
 
@@ -105,6 +106,16 @@ namespace ZdravoKlinika.UI.ManagerUI
         private void Renovation_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.NavigationService.Navigate(new View.Renovations("srb"));
+        }
+        private void SignOut_Click(object sender, RoutedEventArgs e)
+        {
+            authController.Logout();
+            var window = new MainWindow();
+            this.Hide();
+            Application.Current.MainWindow = window;
+            window.Show();
+            this.Close();
+
         }
     }
 }
