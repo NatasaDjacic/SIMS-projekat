@@ -14,21 +14,7 @@ namespace ZdravoKlinika.Controller
         public NotificationService notificationService;
         public PatientService patientService;
 
-        public PrescriptionController(PrescriptionService prescriptionService)
-        {
-            this.prescriptionService = prescriptionService;
-        }
-
-
-        /*public bool Create(int drugId, string description, int useDuration, int useFrequency, double useAmount)
-        {
-            var prescription = new Prescription(drugId, description, useDuration, useFrequency, useAmount);
-            return this.prescriptionService.Create(prescription);
-        }*/
-
-        /*public bool Add(Prescription prescription)
-        {
-
-        }*/
+        
+        
     }
 }
