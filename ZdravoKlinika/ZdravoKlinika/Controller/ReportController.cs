@@ -12,20 +12,26 @@ namespace ZdravoKlinika.Controller;
 public class ReportController
 {
     public ReportService reportService;
-    public PatientService patientService;
-
+    
     public ReportController(ReportService reportService)
     {
         this.reportService = reportService;
     }
 
-
-   /* public bool Create(Patient patient, int reportId, string diagnostica, string description, DateTime date, List<Prescription> prescriptions)
+    public List<Report> GetAll(Patient patient)
     {
-        var report = new Report(patient, reportId, diagnostica, description, date, prescriptions);
-        return this.reportService.Create(report);
-    }*/
+        return patient.medicalRecord.reports;
+    }
 
-    
+    public Report? AddReport(Patient patient, string diagnostica, string description, DateTime date)
+    {
+        var report = new Report(Guid.NewGuid(), diagnostica, description, date);
+        if(reportService.AddReport(patient, report)){
+            return report;
+        }
+        return null;
+    }
+
+
 
 }

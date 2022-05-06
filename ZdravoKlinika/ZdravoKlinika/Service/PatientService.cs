@@ -47,12 +47,9 @@ namespace ZdravoKlinika.Service
             return this.patientRepository.GetById(jmbg);
         }
 
-        
-
         public List<Patient> GetAll()
         {
             return this.patientRepository.GetAll();
         }
-
     }
 }

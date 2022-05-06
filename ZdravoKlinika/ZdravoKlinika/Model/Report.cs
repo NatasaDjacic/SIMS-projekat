@@ -8,14 +8,14 @@ namespace ZdravoKlinika.Model
 {
     public class Report
     {
-        public int reportId { get; set; }
+        public Guid reportId { get; set; }
         public string diagnostica { get; set; }
         public string description { get; set; }
         public DateTime date { get; set; }
         public string patient_note { get; set; }
         public List<Prescription> prescriptions { get; set; }
 
-        public Report(Patient patient, int reportId, string diagnostica, string description, DateTime date, List<Prescription> prescriptions)
+        public Report(Guid reportId, string diagnostica, string description, DateTime date)
         {
             this.reportId = reportId;
             this.diagnostica = diagnostica;

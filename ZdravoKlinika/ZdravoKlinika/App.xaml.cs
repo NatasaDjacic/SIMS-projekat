@@ -10,6 +10,7 @@ using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model.Enums;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika
 {
@@ -20,10 +21,17 @@ namespace ZdravoKlinika
     {
         public App() : base()
         {
+            Patient? p = GLOBALS.patientController.GetById("1231231231231"); 
+           // Report? r = GLOBALS.reportController.AddReport(p, "Neka dijagnostika", "Neki opis", DateTime.Now);
+           // GLOBALS.prescriptionController.AddPrescription(p, r.reportId, 1, "Neki opis za koriscenje", 7, 3, 1);
+
+
             // AUTO LOGIN::
             //GLOBALS.authController.Login("secretary", "zdravo");
             // AUTO LOGIN MANAGER::
-            GLOBALS.authController.Login("manager", "zdravo");
+            GLOBALS.authController.Login("1231231231231", "zdravo");
+            var n = GLOBALS.notificationService.getPatientPrescriptionNotifications();
+            Console.WriteLine(n.Count);
             /*
             var ge = EquipRoomGroupDTO.groupEquip(GLOBALS.equipmentController.GetAll());
             ge.ForEach(e => {
