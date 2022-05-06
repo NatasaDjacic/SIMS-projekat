@@ -12,14 +12,15 @@ namespace ZdravoKlinika.Service
     public class PrescriptionService
     {
         public PatientRepository patientRepository;
-        
-       /* public bool Create(Prescription prescription)
+        public PrescriptionRepository prescriptionRepository { get; set; }
+
+        public bool Create(Prescription prescription)
         {
             if(patientRepository == null)
             {
-                //return this..Save(prescription);
+                return this.prescriptionRepository.Save(prescription);
             }
             return false;
-        }*/
+        }
     }
 }

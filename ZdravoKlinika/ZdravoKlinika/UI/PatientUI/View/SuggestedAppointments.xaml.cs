@@ -25,7 +25,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
     /// <summary>
     /// Interaction logic for Patients.xaml
     /// </summary>
-    public partial class Appointments : Page, INotifyPropertyChanged
+    public partial class SuggestedAppointments : Page, INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -49,27 +49,52 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 }
             }
         }
-        public AppointmentController appointmentController = GLOBALS.appointmentController ;
-        public Appointments()
+
+        public int duration = 30;
+        public DateTime startTime=DateTime.Now;
+        public string doctorJMBG = "3213213213213";
+       
+
+        public SuggestionController suggestionController = GLOBALS.suggestionController;
+        public SuggestedAppointments(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, Model.Enums.AppointmentType appointmentType)
         {
-            AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
+
             this.DataContext = this;
+
+
+            AppointmentCollection = new ObservableCollection<Appointment>(suggestionController.getAppointmentSuggestion(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType));
             InitializeComponent();
 
         }
 
-        private void Button_Click_Remove(object sender, RoutedEventArgs e) {
-            int id = Convert.ToInt32(((Button)sender).Tag);
-            Console.WriteLine(id);
-            appointmentController.DeleteAppointmentById(id);
-            AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
-        }
+        AppointmentController appointmentController = GLOBALS.appointmentController;
 
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+       
+        //URADITI CUVANJE !!!!!!!!!!!!!!!!
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            int id = Convert.ToInt32(((Button)sender).Tag);
-            Console.WriteLine(((Button)sender).Tag);
-            NavigationService.Navigate(new EditAppointment(id));
+            
+            Console.WriteLine(doctorJMBG);
+            if (doctorJMBG is null) return;
+
+            if (doctorJMBG != "") return;
+
+            try
+            {
+                appointmentController.CreateAppointmentPatient( startTime,  duration,  doctorJMBG);
+           
+            
+               
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+            NavigationService.Navigate(new Appointments());
+          
 
         }
 

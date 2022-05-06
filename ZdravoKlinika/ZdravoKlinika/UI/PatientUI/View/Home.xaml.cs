@@ -25,6 +25,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
     {
         public Home()
         {
+            this.DataContext = this;
             InitializeComponent();
         }
 

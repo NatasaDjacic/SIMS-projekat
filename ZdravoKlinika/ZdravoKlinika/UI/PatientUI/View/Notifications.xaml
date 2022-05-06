@@ -1,4 +1,4 @@
-﻿<Page x:Class="ZdravoKlinika.UI.PatientUI.View.Appointments"
+﻿<Page x:Class="ZdravoKlinika.UI.PatientUI.View.Notifications"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,17 +6,17 @@
       xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI.View"
       mc:Ignorable="d" 
       d:DesignHeight="595" d:DesignWidth="718"
-      Title="Appointments" >
- 
+      Title="Notifications" >
+
     <DockPanel >
         <StackPanel DockPanel.Dock="Top" Margin="10">
-            <TextBlock Text="Appointments" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="48"></TextBlock>
+            <TextBlock Text="Notifications" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="48"></TextBlock>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Height="67"  RenderTransformOrigin="0.502,-0.397">
             <Button   Click="Button_Click_Back" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red"  Foreground="White" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
         </StackPanel>
 
-        <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=AppointmentCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=PrescriptionsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="40" Binding="{Binding id}" >
                     <DataGridTextColumn.ElementStyle>
@@ -26,7 +26,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Date" Width="150"   Binding="{Binding startTime}" >
+                <DataGridTextColumn Header="Description" Width="450"   Binding="{Binding description}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -34,7 +34,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Doctor" Width="150"   Binding="{Binding doctorJMBG}" >
+                <DataGridTextColumn Header="Amount" Width="*"   Binding="{Binding useAmount}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -42,24 +42,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Room" Width="90"  Binding="{Binding roomId}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTemplateColumn Header="Actions" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Tag="{Binding id}" Content="Delete"  Margin="10 5" Padding="10 0" Click="Button_Click_Remove" Background="Red" Foreground="White"></Button>
-                                <Button Tag="{Binding id}" Content="Edit"  Margin="0 5 10 5" Padding="10 0" Click="Button_Click_Edit" Background="Green" Foreground="White"></Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+               
 
             </DataGrid.Columns>
         </DataGrid>
