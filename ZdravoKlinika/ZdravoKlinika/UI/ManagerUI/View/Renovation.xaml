@@ -106,7 +106,7 @@
                     </Grid.RowDefinitions>
                     <Label Grid.ColumnSpan="2" FontWeight="Bold" FontSize="17" Margin="30" HorizontalAlignment="Center" Content="Zakazivanje renoviranja"/>
                     <Label Grid.Column="0" Grid.Row="1" Content="Odaberite sobu koju renovirate"></Label>
-                    <Label Grid.Column="0" Grid.Row="2" Content="Odaberite trajanje"/>
+                    <Label Grid.Column="0" Grid.Row="2" Content="Unesite trajanje (u satima)"/>
                     <Label Grid.Column="0" Grid.Row="3" Content="{DynamicResource StrStartDate}"></Label>
                     <Label Grid.Column="0" Grid.Row="4" Content="Krajnji datum"></Label>
                     <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding RoomsCollection}" SelectedItem="{Binding SelectedRoom}"  DisplayMemberPath="name"></ComboBox>

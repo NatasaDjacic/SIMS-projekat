@@ -20,6 +20,27 @@ namespace ZdravoKlinika.Model {
             this.description = description;
         }
         public Renovation() { }
+        public void Validate()
+        {
 
+
+            if (roomId.Trim().Length == 0)
+            {
+                throw new Exception("Please choose room.");
+            }
+            if (roomId.Trim().Length == 0)
+            {
+                throw new Exception("Please choose room.");
+            }
+            if (startTime.ToString().Trim().Length == 0)
+            {
+                throw new Exception("Please set date.");
+            }
+            /*if (startTime < DateTime.Now)
+            {
+                throw new Exception("Date cannot be in past.");
+            }*/
+
+        }
     }
 }

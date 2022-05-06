@@ -2,14 +2,14 @@
   {
     "id": 1,
     "name": "Operacijski sto",
-    "roomId": "6",
+    "roomId": "AH7",
     "type": "Staticka",
     "quantity": 1
   },
   {
     "id": 2,
     "name": "Operacijski sto",
-    "roomId": "6",
+    "roomId": "AH7",
     "type": "Staticka",
     "quantity": 1
   },
@@ -30,7 +30,7 @@
   {
     "id": 7,
     "name": "Stalak za infuziju",
-    "roomId": "10",
+    "roomId": "AH2",
     "type": "Dinamicka",
     "quantity": 100
   }

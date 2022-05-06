@@ -27,11 +27,11 @@ namespace ZdravoKlinika.UI.ManagerUI.View
     {
         string val = string.Empty;
         public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
+        protected virtual void OnPropertyChanged(string roomId)
         {
             if (PropertyChanged != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
+                PropertyChanged(this, new PropertyChangedEventArgs(roomId));
             }
         }
 
