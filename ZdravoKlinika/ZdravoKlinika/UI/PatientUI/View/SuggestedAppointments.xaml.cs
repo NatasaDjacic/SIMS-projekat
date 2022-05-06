@@ -36,65 +36,98 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-        private ObservableCollection<Appointment> appointments;
-        public ObservableCollection<Appointment> AppointmentCollection
+
+        DoctorController doctorController = GLOBALS.doctorController;
+        RoomController roomController = GLOBALS.roomController;
+        AppointmentController appointmentController = GLOBALS.appointmentController;
+        PatientController patientController = GLOBALS.patientController;
+        SuggestionController suggestionController = GLOBALS.suggestionController;
+
+        
+
+        public List<Appointment> appointments;
+        public List<Appointment> AppointmentsList
         {
             get => appointments;
             set
             {
-                if (appointments != value)
+                appointments = value;
+                OnPropertyChanged("AppointmentsList");
+            }
+        }
+        public Appointment? selectedAppointment;
+        public Appointment? SelectedAppointment
+        {
+            get => selectedAppointment;
+            set
+            {
+                if (selectedAppointment != value)
                 {
-                    appointments = value;
-                    OnPropertyChanged("AppointmentCollection");
+                   
+                    selectedAppointment = value;
+                    Console.WriteLine(selectedAppointment.doctorJMBG);
+
+                    OnPropertyChanged("SelectedAppointment");
+
                 }
             }
         }
 
-        public int duration = 30;
-        public DateTime startTime=DateTime.Now;
-        public string doctorJMBG = "3213213213213";
-       
+        
 
-        public SuggestionController suggestionController = GLOBALS.suggestionController;
         public SuggestedAppointments(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, Model.Enums.AppointmentType appointmentType)
         {
+
+
+         
 
             this.DataContext = this;
 
 
-            AppointmentCollection = new ObservableCollection<Appointment>(suggestionController.getAppointmentSuggestion(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType));
+            if(priority=="doctor")
+            {
+               startTime = DateTime.Now;
+                AppointmentsList = suggestionController.getAppointmentSuggestion(patientJMBG, doctorJMBG, roomId, startTime, startTime.AddDays(7), duration, priority, appointmentType);
+
+            }
+            else
+            {       
+                AppointmentsList = suggestionController.getAppointmentSuggestion(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType);
+
+
+            }
             InitializeComponent();
 
         }
 
-        AppointmentController appointmentController = GLOBALS.appointmentController;
-
        
-        //URADITI CUVANJE !!!!!!!!!!!!!!!!
+
+
+        //!!!!!!!!!!!!!!
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             
-            Console.WriteLine(doctorJMBG);
-            if (doctorJMBG is null) return;
+            
+            if (selectedAppointment.doctorJMBG is null) return;
 
-            if (doctorJMBG != "") return;
-
+            
+            Console.WriteLine(selectedAppointment.doctorJMBG);
+            
             try
             {
-                appointmentController.CreateAppointmentPatient( startTime,  duration,  doctorJMBG);
-           
-            
-               
+
+
+                appointmentController.CreateAppointmentPatient(selectedAppointment.startTime, selectedAppointment.duration, selectedAppointment.doctorJMBG);
+
+
+                NavigationService.Navigate(new Appointments());
+
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
-
-            NavigationService.Navigate(new Appointments());
-          
 
         }
 
