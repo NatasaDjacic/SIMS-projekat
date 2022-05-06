@@ -11,10 +11,22 @@ namespace ZdravoKlinika.Service
 {
     public class ReportService
     {
-        public PatientRepository patientRepository { get; set; }
-        public PatientService patientService;
+        PatientService patientService;
 
+        public ReportService(PatientService patientService)
+        {
+            this.patientService = patientService;
+        }
 
+        
+        public bool AddReport(Patient patient, Report report)
+        {
+            report.reportId = Guid.NewGuid();
+            patient.medicalRecord.reports.Add(report);
+            return patientService.Update(patient);
+        }
+
+       
 
         
 

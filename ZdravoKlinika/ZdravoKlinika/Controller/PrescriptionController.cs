@@ -10,25 +10,30 @@ namespace ZdravoKlinika.Controller
 {
     public class PrescriptionController
     {
-        private PrescriptionService prescriptionService = new PrescriptionService();
-        public NotificationService notificationService;
-        public PatientService patientService;
-
+        PrescriptionService prescriptionService;
         public PrescriptionController(PrescriptionService prescriptionService)
         {
             this.prescriptionService = prescriptionService;
         }
 
-
-        /*public bool Create(int drugId, string description, int useDuration, int useFrequency, double useAmount)
+        public Prescription? AddPrescription(Patient patient, Guid reportId, int drugId, string description, int useDuration, int useFrequency, double useAmount)
         {
-            var prescription = new Prescription(drugId, description, useDuration, useFrequency, useAmount);
-            return this.prescriptionService.Create(prescription);
-        }*/
+            Prescription prescription = new Prescription(Guid.NewGuid(), drugId, description, useDuration, useFrequency, useAmount);
+            if(this.prescriptionService.AddPrescription(patient, reportId, prescription)) { 
+                // Todo create notifications
+                return prescription;
+            }
 
-        /*public bool Add(Prescription prescription)
+            return null;
+        }
+        public List<Prescription>? GetPrescriptions(Patient patient, Guid reportId)
         {
+            return patient.medicalRecord.reports.Find(r => r.reportId == reportId)?.prescriptions;
+        }
 
-        }*/
+
+
+
+
     }
 }

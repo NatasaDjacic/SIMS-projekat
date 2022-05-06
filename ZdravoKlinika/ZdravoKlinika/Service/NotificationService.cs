@@ -20,6 +20,35 @@ namespace ZdravoKlinika.Service {
             return this.notificationRepository.GetAll().FindAll(n => n.JMBG == authService.user.JMBG && !n.seen);
         }
 
+        public List<Notification> getPatientNotifications()
+        {
+            if (authService.user == null) throw new Exception("User not loggedin");
+            return this.notificationRepository.GetAll().FindAll(n => n.JMBG == authService.user.JMBG && n.showDate<=DateTime.Now.AddHours(2) && n.showDate>=DateTime.Now);
+        }
+
+        public List<Notification> getPatientPrescriptionNotifications()
+        {
+            List<Notification> list = new List<Notification>();
+            Patient? p = authService.user as Patient;
+            if (p == null) throw new Exception("Patient not looged in");
+            p.medicalRecord.reports.ForEach(report =>
+            {
+                report.prescriptions.ForEach(prescription =>
+                {
+                    var interval = 24 / prescription.useFrequency;
+
+                    if (report.date.AddDays(prescription.useDuration) >= DateTime.Today && DateTime.Now.Hour % interval >= interval-1  )
+                    {
+                        list.Add(new Notification(-1, p.JMBG, "Take medicine", String.Format("Take drug:{0} this amount {1}.", prescription.drugId, prescription.useAmount), DateTime.Now));
+                    }
+                });
+            });
+            return list;
+
+        }
+
+
+
         public void NotificationForAppointmentCreated(Appointment app) {
             var docNotif = new Notification(this.GenerateNewId(), app.doctorJMBG, "New appointment", String.Format("You have new appointment at {0} in room {1}.",app.startTime, app.roomId), DateTime.Now);
             this.notificationRepository.Save(docNotif);

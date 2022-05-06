@@ -73,9 +73,9 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         }
 
-        private void Button_Click_New(object sender, RoutedEventArgs e)
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewAppointment());
+            NavigationService.Navigate(new Home());
 
         }
 

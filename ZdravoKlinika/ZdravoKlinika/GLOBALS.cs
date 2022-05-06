@@ -34,7 +34,8 @@ namespace ZdravoKlinika
         public static RenovationService renovationService = new RenovationService(renovationRepository);
         public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService);
         public static EquipMovingService equipMovingService = new EquipMovingService(equipMovingRepository, roomService, equipmentService);
-
+        public static ReportService reportService = new ReportService(patientService);
+        public static PrescriptionService prescriptionService = new PrescriptionService(patientService);
 
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
@@ -46,6 +47,8 @@ namespace ZdravoKlinika
         public static SuggestionController suggestionController = new SuggestionController(suggestionService);
         public static EquipMovingController equipMovingController = new EquipMovingController(equipMovingService, roomService);
         public static RenovationController renovationController = new RenovationController(renovationService);
-    
+        public static ReportController reportController = new ReportController(reportService);
+        public static PrescriptionController prescriptionController = new PrescriptionController(prescriptionService);
+
     }
 }

@@ -4,7 +4,7 @@
     "roomId": "3",
     "startTime": "2022-05-04T00:00:00",
     "duration": 1,
-    "description": "sd"
+    "description": "Renoviranje"
   },
   {
     "renovationId": 2,
@@ -19,5 +19,12 @@
     "startTime": "2022-05-05T08:30:00",
     "duration": 240,
     "description": "Nove plocice"
+  },
+  {
+    "renovationId": 4,
+    "roomId": "1",
+    "startTime": "2022-05-06T01:00:00",
+    "duration": 5,
+    "description": "Zamena podova"
   }
 ]

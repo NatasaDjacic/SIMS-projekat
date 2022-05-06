@@ -8,6 +8,7 @@ namespace ZdravoKlinika.Model
 {
     public class Prescription
     {
+        public Guid prescriptionId { get; set; }
         public int drugId { get; set; }
         public string description { get; set; }
 
@@ -17,8 +18,9 @@ namespace ZdravoKlinika.Model
         public int useFrequency { get; set; }
         public double useAmount { get; set; }
 
-        public Prescription(int drugId, string description, int useDuration, int useFrequency, double useAmount)
+        public Prescription(Guid pId, int drugId, string description, int useDuration, int useFrequency, double useAmount)
         {
+            this.prescriptionId = pId;
             this.drugId = drugId;
             this.description = description;
             this.useDuration = useDuration;

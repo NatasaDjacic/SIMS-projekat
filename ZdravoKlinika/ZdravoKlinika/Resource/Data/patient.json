@@ -4,6 +4,27 @@
     "bloodType": "A_Pos",
     "dateOfBirth": "2000-03-11T00:00:00",
     "allergens": [],
+    "medicalRecord": {
+      "reports": [
+        {
+          "reportId": "cd448fbd-8664-4f39-bc14-cc7441f563e5",
+          "diagnostica": "Neka dijagnostika",
+          "description": "Neki opis",
+          "date": "2022-05-06T17:00:30.2844091+02:00",
+          "patient_note": "",
+          "prescriptions": [
+            {
+              "prescriptionId": "f686c818-b560-499c-bdcf-a6949e482484",
+              "drugId": 1,
+              "description": "Neki opis za koriscenje",
+              "useDuration": 7,
+              "useFrequency": 3,
+              "useAmount": 1.0
+            }
+          ]
+        }
+      ]
+    },
     "firstName": "Veljko",
     "lastName": "Todorovic",
     "JMBG": "1231231231231",
@@ -20,6 +41,9 @@
     "bloodType": "A_Pos",
     "dateOfBirth": "1990-04-14T00:00:00",
     "allergens": [],
+    "medicalRecord": {
+      "reports": []
+    },
     "firstName": "Pera",
     "lastName": "Peric",
     "JMBG": "1234567890123",
@@ -39,6 +63,9 @@
       "Alergija 1",
       "Alergija 2"
     ],
+    "medicalRecord": {
+      "reports": []
+    },
     "firstName": "Mitar",
     "lastName": "Miric",
     "JMBG": "1234512345123",
