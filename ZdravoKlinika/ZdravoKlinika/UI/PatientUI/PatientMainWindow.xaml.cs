@@ -41,6 +41,10 @@ namespace ZdravoKlinika.UI.PatientUI {
             ContentFrame.NavigationService.Navigate(new View.NewAppointment());
         }
 
+        private void Notification_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Notifications());
+        }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {

@@ -16,10 +16,10 @@
             <Button   Click="Button_Click_Back" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red"  Foreground="White" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
         </StackPanel>
 
-        <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=AppointmentCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid   Height="432" Width="718" ItemsSource="{Binding AppointmentsList}" SelectedItem="{Binding SelectedAppointment}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                
-                <DataGridTextColumn Header="Date" Width="200"   Binding="{Binding startTime}" >
+
+                <DataGridTextColumn Header="Date" Width="200"   Binding="{Binding startTime}"  >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -47,7 +47,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Tag="{Binding doctorJMBG}" Content="Save"  Margin="0 5 10 5" Padding="10 0" Click="Button_Click_Save" Background="Green" Foreground="White"></Button>
+                                <Button  Content="Save"  Margin="0 5 10 5" Padding="10 0" Click="Button_Click_Save" Background="Green" Foreground="White"></Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

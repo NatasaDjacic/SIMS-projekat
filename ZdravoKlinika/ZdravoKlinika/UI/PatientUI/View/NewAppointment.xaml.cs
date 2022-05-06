@@ -146,7 +146,6 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
 
-        private Appointment original;
         public NewAppointment()
         {
             //this.appointments = new List<Appointment>();

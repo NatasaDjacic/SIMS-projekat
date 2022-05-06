@@ -75,7 +75,7 @@
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Recepti"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Width="230" Height="70" Margin="5,506,10,38" Background="White">
+                <Button Width="230" Height="70" Margin="5,506,10,38" Background="White" Click="Notification_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/notification.png" />
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Obavestenja"/></TextBlock>

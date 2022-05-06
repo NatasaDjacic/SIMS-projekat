@@ -79,7 +79,7 @@
 
             <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Grid.ColumnSpan="2">
                 <Label Grid.Row="3" FontSize="16">Duration (min):</Label>
-                <TextBox Text="{Binding Duration}"  FontSize="16" Background="White"></TextBox>
+                <TextBox IsEnabled="False" Text="{Binding Duration}"  FontSize="16" Background="White"></TextBox>
             </StackPanel>
 
             <StackPanel Grid.Row="4" Grid.Column="1" Margin="10,0,-10,0" Grid.ColumnSpan="2" >
