@@ -16,9 +16,9 @@
             <Button   Click="Button_Click_Back" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red"  Foreground="White" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
         </StackPanel>
 
-        <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=PrescriptionsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=PrescriptionsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="18" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Width="60" Binding="{Binding title}" >
+                <DataGridTextColumn Header="Title" Width="115" Binding="{Binding title}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -26,7 +26,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Message" Width="450"   Binding="{Binding message}" >
+                <DataGridTextColumn Header="Message" Width="415"   Binding="{Binding message}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />

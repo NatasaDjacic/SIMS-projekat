@@ -20,6 +20,12 @@ namespace ZdravoKlinika.Service {
             return this.notificationRepository.GetAll().FindAll(n => n.JMBG == authService.user.JMBG && !n.seen);
         }
 
+        public List<Notification> getPatientNotifications()
+        {
+            if (authService.user == null) throw new Exception("User not loggedin");
+            return this.notificationRepository.GetAll().FindAll(n => n.JMBG == authService.user.JMBG && n.showDate<=DateTime.Now.AddHours(2) && n.showDate>=DateTime.Now);
+        }
+
         public List<Notification> getPatientPrescriptionNotifications()
         {
             List<Notification> list = new List<Notification>();
@@ -40,6 +46,8 @@ namespace ZdravoKlinika.Service {
             return list;
 
         }
+
+
 
         public void NotificationForAppointmentCreated(Appointment app) {
             var docNotif = new Notification(this.GenerateNewId(), app.doctorJMBG, "New appointment", String.Format("You have new appointment at {0} in room {1}.",app.startTime, app.roomId), DateTime.Now);

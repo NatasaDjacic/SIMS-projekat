@@ -52,7 +52,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
         {
             
 
-            PrescriptionsCollection = new ObservableCollection<Notification>(notificationService.getPatientPrescriptionNotifications());
+            PrescriptionsCollection = new ObservableCollection<Notification>(notificationService.getPatientNotifications());
             this.DataContext = this;
             InitializeComponent();
 

@@ -133,7 +133,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home());
+            NavigationService.Navigate(new NewAppointment());
 
         }
 
