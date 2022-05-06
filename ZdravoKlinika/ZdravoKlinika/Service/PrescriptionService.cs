@@ -11,16 +11,22 @@ namespace ZdravoKlinika.Service
 {
     public class PrescriptionService
     {
-        public PatientRepository patientRepository;
-        public PrescriptionRepository prescriptionRepository { get; set; }
+        PatientService patientService;
 
-        public bool Create(Prescription prescription)
+        public PrescriptionService(PatientService patientService)
         {
-            if(patientRepository == null)
-            {
-                return this.prescriptionRepository.Save(prescription);
-            }
-            return false;
+            this.patientService = patientService;
         }
+
+        public bool AddPrescription(Patient patient,Guid reportId ,Prescription prescription)
+        {
+            Report? report = patient.medicalRecord.reports.Find(r => r.reportId == reportId);
+            if (report == null) return false;
+            report.prescriptions.Add(prescription);
+            return patientService.Update(patient);
+        }
+        
+
+
     }
 }
