@@ -177,8 +177,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             foreach(Renovation ren in suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration))
             {
                 Console.WriteLine(ren.startTime.ToString());
-                //Console.WriteLine(ren.renovationId.ToString());
-                //Console.WriteLine(ren.startTime.ToString());
+                
 
             }
             Console.Write("Enter index: ");

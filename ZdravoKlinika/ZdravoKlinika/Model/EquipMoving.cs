@@ -25,27 +25,5 @@ namespace ZdravoKlinika.Model
             this.equipments = equipments;
             this.date = date;
         }
-        public void Validate()
-        {
-
-
-            if (roomFrom.Trim().Length == 0)
-            {
-                throw new Exception("Please choose room from.");
-            }
-            if (roomTo.Trim().Length == 0)
-            {
-                throw new Exception("Please choose room to.");
-            }
-            if (equipments.ToString().Trim().Length == 0)
-            {
-                throw new Exception("Please select equipments.");
-            }
-            /*if (date < System.DateTime.Now)
-            {
-                throw new Exception("Date cannot be in past.");
-            }*/
-
-        }
     }
 }
