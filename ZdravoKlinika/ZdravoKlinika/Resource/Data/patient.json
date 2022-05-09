@@ -22,6 +22,73 @@
               "useAmount": 1.0
             }
           ]
+        },
+        {
+          "reportId": "e1132bfd-afa3-4017-ac7a-804f9b935442",
+          "diagnostica": "Neka dijagnostika",
+          "description": "Neki opis",
+          "date": "2022-05-06T20:22:10.8242834+02:00",
+          "patient_note": "",
+          "prescriptions": [
+            {
+              "prescriptionId": "2fb2e944-b901-4355-8bb0-3388674f165e",
+              "drugId": 1,
+              "description": "Neki opis za koriscenje",
+              "useDuration": 7,
+              "useFrequency": 3,
+              "useAmount": 1.0
+            }
+          ]
+        },
+        {
+          "reportId": "4177a3c9-2366-4849-984d-0ecb7fe36a29",
+          "diagnostica": "Neka dijagnostika",
+          "description": "Neki opis",
+          "date": "2022-05-06T20:22:33.4810037+02:00",
+          "patient_note": "",
+          "prescriptions": [
+            {
+              "prescriptionId": "0ca9678e-0b90-4085-ae8f-c6f3d0d87cba",
+              "drugId": 1,
+              "description": "Neki opis za koriscenje",
+              "useDuration": 7,
+              "useFrequency": 3,
+              "useAmount": 1.0
+            }
+          ]
+        },
+        {
+          "reportId": "05223471-dff1-4dcd-b9d3-e789e016d1f0",
+          "diagnostica": "Neka dijagnostika",
+          "description": "Neki opis",
+          "date": "2022-05-06T20:25:35.7682049+02:00",
+          "patient_note": "",
+          "prescriptions": []
+        },
+        {
+          "reportId": "7bbf9689-ffba-4c3c-8387-fc275be34c3f",
+          "diagnostica": "Neka dijagnostika",
+          "description": "Neki opis",
+          "date": "2022-05-06T20:29:00.4891998+02:00",
+          "patient_note": "",
+          "prescriptions": []
+        },
+        {
+          "reportId": "e2b7be73-ecc8-4785-a26e-866f0db7d195",
+          "diagnostica": "Neka dijagnostika",
+          "description": "Neki opis",
+          "date": "2022-05-06T21:00:42.9087386+02:00",
+          "patient_note": "",
+          "prescriptions": [
+            {
+              "prescriptionId": "ddee521f-1c09-4484-a7eb-2a8c04547ccd",
+              "drugId": 1,
+              "description": "Neki opis za koriscenje",
+              "useDuration": 7,
+              "useFrequency": 3,
+              "useAmount": 1.0
+            }
+          ]
         }
       ]
     },
@@ -42,7 +109,16 @@
     "dateOfBirth": "1990-04-14T00:00:00",
     "allergens": [],
     "medicalRecord": {
-      "reports": []
+      "reports": [
+        {
+          "reportId": "66abd1ea-bc18-4404-ba12-297d3181084e",
+          "diagnostica": "Dijagnoza",
+          "description": "Neki opis",
+          "date": "2022-05-06T20:47:46.1901991+02:00",
+          "patient_note": "",
+          "prescriptions": []
+        }
+      ]
     },
     "firstName": "Pera",
     "lastName": "Peric",
