@@ -42,11 +42,9 @@ namespace ZdravoKlinika.Service
 
         public bool Save(Equipment equipment)
         {
-            if (this.equipmentRepository.GetById(equipment.id) is null)
-            {
-                return this.equipmentRepository.Save(equipment);
-            }
-            return false;
+           
+            return this.equipmentRepository.Save(equipment);
+           
         }
 
         public bool Update(Model.Equipment equipment)
@@ -63,6 +61,9 @@ namespace ZdravoKlinika.Service
             return this.equipmentRepository.DeleteById(id);
         }
 
+        public int GenerateNewId() {
+            return this.equipmentRepository.GenerateNewId();
+        }
        
 
     }
