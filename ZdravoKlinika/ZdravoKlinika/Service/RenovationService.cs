@@ -24,5 +24,8 @@ namespace ZdravoKlinika.Service {
         {
             return this.renovationRepository.Save(ren);
         }
+        public List<Renovation> GetAllInInterval(DateTime start, DateTime end) {
+            return this.GetAll().Where(a => (a.startTime.AddMinutes(a.duration) >= start && a.startTime <= end)).ToList();
+        }
     }
 }

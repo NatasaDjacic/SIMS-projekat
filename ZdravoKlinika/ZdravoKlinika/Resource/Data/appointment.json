@@ -78,5 +78,35 @@
     "patientJMBG": "1231231231231",
     "doctorJMBG": "3213213213213",
     "roomId": "6"
+  },
+  {
+    "id": 15,
+    "startTime": "2022-05-06T00:00:00+02:00",
+    "duration": 3000,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1234512345123",
+    "doctorJMBG": "3213213213213",
+    "roomId": "6"
+  },
+  {
+    "id": 16,
+    "startTime": "2022-05-08T04:00:00+02:00",
+    "duration": 30,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "3213213213213",
+    "roomId": "6"
+  },
+  {
+    "id": 17,
+    "startTime": "2022-05-08T05:00:00+02:00",
+    "duration": 30,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "3213213213213",
+    "roomId": "6"
   }
 ]

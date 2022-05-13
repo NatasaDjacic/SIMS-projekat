@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ZdravoKlinika.Model;
+using System.Linq;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Repository;
 
@@ -19,6 +20,10 @@ namespace ZdravoKlinika.Service {
 
         public List<Appointment> GetAllAppointments() {
             return this.appointmentRepository.GetAll();
+        }
+
+        public List<Appointment> GetAllInInterval(DateTime start, DateTime end) {
+            return this.GetAllAppointments().Where(a => (a.startTime.AddMinutes(a.duration) >= start && a.startTime <= end)).ToList();
         }
 
         public bool SaveAppointment(Appointment appointment) {

@@ -40,7 +40,6 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
         private void Button_Click_Remove(object sender, RoutedEventArgs e) {
             string? jmbg = ((Button)sender).Tag as string;
-            Console.WriteLine(jmbg);
             if (jmbg is null) return;
             patientController.Delete(jmbg);
             PatientsCollection = new ObservableCollection<Patient>(patientController.GetAll());
@@ -48,7 +47,6 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
         private void Button_Click_Edit(object sender, RoutedEventArgs e) {
             string? jmbg = ((Button)sender).Tag as string;
-            Console.WriteLine(jmbg);
             if (jmbg is null) return;
             NavigationService.Navigate(new EditPatient(jmbg));
         }

@@ -7,12 +7,12 @@ using System.Windows.Data;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.UI.SecretaryUI.Converters {
-    public class RoomIdConverter : IValueConverter {
-        public Dictionary<string,Room> Rooms { get; set; }
+    public class DoctorJMBGConverter : IValueConverter {
+        public Dictionary<string,Doctor> Doctors { get; set; }
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             try { 
-                Room f = Rooms[value.ToString()];
-                return f.name;
+                Doctor f = Doctors[value.ToString()];
+                return f.firstName + " " + f.lastName + " - " + f.specialization;
             }catch(Exception ex) {
                 return "unknown";
             }

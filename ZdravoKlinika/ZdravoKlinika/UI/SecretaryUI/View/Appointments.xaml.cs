@@ -48,6 +48,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             }
         }
         public List<Doctor> doctors { get; set; }
+        public static Dictionary<string, Doctor> doctorsLookup { get; set; }
+        public static Dictionary<string, Room> roomsLookup { get; set; }
         private Doctor? selectedDoctor;
         public Doctor? SelectedDoctor {
             get => selectedDoctor;
@@ -118,6 +120,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             this.appointments = new List<Appointment>();
             this.doctors = doctorController.GetAll();
             this.rooms = roomController.GetAll();
+            doctorsLookup = this.doctors.ToDictionary(d => d.JMBG);
+            roomsLookup = this.rooms.ToDictionary(r => r.roomId);
             this.selectedPeriod = "weekly";
             this.selectedDate = DateTime.Today;
             this.jmbg = "";

@@ -14,7 +14,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            
+            <converters:DoctorJMBGConverter x:Key="DocConverter"  Doctors="{x:Static local:Appointments.doctorsLookup}"></converters:DoctorJMBGConverter>
+            <converters:RoomIdConverter x:Key="RoomConverter"  Rooms="{x:Static local:Appointments.roomsLookup}"></converters:RoomIdConverter>
         </ResourceDictionary>
     </Page.Resources>
     <DockPanel Margin="10">
@@ -82,22 +83,27 @@
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
             <ListBox Grid.Column="0" FontSize="24" FontWeight="SemiBold" ItemsSource="{Binding AppointmentsList}" SelectedItem="{Binding SelectedAppointment}">
-                <ListBox.Resources>
-                    <converters:DoctorJMBGConverter x:Key="DoctorJMBGConverter" />
-                </ListBox.Resources>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock>
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}Doctor:{0} Patient:{1} {2} {3} {4}">
-                                    <Binding Path="doctorJMBG"/>
-                                    <Binding Path="patientJMBG" />
-                                    <Binding Path="roomId" />
-                                    <Binding Path="startTime" />
-                                    <Binding Path="duration" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock TextWrapping="Wrap">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}Doctor: {0}, Patient: {1}">
+                                        <Binding Path="doctorJMBG" Converter="{StaticResource DocConverter}"/>
+                                            <Binding Path="patientJMBG" />
+                                        </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}In room: {0} at {1}, last for {2} min">
+                                        <Binding Path="roomId" Converter="{StaticResource RoomConverter}"/>
+                                        <Binding Path="startTime" />
+                                        <Binding Path="duration" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
