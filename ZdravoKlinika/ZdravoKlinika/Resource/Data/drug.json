@@ -1,0 +1,26 @@
+[
+  {
+    "drugId": 1,
+    "name": "Aerius",
+    "ingredients": "",
+    "approved": false,
+    "checkedBy": null,
+    "comment": "Dodati nove alergene"
+  },
+  {
+    "drugId": 1,
+    "name": "Aerius",
+    "ingredients": "Hidrociklin, Hidroksihlorokin",
+    "approved": false,
+    "checkedBy": null,
+    "comment": "Dodati nove alergene"
+  },
+  {
+    "drugId": 3,
+    "name": "Bromazepam",
+    "ingredients": "Voda, Ajnštajntijum, H2SO4",
+    "approved": false,
+    "checkedBy": null,
+    "comment": ""
+  }
+]

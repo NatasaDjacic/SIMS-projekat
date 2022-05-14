@@ -21,7 +21,7 @@
                 <MenuItem Header="{DynamicResource StrMer}" />
                 <MenuItem Header="{DynamicResource StrSep}" />
             </MenuItem>
-            <MenuItem Header="{DynamicResource StrMed}"/>
+            <MenuItem Click="Drug_Click" Header="{DynamicResource StrMed}"/>
             <MenuItem Header="{DynamicResource StrPools}">
                 <MenuItem Header="{DynamicResource StrHosPools}" />
                 <MenuItem Header="{DynamicResource StrDocPools}" />

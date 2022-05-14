@@ -127,5 +127,9 @@ namespace ZdravoKlinika.UI.ManagerUI
         {
             ContentFrame.NavigationService.Navigate(new View.Rooms(global_language));
         }
+        private void Drug_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Drugs());
+        }
     }
 }

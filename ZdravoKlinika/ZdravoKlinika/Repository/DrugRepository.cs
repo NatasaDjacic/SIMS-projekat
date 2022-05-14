@@ -42,6 +42,7 @@ namespace ZdravoKlinika.Repository
                 values.Add(report);
                 added = true;
             }
+
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return added;
         }

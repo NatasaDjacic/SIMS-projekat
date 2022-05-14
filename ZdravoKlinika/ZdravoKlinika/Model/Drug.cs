@@ -10,7 +10,7 @@ namespace ZdravoKlinika.Model
     {
         public int drugId { get; set; }
         public string name { get; set; }
-        public List<string> ingredients { get; set; }
+        public string ingredients { get; set; }
         public bool approved { get; set; }
         public string checkedBy { get; set; }
         public string comment { get; set; }
@@ -18,13 +18,17 @@ namespace ZdravoKlinika.Model
         public Drug(string name) {
             this.name = name;
             this.comment = "";
-            this.ingredients = new List<string>();
+            this.ingredients = "";
         }
-        public Drug(string name, List<string> ingredients)
+        public Drug(string name, string ingredients)
         {
             this.name = name;
             this.comment = "";
             this.ingredients = ingredients;
+        }
+
+        public Drug()
+        {
         }
     }
 }

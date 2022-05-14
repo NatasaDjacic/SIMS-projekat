@@ -26,11 +26,18 @@ namespace ZdravoKlinika.Service
         }
 
 
-        public bool Save(Drug drug)
+        public bool Create(Drug drug)
         {
-            throw new NotImplementedException();
+            if (this.drugRepository.GetById(drug.drugId) is null)
+            {
+                return this.drugRepository.Save(drug);
+            }
+            return false;
         }
-
+        public int GenerateNewId()
+        {
+            return this.drugRepository.GenerateNewId();
+        }
 
     }
 }
