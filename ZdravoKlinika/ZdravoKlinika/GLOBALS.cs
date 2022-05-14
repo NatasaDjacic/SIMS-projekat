@@ -22,7 +22,7 @@ namespace ZdravoKlinika
         public static NotificationRepository notificationRepository = new NotificationRepository(@"..\..\..\Resource\Data\notification.json");
         public static RenovationRepository renovationRepository = new RenovationRepository(@"..\..\..\Resource\Data\renovation.json");
         public static EquipMovingRepository equipMovingRepository = new EquipMovingRepository(@"..\..\..\Resource\Data\equipMoving.json");
-
+        public static OrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
 
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
         public static DoctorService doctorService = new DoctorService(doctorRepository);
@@ -36,6 +36,7 @@ namespace ZdravoKlinika
         public static EquipMovingService equipMovingService = new EquipMovingService(equipMovingRepository, roomService, equipmentService);
         public static ReportService reportService = new ReportService(patientService);
         public static PrescriptionService prescriptionService = new PrescriptionService(patientService);
+        public static OrderEquipmentService orderEquipmentService = new OrderEquipmentService(orderEquipmentRepository, equipmentRepository);
 
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
@@ -49,6 +50,6 @@ namespace ZdravoKlinika
         public static RenovationController renovationController = new RenovationController(renovationService);
         public static ReportController reportController = new ReportController(reportService);
         public static PrescriptionController prescriptionController = new PrescriptionController(prescriptionService);
-
+        public static OrderEquipmentController orderEquipmentController = new OrderEquipmentController(orderEquipmentService);
     }
 }
