@@ -10,7 +10,8 @@
     <system:String x:Key="StrHosPools">Ankete bolnice</system:String>
     <system:String x:Key="StrDocPools">Ankete lekara</system:String>
     <system:String x:Key="StrMed">Pregled lekova</system:String>
-    <system:String x:Key="StrRen">Renoviranje</system:String>
+    <system:String x:Key="StrRen">Renoviranje ▼</system:String>
+    <system:String x:Key="StrSimpleRen">Renoviranje</system:String>
     <system:String x:Key="StrMer">Spajanje sala</system:String>
     <system:String x:Key="StrSep">Razdvajanje sala</system:String>
     <system:String x:Key="StrRoomMan">Upravljanje sobama</system:String>

@@ -9,7 +9,7 @@
       Title="{DynamicResource StrRoomManage}" Name="startScreen" Background ="Snow">
 
     <DockPanel Margin="10">
-
+    
         <Grid DockPanel.Dock="Top" Margin="0 15" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -23,11 +23,18 @@
         <Grid Margin="0 15" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="502*"/>
-                <ColumnDefinition Width="157*"/>
-                <ColumnDefinition Width="345*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel HorizontalAlignment="Center" Width="auto" >
-                <Grid Margin="50 0 0 0" Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1" Grid.RowSpan="6" HorizontalAlignment="Center" Width="auto" >
+                <Grid Margin="50 " Background="AliceBlue">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -70,7 +77,7 @@
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
                             
-                            <DataGridTextColumn Binding="{Binding type}" Width="*">
+                            <DataGridTextColumn Binding="{Binding type}" Width="*" MaxWidth="200">
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrType}"/>
                                 </DataGridTextColumn.Header>
@@ -89,7 +96,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <Button Tag="{Binding roomId}" Content="{DynamicResource StrModify}"  Margin="5 5" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
+                                                <Button Tag="{Binding roomId}" Content="{DynamicResource StrModify}" Height="25" Width="90" MaxWidth="90" Margin="2 2" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -101,7 +108,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Button Tag="{Binding roomId}" Content="{DynamicResource StrDelete}"  Margin="5 5" Padding="5 0" Click="Button_Click_Remove" Background="Red" Foreground="White"></Button>
+                                            <Button Tag="{Binding roomId}" Content="{DynamicResource StrDelete}"  Height="25" Width="90"  MaxWidth="90" Margin="2 2" Padding="5 0" Click="Button_Click_Remove" Background="Red" Foreground="White"></Button>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -110,29 +117,30 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <StackPanel Grid.Row="2" DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button  Content="{DynamicResource StrAddRoom}" Width="auto" HorizontalAlignment="Right" Margin="30"  FontSize="13" FontWeight="SemiBold" Click="Button_Click_New" ></Button>
+                        <Button  Content="{DynamicResource StrAddRoom}" HorizontalAlignment="Right" Height="25" Width="90" Margin="30 30 37 30" FontSize="13" FontWeight="SemiBold" Click="Button_Click_New" Background="Green" ></Button>
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <StackPanel  Grid.Column="1" Width="auto" Grid.ColumnSpan="2">
+            <StackPanel  Grid.Row="0" Width="auto">
                 <Grid Background="AliceBlue" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="2" FontWeight="Bold" FontSize="17" Margin="30" Content="{DynamicResource StrRoomReport}"/>
-                    <Label Grid.Column="0" Grid.Row="1" Content="{DynamicResource StrStartDate}"></Label>
-                    <Label Grid.Column="0" Grid.Row="2" Content="{DynamicResource StrEndDate}"/>
-                    <DatePicker Grid.Column="1" Grid.Row="1" SelectedDate = "{x:Static sys:DateTime.Now}"></DatePicker>
-                    <DatePicker Grid.Column="1" Grid.Row="2" SelectedDate ="{x:Static sys:DateTime.Now}"></DatePicker>
-                    <Button FontWeight="SemiBold" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="30" Content="{DynamicResource StrReport}"></Button>
+                    <Label Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="0" HorizontalAlignment="Center" Margin="0 10 0 10" FontWeight="Bold" FontSize="17" Content="{DynamicResource StrRoomReport}"/>
+                    <Label Grid.Column="1" Grid.Row="1" Margin="10 0 0 0" Content="{DynamicResource StrStartDate}"></Label>
+                    <DatePicker Grid.Column="2" Grid.Row="1" Margin="30 0 0 0" SelectedDate = "{x:Static sys:DateTime.Now}"></DatePicker>
+                    <Label Grid.Column="3" Grid.Row="1" Margin="10 0 0 0" Content="{DynamicResource StrEndDate}"/>
+                    <DatePicker Grid.Column="4" Grid.Row="1" Margin="10 0 0 0" SelectedDate ="{x:Static sys:DateTime.Now}"></DatePicker>
+                    <Button FontWeight="SemiBold" Grid.Column="5" Grid.Row="1" Height="25" Width="90" HorizontalAlignment="Center" Background="Green" Margin="10 0 30 10" Content="{DynamicResource StrReport}"></Button>
                 </Grid>
 
             </StackPanel>

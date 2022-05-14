@@ -41,20 +41,20 @@
                 </Grid.RowDefinitions>
                 <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="{DynamicResource StrRoomChange}"></Label>
 
-                <Label  Margin="10,10,0,10" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrId*}"></Label>
+                <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrId*}"></Label>
                 <TextBox Name="Idtb" Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Text="{Binding RoomId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
-                <Label  Margin="10,10,0,10" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrName*}"></Label>
+                <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrName*}"></Label>
                 <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220"  Text="{Binding _Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
-                <Label  Margin="10,10,0,10" Grid.Row="3" Grid.Column="0" Content="{DynamicResource StrDesc*}"></Label>
+                <Label  Margin="20,10,0,10" Grid.Row="3" Grid.Column="0" Content="{DynamicResource StrDesc*}"></Label>
                 <TextBox  Margin="20,10,20,10" Grid.Row="3" Grid.Column="1" Width="220" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
-                <Label Margin="10,10,0,10" Grid.Row="4" Grid.Column="0" Content="{DynamicResource StrType*}"></Label>
+                <Label Margin="20,10,0,10" Grid.Row="4" Grid.Column="0" Content="{DynamicResource StrType*}"></Label>
                 <TextBox IsEnabled="False" Margin="20,10,20,10" Grid.Row="4" Grid.Column="1" Width="220"  Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
-                <Button Grid.Row="5" Grid.Column="0" Margin="10,20,0,10" Width="75" Background="Red" Foreground="White" Content="{DynamicResource StrCancel}" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
-                <Button Grid.Row="5" Grid.Column="2" Margin="0 20 20 10" Width="75" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="{DynamicResource StrSubmit}" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
+                <Button Grid.Row="5" Grid.Column="0" Margin="20 20 0 30" Height="25" Width="90" Background="Red" Foreground="White" Content="{DynamicResource StrCancel}" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
+                <Button Grid.Row="5" Grid.Column="2"  Margin="20 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="{DynamicResource StrSubmit}" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
 
             </Grid>
         </Grid>

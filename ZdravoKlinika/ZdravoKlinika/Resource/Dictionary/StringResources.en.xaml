@@ -10,7 +10,8 @@
     <system:String x:Key="StrHosPools">Hospital pools</system:String>
     <system:String x:Key="StrDocPools">Doctor's pools</system:String>
     <system:String x:Key="StrMed">Drug review</system:String>
-    <system:String x:Key="StrRen">Renovation</system:String>
+    <system:String x:Key="StrRen">Renovation ▼</system:String> 
+    <system:String x:Key="StrSimpleRen">Renovation</system:String> 
     <system:String x:Key="StrMer">Merging halls</system:String>
     <system:String x:Key="StrSep">Separation halls</system:String>
     <system:String x:Key="StrRoomMan">Room management</system:String>

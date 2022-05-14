@@ -21,6 +21,7 @@ namespace ZdravoKlinika.UI.ManagerUI
     public partial class ManagerMainWindow : Window
     {
         AuthController authController = GLOBALS.authController;
+        string global_language; 
         public ManagerMainWindow()
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace ZdravoKlinika.UI.ManagerUI
 
 
             SwitchLanguage("srb");
+            global_language = "srb";
         }
         private void English_Click(object sender, RoutedEventArgs e)
         {
@@ -49,6 +51,8 @@ namespace ZdravoKlinika.UI.ManagerUI
 
 
             SwitchLanguage("en");
+            global_language = "en";
+
         }
         private void Russian_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +63,8 @@ namespace ZdravoKlinika.UI.ManagerUI
 
 
             SwitchLanguage("rus");
+            global_language = "rus";
+
         }
         private void SwitchLanguage(string languageCode)
         {
@@ -105,7 +111,7 @@ namespace ZdravoKlinika.UI.ManagerUI
         }
         private void Renovation_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.NavigationService.Navigate(new View.Renovations("srb"));
+            ContentFrame.NavigationService.Navigate(new View.Renovations(global_language));
         }
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
@@ -116,6 +122,10 @@ namespace ZdravoKlinika.UI.ManagerUI
             window.Show();
             this.Close();
 
+        }
+        private void Rooms_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Rooms(global_language));
         }
     }
 }

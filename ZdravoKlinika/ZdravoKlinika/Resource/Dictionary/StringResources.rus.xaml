@@ -10,7 +10,8 @@
     <system:String x:Key="StrHosPools">Больничные обследования</system:String>
     <system:String x:Key="StrDocPools">Осмотры врача</system:String>
     <system:String x:Key="StrMed">Обзор лекарств</system:String>
-    <system:String x:Key="StrRen">Ремонт</system:String>
+    <system:String x:Key="StrRen">Ремонт ▼</system:String>
+    <system:String x:Key="StrSimpleRen">Ремонт</system:String>
     <system:String x:Key="StrMer">Присоединение к залам</system:String>
     <system:String x:Key="StrSep">Разделение залов</system:String>
     <system:String x:Key="StrRoomMan">Управление номером</system:String>

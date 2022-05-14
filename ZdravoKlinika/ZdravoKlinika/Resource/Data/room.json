@@ -1,11 +1,5 @@
 [
   {
-    "roomId": "1",
-    "name": "Soba1",
-    "description": "Velika soba",
-    "type": "Sala za operacije"
-  },
-  {
     "roomId": "3",
     "name": "Soba3",
     "description": "Velika soba",
@@ -14,13 +8,13 @@
   {
     "roomId": "4",
     "name": "Soba4",
-    "description": "Srednja soba",
+    "description": "Srednja soba, veličine 50 metara kvadratnih. Renovirana 6. jula 2011. godine sredstvima iz budžeta mesne zajednice Jarčujak.",
     "type": "Sala za operaciju"
   },
   {
     "roomId": "5",
     "name": "Soba5",
-    "description": "Srednja soba",
+    "description": "Srednja soba, koristi se za više namena.",
     "type": "Kancelarija"
   },
   {
