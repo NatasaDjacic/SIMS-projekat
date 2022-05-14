@@ -19,11 +19,16 @@ using ZdravoKlinika.Model;
 using System.ComponentModel;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.UI.ManagerUI.View;
+using System.Collections;
 
 namespace ZdravoKlinika.UI.ManagerUI.View {
    
-    public partial class AddRoom : Page, INotifyPropertyChanged {
+    public partial class AddRoom : Page, INotifyPropertyChanged, INotifyDataErrorInfo {
         public event PropertyChangedEventHandler? PropertyChanged;
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+        
+        private readonly Dictionary<string, List<string>> _propertyErrors = new Dictionary<string, List<string>>();
+        
         protected virtual void OnPropertyChanged(string name) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
@@ -35,12 +40,42 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         private string _description = "";
         private string _type = "";
         private string _roomId = "";
+        private string errorMessage = "";
 
         public string _Name { get { return _name; } set { _name = value; OnPropertyChanged("Name"); } }
         public string Description { get { return _description; } set { _description = value; OnPropertyChanged("Description"); } }
         public string Type { get { return _type; } set { _type = value; OnPropertyChanged("Type"); } }
-      
-        public string RoomId { get { return _roomId; } set { _roomId = value; OnPropertyChanged("RoomId"); } }
+
+
+        public string RoomId 
+        {
+            get 
+            {
+                return _roomId; 
+            } 
+            set 
+            { 
+                _roomId = value;
+                if(_roomId.Length == 0)
+                {
+                    ErrorMessage = "Morate uneti Id sobe!";
+
+                    AddError(nameof(RoomId), "You have to set Room Id!");
+                }
+                _roomId = value; OnPropertyChanged("RoomId"); 
+            }
+        }
+        public string ErrorMessage
+        {
+            get
+            {
+                return errorMessage;
+            }
+            set
+            {
+                errorMessage = value; OnPropertyChanged("ErrorMessage");
+            }
+        }
 
         public RoomController roomController;
         public AddRoom(string value) {
@@ -72,6 +107,28 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             InitializeComponent();
             IdTb.Focus();
         }
+
+        public bool HasErrors => _propertyErrors.Any();
+
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return _propertyErrors.GetValueOrDefault(propertyName, null);
+        }
+
+        public void AddError(string propertyName, string errorMessage)
+        {
+            if (!_propertyErrors.ContainsKey(propertyName))
+            {
+                _propertyErrors.Add(propertyName, new List<string>());
+            }
+            _propertyErrors[propertyName].Add(errorMessage);
+            OnErrorsChanged(propertyName);
+        }
+        private void OnErrorsChanged(string propertyName)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
 
         private void Button_Click_Cancel(object sender, RoutedEventArgs e) {
             NavigationService.GoBack();

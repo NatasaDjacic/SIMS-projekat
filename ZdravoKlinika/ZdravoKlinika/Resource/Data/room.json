@@ -34,5 +34,11 @@
     "name": "Soba7",
     "description": "Soba za operaciju",
     "type": "Sala za operaciju"
+  },
+  {
+    "roomId": "10",
+    "name": "Soba10",
+    "description": "Soba za relaksaciju i odmor",
+    "type": "Kancelarija"
   }
 ]

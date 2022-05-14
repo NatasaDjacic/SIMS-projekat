@@ -30,6 +30,7 @@
                     <ColumnDefinition Width="25*"/>
                     <ColumnDefinition Width="11*"/>
                     <ColumnDefinition Width="69*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -43,7 +44,9 @@
                 <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="{DynamicResource StrNewRoom}"></Label>
 
                 <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrId*}"></Label>
-                <TextBox x:Name="IdTb"  Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Text="{Binding RoomId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" ></TextBox>
+                <TextBox x:Name="IdTb"  Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220"  Text="{Binding RoomId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" ></TextBox>
+                <Label Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Foreground="Red" Content="{Binding ErrorMessage}"></Label>
+
 
                 <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrName*}"></Label>
                 <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220"  Text="{Binding _Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
