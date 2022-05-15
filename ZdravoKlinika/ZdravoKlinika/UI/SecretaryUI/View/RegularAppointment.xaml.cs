@@ -41,14 +41,17 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                     case "SelectedAppointment":
                         if (SelectedAppointment == null) result = "You didn't select appointment.";
                         break;
+                    case "FromDate":
+                        if (FromDate < DateTime.Today) result = "From date must be greather than today.";
+                        break;
                     case "ToDate":
-                        if (ToDate < FromDate) result = "ToDate can't be greater then FromFate.";
+                        if (ToDate < FromDate) result = "To date can't be greater then from date.";
                         break;
                     case "JMBG":
                         if (JMBG.Trim() == "") result = "JMBG should be set.";
-                        if (JMBG.Length != 13) result = "JMBG should have 13 digits.";
-                        if (!Regex.IsMatch(JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
-                        if (!patientFound) result = "Patient not found";
+                        else if (JMBG.Length != 13) result = "JMBG should have 13 digits.";
+                        else if(!Regex.IsMatch(JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
+                        else if(!patientFound) result = "Patient not found";
                         break;
                     default: break;
                 }

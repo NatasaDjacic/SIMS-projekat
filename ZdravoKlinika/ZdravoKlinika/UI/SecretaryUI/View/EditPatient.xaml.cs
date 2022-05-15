@@ -34,11 +34,11 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                 switch (name) {
                     case "FirstName":
                         if (_firstName.Length <= 2) result = "First name should have more than 2 characters.";
-                        if (!Regex.IsMatch(_firstName, "^[a-zA-Z]*$")) result = "First name should contain only letters.";
+                        else if (!Regex.IsMatch(_firstName, "^[a-zA-Z]*$")) result = "First name should contain only letters.";
                         break;
                     case "LastName":
                         if (_lastName.Length <= 2) result = "Last name should have more than 2 characters.";
-                        if (!Regex.IsMatch(_lastName, "^[a-zA-Z]*$")) result = "Last name should contain only letters.";
+                        else if (!Regex.IsMatch(_lastName, "^[a-zA-Z]*$")) result = "Last name should contain only letters.";
                         break;
                     case "BirthDate":
                         if (_birthDate >= DateTime.Today.AddMinutes(-1)) result = "Date of birth should be set.";
@@ -60,8 +60,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                         break;
                     case "JMBG":
                         if (_JMBG.Trim() == "") result = "JMBG should be set.";
-                        if (_JMBG.Length != 13) result = "JMBG should have 13 digits.";
-                        if (!Regex.IsMatch(_JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
+                        else if (_JMBG.Length != 13) result = "JMBG should have 13 digits.";
+                        else if (!Regex.IsMatch(_JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
                         break;
                     default: break;
                 }

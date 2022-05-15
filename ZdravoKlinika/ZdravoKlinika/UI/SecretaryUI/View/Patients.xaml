@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mi="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:style="clr-namespace:ZdravoKlinika.UI.SecretaryUI"
       xmlns:local="clr-namespace:ZdravoKlinika.UI.SecretaryUI.View"
       mc:Ignorable="d" 
@@ -54,12 +55,16 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTemplateColumn Header="Actions" Width="200">
+                <DataGridTemplateColumn Header="Actions" Width="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Tag="{Binding JMBG}" Content="Delete"  Margin="10 5" Padding="10 0" Click="Button_Click_Remove" Background="Red" Foreground="White"></Button>
-                                <Button Tag="{Binding JMBG}" Content="Edit"  Margin="0 5 10 5" Padding="10 0" Click="Button_Click_Edit" Background="Green" Foreground="White"></Button>
+                                <Button Tag="{Binding JMBG}" Margin="10 5" Padding="5" Click="Button_Click_Remove" Background="Red" Foreground="White">
+                                    <mi:PackIcon Kind="Delete" Height="24" Width="24"/>
+                                </Button>
+                                <Button Tag="{Binding JMBG}" Margin="0 5 10 5" Padding="5" Click="Button_Click_Edit" Background="Green" Foreground="White">
+                                    <mi:PackIcon Kind="Edit" Height="24" Width="24"/>
+                                </Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
