@@ -32,7 +32,7 @@
             <StackPanel Margin="0 0 24 0" Grid.Row="1" Grid.Column="0" Width="280">
                 <StackPanel  Margin="0 12">
                     <Label>Patient JMBG:*</Label>
-                    <TextBox Text="{Binding JMBG, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="patientTB" Text="{Binding JMBG, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
                 </StackPanel>
                 <StackPanel  Margin="0 15">
                     <Label>Doctor:*</Label>
@@ -66,7 +66,7 @@
                 </StackPanel>
                 <StackPanel  Margin="0 15">
                     <Label>Duration (in minutes):*</Label>
-                    <TextBox Text="{Binding Duration}"></TextBox>
+                    <TextBox x:Name="durationTB" Text="{Binding Duration, ValidatesOnDataErrors=True}"></TextBox>
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="0 0 0 0" Grid.Row="1" Grid.Column="1" Width="280">
@@ -85,7 +85,7 @@
                 </StackPanel >
                 <StackPanel  Margin="0 15">
                     <Label>Date to:*</Label>
-                    <DatePicker FontSize="20" SelectedDate="{Binding ToDate}"></DatePicker>
+                    <DatePicker x:Name="toDateDP" FontSize="20" SelectedDate="{Binding ToDate, ValidatesOnDataErrors=True}"></DatePicker>
                 </StackPanel>
                 <StackPanel Margin="0 15 0 0">
                     <Label>Priority:*</Label>
@@ -93,7 +93,24 @@
                     <RadioButton GroupName="Priority" Checked="RadioButton_Checked" Content="doctor" Margin="0 2" VerticalContentAlignment="Center" FontSize="24" FontWeight="SemiBold"/>
                 </StackPanel>
             </StackPanel>
-            <Button Click="Button_Click" Margin="0 24 0 0" Grid.Column="1" Height="40" Background="#009E0F" Foreground="#FFF" Grid.Row="2">Find appointment time</Button>
+            <Button Click="Button_Click" FontSize="24" FontWeight="SemiBold"  Margin="0 24 0 0" Grid.Column="1" Height="40" Background="#009E0F" Foreground="#FFF" Grid.Row="2" Content="Find appointment time">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=durationTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=patientTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=toDateDP}" Value="False"/>
+
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Border Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" BorderBrush="Gray" BorderThickness="1" Width="2" Margin="24 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
             <Grid Margin="0 12 0 0" Grid.Column="3" Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -101,7 +118,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0">Pick appointment time:*</Label>
-                <ListBox Height="400" FontSize="20" FontWeight="SemiBold"  Grid.Row="1" ItemsSource="{Binding AppointmentsList}" SelectedItem="{Binding SelectedAppointment}">
+                <ListBox x:Name="pickLB" Height="400" FontSize="20" FontWeight="SemiBold"  Grid.Row="1" ItemsSource="{Binding AppointmentsList}" SelectedItem="{Binding SelectedAppointment, ValidatesOnDataErrors=True}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
@@ -122,7 +139,21 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Margin="0 24 0 0" Width="120" Grid.Column="0" Background="#CF2A27" Foreground="#FFF" Click="Button_Click_1">Cancel</Button>
-                <Button Margin="0 24 0 0" Width="120" Grid.Column="1" HorizontalAlignment="Right" Background="#009E0F" Foreground="#FFF" Click="Button_Click_2">Save</Button>
+                <Button Margin="0 24 0 0" Width="120" Grid.Column="1" HorizontalAlignment="Right" Background="#009E0F" Foreground="#FFF" Click="Button_Click_2" FontSize="24" FontWeight="SemiBold" Content="Save">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=pickLB}" Value="False"/>
+                                        </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
         </Grid>
     </DockPanel>
