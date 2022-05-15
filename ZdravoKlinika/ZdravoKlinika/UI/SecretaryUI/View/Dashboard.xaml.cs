@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +18,17 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
     /// <summary>
     /// Interaction logic for Dashboard.xaml
     /// </summary>
-    public partial class Dashboard : Page {
+    public partial class Dashboard : Page, INotifyPropertyChanged {
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string name) {
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        public string HiText { get; set; }
         public Dashboard() {
+            HiText = String.Format("Hi, {0} {1}!", GLOBALS.authService.user.lastName, GLOBALS.authService.user.firstName);
+            this.DataContext = this;
             InitializeComponent();
         }
 
@@ -36,6 +46,32 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         private void RegularAppointment_Click(object sender, RoutedEventArgs e) {
 
             NavigationService.Navigate(new View.RegularAppointment());
+        }
+
+        private void Mitting_Click(object sender, RoutedEventArgs e) {
+            NavigationService.Navigate(new View.Meetings());
+
+        }
+        private void NewMitting_Click(object sender, RoutedEventArgs e) {
+            NavigationService.Navigate(new View.NewMeeting());
+
+        }
+        private void SickDays_Click(object sender, RoutedEventArgs e) {
+            NavigationService.Navigate(new View.SickDays());
+
+        }
+        private void RoomReport_Click(object sender, RoutedEventArgs e) {
+            NavigationService.Navigate(new View.RoomOccupancy());
+
+        }
+
+        private void OrderDynamicEquipment_Click(object sender, RoutedEventArgs e) {
+            NavigationService.Navigate(new View.OrderDynamicEquipment());
+
+        }
+        private void EmergencyAppointment_Click(object sender, RoutedEventArgs e) {
+            NavigationService.Navigate(new View.EmergencyAppointment());
+
         }
     }
 }
