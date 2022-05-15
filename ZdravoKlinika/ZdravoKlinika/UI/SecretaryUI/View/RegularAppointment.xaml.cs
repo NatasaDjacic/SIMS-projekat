@@ -18,17 +18,46 @@ using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
+using System.Text.RegularExpressions;
 
 namespace ZdravoKlinika.UI.SecretaryUI.View {
 
-    public partial class RegularAppointment : Page, INotifyPropertyChanged {
+    public partial class RegularAppointment : Page, INotifyPropertyChanged, IDataErrorInfo {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-
+        public string Error {
+            get {
+                return null;
+            }
+        }
+        public string this[string name] {
+            get {
+                string result = null;
+                switch (name) {
+                    case "SelectedAppointment":
+                        if (SelectedAppointment == null) result = "You didn't select appointment.";
+                        break;
+                    case "FromDate":
+                        if (FromDate < DateTime.Today) result = "From date must be greather than today.";
+                        break;
+                    case "ToDate":
+                        if (ToDate < FromDate) result = "To date can't be greater then from date.";
+                        break;
+                    case "JMBG":
+                        if (JMBG.Trim() == "") result = "JMBG should be set.";
+                        else if (JMBG.Length != 13) result = "JMBG should have 13 digits.";
+                        else if(!Regex.IsMatch(JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
+                        else if(!patientFound) result = "Patient not found";
+                        break;
+                    default: break;
+                }
+                return result;
+            }
+        }
         DoctorController doctorController = GLOBALS.doctorController;
         RoomController roomController = GLOBALS.roomController;
         AppointmentController appointmentController = GLOBALS.appointmentController;

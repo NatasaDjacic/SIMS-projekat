@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
+using System.Text.RegularExpressions;
 using ZdravoKlinika.Model;
 using System.ComponentModel;
 using ZdravoKlinika.Model.Enums;
@@ -23,14 +24,59 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
     /// <summary>
     /// Interaction logic for AddPatient.xaml
     /// </summary>
-    public partial class AddPatient : Page, INotifyPropertyChanged {
+    public partial class AddPatient : Page, INotifyPropertyChanged, IDataErrorInfo {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+        public string Error {
+            get {
+                return null;
+            }
+        }
 
+        public string this[string name] {
+            get {
+                string result = null;
+                switch (name) {
+                    case "FirstName":
+                        if (_firstName.Length <= 2) result = "First name should have more than 2 characters.";
+                        else if (!Regex.IsMatch(_firstName, "^[a-zA-Z]*$")) result = "First name should contain only letters.";
+                    break;
+                    case "LastName":
+                        if (_lastName.Length <= 2) result = "Last name should have more than 2 characters.";
+                        else if (!Regex.IsMatch(_lastName, "^[a-zA-Z]*$")) result = "Last name should contain only letters.";
+                    break;
+                    case "BirthDate":
+                        if (_birthDate >= DateTime.Today.AddMinutes(-1)) result = "Date of birth should be set.";
+                    break;
+                    case "Gender":
+                        if (_gender==Gender.None) result = "Gender should be set.";
+                    break;
+                    case "Country":
+                        if (_country.Trim().Length < 1) result = "Country should be set.";
+                    break;
+                    case "City":
+                        if (_city.Trim().Length < 1) result = "City should be set.";
+                    break;
+                    case "Address":
+                        if (_address.Trim().Length < 1) result = "Address should be set.";
+                    break;
+                    case "Email":
+                        if (_email != "" && !Regex.IsMatch(_email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")) result = "Email fromat is not correct.";
+                        break;
+                    case "JMBG":
+                        if (_JMBG.Trim() == "") result = "JMBG should be set.";
+                        else if (_JMBG.Length != 13) result = "JMBG should have 13 digits.";
+                        else if (!Regex.IsMatch(_JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
+                        break;
+                    default: break;
+                }
+                return result;
+            }
+        }
 
         private string _firstName = "";
         private string _lastName = "";

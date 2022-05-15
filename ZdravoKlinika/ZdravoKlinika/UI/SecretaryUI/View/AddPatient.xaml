@@ -35,7 +35,29 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Width="100" Background="Red" Foreground="White" Content="Cancel" FontSize="24" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
-            <Button Grid.Column="1" Width="100" Background="Green" Foreground="White" HorizontalAlignment="Right" Content="Save"  FontSize="24" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
+            <Button Grid.Column="1" Width="100" Background="Green" Foreground="White" HorizontalAlignment="Right" Content="Save"  FontSize="24" FontWeight="SemiBold" Click="Button_Click_Save">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=jmbgTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=fNameTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=lNameTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=dateDP}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=genderRB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=cityTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=countryTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=addressTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=emailTB}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
         <Grid DockPanel.Dock="Left">
             <Grid.ColumnDefinitions>
@@ -57,42 +79,70 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
                     <Label>First Name*</Label>
-                    <TextBox Width="270" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                </StackPanel>
+                    <StackPanel Orientation="Vertical" Height="50">
+                        <TextBox x:Name="fNameTB" Width="270" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=fNameTB}" Foreground="Red"/>
+                    </StackPanel>
+                   </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="1" Margin="10">
                     <Label>Last Name*</Label>
-                    <TextBox Width="270"  Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <StackPanel Orientation="Vertical" Height="50">
+                    
+                        <TextBox x:Name="lNameTB" Width="270"  Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=lNameTB}" Foreground="Red"/>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
                     <Label>Country*</Label>
-                    <TextBox Width="270" Text="{Binding Country, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <StackPanel Orientation="Vertical" Height="50">
+                        <TextBox x:Name="countryTB" Width="270" Text="{Binding Country, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=countryTB}" Foreground="Red"/>
+
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
                     <Label>City*</Label>
-                    <TextBox Width="270"  Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <StackPanel Orientation="Vertical" Height="50">
+                        <TextBox x:Name="cityTB" Width="270"  Text="{Binding City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=cityTB}" Foreground="Red"/>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
             <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <StackPanel Margin="10 9">
                         <Label>Date of Birth</Label>
-                        <DatePicker Height="36"  Width="270"  SelectedDate="{Binding BirthDate, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+                        <StackPanel Orientation="Vertical" Height="50">
+
+                            <DatePicker x:Name="dateDP" Height="36"  Width="270"  SelectedDate="{Binding BirthDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></DatePicker>
+                            <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=dateDP}" Foreground="Red"/>
+                        </StackPanel>
                     </StackPanel>
                     <StackPanel Margin="10" Orientation="Vertical">
                         <Label>Gender</Label>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                        <StackPanel Orientation="Vertical" Height="50">
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
 
                             <StackPanel.Resources>
                                 <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
                             </StackPanel.Resources>
-                            <RadioButton GroupName="gender" Margin="10 0 10 0" IsChecked="{Binding Path=Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static enums:Gender.Male}}">M</RadioButton>
-                            <RadioButton GroupName="gender" Margin="10 0 10 0" IsChecked="{Binding Path=Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static enums:Gender.Female}}">F</RadioButton>
+                            <RadioButton x:Name="genderRB" GroupName="gender" Margin="10 0 10 0" IsChecked="{Binding Path=Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static enums:Gender.Male}, ValidatesOnDataErrors=True}">M</RadioButton>
+                            <RadioButton GroupName="gender" Margin="10 0 10 0" IsChecked="{Binding Path=Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static enums:Gender.Female}, ValidatesOnDataErrors=True}">F</RadioButton>
+
+                            </StackPanel>
+                            <TextBlock Margin="0 3 0 0" FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=genderRB}" Foreground="Red"/>
+
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Margin="10">
                     <Label>Address*</Label>
-                    <TextBox  Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <StackPanel Orientation="Vertical" Height="50">
+
+                        <TextBox x:Name="addressTB" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=addressTB}" Foreground="Red"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0">
@@ -103,7 +153,11 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Margin="10" Grid.Column="0">
                         <Label>JMBG*</Label>
-                        <TextBox Width="350"  Text="{Binding JMBG, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                        <StackPanel Orientation="Vertical" Height="50">
+
+                            <TextBox x:Name="jmbgTB" Width="350"  Text="{Binding JMBG, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                            <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=jmbgTB}" Foreground="Red"/>
+                        </StackPanel>
                     </StackPanel>
                     <StackPanel Margin="10" Grid.Column="1">
                         <Label>Blood Type</Label>
@@ -121,7 +175,10 @@
                     </StackPanel>
                     <StackPanel Margin="10" Grid.Column="1">
                         <Label>Email</Label>
-                        <TextBox  Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                        <StackPanel Orientation="Vertical" Height="50">
+                            <TextBox x:Name="emailTB" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" ></TextBox>
+                            <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=emailTB}" Foreground="Red"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </StackPanel>
