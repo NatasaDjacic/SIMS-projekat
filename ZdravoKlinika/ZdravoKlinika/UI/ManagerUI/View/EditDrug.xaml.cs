@@ -21,8 +21,7 @@ using ZdravoKlinika.Service;
 
 namespace ZdravoKlinika.UI.ManagerUI.View
 {
-  
-    public partial class AddDrug : Page, INotifyPropertyChanged
+    public partial class EditDrug : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -33,13 +32,17 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-
-        private string name = "";
+        private string drugId = "";
+        private string _name = "";
         private string ingredients = "";
-        public string _Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
+        private string commentDoctor = "";
+        public string DrugId { get { return drugId; } set { drugId = value; OnPropertyChanged("DrugId"); } }
+        public string _Name { get { return _name; } set { _name = value; OnPropertyChanged("_Name"); } }
         public string Ingredients { get { return ingredients; } set { ingredients = value; OnPropertyChanged("Ingredients"); } }
+        public string CommentDoctor { get { return commentDoctor; } set { commentDoctor = value; OnPropertyChanged("CommentDoctor"); } }
 
         public DrugController drugController;
+        Drug? drug;
         private ObservableCollection<Drug> drugs;
 
         public ObservableCollection<Drug> DrugsCollection
@@ -54,16 +57,28 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 }
             }
         }
-        public AddDrug()
+
+        public EditDrug(int drugId)
         {
             this.DataContext = this;
             DrugRepository drugRepository = new DrugRepository(@"..\..\..\Resource\Data\drug.json");
             DrugService drugService = new DrugService(drugRepository);
             drugController = new DrugController(drugService);
+            drug = drugController.GetById(drugId);
+            if (drug is not null)
+            {
+                _Name = drug.name;
+                Ingredients = drug.ingredients;
+                CommentDoctor = drug.comment;
+            }
+            else { NavigationService.GoBack(); }
             DrugsCollection = new ObservableCollection<Drug>(drugController.GetAll());
             this.DataContext = this;
             InitializeComponent();
         }
+
+        
+
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
@@ -73,9 +88,14 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         {
             try
             {
-                drugController.Create(name, ingredients);
-                NavigationService.Navigate(new Drugs());
+                if (drug is not null)
+                {
+                    drug.name = _Name;
+                    drug.ingredients = Ingredients;
 
+                    drugController.Update(drug);
+                }
+                NavigationService.Navigate(new Drugs());
             }
             catch (Exception ex)
             {

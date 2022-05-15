@@ -29,6 +29,15 @@ namespace ZdravoKlinika.Controller
             drug.approved = false;
             return this.drugService.Create(drug);
         }
+        public Drug GetById(int drugId)
+        {
+            return drugService.GetById(drugId);
+        }
+        public bool Update(Drug drug)
+        {
+            return this.drugService.Update(drug);
+        }
+
 
     }
 }

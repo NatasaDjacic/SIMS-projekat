@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1024"
       Title="Drugs">
 
     <Grid Margin="0 15" >
@@ -88,6 +88,7 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
+                        
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.Header>
                                 <TextBlock Text="Izmeni lek"/>
@@ -95,24 +96,13 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Tag="{Binding drugID}" Content="Izmeni" Height="25" Width="90" MaxWidth="90" Margin="2 2" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.Header>
-                                <TextBlock Text="Izmeni sastav"/>
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Tag="{Binding drugID}" Content="Izmeni" Height="25" Width="90" MaxWidth="90" Margin="2 2" Padding="5 0" Click="Button_Click_Edit" Background="Orange" Foreground="White"></Button>
+                                        <Button Tag="{Binding drugId}" Click="Button_Click_Edit" Content="Izmeni" Height="25" Width="90" MaxWidth="90" Margin="2 2" Padding="5 0" Background="Orange" Foreground="White"></Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
+                    
                 </DataGrid>
                 <StackPanel Grid.Row="1" DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button  Content="Dodaj lek" Background="Green" Height="25" Width="90" HorizontalAlignment="Right" Margin="0 0 30 15"  FontSize="13" FontWeight="SemiBold" Click="Button_Click_New_Drug" ></Button>

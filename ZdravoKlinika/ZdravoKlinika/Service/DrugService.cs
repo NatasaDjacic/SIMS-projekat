@@ -20,6 +20,10 @@ namespace ZdravoKlinika.Service
             this.drugRepository = drugRepository; 
         }
 
+        public Drug GetById(int drugId)
+        {
+            return this.drugRepository.GetById(drugId);
+        }
         public List<Drug> GetAll()
         {
             return drugRepository.GetAll();
@@ -37,6 +41,14 @@ namespace ZdravoKlinika.Service
         public int GenerateNewId()
         {
             return this.drugRepository.GenerateNewId();
+        }
+        public bool Update(Drug drug)
+        {
+            if (this.drugRepository.GetById(drug.drugId) is not null)
+            {
+                return !this.drugRepository.Save(drug);
+            }
+            return false;
         }
 
     }

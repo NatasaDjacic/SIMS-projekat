@@ -2,15 +2,15 @@
   {
     "drugId": 1,
     "name": "Aerius",
-    "ingredients": "",
+    "ingredients": "Nema informacija",
     "approved": false,
     "checkedBy": null,
     "comment": "Dodati nove alergene"
   },
   {
-    "drugId": 1,
-    "name": "Aerius",
-    "ingredients": "Hidrociklin, Hidroksihlorokin",
+    "drugId": 2,
+    "name": "Aerius 2.0",
+    "ingredients": "Hidrociklin, HNO3",
     "approved": false,
     "checkedBy": null,
     "comment": "Dodati nove alergene"
@@ -18,7 +18,15 @@
   {
     "drugId": 3,
     "name": "Bromazepam",
-    "ingredients": "Voda, Ajnštajntijum, H2SO4",
+    "ingredients": "Voda, Stroncijum, H2SO4",
+    "approved": false,
+    "checkedBy": null,
+    "comment": ""
+  },
+  {
+    "drugId": 4,
+    "name": "Hidrociklin",
+    "ingredients": "Voda, Šećer",
     "approved": false,
     "checkedBy": null,
     "comment": ""

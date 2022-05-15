@@ -63,7 +63,10 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
         {
-            
+            int drugId = Convert.ToInt32(((Button)sender).Tag);
+            Console.WriteLine(drugId);
+            if (drugId == 0) return;
+            NavigationService.Navigate(new EditDrug((drugId)));
         }
     }
 }
