@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
+      xmlns:val="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:enums="clr-namespace:ZdravoKlinika.Model.Enums"
       xmlns:converters="clr-namespace:ZdravoKlinika.UI.ManagerUI"
@@ -44,18 +44,90 @@
                 <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="{DynamicResource StrNewRoom}"></Label>
 
                 <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrId*}"></Label>
-                <TextBox x:Name="IdTb"  Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220"  Text="{Binding RoomId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" ></TextBox>
-                <Label Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Foreground="Red" Content="{Binding ErrorMessage}"></Label>
+                <TextBox x:Name="IdTb"  Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Grid.ColumnSpan="2" >
+                    <TextBox.Text>
+                        <Binding Path="RoomId" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
 
 
                 <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrName*}"></Label>
-                <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220"  Text="{Binding _Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+                <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
+                    <TextBox.Text>
+                        <Binding Path="_Name" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-                <Label  Margin="20,10,0,10" Grid.Row="3" Grid.Column="0" Content="{DynamicResource StrDesc*}"></Label>
-                <TextBox  Margin="20,10,20,10" Grid.Row="3" Grid.Column="1" Width="220" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+                                <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+
+
+                <Label  Margin="20,10,0,10" Grid.Row="3" Grid.Column="0" Content="{DynamicResource StrDesc}"></Label>
+                <TextBox  Margin="20,10,20,10" Grid.Row="3" Grid.Column="1" Width="220" Grid.ColumnSpan="2"></TextBox>
 
                 <Label  Margin="20,10,0,10" Grid.Row="4" Grid.Column="0"  Content="{DynamicResource StrType*}"></Label>
-                <TextBox  Margin="20,10,20,10" Grid.Row="4" Grid.Column="1" Width="220"  Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+                <TextBox  Margin="20,10,20,10" Grid.Row="4" Grid.Column="1" Width="220"  Grid.ColumnSpan="2">
+                    <TextBox.Text>
+                        <Binding Path="Type" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
 
                 <Button Grid.Row="5" Grid.Column="0" Margin="20 20 0 30" Height="25" Width="90" Background="Red" Foreground="White" Content="{DynamicResource StrCancel}" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
                 <Button Grid.Row="5" Grid.Column="2" Margin="0 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="{DynamicResource StrSubmit}" FontWeight="SemiBold" Click="Button_Click_Save"></Button>

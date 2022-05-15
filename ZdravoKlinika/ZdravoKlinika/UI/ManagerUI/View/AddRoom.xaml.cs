@@ -36,13 +36,13 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         }
 
 
-        private string _name = "";
-        private string _description = "";
-        private string _type = "";
-        private string _roomId = "";
-        private string errorMessage = "";
+        private string _name;
+        private string _description ;
+        private string _type;
+        private string _roomId;
 
-        public string _Name { get { return _name; } set { _name = value; OnPropertyChanged("Name"); } }
+
+        public string _Name { get { return _name; } set { _name = value; OnPropertyChanged("_Name"); } }
         public string Description { get { return _description; } set { _description = value; OnPropertyChanged("Description"); } }
         public string Type { get { return _type; } set { _type = value; OnPropertyChanged("Type"); } }
 
@@ -54,31 +54,19 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
                 return _roomId; 
             } 
             set 
-            { 
-                _roomId = value;
-                if(_roomId.Length == 0)
+            {
+                if (value != _roomId)
                 {
-                    ErrorMessage = "Morate uneti Id sobe!";
-
-                    AddError(nameof(RoomId), "You have to set Room Id!");
+                    _roomId = value;
+                    OnPropertyChanged("RoomId");
                 }
-                _roomId = value; OnPropertyChanged("RoomId"); 
             }
         }
-        public string ErrorMessage
-        {
-            get
-            {
-                return errorMessage;
-            }
-            set
-            {
-                errorMessage = value; OnPropertyChanged("ErrorMessage");
-            }
-        }
+      
 
         public RoomController roomController;
         public AddRoom(string value) {
+            InitializeComponent();
             this.DataContext = this;
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
@@ -104,7 +92,6 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             }
             this.Resources.MergedDictionaries.Add(dictionary);
 
-            InitializeComponent();
             IdTb.Focus();
         }
 

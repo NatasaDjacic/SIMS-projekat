@@ -37,7 +37,7 @@
     <system:String x:Key="StrId">Ид</system:String>
     <system:String x:Key="StrId*">Ид*</system:String>
     <system:String x:Key="StrNewRoom">Создание новой комнаты</system:String>
-    <system:String x:Key="StrCancel">Отмена</system:String>
+    <system:String x:Key="StrCancel">Назад</system:String>
     <system:String x:Key="StrSubmit">Отправить</system:String>
     <system:String x:Key="StrRoomChange">Смена комнаты</system:String>
 

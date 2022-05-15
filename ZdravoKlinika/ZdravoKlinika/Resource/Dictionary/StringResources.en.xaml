@@ -37,7 +37,7 @@
     <system:String x:Key="StrId*">Id*</system:String>
     <system:String x:Key="StrId">Id</system:String>
     <system:String x:Key="StrNewRoom">Creating a new room</system:String>
-    <system:String x:Key="StrCancel">Cancel</system:String>
+    <system:String x:Key="StrCancel">Back</system:String>
     <system:String x:Key="StrSubmit">Submit</system:String>
     <system:String x:Key="StrRoomChange">Changing the room</system:String>
 

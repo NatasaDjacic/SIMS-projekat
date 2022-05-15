@@ -40,5 +40,11 @@
     "name": "Soba10",
     "description": "Soba za relaksaciju i odmor",
     "type": "Kancelarija"
+  },
+  {
+    "roomId": "11",
+    "name": "Soba11",
+    "description": null,
+    "type": "Operaciona sala"
   }
 ]
