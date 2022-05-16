@@ -37,13 +37,13 @@ namespace ZdravoKlinika.Service
             throw new NotImplementedException();
         }
 
-        public bool Update(Model.Room room)
+        public bool Update(Room room)
         {
-            if (this.roomRepository.GetById(room.roomId) is not null)
-            {
-                return !this.roomRepository.Save(room);
-            }
-            return false;
+           
+            
+            return !this.roomRepository.Save(room);
+            
+          
         }
 
         public bool Delete(string roomId)

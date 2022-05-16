@@ -9,7 +9,7 @@
       xmlns:converters="clr-namespace:ZdravoKlinika.UI.ManagerUI"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="AddPatient" FontSize="15" Background="Snow">
+      Title="EditRoom" FontSize="15" Background="Snow">
     
     <DockPanel>
         <Grid DockPanel.Dock="Bottom" Margin="10">
@@ -42,7 +42,7 @@
                 <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="{DynamicResource StrRoomChange}"></Label>
 
                 <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrId*}"></Label>
-                <TextBox Name="Idtb" Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
+                <TextBox x:Name="Idtb" Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
                     <TextBox.Text>
                         <Binding Path="RoomId" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -69,7 +69,7 @@
                 </TextBox>
 
                 <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrName*}"></Label>
-                <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
+                <TextBox x:Name="name" Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
                     <TextBox.Text>
                         <Binding Path="_Name" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -102,7 +102,22 @@
                 <TextBox IsEnabled="False" Margin="20,10,20,10" Grid.Row="4" Grid.Column="1" Width="220"  Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
                 <Button Grid.Row="5" Grid.Column="0" Margin="20 20 0 30" Height="25" Width="90" Background="Red" Foreground="White" Content="{DynamicResource StrCancel}" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
-                <Button Grid.Row="5" Grid.Column="2"  Margin="20 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="{DynamicResource StrSubmit}" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
+                <Button Grid.Row="5" Grid.Column="2"  Margin="20 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="{DynamicResource StrSubmit}" FontWeight="SemiBold" Click="Button_Click_Save">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Idtb}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=name}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
             </Grid>
         </Grid>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
@@ -12,8 +13,11 @@ using ZdravoKlinika.Service;
 
 namespace ZdravoKlinika.UI.ManagerUI.View {
    
-    public partial class EditRoom : Page, INotifyPropertyChanged {
+    public partial class EditRoom : Page, INotifyPropertyChanged, IDataErrorInfo
+    {
         public event PropertyChangedEventHandler? PropertyChanged;
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+
         protected virtual void OnPropertyChanged(string name) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
@@ -29,6 +33,35 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         public string _Name { get { return _name; } set { _name = value; OnPropertyChanged("_Name"); } }
         public string Description { get { return _description; } set { _description = value; OnPropertyChanged("Description"); } }
         public string Type { get { return _type; } set { _type = value; OnPropertyChanged("Type"); } }
+
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string name]
+        {
+            get
+            {
+                string result = null;
+                switch (name)
+                {
+                    case "RoomId":
+                        if (_roomId.Length == 0) result = "Please enter Room ID.";
+                       
+                        break;
+                    case "_Name":
+                        if (_name.Length == 0) result = "Please enter Room name.";
+                       
+                        break;
+                    default: break;
+                }
+                return result;
+            }
+        }
 
         public RoomController roomController;
         Room? r;
@@ -82,18 +115,15 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
                     r.name = _Name;
                     r.description = Description;
                     r.type = Type;
-                    
                     roomController.Update(r);
                 }
                 NavigationService.Navigate(new Rooms("srb"));
-
+                
 
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
         }
-
-      
     }
 }

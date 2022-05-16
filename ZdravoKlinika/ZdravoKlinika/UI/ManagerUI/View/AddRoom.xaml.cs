@@ -23,7 +23,9 @@ using System.Collections;
 
 namespace ZdravoKlinika.UI.ManagerUI.View {
    
-    public partial class AddRoom : Page, INotifyPropertyChanged, INotifyDataErrorInfo {
+    public partial class AddRoom : Page, INotifyPropertyChanged, IDataErrorInfo
+    
+    {
         public event PropertyChangedEventHandler? PropertyChanged;
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
         
@@ -35,12 +37,12 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             }
         }
 
-
         private string _name;
         private string _description ;
         private string _type;
         private string _roomId;
 
+      
 
         public string _Name { get { return _name; } set { _name = value; OnPropertyChanged("_Name"); } }
         public string Description { get { return _description; } set { _description = value; OnPropertyChanged("Description"); } }
@@ -62,7 +64,40 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
                 }
             }
         }
-      
+
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string name]
+        {
+            get
+            {
+                string result = null;
+                switch (name)
+                {
+                    case "RoomId":
+                        if (_roomId.Length == 0) result = "Please enter Room ID.";
+
+                        break;
+                    case "_Name":
+                        if (_name.Length == 0) result = "Please enter Room name.";
+                        break;
+
+                    case "Type":
+                        if (_type.Length == 0) result = "Please enter Room type.";
+
+                        break;
+                    default: break;
+                }
+                return result;
+            }
+        }
+
 
         public RoomController roomController;
         public AddRoom(string value) {
@@ -93,27 +128,6 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             this.Resources.MergedDictionaries.Add(dictionary);
 
             IdTb.Focus();
-        }
-
-        public bool HasErrors => _propertyErrors.Any();
-
-        public IEnumerable GetErrors(string propertyName)
-        {
-            return _propertyErrors.GetValueOrDefault(propertyName, null);
-        }
-
-        public void AddError(string propertyName, string errorMessage)
-        {
-            if (!_propertyErrors.ContainsKey(propertyName))
-            {
-                _propertyErrors.Add(propertyName, new List<string>());
-            }
-            _propertyErrors[propertyName].Add(errorMessage);
-            OnErrorsChanged(propertyName);
-        }
-        private void OnErrorsChanged(string propertyName)
-        {
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
 
