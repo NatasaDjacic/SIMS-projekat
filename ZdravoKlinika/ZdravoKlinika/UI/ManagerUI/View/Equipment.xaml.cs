@@ -113,6 +113,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 if (selectedDate != value)
                 {
                     selectedDate = value;
+                    CheckDates();
                     OnPropertyChanged("SelectedDate");
                 }
             }
@@ -151,8 +152,29 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             EquipmentsCollection = new ObservableCollection<EquipRoomGroupDTO>(g);
             SelectedDate = DateTime.Now;
             InitializeComponent();
+            CheckDates();
 
         }
+
+        private void CheckDates()
+        {
+            if (DateTB == null) return;
+            if (SelectedDate.CompareTo(DateTime.Now) < 0)
+            {
+
+
+                DateTB.Text = "Start date can't be today or before. Choose again!";
+
+                DateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                DateTB.Text = " ";
+                DateTB.Foreground = Brushes.Gray;
+            }
+
+        }
+
         private ObservableCollection<Room> rooms;
         public ObservableCollection<Room> RoomsCollection
         {

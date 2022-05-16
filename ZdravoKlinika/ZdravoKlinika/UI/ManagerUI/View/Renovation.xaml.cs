@@ -48,6 +48,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 if (startDate != value)
                 {
                     startDate = value;
+                    CheckDates();
                     OnPropertyChanged("StartDate");
                 }
             }
@@ -62,6 +63,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 if (endDate != value)
                 {
                     endDate = value;
+                    CheckDates();
                     OnPropertyChanged("EndDate");
                 }
             }
@@ -142,9 +144,44 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
             this.Resources.MergedDictionaries.Add(dictionary);
             InitializeComponent();
+            CheckDates();
 
         }
+        private void CheckDates()
+        {
+            if (StartDateTB == null) return;
+            if (startDate.CompareTo(DateTime.Now) < 0)
+            {
 
+
+                StartDateTB.Text = "Start date can't be today or before. Choose again!";
+
+                StartDateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                StartDateTB.Text = " ";
+                StartDateTB.Foreground = Brushes.Gray;
+            }
+
+
+            if (EndDateTB == null) return;
+            if (endDate.CompareTo(DateTime.Now) < 0 || endDate.CompareTo(startDate) < 0)
+            {
+
+
+                EndDateTB.Text = "End date can't be before today or before start date. Choose again!";
+
+                EndDateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                EndDateTB.Text = " ";
+                EndDateTB.Foreground = Brushes.Gray;
+            }
+
+
+        }
         private void Button_Click_Remove(object sender, RoutedEventArgs e)
         {
             string? roomId = ((Button)sender).Tag as string;
