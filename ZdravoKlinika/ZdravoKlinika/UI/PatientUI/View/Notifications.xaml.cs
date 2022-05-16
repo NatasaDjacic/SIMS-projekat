@@ -63,11 +63,10 @@ namespace ZdravoKlinika.UI.PatientUI.View
             e.CanExecute = true;
         }
 
-        private void Enable_Cancel(object sender, ExecutedRoutedEventArgs e)
+        private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             NavigationService.Navigate(new Home());
         }
-
     }
 }
 

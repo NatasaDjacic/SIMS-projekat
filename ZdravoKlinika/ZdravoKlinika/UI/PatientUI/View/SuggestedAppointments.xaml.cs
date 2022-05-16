@@ -131,12 +131,20 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         }
 
-        private void Button_Click_Back(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new NewAppointment());
 
+
+
+        private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
 
+        private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Home());
+        }
+
+       
 
     }
 }

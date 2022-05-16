@@ -65,7 +65,17 @@ namespace ZdravoKlinika.UI.PatientUI
           typeof(RoutedCommands),
           new InputGestureCollection()
            {
-            new KeyGesture(Key.F12),
+            new KeyGesture(Key.B, ModifierKeys.Control),
+          }
+          );
+
+        public static readonly RoutedUICommand Find = new RoutedUICommand(
+          "Find",
+          "Find",
+          typeof(RoutedCommands),
+          new InputGestureCollection()
+           {
+            new KeyGesture(Key.F, ModifierKeys.Control),
           }
           );
 
