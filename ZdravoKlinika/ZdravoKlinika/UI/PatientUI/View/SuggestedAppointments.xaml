@@ -4,17 +4,27 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI.View"
+      xmlns:cmd="clr-namespace:ZdravoKlinika.UI.PatientUI"
       mc:Ignorable="d" 
       d:DesignHeight="595" d:DesignWidth="718"
       Title="SuggestedAppointments" >
+
+
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" ></CommandBinding>
+    </Page.CommandBindings>
 
     <DockPanel >
         <StackPanel DockPanel.Dock="Top" Margin="10">
             <TextBlock Text="Appointments" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="48"></TextBlock>
         </StackPanel>
-        <StackPanel DockPanel.Dock="Bottom" Height="67"  RenderTransformOrigin="0.502,-0.397">
-            <Button   Click="Button_Click_Back" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red"  Foreground="White" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
-        </StackPanel>
+        <Grid DockPanel.Dock="Bottom" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"  Foreground="White" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Cancel" ></Button>
+        </Grid>
 
         <DataGrid   Height="432" Width="718" ItemsSource="{Binding AppointmentsList}" SelectedItem="{Binding SelectedAppointment}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>

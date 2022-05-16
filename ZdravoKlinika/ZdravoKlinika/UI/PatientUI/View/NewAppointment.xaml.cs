@@ -126,12 +126,24 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
 
-        private void Button_Click_Cancel(object sender, RoutedEventArgs e)
+
+        private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            e.CanExecute = true;
         }
 
-        private void Button_Click_Find(object sender, RoutedEventArgs e)
+        private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Home());
+        }
+
+
+        private void Find_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Find_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             try
             {
@@ -144,8 +156,9 @@ namespace ZdravoKlinika.UI.PatientUI.View
             {
                 Console.WriteLine(ex.Message);
             }
-
         }
+
+        
 
 
         public NewAppointment()

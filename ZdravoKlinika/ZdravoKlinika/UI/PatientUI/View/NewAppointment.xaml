@@ -4,8 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI.View"
+      xmlns:cmd="clr-namespace:ZdravoKlinika.UI.PatientUI"
       mc:Ignorable="d" 
       d:DesignHeight="595" d:DesignWidth="718"      Title="NewAppointments" >
+
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.Find" CanExecute="Find_CanExecute" Executed="Find_Executed" ></CommandBinding>
+
+        <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" ></CommandBinding>
+    </Page.CommandBindings>
 
     <DockPanel >
         <Grid DockPanel.Dock="Top" Margin="0 15" >
@@ -21,8 +28,8 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"  Foreground="White" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
-            <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="Find"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Click="Button_Click_Find"></Button>
+            <Button Grid.Column="0"  Foreground="White" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Cancel" ></Button>
+            <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="Find"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Find"></Button>
         </Grid>
 
         <Grid Margin="10" Height="417">
