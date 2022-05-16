@@ -80,6 +80,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 if (fromDate != value)
                 {
                     fromDate = value;
+                    CheckDates();
                     OnPropertyChanged("FromDate");
                 }
             }
@@ -93,6 +94,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 if (toDate != value)
                 {
                     toDate = value;
+                    CheckDates();
                     OnPropertyChanged("ToDate");
                 }
             }
@@ -148,21 +150,55 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         public NewAppointment()
         {
-            //this.appointments = new List<Appointment>();
             this.JMBG = JMBG;
             this.FromDate = DateTime.Today;
             this.ToDate = DateTime.Today.AddDays(7);
             this.Duration = 30;
             this.doctors = new ListCollectionView(doctorController.GetAll());
             this.doctors.GroupDescriptions.Add(new PropertyGroupDescription("specialization"));
-            //this.rooms = roomController.GetAll();
+           
             this.DataContext = this;
             InitializeComponent();
             CheckDoctorRoom();
+            CheckDates();
         }
 
 
+        private void CheckDates()
+        {
+            if (StartDateTB == null) return;
+            if (fromDate.CompareTo(DateTime.Now) < 0)
+            {
 
+
+                StartDateTB.Text = "Start date can't be today or before. Choose again!";
+
+                StartDateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                StartDateTB.Text = " ";
+                StartDateTB.Foreground = Brushes.Gray;
+            }
+
+
+            if (EndDateTB == null) return;
+            if (toDate.CompareTo(DateTime.Now) < 0 || toDate.CompareTo(fromDate) < 0)
+            {
+
+
+                EndDateTB.Text = "End date can't be before today or before start date. Choose again!";
+
+                EndDateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                EndDateTB.Text = " ";
+                EndDateTB.Foreground = Brushes.Gray;
+            }
+
+
+        }
 
     }
 

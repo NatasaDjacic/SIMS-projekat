@@ -20,10 +20,14 @@
                 <ColumnDefinition Width="245"/>
             </Grid.ColumnDefinitions>
             <Image Source="/Resource/Image/hospital2.jpg" Margin="-63,166,123,0" Grid.ColumnSpan="3"  />
-            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="4" Height="29" Width="181" Margin="0,10,0,0"><Run Text="USPESNA PRIJAVA!"/></TextBlock>
-            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="5" Height="87" Width="195" Margin="0,63,0,0"><Run Text="Dobrodosli u Zdravo kliniku. Posetite ans"/></TextBlock>
-            <Image Source="///Resource/Image/map1.jpg" Margin="247,156,-87,10" Grid.ColumnSpan="6" Grid.Column="2" />
-            <Image Source="///Resource/Image/hospital1.jpg" Margin="44,63,236,130" Grid.Column="2" Grid.ColumnSpan="7" />
+            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="4" Height="29" Width="205" Margin="0,10,0,0"><Run FontSize="23" Text="USPESNA PRIJAVA!"/></TextBlock>
+            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="3" Height="23" Width="195" Margin="30,50,0,0"><Run FontWeight="Bold" Text="Dobrodosli u Zdravo kliniku."/></TextBlock>
+            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="3" Height="21" Width="198" Margin="32,73,0,0"><Run Text="Za bilo kakva pitanja ili pomoc"/></TextBlock>
+            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="3" Height="28" Width="198" Margin="32,94,0,0"><Run Text="pozovite! 021/543/543"/></TextBlock>
+            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="3" Height="23" Width="195" Margin="30,127,0,0"><Run FontWeight="Bold" Text="Posetite nas!"/></TextBlock>
+
+            <Image Source="/Resource/Image/map1.jpg" Margin="247,156,-87,10" Grid.ColumnSpan="6" Grid.Column="2" />
+            <Image Source="/Resource/Image/hospital1.jpg" Margin="44,63,236,130" Grid.Column="2" Grid.ColumnSpan="7" />
 
 
         </Grid>

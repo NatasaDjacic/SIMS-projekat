@@ -5,7 +5,7 @@
         "title": "New appointment",
         "message": "You have new appointment at 06.05.2022. 01:00:00 in room 6.",
         "seen": false,
-        "showDate": "2022-05-06T09:37:59.107875+02:00"
+        "showDate": "2022-05-16T09:37:59.107875+02:00"
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "title": "Medicine4",
         "message": "REMINDER: You should take your medicine at ->",
         "seen": false,
-        "showDate": "2022-05-06T23:37:59.1248449+02:00"
+        "showDate": "2022-05-16T22:37:59.1248449+02:00"
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "title": "Medicine3",
         "message": "REMINDER: You should take your medicine at ->",
         "seen": false,
-        "showDate": "2022-05-06T20:37:59.1248449+02:00"
+        "showDate": "2022-05-16T20:37:59.1248449+02:00"
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "title": "Medicine2",
         "message": "REMINDER: You should take your medicine at ->",
         "seen": false,
-        "showDate": "2022-05-06T21:37:59.1248449+02:00"
+        "showDate": "2022-05-16T21:00:59.1248449+02:00"
     },
     {
         "id": 5,
@@ -37,6 +37,6 @@
         "title": "Medicine1",
         "message": "REMINDER: You should take your medicine at ->",
         "seen": false,
-        "showDate": "2022-06-05T22:57:59.1248449+02:00"
+        "showDate": "2022-06-16T19:57:59.1248449+02:00"
     }
 ]
