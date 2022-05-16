@@ -32,16 +32,18 @@
                 <ColumnDefinition Width="16.9"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80" />
-                <RowDefinition Height="80" />
-                <RowDefinition Height="80" />
-                <RowDefinition Height="80" />
+                <RowDefinition Height="90" />
+                <RowDefinition Height="90" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="90" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="90" />
                 <RowDefinition />
 
             </Grid.RowDefinitions>
-            <StackPanel  Grid.Row="0" Grid.Column="1" Margin="0,15,0,15" Grid.ColumnSpan="2">
-                <Label>Doctor:*</Label>
-                <ComboBox ItemsSource="{Binding doctors}" SelectedItem="{Binding SelectedDoctor}">
+            <StackPanel  Grid.Row="0" Grid.Column="1" Margin="0,0,0,15" Grid.ColumnSpan="2">
+                <Label FontSize="16" Content="Doctor* :"/>
+                <ComboBox FontSize="16" ItemsSource="{Binding doctors}" SelectedItem="{Binding SelectedDoctor}">
                     <ComboBox.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
@@ -67,25 +69,29 @@
             </StackPanel >
 
             <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
-                <Label FontSize="16" Content="Date from:"/>
-                <DatePicker FontSize="16" SelectedDate="{Binding FromDate}"/>
+                <Label FontSize="16" Content="Date from* :"/>
+                <DatePicker FontSize="16" SelectedDate="{Binding FromDate,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
+            <StackPanel Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="2">
+                <TextBlock x:Name="StartDateTB" Foreground="Gray"> </TextBlock>
 
-            <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
-                <Label Grid.Row="2" FontSize="16" >Date to:</Label>
-                <DatePicker FontSize="16" SelectedDate="{Binding ToDate}"></DatePicker>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
+                <Label Grid.Row="2" FontSize="16" >Date to* :</Label>
+                <DatePicker FontSize="16" SelectedDate="{Binding ToDate, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Grid.ColumnSpan="2">
-                <Label Grid.Row="3" FontSize="16">Duration (min):</Label>
-                <TextBox IsEnabled="False" Text="{Binding Duration}"  FontSize="16" Background="White"></TextBox>
+            <StackPanel Grid.Row="4" Grid.Column="1"  Grid.ColumnSpan="2">
+                <TextBlock x:Name="EndDateTB" Foreground="Gray" > </TextBlock>
+
             </StackPanel>
 
-            <StackPanel Grid.Row="4" Grid.Column="1" Margin="10,0,-10,0" Grid.ColumnSpan="2" >
-                
-                    <Label>Priority:*</Label>
-                    <RadioButton GroupName="Priority" Checked="RadioButton_Checked" IsChecked="True" Content="time" Margin="0 2" VerticalContentAlignment="Center" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,0,-10,0" Grid.ColumnSpan="2" >
+
+                <Label FontSize="16" Content="Priority* :"/>
+                <RadioButton GroupName="Priority" Checked="RadioButton_Checked" IsChecked="True" Content="time" Margin="0 2" VerticalContentAlignment="Center" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     <RadioButton GroupName="Priority" Checked="RadioButton_Checked" Content="doctor" Margin="0 2" VerticalContentAlignment="Center" FontSize="16" FontWeight="SemiBold"/>
                 
             </StackPanel>

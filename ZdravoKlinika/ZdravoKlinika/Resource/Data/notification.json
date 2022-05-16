@@ -1,146 +1,42 @@
 [
-  {
-    "id": 1,
-    "JMBG": "3213213213213",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/6/2022 00:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T09:54:57.3897972+02:00"
-  },
-  {
-    "id": 2,
-    "JMBG": "1234512345123",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/6/2022 00:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T09:54:57.4046077+02:00"
-  },
-  {
-    "id": 3,
-    "JMBG": "3213213213213",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/8/2022 04:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T10:39:55.6672757+02:00"
-  },
-  {
-    "id": 4,
-    "JMBG": "1231231231231",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/8/2022 04:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T10:39:55.6821531+02:00"
-  },
-  {
-    "id": 5,
-    "JMBG": "3213213213213",
-    "title": "Moved appointment",
-    "message": "Your appointment at 5/8/2022 04:00:00 in room 6 is moved to 5/10/2022 02:00:00.",
-    "seen": false,
-    "showDate": "2022-05-06T10:40:42.4366613+02:00"
-  },
-  {
-    "id": 6,
-    "JMBG": "1231231231231",
-    "title": "Moved appointment",
-    "message": "Your appointment at 5/8/2022 04:00:00 in room 6 is moved to 5/10/2022 02:00:00.",
-    "seen": false,
-    "showDate": "2022-05-06T10:40:42.4461275+02:00"
-  },
-  {
-    "id": 7,
-    "JMBG": "3213213213213",
-    "title": "Canceled appointment",
-    "message": "Your appointment at 5/10/2022 02:00:00 in room 6 has been canceled.",
-    "seen": false,
-    "showDate": "2022-05-06T10:40:49.0646766+02:00"
-  },
-  {
-    "id": 8,
-    "JMBG": "1231231231231",
-    "title": "Canceled appointment",
-    "message": "Your appointment at 5/10/2022 02:00:00 in room 6 has been canceled.",
-    "seen": false,
-    "showDate": "2022-05-06T10:40:49.0732066+02:00"
-  },
-  {
-    "id": 9,
-    "JMBG": "3213213213213",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/8/2022 04:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T10:41:53.8482215+02:00"
-  },
-  {
-    "id": 10,
-    "JMBG": "1231231231231",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/8/2022 04:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T10:41:53.8589273+02:00"
-  },
-  {
-    "id": 11,
-    "JMBG": "3213213213213",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/8/2022 06:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T11:05:03.6652563+02:00"
-  },
-  {
-    "id": 12,
-    "JMBG": "1231231231231",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/8/2022 06:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T11:05:03.6793622+02:00"
-  },
-  {
-    "id": 13,
-    "JMBG": "3213213213213",
-    "title": "Moved appointment",
-    "message": "Your appointment at 5/8/2022 06:00:00 in room 6 is moved to 5/10/2022 02:00:00.",
-    "seen": false,
-    "showDate": "2022-05-06T11:05:21.1120426+02:00"
-  },
-  {
-    "id": 14,
-    "JMBG": "1231231231231",
-    "title": "Moved appointment",
-    "message": "Your appointment at 5/8/2022 06:00:00 in room 6 is moved to 5/10/2022 02:00:00.",
-    "seen": false,
-    "showDate": "2022-05-06T11:05:21.1229206+02:00"
-  },
-  {
-    "id": 15,
-    "JMBG": "3213213213213",
-    "title": "Canceled appointment",
-    "message": "Your appointment at 5/10/2022 02:00:00 in room 6 has been canceled.",
-    "seen": false,
-    "showDate": "2022-05-06T11:05:28.0604144+02:00"
-  },
-  {
-    "id": 16,
-    "JMBG": "1231231231231",
-    "title": "Canceled appointment",
-    "message": "Your appointment at 5/10/2022 02:00:00 in room 6 has been canceled.",
-    "seen": false,
-    "showDate": "2022-05-06T11:05:28.0673344+02:00"
-  },
-  {
-    "id": 17,
-    "JMBG": "3213213213213",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/8/2022 05:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T11:06:07.3152984+02:00"
-  },
-  {
-    "id": 18,
-    "JMBG": "1231231231231",
-    "title": "New appointment",
-    "message": "You have new appointment at 5/8/2022 05:00:00 in room 6.",
-    "seen": false,
-    "showDate": "2022-05-06T11:06:07.3280096+02:00"
-  }
+    {
+        "id": 1,
+        "JMBG": "3213213213213",
+        "title": "New appointment",
+        "message": "You have new appointment at 06.05.2022. 01:00:00 in room 6.",
+        "seen": false,
+        "showDate": "2022-05-16T09:37:59.107875+02:00"
+    },
+    {
+        "id": 2,
+        "JMBG": "1231231231231",
+        "title": "Medicine4",
+        "message": "REMINDER: You should take your medicine at ->",
+        "seen": false,
+        "showDate": "2022-05-16T22:37:59.1248449+02:00"
+    },
+    {
+        "id": 3,
+        "JMBG": "1231231231231",
+        "title": "Medicine3",
+        "message": "REMINDER: You should take your medicine at ->",
+        "seen": false,
+        "showDate": "2022-05-16T20:37:59.1248449+02:00"
+    },
+    {
+        "id": 4,
+        "JMBG": "1231231231231",
+        "title": "Medicine2",
+        "message": "REMINDER: You should take your medicine at ->",
+        "seen": false,
+        "showDate": "2022-05-16T21:00:59.1248449+02:00"
+    },
+    {
+        "id": 5,
+        "JMBG": "1231231231231",
+        "title": "Medicine1",
+        "message": "REMINDER: You should take your medicine at ->",
+        "seen": false,
+        "showDate": "2022-06-16T19:57:59.1248449+02:00"
+    }
 ]

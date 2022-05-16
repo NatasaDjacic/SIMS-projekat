@@ -3,10 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI"
+        xmlns:cmd="clr-namespace:ZdravoKlinika.UI.PatientUI"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="PatientMainWindow" Height="768" Width="1024" FontSize="24" FontWeight="SemiBold">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.Appointments" CanExecute="Appointments_CanExecute" Executed="Enable_Appointments"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Home" CanExecute="Home_CanExecute" Executed="Enable_Home"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.New_Appointment" CanExecute="New_Appointment_CanExecute" Executed="Enable_New_Appointment"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Notifications" CanExecute="Notifications_CanExecute" Executed="Enable_Notifications"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Log_Out" CanExecute="Log_Out_CanExecute" Executed="Enable_Log_Out"></CommandBinding>
+
+    </Window.CommandBindings>
+
     <DockPanel>
 
         <Border DockPanel.Dock="Bottom" Height="50" BorderBrush="Black" BorderThickness="2" Width="1338" RenderTransformOrigin="-0.181,0.648" />
@@ -24,7 +34,7 @@
                         <Image Source="/Resource/Image/profile.jpg" Width="78" Height="38" />
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="2" Background="White"  HorizontalAlignment="Right"  Click="Logout_Click">
+                <Button Grid.Column="2" Background="White"  HorizontalAlignment="Right"  Command="cmd:RoutedCommands.Log_Out">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/logOut.png" Width="78" Height="38" OpacityMask="Black" />
 
@@ -39,19 +49,20 @@
                     <ColumnDefinition Width="245"/>
 
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="230" Height="70" Margin="5,86,10,458" Background="White" Click="Home_Click" >
+                <Button Grid.Column="0" Width="230" Height="70" Margin="5,86,10,458" Background="White" Command="cmd:RoutedCommands.Home" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/home.jpg" Width="81" />
                         <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="Pocetna"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Width="230" Height="70" Margin="5,226,10,318" Background="White" Click="Appointments_Click">
+
+                <Button  Width="230" Height="70" Margin="5,226,10,318" Background="White" Command="cmd:RoutedCommands.Appointments" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/calendar.jpg" />
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Moji pregledi"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Width="230" Height="70" Margin="5,156,10,388" Background="White" Click="New_Appointment_Click" >
+                <Button Width="230" Height="70" Margin="5,156,10,388" Background="White" Command="cmd:RoutedCommands.New_Appointment" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/appointment.jpg" />
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Zakazivanje"/></TextBlock>
@@ -75,7 +86,7 @@
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Recepti"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Width="230" Height="70" Margin="5,506,10,38" Background="White" Click="Notification_Click">
+                <Button Width="230" Height="70" Margin="5,506,10,38" Background="White" Command="cmd:RoutedCommands.Notifications">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/notification.png" />
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Obavestenja"/></TextBlock>

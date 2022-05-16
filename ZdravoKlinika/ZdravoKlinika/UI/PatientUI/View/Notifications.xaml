@@ -3,17 +3,20 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI.View"
+      xmlns:cmd="clr-namespace:ZdravoKlinika.UI.PatientUI"
       mc:Ignorable="d" 
       d:DesignHeight="595" d:DesignWidth="718"
       Title="Notifications" >
 
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Enable_Cancel" ></CommandBinding>
+    </Page.CommandBindings>
     <DockPanel >
         <StackPanel DockPanel.Dock="Top" Margin="10">
             <TextBlock Text="Notifications" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="48"></TextBlock>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Height="67"  RenderTransformOrigin="0.502,-0.397">
-            <Button   Click="Button_Click_Back" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red"  Foreground="White" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
+            <Button   Command="cmd:RoutedCommands.Cancel" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red"  Foreground="White" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
         </StackPanel>
 
         <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=PrescriptionsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="18" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">

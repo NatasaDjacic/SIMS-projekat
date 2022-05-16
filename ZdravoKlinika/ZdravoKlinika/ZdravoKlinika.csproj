@@ -8,7 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resource\Image\appointment.jpg" />
+    <None Remove="Resource\Image\calendar.jpg" />
+    <None Remove="Resource\Image\home.jpg" />
+    <None Remove="Resource\Image\hospital1.jpg" />
+    <None Remove="Resource\Image\hospital2.jpg" />
+    <None Remove="Resource\Image\logOut.png" />
+    <None Remove="Resource\Image\map1.jpg" />
+    <None Remove="Resource\Image\notification.png" />
+    <None Remove="Resource\Image\profile.jpg" />
+    <None Remove="Resource\Image\recipe.jpg" />
+    <None Remove="Resource\Image\report.jpg" />
+    <None Remove="Resource\Image\teraphy.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Remove="Resource\Dictionary\StringResources.en.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Image\recipe.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +41,17 @@
 
   <ItemGroup>
     <Resource Include="Resource\Dictionary\StringResources.en.xaml" />
+    <Resource Include="Resource\Image\appointment.jpg" />
+    <Resource Include="Resource\Image\calendar.jpg" />
+    <Resource Include="Resource\Image\home.jpg" />
+    <Resource Include="Resource\Image\hospital1.jpg" />
+    <Resource Include="Resource\Image\hospital2.jpg" />
+    <Resource Include="Resource\Image\logOut.png" />
+    <Resource Include="Resource\Image\map1.jpg" />
+    <Resource Include="Resource\Image\notification.png" />
+    <Resource Include="Resource\Image\profile.jpg" />
+    <Resource Include="Resource\Image\report.jpg" />
+    <Resource Include="Resource\Image\teraphy.jpg" />
   </ItemGroup>
 
   <ItemGroup>

@@ -25,28 +25,55 @@ namespace ZdravoKlinika.UI.PatientUI {
             InitializeComponent();
             ContentFrame.Navigate(new View.Home());
         }
-        private void Home_Click(object sender, RoutedEventArgs e)
+       
+        private void Home_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_Home(object sender, ExecutedRoutedEventArgs e)
         {
             ContentFrame.NavigationService.Navigate(new View.Home());
         }
 
-        private void Appointments_Click(object sender, RoutedEventArgs e)
+
+        private void Appointments_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_Appointments(object sender, ExecutedRoutedEventArgs e)
         {
             ContentFrame.NavigationService.Navigate(new View.Appointments());
         }
 
-        
-         private void New_Appointment_Click(object sender, RoutedEventArgs e)
+        private void New_Appointment_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_New_Appointment(object sender, ExecutedRoutedEventArgs e)
         {
             ContentFrame.NavigationService.Navigate(new View.NewAppointment());
         }
 
-        private void Notification_Click(object sender, RoutedEventArgs e)
+
+        private void Notifications_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_Notifications(object sender, ExecutedRoutedEventArgs e)
         {
             ContentFrame.NavigationService.Navigate(new View.Notifications());
         }
 
-        private void Logout_Click(object sender, RoutedEventArgs e)
+        private void Log_Out_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_Log_Out(object sender, ExecutedRoutedEventArgs e)
         {
             authController.Logout();
             var window = new MainWindow();
@@ -56,6 +83,8 @@ namespace ZdravoKlinika.UI.PatientUI {
             this.Close();
 
         }
+
+        
 
     }
 }
