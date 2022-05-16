@@ -46,7 +46,7 @@ namespace ZdravoKlinika.Repository
             return added;
         }
 
-        public Room GetById(string id)
+        public Room? GetById(string id)
         {
             var values = this.GetAll();
             return values.Find(value => id.Equals(value.roomId));

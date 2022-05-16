@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace ZdravoKlinika.UI.ManagerUI.View
 {
-    
+
     public class EmptyStringValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
