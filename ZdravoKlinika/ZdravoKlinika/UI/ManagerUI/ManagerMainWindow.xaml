@@ -12,14 +12,13 @@
                     <DockPanel HorizontalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Click="Rooms_Click" Header="{DynamicResource StrRoomMan}"/>
 
-            <MenuItem Header="{DynamicResource StrHos}"/>
+            <MenuItem Click="Rooms_Click" Header="{DynamicResource StrRoomMan}"/>
 
             <MenuItem Header="{DynamicResource StrRen}">
                 <MenuItem Click="Renovation_Click" Header="{DynamicResource StrSimpleRen}" />
-                <MenuItem Header="{DynamicResource StrMer}" />
-                <MenuItem Header="{DynamicResource StrSep}" />
+                <MenuItem Click="RoomsMerge_Click" Header="{DynamicResource StrMer}" />
+                <MenuItem Click="RoomsSeparation_Click" Header="{DynamicResource StrSep}" />
             </MenuItem>
             <MenuItem Click="Drug_Click" Header="{DynamicResource StrMed}"/>
             <MenuItem Header="{DynamicResource StrPools}">

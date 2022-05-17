@@ -19,12 +19,13 @@ namespace ZdravoKlinika.Controller
         {
             return drugService.GetAll();
         }
-        public bool Create(string name, string ingredients)
+        public bool Create(string name, string ingredients, string alternative)
         {
             Drug drug = new Drug();
             drug.drugId = drugService.GenerateNewId();
             drug.name = name;
             drug.ingredients = ingredients;
+            drug.alternative = alternative;
             drug.comment = "";
             drug.approved = false;
             return this.drugService.Create(drug);

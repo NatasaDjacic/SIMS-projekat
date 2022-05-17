@@ -36,6 +36,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         private string _name = "";
         private string ingredients = "";
         private string commentDoctor = "";
+        private string alternative = "";
+
+        public string Alternative { get { return alternative; } set { alternative = value; OnPropertyChanged("Alternative"); } }
         public string DrugId { get { return drugId; } set { drugId = value; OnPropertyChanged("DrugId"); } }
         public string _Name { get { return _name; } set { _name = value; OnPropertyChanged("_Name"); } }
         public string Ingredients { get { return ingredients; } set { ingredients = value; OnPropertyChanged("Ingredients"); } }
@@ -70,6 +73,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 _Name = drug.name;
                 Ingredients = drug.ingredients;
                 CommentDoctor = drug.comment;
+                Alternative = drug.alternative;
             }
             else { NavigationService.GoBack(); }
             DrugsCollection = new ObservableCollection<Drug>(drugController.GetAll());
@@ -92,6 +96,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 {
                     drug.name = _Name;
                     drug.ingredients = Ingredients;
+                    drug.alternative = Alternative;
 
                     drugController.Update(drug);
                 }

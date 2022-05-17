@@ -42,7 +42,8 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                </Grid.RowDefinitions>
+                    <RowDefinition/>
+                    </Grid.RowDefinitions>
                 <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="Kreiranje novog leka"></Label>
 
                 <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="Naziv leka"></Label>
@@ -51,6 +52,9 @@
 
                 <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="Sastojci"></Label>
                 <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220"  Text="{Binding Ingredients, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+        
+                <Label  Margin="20,10,0,10" Grid.Row="3" Grid.Column="0" Content="Alternativni lek"></Label>
+                <TextBox  Margin="20,10,20,10" Grid.Row="3" Grid.Column="1" Width="220"  Text="{Binding Alternative, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
                 <Button Grid.Row="5" Grid.Column="0" Margin="20 20 0 30" Height="25" Width="90" Background="Red" Foreground="White" Content="Poništi" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
                 <Button Grid.Row="5" Grid.Column="2" Margin="0 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="Pošalji" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
@@ -93,6 +97,17 @@
                             <DataGridTextColumn Width="*"  Binding="{Binding ingredients}" >
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="Sastojci"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="*"  Binding="{Binding alternative}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Alternativni lek"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">

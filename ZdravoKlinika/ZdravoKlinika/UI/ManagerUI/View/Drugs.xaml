@@ -77,6 +77,17 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding alternative}" Width="*" MaxWidth="200">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="Alternativni lek"/>
+                            </DataGridTextColumn.Header>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="5 0" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding comment}" Width="*" MaxWidth="200">
                             <DataGridTextColumn.Header>
                                 <TextBlock Text="Komentar lekara"/>

@@ -2,20 +2,8 @@
   {
     "roomId": "3",
     "name": "Soba34",
-    "description": "",
+    "description": "Prostorija se koristi za više namena. Do 5. juna nije u funkciji.",
     "type": "Sala za sastanke"
-  },
-  {
-    "roomId": "4",
-    "name": "Soba34",
-    "description": "",
-    "type": "Sala za sastanke"
-  },
-  {
-    "roomId": "5",
-    "name": "Soba5",
-    "description": "Srednja soba, koristi se za više namena.",
-    "type": "Kancelarija"
   },
   {
     "roomId": "6",
@@ -44,19 +32,13 @@
   {
     "roomId": "1",
     "name": "Soba1",
-    "description": null,
+    "description": "Prostorija prethodnog direktora. Trenutno se koristi kao operaciona sala za kraće operacije.",
     "type": "Operacijska sala"
   },
   {
-    "roomId": "13",
-    "name": "Soba13",
-    "description": null,
+    "roomId": "15",
+    "name": "Soba15",
+    "description": "Soba veličine 50 metara kvadratnih u Jarčujku",
     "type": "Operaciona sala"
-  },
-  {
-    "roomId": "30",
-    "name": "Soba345",
-    "description": "",
-    "type": "Sala za sastanke"
   }
 ]

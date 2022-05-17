@@ -101,7 +101,6 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
 
         public RoomController roomController;
         public AddRoom(string value) {
-            InitializeComponent();
             this.DataContext = this;
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
@@ -127,7 +126,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             }
             this.Resources.MergedDictionaries.Add(dictionary);
 
+            InitializeComponent();
             IdTb.Focus();
+
         }
 
 

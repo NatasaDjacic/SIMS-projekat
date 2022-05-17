@@ -14,16 +14,20 @@ namespace ZdravoKlinika.Model
         public bool approved { get; set; }
         public string checkedBy { get; set; }
         public string comment { get; set; }
+        public string alternative { get; set; }
+
 
         public Drug(string name) {
             this.name = name;
             this.comment = "";
+            this.alternative = "";
             this.ingredients = "";
         }
-        public Drug(string name, string ingredients)
+        public Drug(string name, string ingredients, string alternative)
         {
             this.name = name;
             this.comment = "";
+            this.alternative = alternative;
             this.ingredients = ingredients;
         }
 

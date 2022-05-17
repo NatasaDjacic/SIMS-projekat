@@ -5,7 +5,8 @@
     "ingredients": "Nema informacija",
     "approved": false,
     "checkedBy": null,
-    "comment": "Dodati nove alergene"
+    "comment": "Dodati nove alergene",
+    "alternative": "Brufen"
   },
   {
     "drugId": 2,
@@ -13,7 +14,8 @@
     "ingredients": "Hidrociklin, HNO3",
     "approved": false,
     "checkedBy": null,
-    "comment": "Dodati nove alergene"
+    "comment": "Dodati nove alergene",
+    "alternative": null
   },
   {
     "drugId": 3,
@@ -21,7 +23,8 @@
     "ingredients": "Voda, Stroncijum, H2SO4",
     "approved": false,
     "checkedBy": null,
-    "comment": ""
+    "comment": "",
+    "alternative": null
   },
   {
     "drugId": 4,
@@ -29,6 +32,25 @@
     "ingredients": "Voda, Šećer",
     "approved": false,
     "checkedBy": null,
-    "comment": ""
+    "comment": "",
+    "alternative": null
+  },
+  {
+    "drugId": 5,
+    "name": "Nimulid",
+    "ingredients": "Bronzepedan, Natrijum hlorid",
+    "approved": false,
+    "checkedBy": null,
+    "comment": "",
+    "alternative": null
+  },
+  {
+    "drugId": 6,
+    "name": "Diklofen",
+    "ingredients": "H2NO3",
+    "approved": false,
+    "checkedBy": null,
+    "comment": "",
+    "alternative": "Nimulid"
   }
 ]

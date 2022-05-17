@@ -131,5 +131,14 @@ namespace ZdravoKlinika.UI.ManagerUI
         {
             ContentFrame.NavigationService.Navigate(new View.Drugs());
         }
+        private void RoomsMerge_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.RoomsMerge());
+        }
+        private void RoomsSeparation_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.RoomsSeparate());
+        }
+
     }
 }

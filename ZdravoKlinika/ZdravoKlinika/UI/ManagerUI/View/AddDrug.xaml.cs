@@ -36,8 +36,11 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         private string name = "";
         private string ingredients = "";
+        private string alternative = "";
         public string _Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
         public string Ingredients { get { return ingredients; } set { ingredients = value; OnPropertyChanged("Ingredients"); } }
+        public string Alternative { get { return alternative; } set { alternative = value; OnPropertyChanged("Alternative"); } }
+
 
         public DrugController drugController;
         private ObservableCollection<Drug> drugs;
@@ -73,7 +76,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         {
             try
             {
-                drugController.Create(name, ingredients);
+                drugController.Create(name, ingredients, alternative);
                 NavigationService.Navigate(new Drugs());
 
             }
