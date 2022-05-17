@@ -206,7 +206,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
      
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
             string val;
             System.Collections.IList list = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration);

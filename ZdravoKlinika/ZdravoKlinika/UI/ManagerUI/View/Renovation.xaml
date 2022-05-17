@@ -156,7 +156,7 @@
                         <TextBlock x:Name="EndDateTB" FontWeight="SemiBold" Foreground="Gray" ></TextBlock>
 
                     </StackPanel>
-                    <Button FontWeight="SemiBold" Grid.Row="1" Grid.RowSpan="2" Grid.Column="4" HorizontalAlignment="Center" Height="25" Width="90" Margin="30 30 10 30" Background="Green" Content="Zakaži" Click="Button_Click_1"></Button>
+                    <Button FontWeight="SemiBold" Grid.Row="1" Grid.RowSpan="2" Grid.Column="4" HorizontalAlignment="Center" Height="25" Width="90" Margin="30 30 10 30" Background="Green" Content="Zakaži" Click="Button_Click_Check"></Button>
                 </Grid>
 
             </StackPanel>

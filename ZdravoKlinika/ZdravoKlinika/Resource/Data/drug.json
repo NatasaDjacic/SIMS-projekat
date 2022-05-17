@@ -15,7 +15,7 @@
     "approved": false,
     "checkedBy": null,
     "comment": "Dodati nove alergene",
-    "alternative": null
+    "alternative": "Hidrociklin"
   },
   {
     "drugId": 3,
@@ -33,7 +33,7 @@
     "approved": false,
     "checkedBy": null,
     "comment": "",
-    "alternative": null
+    "alternative": "Brufen"
   },
   {
     "drugId": 5,
