@@ -23,18 +23,18 @@
     "description": "Srednja soba",
     "type": "Kancelarija"
   },
-  {
-    "roomId": "9",
-    "name": "Soba9",
-    "description": "Soba za operaciju",
-    "type": "Soba za operaciju"
-  },
-  {
-    "roomId": "AH7",
-    "name": "Soba7",
-    "description": "Soba za operaciju",
-    "type": "Sala za operaciju"
-  },
+    {
+        "roomId": "9",
+        "name": "Soba9",
+        "description": "Soba za operaciju",
+        "type": "Operacijska sala"
+    },
+    {
+        "roomId": "AH7",
+        "name": "Soba7",
+        "description": "Soba za operaciju",
+        "type": "Operacijska sala"
+    },
   {
     "roomId": "10",
     "name": "Soba10",

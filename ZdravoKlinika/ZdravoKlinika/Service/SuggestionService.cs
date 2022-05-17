@@ -32,6 +32,12 @@ namespace ZdravoKlinika.Service {
         }
         #endregion
         #region appointment_sugestion
+        public Appointment getFirstNextAppointment(string patientJMBG, string doctorJMBG, string roomId, int duration){
+            return this.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, DateTime.Now, DateTime.Now.AddDays(7), duration, "doctor", AppointmentType.surgery).First();
+        }
+        public List<Appointment> GetAppointmentMoveSuggestions(Appointment appointment) {
+            return this.GetAppointmentSuggestions(appointment.patientJMBG, appointment.doctorJMBG, appointment.roomId, appointment.startTime, appointment.startTime.AddDays(7), appointment.duration, "doctor", appointment.appointmentType);
+        }
         public List<Appointment> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
             List<Appointment> result = new List<Appointment>();
             List<(Doctor, List<DateTime>)> startDateTimes = new List<(Doctor, List<DateTime>)>();
@@ -90,7 +96,19 @@ namespace ZdravoKlinika.Service {
             return startDateTimes;
         }
         #endregion
+        #region exposed_methods
+        public List<string> getFreeRoomsInInterval(List<string> roomIds, DateTime startTime, DateTime endTime) {
+            List<string> freeRooms = new List<string>();
+            List<Appointment> appointments = this.appointmentService.GetAllInInterval(startTime, endTime);
 
+            roomIds.ForEach(roomId => {
+                var roomBusyInterval = this.getRoomBusyInterval(roomId, appointments, startTime, endTime);
+                if (roomBusyInterval.Count == 0) freeRooms.Add(roomId);
+            });
+
+            return freeRooms;
+        }
+        #endregion
 
         #region busy_intervals
         private List<DateTime[]> getRoomBusyInterval(string roomId, List<Appointment> appointments, DateTime startTime, DateTime endTime) {

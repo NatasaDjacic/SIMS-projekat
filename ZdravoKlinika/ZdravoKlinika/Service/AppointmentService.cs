@@ -62,6 +62,13 @@ namespace ZdravoKlinika.Service {
 
 
         }
+
+        public Appointment? getDoctorsNextAppointment(string doctorJMBG) {
+            var appointments = this.GetAllAppointments().Where(appointment => appointment.doctorJMBG == doctorJMBG && appointment.startTime.AddMinutes(appointment.duration) >= DateTime.Now).ToList();
+            appointments.Sort((a, b) => a.startTime.CompareTo(b.startTime));
+            return appointments.FirstOrDefault();
+        }
+
         public int GenerateNewId()
         {
             return this.appointmentRepository.GenerateNewId();

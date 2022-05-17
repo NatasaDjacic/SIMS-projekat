@@ -1,5 +1,15 @@
 [
   {
+    "id": 3,
+    "startTime": "2022-06-10T05:00:00",
+    "duration": 30,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "1111111111111",
+    "roomId": "5"
+  },
+  {
     "id": 1,
     "startTime": "2022-05-17T00:00:00+02:00",
     "duration": 30,
@@ -11,8 +21,8 @@
   },
   {
     "id": 2,
-    "startTime": "2022-05-20T03:00:00",
-    "duration": 30,
+    "startTime": "2022-05-17T16:00:00",
+    "duration": 300,
     "urgency": false,
     "appointmentType": 1,
     "patientJMBG": "1231231231231",
@@ -20,13 +30,23 @@
     "roomId": "5"
   },
   {
-    "id": 3,
-    "startTime": "2022-06-10T05:00:00",
+    "id": 5,
+    "startTime": "2022-05-17T12:40:00+02:00",
+    "duration": 300,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "3213213213213",
+    "roomId": "6"
+  },
+  {
+    "id": 4,
+    "startTime": "2022-05-16T20:00:01.5396038+02:00",
     "duration": 30,
     "urgency": false,
     "appointmentType": 1,
     "patientJMBG": "1231231231231",
-    "doctorJMBG": "1111111111111",
-    "roomId": "5"
+    "doctorJMBG": "3213213213213",
+    "roomId": "6"
   }
 ]
