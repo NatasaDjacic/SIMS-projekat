@@ -32,10 +32,7 @@ namespace ZdravoKlinika.Service {
                     if (roomId is null) continue;
                     return this.FoundEmergencyAppointment(roomId, patientJMBG, doctor.JMBG);
                 } else {
-                    var appointmentMove = this.suggestionService.GetAppointmentMoveSuggestions(appointment);
-                    appointment.patientJMBG = patientJMBG;
-                    appointment.urgency = true;
-                    emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Add((appointment, appointmentMove.First()));
+                    emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Add(MoveAppointmentSuggestionPair(appointment, patientJMBG));
                 }
             }
             if (emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Count == 0) throw new Exception("Emergency appointment can not be created or suggested");
@@ -43,6 +40,12 @@ namespace ZdravoKlinika.Service {
 
             return emergencyAppointmentReturn;
 
+        }
+        private (Appointment, Appointment) MoveAppointmentSuggestionPair(Appointment appointment, string patientJMBG) {
+            var appointmentMove = this.suggestionService.GetAppointmentMoveSuggestions(appointment);
+            appointment.patientJMBG = patientJMBG;
+            appointment.urgency = true;
+            return (appointment, appointmentMove.First());
         }
         private EmergencyAppointmentSuggestionDTO FoundEmergencyAppointment(string roomId, string patientJMBG, string doctorJMBG) {
 
