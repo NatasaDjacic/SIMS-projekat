@@ -26,7 +26,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         SuggestionController suggestionController = GLOBALS.suggestionController;
-        AdvancedRenovationController advancedRenovationController = GLOBALS.advancedRenovationController;
+        RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
+        RenovationController renovationController = GLOBALS.renovationController;
 
         protected virtual void OnPropertyChanged(string name)
         {
@@ -111,7 +112,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         public RoomsSeparate()
         {
-            advancedRenovationController.ExecuteRoomSeparating();
+            roomSeparateController.ExecuteRoomSeparating();
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
@@ -136,15 +137,18 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
             Console.Write("Enter index: ");
             val = Console.ReadLine();
-            bool isMerge = false;
             int index = Convert.ToInt32(val);
             var first = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration)[index];
+            Console.Write("Enter identification of first room: ");
+            var firstRoomId = Console.ReadLine();
             Console.Write("Enter name of first room: ");
             var firstRoomName = Console.ReadLine();
             Console.Write("Enter type of first room: ");
             var firstRoomType = Console.ReadLine();
             Console.Write("Enter description of first room: ");
             var firstRoomDescription = Console.ReadLine();
+            Console.Write("Enter identification of second room: ");
+            var secondRoomId = Console.ReadLine();
             Console.Write("Enter name of second room: ");
             var secondRoomName = Console.ReadLine();
             Console.Write("Enter type of second room: ");
@@ -153,7 +157,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             var secondRoomDescription = Console.ReadLine();
 
 
-            advancedRenovationController.SaveAdvancedRenovation(first.startTime, first.duration, first.roomId, firstRoomName, firstRoomType, firstRoomDescription, secondRoomName, secondRoomType, secondRoomDescription);
+            roomSeparateController.SaveAdvancedRenovation(first.startTime, first.duration, first.roomId, firstRoomId, firstRoomName, firstRoomType, firstRoomDescription, secondRoomId, secondRoomName, secondRoomType, secondRoomDescription);
+            renovationController.SaveRenovation(first.startTime, first.duration, first.roomId, "Separation");
 
         }
     }

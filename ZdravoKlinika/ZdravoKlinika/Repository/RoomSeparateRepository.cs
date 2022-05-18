@@ -9,30 +9,30 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class AdvancedRenovationRepository
+    public class RoomSeparateRepository
     {
         private string fileLocation { get; set; }
-        public AdvancedRenovationRepository(string fileLocation)
+        public RoomSeparateRepository(string fileLocation)
         {
             this.fileLocation = fileLocation;
         }
 
 
-        public List<AdvancedRenovation> GetAll()
+        public List<RoomSeparate> GetAll()
         {
-            var values = JsonConvert.DeserializeObject<List<AdvancedRenovation>>(File.ReadAllText(fileLocation));
+            var values = JsonConvert.DeserializeObject<List<RoomSeparate>>(File.ReadAllText(fileLocation));
             if (values == null)
             {
-                values = new List<AdvancedRenovation>();
+                values = new List<RoomSeparate>();
             }
             return values;
         }
 
-        public bool Save(AdvancedRenovation advRen)
+        public bool Save(RoomSeparate advRen)
         {
             bool added = false;
             var values = this.GetAll();
-            var found = values.FindIndex(value => advRen.advancedRenovationId == value.advancedRenovationId);
+            var found = values.FindIndex(value => advRen.roomSeparateId == value.roomSeparateId);
             if (found != -1)
             {
                 values[found] = advRen;
@@ -46,16 +46,16 @@ namespace ZdravoKlinika.Repository
             return added;
         }
 
-        public AdvancedRenovation? GetById(int id)
+        public RoomSeparate? GetById(int id)
         {
             var values = this.GetAll();
-            return values.Find(value => id == value.advancedRenovationId);
+            return values.Find(value => id == value.roomSeparateId);
         }
 
         public bool DeleteById(int id)
         {
             var values = this.GetAll();
-            var deleted = values.RemoveAll(value => value.advancedRenovationId == id);
+            var deleted = values.RemoveAll(value => value.roomSeparateId == id);
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return deleted > 0;
         }
@@ -64,7 +64,7 @@ namespace ZdravoKlinika.Repository
         {
             try
             {
-                return GetAll().Max(a => a.advancedRenovationId) + 1;
+                return GetAll().Max(a => a.roomSeparateId) + 1;
             }
             catch
             {
