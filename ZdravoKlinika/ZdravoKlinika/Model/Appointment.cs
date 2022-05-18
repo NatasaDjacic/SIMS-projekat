@@ -16,7 +16,7 @@ namespace ZdravoKlinika.Model {
         public string doctorJMBG { get; set; }
         public string roomId { get; set; }
 
-
+        public DateTime endTime { get => startTime.AddMinutes(duration); }
         public Appointment() { }
 
         public Appointment(int id, DateTime startTime, int duration, bool urgency, AppointmentType appointmentType, string patientJMBG, string doctorJMBG, string roomId) {

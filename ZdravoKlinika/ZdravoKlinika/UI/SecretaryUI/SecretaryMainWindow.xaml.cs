@@ -28,6 +28,9 @@ namespace ZdravoKlinika.UI.SecretaryUI {
         public string FullName { get; set; }
         private AuthController authController = GLOBALS.authController;
         public SecretaryMainWindow() {
+
+            GLOBALS.orderEquipmentController.CheckEquipmentArrival();
+
             FullName = GLOBALS.authService.user.lastName + " " + GLOBALS.authService.user.firstName;
             this.DataContext = this;
             InitializeComponent();

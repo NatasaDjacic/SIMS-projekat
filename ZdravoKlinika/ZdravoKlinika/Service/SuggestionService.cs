@@ -48,6 +48,14 @@ namespace ZdravoKlinika.Service {
         }
         #endregion
         #region appointment_sugestion
+        public Appointment GetFirstNextAppointment(string patientJMBG, string doctorJMBG, string roomId, int duration){
+            return this.GetAppointmentSuggestions(patientJMBG, doctorJMBG, roomId, DateTime.Now, DateTime.Now.AddDays(7), duration, "doctor", AppointmentType.surgery).First();
+        }
+        public List<Appointment> GetAppointmentMoveSuggestions(Appointment appointment) {
+            var app = this.GetAppointmentSuggestions(appointment.patientJMBG, appointment.doctorJMBG, appointment.roomId, appointment.startTime, appointment.startTime.AddDays(7), appointment.duration, "doctor", appointment.appointmentType);
+            app.ForEach(a => { a.id = appointment.id; a.urgency = appointment.urgency; });
+            return app;
+        }
         public List<Appointment> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
             List<Appointment> result = new List<Appointment>();
             List<(Doctor, List<DateTime>)> startDateTimes = new List<(Doctor, List<DateTime>)>();
@@ -106,7 +114,18 @@ namespace ZdravoKlinika.Service {
             return startDateTimes;
         }
         #endregion
+        #region exposed_methods
+        public List<string> getFreeRoomsInInterval(List<string> roomIds, DateTime startTime, DateTime endTime) {
+            List<string> freeRooms = new List<string>();
+            List<Appointment> appointments = this.appointmentService.GetAllInInterval(startTime, endTime);
+            roomIds.ForEach(roomId => {
+                var roomBusyInterval = this.getRoomBusyInterval(roomId, appointments, startTime, endTime);
+                if (roomBusyInterval.Count == 0) freeRooms.Add(roomId);
+            });
 
+            return freeRooms;
+        }
+        #endregion
 
         #region busy_intervals
         private List<DateTime[]> getRoomBusyInterval(string roomId, List<Appointment> appointments, DateTime startTime, DateTime endTime) {
@@ -171,7 +190,7 @@ namespace ZdravoKlinika.Service {
                     result.Add(intervals1[i++]); j++;
                 }else if (intervals1[i][0] <= intervals2[j][0]) {
                     result.Add(intervals1[i++]);
-                } else{
+                }else{
                     result.Add(intervals2[j++]);
                 } 
             }
@@ -208,7 +227,7 @@ namespace ZdravoKlinika.Service {
             return startDateTimes;
         }
         private List<DateTime[]> ConvertFromBusyToFreeIntervals(List<DateTime[]> intervals, DateTime startTime, DateTime endTime, int duration) {
-            if(intervals.Count == 0) return new List<DateTime[]>() { new DateTime[] { startTime, endTime.AddMinutes(-duration) } };
+            if (intervals.Count == 0) return new List<DateTime[]>() { new DateTime[] { startTime, endTime.AddMinutes(-duration) } };
             if (intervals[0][0] > startTime) intervals.Insert(0, new DateTime[] { startTime.AddMinutes(-duration), startTime });
             if (intervals[intervals.Count - 1][1] < endTime) intervals.Add(new DateTime[] { endTime.AddMinutes(duration), endTime });
             for (int i = 0; i < intervals.Count - 1; i++) {

@@ -43,10 +43,11 @@ namespace ZdravoKlinika
         public static RoomSeparateService roomSeparateService = new RoomSeparateService(roomSeparateRepository);
         public static RoomMergeService roomMergeService = new RoomMergeService(roomMergeRepository);
 
+        public static EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService(suggestionService, appointmentService, roomService, doctorService);
 
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
-        public static AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService, authService, suggestionService, notificationService);
+        public static AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService, authService, suggestionService, notificationService, emergencyAppointmentService);
         public static EquipmentController equipmentController = new EquipmentController(equipmentService);
         public static RoomController roomController = new RoomController(roomService);
         public static AuthController authController = new AuthController(authService);

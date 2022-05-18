@@ -35,6 +35,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             PatientsCollection = new ObservableCollection<Patient>(patientController.GetAll());
             this.DataContext = this;
             InitializeComponent();
+            
 
         }
 
