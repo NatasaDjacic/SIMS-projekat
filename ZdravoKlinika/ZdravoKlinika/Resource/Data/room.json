@@ -36,9 +36,15 @@
     "type": "Operacijska sala"
   },
   {
-    "roomId": "15",
-    "name": "Soba15",
-    "description": "Soba veličine 50 metara kvadratnih u Jarčujku",
-    "type": "Operaciona sala"
+    "roomId": "id1",
+    "name": "SobaNova1",
+    "description": "Opis1",
+    "type": "Tip"
+  },
+  {
+    "roomId": "id2",
+    "name": "SobaNova2",
+    "description": "Opis2",
+    "type": "Tip2"
   }
 ]

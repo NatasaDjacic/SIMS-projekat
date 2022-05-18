@@ -34,7 +34,7 @@ namespace ZdravoKlinika.Service
 
         public bool Save(Room room)
         {
-            throw new NotImplementedException();
+            return this.roomRepository.Save(room);
         }
 
         public bool Update(Room room)
