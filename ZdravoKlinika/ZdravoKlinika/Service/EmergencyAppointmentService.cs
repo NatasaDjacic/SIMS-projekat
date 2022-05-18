@@ -21,37 +21,45 @@ namespace ZdravoKlinika.Service {
             this.doctorService = doctorService;
         }
 
-        public EmergencyAppointmentSuggestionDTO createEmergencyAppointment(string patientJMBG, string specialization) {
+        public EmergencyAppointmentSuggestionDTO createOrSuggestEmergencyAppointment(string patientJMBG, string specialization) {
 
             EmergencyAppointmentSuggestionDTO emergencyAppointmentReturn = new EmergencyAppointmentSuggestionDTO();
             List<Doctor> doctors = this.doctorService.GetAll().FindAll(doctor => doctor.specialization == specialization);
-            string roomId = this.getFreeRoomIdsInNextHoure().First();
+            string? roomId = this.getFreeRoomIdsForEmergency().FirstOrDefault();
             foreach(var doctor in doctors) {
-                var appointment = this.appointmentService.getDoctorsNextAppointment(doctor.JMBG);
+                var appointment = this.appointmentService.GetDoctorsNextAppointment(doctor.JMBG);
                 if(appointment is null || appointment.startTime >= DateTime.Now.AddMinutes(EMERGENCY_APPOINTMENT_DURATION)) {
-                    emergencyAppointmentReturn.found = true;
-                    appointment = this.suggestionService.getFirstNextAppointment(patientJMBG, doctor.JMBG, roomId, EMERGENCY_APPOINTMENT_DURATION);
-                    emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Add((appointment, null));
-                    return emergencyAppointmentReturn;
+                    if (roomId is null) continue;
+                    return this.FoundEmergencyAppointment(roomId, patientJMBG, doctor.JMBG);
                 } else {
                     var appointmentMove = this.suggestionService.GetAppointmentMoveSuggestions(appointment);
-                    appointment.id = -1;
                     appointment.patientJMBG = patientJMBG;
+                    appointment.urgency = true;
                     emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Add((appointment, appointmentMove.First()));
                 }
             }
+            if (emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Count == 0) throw new Exception("Emergency appointment can not be created or suggested");
+            emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Sort((a, b) => a.Item2.startTime.CompareTo(b.Item2.startTime));
 
             return emergencyAppointmentReturn;
 
         }
+        private EmergencyAppointmentSuggestionDTO FoundEmergencyAppointment(string roomId, string patientJMBG, string doctorJMBG) {
+
+            var appointment = this.suggestionService.GetFirstNextAppointment(patientJMBG, doctorJMBG, roomId, EMERGENCY_APPOINTMENT_DURATION);
+            appointment.id = this.appointmentService.GenerateNewId();
+            appointment.urgency = true;
+            this.appointmentService.SaveAppointment(appointment);
+            return new EmergencyAppointmentSuggestionDTO(true, (appointment, null));
+        }
         
-        private List<string> getFreeRoomIdsInNextHoure() {
+        private List<string> getFreeRoomIdsForEmergency() {
             List<string> roomIds = this.roomService.GetAll()
                 .Where(room => room.type != "Sala za sastanke")
                 .Select(room => room.roomId)
                 .ToList();
 
-            return this.suggestionService.getFreeRoomsInInterval(roomIds, DateTime.Now, DateTime.Now.AddHours(1));
+            return this.suggestionService.getFreeRoomsInInterval(roomIds, DateTime.Now, DateTime.Now.AddMinutes(EMERGENCY_APPOINTMENT_DURATION));
         }
 
     }

@@ -13,7 +13,7 @@ namespace ZdravoKlinika.Model {
         public OrderEquipment(int id, DateTime orderArrival, string name, int quantitiy) {
             this.id = id;
             this.orderArrival = orderArrival;
-            this.equipment = new Equipment(-1, name, "", "dynamic", quantitiy);
+            this.equipment = new Equipment(-1, name, "", "Dinamicka", quantitiy);
         }
     }
 }

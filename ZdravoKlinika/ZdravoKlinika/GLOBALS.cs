@@ -41,7 +41,7 @@ namespace ZdravoKlinika
 
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
-        public static AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService, authService, suggestionService, notificationService);
+        public static AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService, authService, suggestionService, notificationService, emergencyAppointmentService);
         public static EquipmentController equipmentController = new EquipmentController(equipmentService);
         public static RoomController roomController = new RoomController(roomService);
         public static AuthController authController = new AuthController(authService);

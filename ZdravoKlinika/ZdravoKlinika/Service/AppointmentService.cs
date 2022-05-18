@@ -23,7 +23,7 @@ namespace ZdravoKlinika.Service {
         }
 
         public List<Appointment> GetAllInInterval(DateTime start, DateTime end) {
-            return this.GetAllAppointments().Where(a => (a.startTime.AddMinutes(a.duration) >= start && a.startTime <= end)).ToList();
+            return this.GetAllAppointments().Where(a => (a.endTime >= start && a.startTime <= end)).ToList();
         }
 
         public bool SaveAppointment(Appointment appointment) {
@@ -63,8 +63,8 @@ namespace ZdravoKlinika.Service {
 
         }
 
-        public Appointment? getDoctorsNextAppointment(string doctorJMBG) {
-            var appointments = this.GetAllAppointments().Where(appointment => appointment.doctorJMBG == doctorJMBG && appointment.startTime.AddMinutes(appointment.duration) >= DateTime.Now).ToList();
+        public Appointment? GetDoctorsNextAppointment(string doctorJMBG) {
+            var appointments = this.GetAllAppointments().Where(appointment => appointment.doctorJMBG == doctorJMBG && appointment.endTime >= DateTime.Now).ToList();
             appointments.Sort((a, b) => a.startTime.CompareTo(b.startTime));
             return appointments.FirstOrDefault();
         }

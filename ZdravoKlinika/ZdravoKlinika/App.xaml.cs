@@ -36,8 +36,6 @@ namespace ZdravoKlinika
             ge.ForEach(e => {
                 Console.WriteLine(String.Format("{0} {1} {2}", e.roomId, e.name, e.equipIds.Count));
             });*/
-            var temp =  GLOBALS.emergencyAppointmentService.createEmergencyAppointment("1231231231231", "regular");
-            Console.WriteLine(temp.found);
         }
     }
 }

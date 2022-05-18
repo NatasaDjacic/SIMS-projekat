@@ -152,5 +152,24 @@
     "country": "Srbija",
     "city": "Kraljevo",
     "address": "Aressa 123"
+  },
+  {
+    "gender": "None",
+    "bloodType": "None",
+    "dateOfBirth": "2022-05-18T20:46:02.1552913+02:00",
+    "allergens": [],
+    "medicalRecord": {
+      "reports": []
+    },
+    "firstName": "Filip",
+    "lastName": "Filipovic",
+    "JMBG": "1231231231238",
+    "username": "1231231231238",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "",
+    "city": "",
+    "address": ""
   }
 ]
