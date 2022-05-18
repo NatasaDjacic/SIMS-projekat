@@ -59,6 +59,5 @@ namespace ZdravoKlinika.Repository
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return deleted > 0; ;
         }
-
     }
 }

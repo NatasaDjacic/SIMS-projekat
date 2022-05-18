@@ -1,14 +1,1 @@
-[
-  {
-    "advancedRenovationId": 3,
-    "roomId": "6",
-    "startTime": "2022-05-18T05:00:00",
-    "duration": 5,
-    "firstRoomName": "SobaNova1",
-    "firstRoomType": "Tip",
-    "firstRoomDescription": "Opis1",
-    "secondRoomName": "SobaNova2",
-    "secondRoomType": "Tip2",
-    "secondRoomDescription": "Opis2"
-  }
-]
+[]

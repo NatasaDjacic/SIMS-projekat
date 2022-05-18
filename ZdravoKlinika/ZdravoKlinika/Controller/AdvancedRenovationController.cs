@@ -36,5 +36,9 @@ namespace ZdravoKlinika.Controller
             return advancedRenovationService.Save(advancedRenovation);
 
         }
+        public void ExecuteRoomSeparating()
+        {
+            advancedRenovationService.ExecuteRoomSeparating();
+        }
     }
 }
