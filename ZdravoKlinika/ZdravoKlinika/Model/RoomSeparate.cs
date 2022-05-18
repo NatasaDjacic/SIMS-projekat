@@ -6,35 +6,38 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Model
 {
-    public class AdvancedRenovation
+    public class RoomSeparate
     {
-        public int advancedRenovationId;
+        public int roomSeparateId;
         public string roomId;
         public DateTime startTime;
         public int duration;
+        public string firstRoomId;
         public string firstRoomName;
         public string firstRoomType;
         public string firstRoomDescription;
+        public string secondRoomId;
         public string secondRoomName;
         public string secondRoomType;
         public string secondRoomDescription;
 
-
-        public AdvancedRenovation(int advancedRenovationId, string roomId, DateTime startTime, int duration, string firstRoomName, string firstRoomType, string firstRoomDescription, string secondRoomName, string secondRoomType, string secondRoomDescription)
+        public RoomSeparate(int roomSeparateId, string roomId, DateTime startTime, int duration, string firstRoomId, string firstRoomName, string firstRoomType, string firstRoomDescription, string secondRoomId, string secondRoomName, string secondRoomType, string secondRoomDescription)
         {
-            this.advancedRenovationId = advancedRenovationId;
+            this.roomSeparateId = roomSeparateId;
             this.roomId = roomId;
             this.startTime = startTime;
             this.duration = duration;
+            this.firstRoomId = firstRoomId;
             this.firstRoomName = firstRoomName;
             this.firstRoomType = firstRoomType;
             this.firstRoomDescription = firstRoomDescription;
+            this.secondRoomId = secondRoomId;
             this.secondRoomName = secondRoomName;
             this.secondRoomType = secondRoomType;
             this.secondRoomDescription = secondRoomDescription;
         }
 
-        public AdvancedRenovation()
+        public RoomSeparate()
         {
         }
     }

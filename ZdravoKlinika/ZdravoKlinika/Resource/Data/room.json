@@ -6,12 +6,6 @@
     "type": "Sala za sastanke"
   },
   {
-    "roomId": "6",
-    "name": "Soba6",
-    "description": "Srednja soba",
-    "type": "Kancelarija"
-  },
-  {
     "roomId": "9",
     "name": "Soba9",
     "description": "Soba za operaciju",
@@ -46,5 +40,29 @@
     "name": "SobaNova2",
     "description": "Opis2",
     "type": "Tip2"
+  },
+  {
+    "roomId": "NR1",
+    "name": "Nova soba 1",
+    "description": "Opis ",
+    "type": "Operaciona sala"
+  },
+  {
+    "roomId": "RR1",
+    "name": "Soba test",
+    "description": "test",
+    "type": "test"
+  },
+  {
+    "roomId": "11",
+    "name": "Soba11",
+    "description": "Sala za hitne operacije",
+    "type": "Operaciona sala"
+  },
+  {
+    "roomId": "12",
+    "name": "Soba12",
+    "description": "Sala za rutinske operacije.",
+    "type": "Operaciona sala"
   }
 ]

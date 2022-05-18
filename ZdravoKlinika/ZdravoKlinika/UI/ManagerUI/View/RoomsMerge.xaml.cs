@@ -117,15 +117,27 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
         public RoomController roomController;
+        SuggestionController suggestionController = GLOBALS.suggestionController;
+        RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
 
         public RoomsMerge()
         {
+            roomSeparateController.ExecuteRoomSeparating();
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
             InitializeComponent();
         }
+
+        private void Button_Click_Check(object sender, RoutedEventArgs e)
+        {
+            //System.Collections.IList list = suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration);
+
+        }
+
     }
 }

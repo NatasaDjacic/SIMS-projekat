@@ -23,7 +23,7 @@ namespace ZdravoKlinika
         public static RenovationRepository renovationRepository = new RenovationRepository(@"..\..\..\Resource\Data\renovation.json");
         public static EquipMovingRepository equipMovingRepository = new EquipMovingRepository(@"..\..\..\Resource\Data\equipMoving.json");
         public static OrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
-        public static AdvancedRenovationRepository advancedRenovationRepository = new AdvancedRenovationRepository(@"..\..\..\Resource\Data\advancedRenovation.json");
+        public static RoomSeparateRepository roomSeparateRepository = new RoomSeparateRepository(@"..\..\..\Resource\Data\roomSeparation.json");
 
 
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
@@ -39,7 +39,7 @@ namespace ZdravoKlinika
         public static ReportService reportService = new ReportService(patientService);
         public static PrescriptionService prescriptionService = new PrescriptionService(patientService);
         public static OrderEquipmentService orderEquipmentService = new OrderEquipmentService(orderEquipmentRepository, equipmentRepository);
-        public static AdvancedRenovationService advancedRenovationService = new AdvancedRenovationService(advancedRenovationRepository);
+        public static RoomSeparateService roomSeparateService = new RoomSeparateService(roomSeparateRepository);
 
 
         public static PatientController patientController = new PatientController(patientService);
@@ -55,7 +55,7 @@ namespace ZdravoKlinika
         public static ReportController reportController = new ReportController(reportService);
         public static PrescriptionController prescriptionController = new PrescriptionController(prescriptionService);
         public static OrderEquipmentController orderEquipmentController = new OrderEquipmentController(orderEquipmentService);
-        public static AdvancedRenovationController advancedRenovationController = new AdvancedRenovationController(advancedRenovationService);
+        public static RoomSeparateController roomSeparateController = new RoomSeparateController(roomSeparateService);
 
     }
 }

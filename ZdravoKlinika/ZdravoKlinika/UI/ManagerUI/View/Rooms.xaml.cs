@@ -31,7 +31,10 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             }
         }
         public RoomController roomController;
+        RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
+
         public Rooms(string value) {
+            roomSeparateController.ExecuteRoomSeparating();
             val = value;
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
