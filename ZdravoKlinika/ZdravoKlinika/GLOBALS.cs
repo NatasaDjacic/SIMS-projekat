@@ -24,6 +24,7 @@ namespace ZdravoKlinika
         public static EquipMovingRepository equipMovingRepository = new EquipMovingRepository(@"..\..\..\Resource\Data\equipMoving.json");
         public static OrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
         public static RoomSeparateRepository roomSeparateRepository = new RoomSeparateRepository(@"..\..\..\Resource\Data\roomSeparation.json");
+        public static RoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
 
 
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
@@ -40,6 +41,7 @@ namespace ZdravoKlinika
         public static PrescriptionService prescriptionService = new PrescriptionService(patientService);
         public static OrderEquipmentService orderEquipmentService = new OrderEquipmentService(orderEquipmentRepository, equipmentRepository);
         public static RoomSeparateService roomSeparateService = new RoomSeparateService(roomSeparateRepository);
+        public static RoomMergeService roomMergeService = new RoomMergeService(roomMergeRepository);
 
 
         public static PatientController patientController = new PatientController(patientService);
@@ -56,6 +58,7 @@ namespace ZdravoKlinika
         public static PrescriptionController prescriptionController = new PrescriptionController(prescriptionService);
         public static OrderEquipmentController orderEquipmentController = new OrderEquipmentController(orderEquipmentService);
         public static RoomSeparateController roomSeparateController = new RoomSeparateController(roomSeparateService);
+        public static RoomMergeController roomMergeController = new RoomMergeController(roomMergeService);
 
     }
 }

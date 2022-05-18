@@ -118,11 +118,12 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
         public RoomController roomController;
         SuggestionController suggestionController = GLOBALS.suggestionController;
-        RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
+        RoomMergeController roomMergeController = GLOBALS.roomMergeController;
+        RenovationController renovationController = GLOBALS.renovationController;
 
         public RoomsMerge()
         {
-            roomSeparateController.ExecuteRoomSeparating();
+            roomMergeController.ExecuteRoomSeparating();
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
@@ -135,7 +136,31 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
-            //System.Collections.IList list = suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration);
+            string val;
+            System.Collections.IList list = suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration);
+            foreach (Renovation ren in suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration))
+            {
+                Console.WriteLine(ren.startTime.ToString());
+            }
+
+            Console.Write("Enter index: ");
+            val = Console.ReadLine();
+            int index = Convert.ToInt32(val);
+            var first = suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration)[index];
+            Console.Write("Enter identification of new room: ");
+            var newRoomId = Console.ReadLine();
+            Console.Write("Enter name of new room: ");
+            var newRoomName = Console.ReadLine();
+            Console.Write("Enter type of new room: ");
+            var newRoomType = Console.ReadLine();
+            Console.Write("Enter description of new room: ");
+            var newRoomDescription = Console.ReadLine();
+       
+
+
+            roomMergeController.SaveRoomMerging(first.startTime, first.duration, selectedRoomFrom.roomId, selectedRoomTo.roomId, newRoomId, newRoomName, newRoomType, newRoomDescription);
+            renovationController.SaveRenovation(first.startTime, first.duration, selectedRoomFrom.roomId, "Merging");
+            renovationController.SaveRenovation(first.startTime, first.duration, selectedRoomTo.roomId, "Merging");
 
         }
 

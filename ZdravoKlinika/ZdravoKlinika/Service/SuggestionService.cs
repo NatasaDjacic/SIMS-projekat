@@ -30,6 +30,22 @@ namespace ZdravoKlinika.Service {
             }
             return renovations;
         }
+        public List<Renovation> GetTwoRoomsRenovationSuggestion(string firstRoomId, string secondRoomId, DateTime startTime, DateTime endTime, int duration)
+        {
+            List<Appointment> appointments = this.appointmentService.GetAllInInterval(startTime, endTime);
+            List<DateTime[]> busyIntervalsFirstRoom = this.getRoomBusyInterval(firstRoomId, appointments, startTime, endTime);
+            List<DateTime[]> busyIntervalsSecondRoom = this.getRoomBusyInterval(secondRoomId, appointments, startTime, endTime);
+            busyIntervalsFirstRoom.AddRange(busyIntervalsSecondRoom);
+            List<DateTime[]> busyIntervalsBothRoom = busyIntervalsFirstRoom;
+            var renStartTime = this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(busyIntervalsBothRoom, startTime, endTime, duration * 60));
+            List<Renovation> renovations = new List<Renovation>();
+            foreach (var rs in renStartTime)
+            {
+                renovations.Add(new Renovation(-1, firstRoomId, rs, duration, ""));
+                renovations.Add(new Renovation(-1, secondRoomId, rs, duration, ""));
+            }
+            return renovations;
+        }
         #endregion
         #region appointment_sugestion
         public List<Appointment> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {

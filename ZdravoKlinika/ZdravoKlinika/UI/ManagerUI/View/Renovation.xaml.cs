@@ -22,9 +22,7 @@ using ZdravoKlinika.Service;
 
 namespace ZdravoKlinika.UI.ManagerUI.View
 {
-    /// <summary>
-    /// Interaction logic for Renovation.xaml
-    /// </summary>
+   
     public partial class Renovations : Page, INotifyPropertyChanged
     {
         string val = string.Empty;
