@@ -28,10 +28,7 @@ namespace ZdravoKlinika.Service
         {
             return this.roomMergeRepository.Save(roomMerge);
         }
-        public List<RoomMerge> GetAllInInterval(DateTime start, DateTime end)
-        {
-            return this.GetAll().Where(a => (a.startTime.AddMinutes(a.duration) >= start && a.startTime <= end)).ToList();
-        }
+        
         public RoomService roomService = GLOBALS.roomService;
 
         public void ExecuteRoomMerging()

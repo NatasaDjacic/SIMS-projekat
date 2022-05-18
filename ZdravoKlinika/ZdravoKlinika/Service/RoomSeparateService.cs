@@ -28,10 +28,7 @@ namespace ZdravoKlinika.Service
         {
             return this.roomSeparateRepository.Save(roomSeparate);
         }
-        public List<RoomSeparate> GetAllInInterval(DateTime start, DateTime end)
-        {
-            return this.GetAll().Where(a => (a.startTime.AddMinutes(a.duration) >= start && a.startTime <= end)).ToList();
-        }
+        
         public RoomService roomService = GLOBALS.roomService;
 
         public void ExecuteRoomSeparating()

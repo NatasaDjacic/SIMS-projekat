@@ -1,11 +1,5 @@
 [
   {
-    "roomId": "3",
-    "name": "3",
-    "description": "3",
-    "type": "3"
-  },
-  {
     "roomId": "AH7",
     "name": "Soba7",
     "description": "Soba za operaciju",
@@ -22,5 +16,17 @@
     "name": "fd",
     "description": "df",
     "type": "df"
+  },
+  {
+    "roomId": "NR1",
+    "name": "Soba12",
+    "description": "Opis",
+    "type": "Operaciona sala"
+  },
+  {
+    "roomId": "NR2",
+    "name": "Soba21",
+    "description": "Opis",
+    "type": "Operaciona sala"
   }
 ]
