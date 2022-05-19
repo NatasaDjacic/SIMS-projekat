@@ -23,10 +23,12 @@ namespace ZdravoKlinika
         public static RenovationRepository renovationRepository = new RenovationRepository(@"..\..\..\Resource\Data\renovation.json");
         public static EquipMovingRepository equipMovingRepository = new EquipMovingRepository(@"..\..\..\Resource\Data\equipMoving.json");
         public static OrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
+        public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
 
+        public static CancellationService cancellationService = new CancellationService(cancellationRepository);
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
         public static DoctorService doctorService = new DoctorService(doctorRepository);
-        public static AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService);
+        public static AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService,cancellationService,authService);
         public static EquipmentService equipmentService =  new EquipmentService(equipmentRepository);
         public static PatientService patientService = new PatientService(patientRepository);
         public static RoomService roomService = new RoomService(roomRepository);
@@ -37,6 +39,8 @@ namespace ZdravoKlinika
         public static ReportService reportService = new ReportService(patientService);
         public static PrescriptionService prescriptionService = new PrescriptionService(patientService);
         public static OrderEquipmentService orderEquipmentService = new OrderEquipmentService(orderEquipmentRepository, equipmentRepository);
+        
+
 
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);

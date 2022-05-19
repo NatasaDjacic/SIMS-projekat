@@ -11,12 +11,20 @@ namespace ZdravoKlinika.Service {
         public AppointmentRepository appointmentRepository { get; set; }
 
         public DoctorService doctorService { get; set; }
+        public CancellationService cancellationService { get; set; }
+        public AuthService authService { get; set; }
 
-        public AppointmentService(AppointmentRepository appointmentRepository, DoctorService doctorService) {
+        public AppointmentService(AppointmentRepository appointmentRepository, DoctorService doctorService,CancellationService cancellationService,AuthService authService) {
             this.appointmentRepository = appointmentRepository;
             this.doctorService = doctorService;
+            this.cancellationService = cancellationService;
+            this.authService = authService;
         }
 
+       
+       
+        
+       
 
         public List<Appointment> GetAllAppointments() {
             return this.appointmentRepository.GetAll();
@@ -37,6 +45,19 @@ namespace ZdravoKlinika.Service {
         }
 
         public bool DeleteAppointmentById(int id) {
+            
+            int number = cancellationService.GetCancellationNumber(authService.user.JMBG, DateTime.Now);
+
+            if (number >= 4)
+            {
+                authService.Restrict();
+                Console.WriteLine("RESTRICTED!");
+                return false;
+            }
+
+            Cancellation cancellation = new Cancellation(cancellationService.GenerateNewId(), authService.user.JMBG, DateTime.Now);
+            cancellationService.SaveCancellation(cancellation);
+
             return this.appointmentRepository.DeleteById(id);
         }
 
@@ -56,7 +77,17 @@ namespace ZdravoKlinika.Service {
             }
 
             old.startTime = newtime;
-            
+
+            int number = cancellationService.GetCancellationNumber(authService.user.JMBG, DateTime.Now);
+
+            if(number>=4) 
+            {   authService.Restrict(); 
+                Console.WriteLine("RESTRICTED!");
+                return false; 
+            }
+
+            Cancellation cancellation = new Cancellation(cancellationService.GenerateNewId(),authService.user.JMBG, DateTime.Now);
+            cancellationService.SaveCancellation(cancellation);
             
             return !this.appointmentRepository.Save(old);
 
