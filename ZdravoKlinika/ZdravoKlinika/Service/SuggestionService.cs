@@ -35,8 +35,7 @@ namespace ZdravoKlinika.Service {
             List<Appointment> appointments = this.appointmentService.GetAllInInterval(startTime, endTime);
             List<DateTime[]> busyIntervalsFirstRoom = this.getRoomBusyInterval(firstRoomId, appointments, startTime, endTime);
             List<DateTime[]> busyIntervalsSecondRoom = this.getRoomBusyInterval(secondRoomId, appointments, startTime, endTime);
-            busyIntervalsFirstRoom.AddRange(busyIntervalsSecondRoom);
-            List<DateTime[]> busyIntervalsBothRoom = busyIntervalsFirstRoom;
+            List<DateTime[]> busyIntervalsBothRoom = this.mergeListOfIntervals(busyIntervalsFirstRoom, busyIntervalsSecondRoom);
             var renStartTime = this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(busyIntervalsBothRoom, startTime, endTime, duration * 60));
             List<Renovation> renovations = new List<Renovation>();
             foreach (var rs in renStartTime)
