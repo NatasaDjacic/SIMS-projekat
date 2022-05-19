@@ -17,7 +17,7 @@ namespace ZdravoKlinika.Controller
             this.roomMergeService = roomMergeService;
         }
 
-        public bool SaveRoomMerging(DateTime startTime, int duration, string roomFirstId, string roomSecondId, string newRoomId, string newRoomName, string newRoomType, string newRoomDescription)
+        public bool Save(DateTime startTime, int duration, string roomFirstId, string roomSecondId, string newRoomId, string newRoomName, string newRoomType, string newRoomDescription)
         {
 
             RoomMerge roomMerge = new RoomMerge();
@@ -25,7 +25,7 @@ namespace ZdravoKlinika.Controller
             roomMerge.duration = duration;
             roomMerge.roomFirstId = roomFirstId;
             roomMerge.roomSecondId = roomSecondId;
-            var id = roomMerge.roomMergeId = roomMergeService.GenerateNewId();
+            roomMerge.roomMergeId = roomMergeService.GenerateNewId();
             roomMerge.newRoomId = newRoomId;
             roomMerge.newRoomName = newRoomName;
             roomMerge.newRoomType = newRoomType;
@@ -36,7 +36,7 @@ namespace ZdravoKlinika.Controller
             return roomMergeService.Save(roomMerge);
 
         }
-        public void ExecuteRoomSeparating()
+        public void ExecuteRoomMerging()
         {
             roomMergeService.ExecuteRoomMerging();
         }

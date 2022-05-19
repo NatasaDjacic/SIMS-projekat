@@ -17,25 +17,25 @@ namespace ZdravoKlinika.Controller
             this.roomSeparateService = roomSeparateService;
         }
 
-        public bool SaveAdvancedRenovation(DateTime startTime, int duration, string roomId, string firstRoomId, string firstRoomName, string firstRoomType, string firstRoomDescription, string secondRoomId, string secondRoomName, string secondRoomType, string secondRoomDescription)
+        public bool Save(DateTime startTime, int duration, string roomId, string firstRoomId, string firstRoomName, string firstRoomType, string firstRoomDescription, string secondRoomId, string secondRoomName, string secondRoomType, string secondRoomDescription)
         {
 
-            RoomSeparate advancedRenovation = new RoomSeparate();
-            advancedRenovation.startTime = startTime;
-            advancedRenovation.duration = duration;
-            advancedRenovation.roomId = roomId;
-            var id = advancedRenovation.roomSeparateId = roomSeparateService.GenerateNewId();
-            advancedRenovation.firstRoomId = firstRoomId;
-            advancedRenovation.firstRoomName = firstRoomName;
-            advancedRenovation.firstRoomType = firstRoomType;
-            advancedRenovation.firstRoomDescription = firstRoomDescription;
-            advancedRenovation.secondRoomId = secondRoomId;
-            advancedRenovation.secondRoomName = secondRoomName;
-            advancedRenovation.secondRoomType = secondRoomType;
-            advancedRenovation.secondRoomDescription = secondRoomDescription;
+            RoomSeparate separationRenovation = new RoomSeparate();
+            separationRenovation.startTime = startTime;
+            separationRenovation.duration = duration;
+            separationRenovation.roomId = roomId;
+            separationRenovation.roomSeparateId = roomSeparateService.GenerateNewId();
+            separationRenovation.firstRoomId = firstRoomId;
+            separationRenovation.firstRoomName = firstRoomName;
+            separationRenovation.firstRoomType = firstRoomType;
+            separationRenovation.firstRoomDescription = firstRoomDescription;
+            separationRenovation.secondRoomId = secondRoomId;
+            separationRenovation.secondRoomName = secondRoomName;
+            separationRenovation.secondRoomType = secondRoomType;
+            separationRenovation.secondRoomDescription = secondRoomDescription;
 
 
-            return roomSeparateService.Save(advancedRenovation);
+            return roomSeparateService.Save(separationRenovation);
 
         }
         public void ExecuteRoomSeparating()

@@ -123,7 +123,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         public RoomsMerge()
         {
-            roomMergeController.ExecuteRoomSeparating();
+            roomMergeController.ExecuteRoomMerging();
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
@@ -158,7 +158,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
        
 
 
-            roomMergeController.SaveRoomMerging(first.startTime, first.duration, selectedRoomFrom.roomId, selectedRoomTo.roomId, newRoomId, newRoomName, newRoomType, newRoomDescription);
+            roomMergeController.Save(first.startTime, first.duration, selectedRoomFrom.roomId, selectedRoomTo.roomId, newRoomId, newRoomName, newRoomType, newRoomDescription);
             renovationController.SaveRenovation(first.startTime, first.duration, selectedRoomFrom.roomId, "Merging");
             renovationController.SaveRenovation(first.startTime, first.duration, selectedRoomTo.roomId, "Merging");
 

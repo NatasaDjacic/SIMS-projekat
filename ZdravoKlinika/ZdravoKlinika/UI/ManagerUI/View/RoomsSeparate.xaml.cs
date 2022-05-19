@@ -155,7 +155,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             var secondRoomDescription = Console.ReadLine();
 
 
-            roomSeparateController.SaveAdvancedRenovation(first.startTime, first.duration, first.roomId, firstRoomId, firstRoomName, firstRoomType, firstRoomDescription, secondRoomId, secondRoomName, secondRoomType, secondRoomDescription);
+            roomSeparateController.Save(first.startTime, first.duration, first.roomId, firstRoomId, firstRoomName, firstRoomType, firstRoomDescription, secondRoomId, secondRoomName, secondRoomType, secondRoomDescription);
             renovationController.SaveRenovation(first.startTime, first.duration, first.roomId, "Separation");
 
         }
