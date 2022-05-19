@@ -18,5 +18,10 @@ namespace ZdravoKlinika.Controller {
         public void Logout() {
             this.authService.Logout();
         }
+
+        public void Restrict()
+        {
+            this.authService.Restrict();
+        }
     }
 }

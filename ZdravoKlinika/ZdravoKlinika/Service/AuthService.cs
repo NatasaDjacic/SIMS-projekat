@@ -19,6 +19,7 @@ namespace ZdravoKlinika.Service
         }
         public User? user { get; set; }
         public string user_role { get; set; }
+        public bool restricted;
         PatientRepository patientRepository;
         DoctorRepository doctorRepository;
         ManagerRepository managerRepository;
@@ -28,6 +29,7 @@ namespace ZdravoKlinika.Service
         {
             user = null;
             user_role = ROLE.NONE;
+            restricted = false;
             patientRepository = pr;
             doctorRepository = dr;
             managerRepository = mr;
@@ -38,6 +40,13 @@ namespace ZdravoKlinika.Service
         {
             Predicate<User> loginFN = x => (x.username == username || x.JMBG == username) && x.password == password;
             user = secretaryRepository.GetAll().Find(loginFN);
+
+            if(restricted==true)
+            {
+                Console.WriteLine("Account restricted");
+                return false;
+            }
+
             if(user != null)
             {
                 user_role = ROLE.SECRETARY;
@@ -67,6 +76,14 @@ namespace ZdravoKlinika.Service
         {
             user = null;
             user_role = ROLE.NONE;
+            
+        }
+
+        public void Restrict()
+        {
+            user = null;
+            user_role = ROLE.NONE;
+            restricted = true;
         }
     }
 }
