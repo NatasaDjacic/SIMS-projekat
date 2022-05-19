@@ -84,6 +84,15 @@ namespace ZdravoKlinika.UI.PatientUI {
 
         }
 
+        public void Restricted()
+        {
+            var window = new MainWindow();
+            this.Hide();
+            Application.Current.MainWindow = window;
+            window.Show();
+            this.Close();
+
+        }
         
 
     }

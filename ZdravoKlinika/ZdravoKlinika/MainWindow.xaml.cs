@@ -31,7 +31,7 @@ namespace ZdravoKlinika
                 OnLoginRedirect();
             } else {
                 try {
-                    Console.WriteLine("Not valid username or password");
+                    Console.WriteLine("Not valid username or password or account restricted due too much cancellation.");
                 } catch (Exception ex) {
                     System.Diagnostics.Trace.WriteLine(ex.Message);
                 }

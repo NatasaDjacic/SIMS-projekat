@@ -19,6 +19,7 @@ using ZdravoKlinika.Service;
 using ZdravoKlinika.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using ZdravoKlinika.UI;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
@@ -50,6 +51,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
         public AppointmentController appointmentController = GLOBALS.appointmentController ;
+        public AuthService authService=GLOBALS.authService ;
         public Appointments()
         {
             AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
@@ -62,7 +64,21 @@ namespace ZdravoKlinika.UI.PatientUI.View
             int id = Convert.ToInt32(((Button)sender).Tag);
             Console.WriteLine(id);
             appointmentController.DeleteAppointmentById(id);
+
+            if (authService.user == null) 
+            {
+
+                var window = new MainWindow();
+                   
+                Application.Current.MainWindow = window;
+                window.Show();
+               
+            }
+            else 
+            {
             AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
+            }
+            
         }
 
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
