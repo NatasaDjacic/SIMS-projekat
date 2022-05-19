@@ -64,6 +64,11 @@ namespace ZdravoKlinika.Repository
             return added;
         }
 
+        public Mark? GetById(int id)
+        {
+            var values = this.GetAll();
+            return values.Find(value => id == value.id);
+        }
 
 
         public int GenerateNewId()

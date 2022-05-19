@@ -74,7 +74,7 @@
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Terapija"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Width="230" Height="70" Margin="5,366,10,178" Background="White">
+                <Button Width="230" Height="70" Margin="5,366,10,178" Background="White" Click="Click_reports">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/report.jpg" />
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Izvestaji"/></TextBlock>

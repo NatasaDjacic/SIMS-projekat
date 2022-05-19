@@ -26,7 +26,9 @@ namespace ZdravoKlinika
         public static RoomSeparateRepository roomSeparateRepository = new RoomSeparateRepository(@"..\..\..\Resource\Data\roomSeparation.json");
         public static RoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
         public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
+        public static MarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
 
+        public static MarkService markService = new MarkService(markRepository);
         public static CancellationService cancellationService = new CancellationService(cancellationRepository);
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
         public static DoctorService doctorService = new DoctorService(doctorRepository);

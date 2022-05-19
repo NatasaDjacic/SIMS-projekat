@@ -1,0 +1,80 @@
+﻿<Page x:Class="ZdravoKlinika.UI.PatientUI.View.Rate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI.View"
+      xmlns:cmd="clr-namespace:ZdravoKlinika.UI.PatientUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="595" d:DesignWidth="718"      Title="Rating" >
+
+    <Page.CommandBindings>
+    
+        <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" ></CommandBinding>
+    </Page.CommandBindings>
+
+    <DockPanel >
+        <Grid DockPanel.Dock="Top" Margin="0 15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Rate doctor and hospital" Grid.Column="0" FontSize="32" FontWeight="Bold" Margin="0,0,0,10"></TextBlock>
+        </Grid>
+        <Grid DockPanel.Dock="Bottom" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"  Foreground="White" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Cancel" ></Button>
+            <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="Rate"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Click="Click_Rate"></Button>
+        </Grid>
+
+        <Grid Margin="10" Height="374">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="643.1" />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="20" />
+
+
+            </Grid.RowDefinitions>
+
+
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
+                <Label FontSize="16" Content="Rate doctor :"/>
+                <TextBox x:Name="doctorMarkTB" Width="641" Text="{Binding DoctorMark, UpdateSourceTrigger=PropertyChanged}" Height="64"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2">
+                <TextBlock x:Name="doctorTB" Foreground="Gray"></TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
+                <Label Grid.Row="2" FontSize="16" >Rate hospital :</Label>
+                <TextBox x:Name="hospitalMarkTB" Width="641" Text="{Binding HospitalMark, UpdateSourceTrigger=PropertyChanged}" Height="64"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="2">
+                <TextBlock x:Name="hospitalTB" Foreground="Gray" ></TextBlock>
+
+            </StackPanel>
+
+
+
+        </Grid>
+
+
+
+    </DockPanel>
+</Page>
+
