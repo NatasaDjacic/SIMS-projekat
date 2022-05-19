@@ -40,6 +40,12 @@ namespace ZdravoKlinika.Controller
         {
             return equipmentService.GetAll();
         }
+
+        public List<Equipment> FindAll(string search)
+        {
+            return equipmentService.FindAll(search);
+        }
+
         public List<Equipment> GetAllDynamic()
         {
             return equipmentService.GetAllDynamic();

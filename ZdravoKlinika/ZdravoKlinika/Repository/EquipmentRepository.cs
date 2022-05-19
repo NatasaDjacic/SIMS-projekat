@@ -26,6 +26,15 @@ namespace ZdravoKlinika.Repository
             }
             return values;
         }
+        public List<Equipment> FindAll(string name)
+        {
+            var values = JsonConvert.DeserializeObject<List<Equipment>>(File.ReadAllText(fileLocation));
+            if (values == null)
+            {
+                values = new List<Equipment>();
+            }
+            return values.FindAll(room => room.name.Contains(name));
+        }
         public List<Equipment> GetAllDynamic()
         {
             var values = JsonConvert.DeserializeObject<List<Equipment>>(File.ReadAllText(fileLocation));
