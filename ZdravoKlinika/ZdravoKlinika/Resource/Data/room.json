@@ -28,5 +28,17 @@
     "name": "Soba21",
     "description": "Opis",
     "type": "Operaciona sala"
+  },
+  {
+    "roomId": "fd",
+    "name": "ds",
+    "description": "fds",
+    "type": "dsf"
+  },
+  {
+    "roomId": "df",
+    "name": "dsf",
+    "description": "sdf",
+    "type": "fsd"
   }
 ]

@@ -30,6 +30,11 @@ namespace ZdravoKlinika.Service
         {
             return this.equipmentRepository.GetAll();
         }
+
+        public List<Equipment> FindAll(string search)
+        {
+            return this.equipmentRepository.FindAll(search);
+        }
         public List<Equipment> GetAllDynamic()
         {
             return this.equipmentRepository.GetAllDynamic();

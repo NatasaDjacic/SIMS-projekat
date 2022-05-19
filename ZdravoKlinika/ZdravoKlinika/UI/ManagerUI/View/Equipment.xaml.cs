@@ -91,6 +91,21 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
+        private string searchEquip;
+        public string SearchEquip
+        {
+            get => searchEquip;
+            set
+            {
+                if (searchEquip != value)
+                {
+                    searchEquip = value;
+                    OnPropertyChanged("SearchEquip");
+                }
+            }
+        }
+
+
         private EquipRoomGroupDTO equip;
         public EquipRoomGroupDTO Equip
         {
@@ -143,7 +158,6 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             EquipmentService equipmentService = new EquipmentService(equipmentRepository);
             equipmentController = new EquipmentController(equipmentService);
             DynamicEquipmentCollection = new ObservableCollection<Equipment>(equipmentController.GetAllDynamic());
-
             equipMovingController.CheckEquipMoving();
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
@@ -202,6 +216,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
             catch (Exception ex) { Console.WriteLine("Not enough equip in selected room."); };
         }
+
         private ObservableCollection<Equipment> dynEquips;
         public ObservableCollection<Equipment> DynamicEquipmentCollection
         {
@@ -215,5 +230,28 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 }
             }
         }
+        private ObservableCollection<Equipment> searchedEquips;
+        public ObservableCollection<Equipment> EquipSearchCollection
+        {
+            get => searchedEquips;
+            set
+            {
+                if (searchedEquips != value)
+                {
+                    searchedEquips = value;
+                    OnPropertyChanged("EquipSearchCollection");
+                }
+            }
+        }
+        public void Search_Click(object sender, RoutedEventArgs e)
+        {
+            string search = searchEquip;
+            DynamicEquipmentCollection = new ObservableCollection<Equipment>(equipmentController.GetAllDynamic().FindAll(equip => equip.name.Contains(search)));
+
+            var g = EquipRoomGroupDTO.groupEquip(equipmentController.FindAll(search).FindAll(e => e.type == "Staticka"));
+            EquipmentsCollection = new ObservableCollection<EquipRoomGroupDTO>(g);
+
+        }
+
     }
 }
