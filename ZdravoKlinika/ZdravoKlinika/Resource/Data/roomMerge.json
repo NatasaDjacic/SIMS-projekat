@@ -1,13 +1,1 @@
-[
-  {
-    "roomMergeId": 1,
-    "roomFirstId": "3",
-    "roomSecondId": "fg",
-    "startTime": "0001-01-01T00:00:00",
-    "duration": 0,
-    "newRoomId": "Nova",
-    "newRoomName": "Nova",
-    "newRoomType": "nova",
-    "newRoomDescription": "n"
-  }
-]
+[]

@@ -12,12 +12,6 @@
     "type": "Operacijska sala"
   },
   {
-    "roomId": "fg",
-    "name": "fd",
-    "description": "df",
-    "type": "df"
-  },
-  {
     "roomId": "NR1",
     "name": "Soba12",
     "description": "Opis",
@@ -30,15 +24,15 @@
     "type": "Operaciona sala"
   },
   {
-    "roomId": "fd",
-    "name": "ds",
-    "description": "fds",
-    "type": "dsf"
+    "roomId": "2",
+    "name": "Soba 1",
+    "description": "Sala za operacije.",
+    "type": "Operaciona sala"
   },
   {
-    "roomId": "df",
-    "name": "dsf",
-    "description": "sdf",
-    "type": "fsd"
+    "roomId": "N1",
+    "name": "Nova soba",
+    "description": "Sala za sastanke.",
+    "type": "Kancelarija"
   }
 ]

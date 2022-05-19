@@ -103,5 +103,40 @@
     "startTime": "2022-05-18T03:30:00",
     "duration": 2,
     "description": "Separation"
+  },
+  {
+    "renovationId": 16,
+    "roomId": "fd",
+    "startTime": "2022-05-19T00:00:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 17,
+    "roomId": "df",
+    "startTime": "2022-05-19T00:00:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 18,
+    "roomId": "Nova",
+    "startTime": "2022-05-19T01:00:00",
+    "duration": 6,
+    "description": "Separation"
+  },
+  {
+    "renovationId": 19,
+    "roomId": "N3",
+    "startTime": "2022-05-19T01:00:00",
+    "duration": 16,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 20,
+    "roomId": "N4",
+    "startTime": "2022-05-19T01:00:00",
+    "duration": 16,
+    "description": "Merging"
   }
 ]

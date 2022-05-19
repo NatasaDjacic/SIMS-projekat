@@ -24,7 +24,7 @@
     "approved": false,
     "checkedBy": null,
     "comment": "",
-    "alternative": null
+    "alternative": "Brufen"
   },
   {
     "drugId": 4,
@@ -52,5 +52,14 @@
     "checkedBy": null,
     "comment": "",
     "alternative": "Nimulid"
+  },
+  {
+    "drugId": 7,
+    "name": "Diklofenak",
+    "ingredients": "Natrijum hlorid",
+    "approved": false,
+    "checkedBy": null,
+    "comment": "",
+    "alternative": "Aerius"
   }
 ]
