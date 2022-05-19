@@ -25,11 +25,12 @@ namespace ZdravoKlinika
         public static OrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
         public static RoomSeparateRepository roomSeparateRepository = new RoomSeparateRepository(@"..\..\..\Resource\Data\roomSeparation.json");
         public static RoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
+        public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
 
-
+        public static CancellationService cancellationService = new CancellationService(cancellationRepository);
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
         public static DoctorService doctorService = new DoctorService(doctorRepository);
-        public static AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService);
+        public static AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService, cancellationService, authService);
         public static EquipmentService equipmentService =  new EquipmentService(equipmentRepository);
         public static PatientService patientService = new PatientService(patientRepository);
         public static RoomService roomService = new RoomService(roomRepository);
