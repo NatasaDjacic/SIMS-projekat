@@ -38,20 +38,25 @@ namespace ZdravoKlinika.Service
             {
                 if (roomMerge.startTime <= System.DateTime.Now)
                 {
-                    var idRoomFrom = roomMerge.roomFirstId;
-                    roomService.Delete(idRoomFrom);
-                    var idRoomTo = roomMerge.roomSecondId;
-                    roomService.Delete(idRoomTo);
+                    this.StartMergingRooms(roomMerge);
                 }
                 if (roomMerge.startTime.AddHours(roomMerge.duration) <= System.DateTime.Now)
                 {
-                    Room room = new Room(roomMerge.newRoomId, roomMerge.newRoomName, roomMerge.newRoomDescription, roomMerge.newRoomType);
-                    
-                    roomService.Save(room);
-                    roomMergeRepository.DeleteById(roomMerge.roomMergeId);
+                    this.FinishMergingRooms(roomMerge);
                 }
             }
 
+        }
+        public void StartMergingRooms(RoomMerge roomMerge) {
+            roomService.Delete(roomMerge.roomFirstId);
+            roomService.Delete(roomMerge.roomSecondId);
+        }
+
+        public void FinishMergingRooms(RoomMerge roomMerge) {
+            Room room = new Room(roomMerge.newRoomId, roomMerge.newRoomName, roomMerge.newRoomDescription, roomMerge.newRoomType);
+
+            roomService.Save(room);
+            roomMergeRepository.DeleteById(roomMerge.roomMergeId);
         }
     }
 }

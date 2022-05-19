@@ -33,26 +33,28 @@ namespace ZdravoKlinika.Service
 
         public void ExecuteRoomSeparating()
         {
-            List<RoomSeparate> advancedRenovations = new List<RoomSeparate>(GetAll());
-            foreach (RoomSeparate advancedRenovation in advancedRenovations)
+            List<RoomSeparate> roomSeparates = new List<RoomSeparate>(GetAll());
+            foreach (RoomSeparate roomSeparate in roomSeparates)
             {
-                if (advancedRenovation.startTime <= System.DateTime.Now)
+                if (roomSeparate.startTime <= System.DateTime.Now)
                 {
-                    var id = advancedRenovation.roomId;
-                    Console.WriteLine(id);
-                    roomService.Delete(id);
+                    roomService.Delete(roomSeparate.roomId);
                 }
-                if (advancedRenovation.startTime.AddHours(advancedRenovation.duration) <= System.DateTime.Now)
+                if (roomSeparate.startTime.AddHours(roomSeparate.duration) <= System.DateTime.Now)
                 {
-                    Room room1 = new Room(advancedRenovation.firstRoomId, advancedRenovation.firstRoomName, advancedRenovation.firstRoomDescription, advancedRenovation.firstRoomType);
-                    Room room2 = new Room(advancedRenovation.secondRoomId, advancedRenovation.secondRoomName, advancedRenovation.secondRoomDescription, advancedRenovation.secondRoomType);
-                    
-                    roomService.Save(room1);
-                    roomService.Save(room2);
-                    roomSeparateRepository.DeleteById(advancedRenovation.roomSeparateId);
+                    FinishRoomSeparation(roomSeparate);
                 }
             }
 
+        }
+
+        public void FinishRoomSeparation(RoomSeparate roomSeparate) {
+            Room room1 = new Room(roomSeparate.firstRoomId, roomSeparate.firstRoomName, roomSeparate.firstRoomDescription, roomSeparate.firstRoomType);
+            Room room2 = new Room(roomSeparate.secondRoomId, roomSeparate.secondRoomName, roomSeparate.secondRoomDescription, roomSeparate.secondRoomType);
+
+            roomService.Save(room1);
+            roomService.Save(room2);
+            roomSeparateRepository.DeleteById(roomSeparate.roomSeparateId);
         }
 
     }
