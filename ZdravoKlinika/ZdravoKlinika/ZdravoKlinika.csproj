@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Resource\Image\appointment.jpg" />
     <None Remove="Resource\Image\calendar.jpg" />
+    <None Remove="Resource\Image\feedback.png" />
     <None Remove="Resource\Image\home.jpg" />
     <None Remove="Resource\Image\hospital1.jpg" />
     <None Remove="Resource\Image\hospital2.jpg" />
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resource\Image\feedback.png" />
     <Resource Include="Resource\Image\recipe.jpg" />
   </ItemGroup>
 

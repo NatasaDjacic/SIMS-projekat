@@ -93,7 +93,11 @@ namespace ZdravoKlinika.UI.PatientUI {
             this.Close();
 
         }
-        
+
+        private void Click_reports(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Reports());
+        }
 
     }
 }

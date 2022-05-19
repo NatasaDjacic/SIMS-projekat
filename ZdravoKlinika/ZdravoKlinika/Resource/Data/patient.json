@@ -8,8 +8,8 @@
       "reports": [
         {
           "reportId": "cd448fbd-8664-4f39-bc14-cc7441f563e5",
-          "diagnostica": "Neka dijagnostika",
-          "description": "Neki opis",
+          "diagnostica": "Prehlada",
+          "description": "Temp,kasalj",
           "date": "2022-05-06T17:00:30.2844091+02:00",
           "patient_note": "",
           "prescriptions": [
@@ -25,9 +25,9 @@
         },
         {
           "reportId": "e1132bfd-afa3-4017-ac7a-804f9b935442",
-          "diagnostica": "Neka dijagnostika",
-          "description": "Neki opis",
-          "date": "2022-05-06T20:22:10.8242834+02:00",
+          "diagnostica": "Stomacni",
+          "description": "Povracanje,dijareja",
+          "date": "2022-04-06T20:22:10.8242834+02:00",
           "patient_note": "",
           "prescriptions": [
             {
@@ -42,9 +42,9 @@
         },
         {
           "reportId": "4177a3c9-2366-4849-984d-0ecb7fe36a29",
-          "diagnostica": "Neka dijagnostika",
-          "description": "Neki opis",
-          "date": "2022-05-06T20:22:33.4810037+02:00",
+          "diagnostica": "Nizak pritisak",
+          "description": "Vrtoglavica",
+          "date": "2022-01-16T20:22:33.4810037+02:00",
           "patient_note": "",
           "prescriptions": [
             {
@@ -59,25 +59,25 @@
         },
         {
           "reportId": "05223471-dff1-4dcd-b9d3-e789e016d1f0",
-          "diagnostica": "Neka dijagnostika",
-          "description": "Neki opis",
-          "date": "2022-05-06T20:25:35.7682049+02:00",
+          "diagnostica": "Neispavanost",
+          "description": "Jake glavobolje",
+          "date": "2022-03-17T20:25:35.7682049+02:00",
           "patient_note": "",
           "prescriptions": []
         },
         {
           "reportId": "7bbf9689-ffba-4c3c-8387-fc275be34c3f",
-          "diagnostica": "Neka dijagnostika",
-          "description": "Neki opis",
-          "date": "2022-05-06T20:29:00.4891998+02:00",
+          "diagnostica": "Stomacni",
+          "description": "Povracanje",
+          "date": "2022-05-10T20:29:00.4891998+02:00",
           "patient_note": "",
           "prescriptions": []
         },
         {
           "reportId": "e2b7be73-ecc8-4785-a26e-866f0db7d195",
-          "diagnostica": "Neka dijagnostika",
-          "description": "Neki opis",
-          "date": "2022-05-06T21:00:42.9087386+02:00",
+          "diagnostica": "Stomacni",
+          "description": "Povracanje",
+          "date": "2022-04-06T21:00:42.9087386+02:00",
           "patient_note": "",
           "prescriptions": [
             {
