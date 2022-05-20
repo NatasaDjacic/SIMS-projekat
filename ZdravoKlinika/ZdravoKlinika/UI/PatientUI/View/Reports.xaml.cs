@@ -93,7 +93,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         private void Button_Click_Rate(object sender, RoutedEventArgs e)
         {
-            if(markService.GetOne(selectedreport.reportId, authService.user.JMBG)==null)
+            if(markService.GetByReportAndPatient(selectedreport.reportId, authService.user.JMBG)==null)
             {
                 NavigationService.Navigate(new Rate(selectedreport.reportId));
             }

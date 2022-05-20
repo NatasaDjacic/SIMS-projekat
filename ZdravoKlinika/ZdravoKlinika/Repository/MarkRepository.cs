@@ -76,6 +76,13 @@ namespace ZdravoKlinika.Repository
             return GetAll().Max(a => a.id) + 1;
         }
 
+        public bool DeleteById(int id)
+        {
+            var values = this.GetAll();
+            var deleted = values.RemoveAll(value => value.id == id);
+            File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
+            return deleted > 0;
+        }
 
     }
 }

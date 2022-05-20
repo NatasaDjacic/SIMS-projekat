@@ -38,7 +38,7 @@ namespace ZdravoKlinika.Service
             return this.markRepository.GetById(id);
         }
 
-        public Mark? GetOne(Guid reportId,string patientJMBG)
+        public Mark? GetByReportAndPatient(Guid reportId,string patientJMBG)
         {
 
             List<Mark> all = this.GetAll();
@@ -54,8 +54,11 @@ namespace ZdravoKlinika.Service
             return null;
         }
 
-        
 
+        public bool DeleteById(int id)
+        {
+            return this.markRepository.DeleteById(id);
+        }
 
 
     }
