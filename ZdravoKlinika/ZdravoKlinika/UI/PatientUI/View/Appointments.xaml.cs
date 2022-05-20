@@ -69,7 +69,8 @@ namespace ZdravoKlinika.UI.PatientUI.View
             {
 
                 var window = new MainWindow();
-                   
+                Application.Current.MainWindow.Hide();
+
                 Application.Current.MainWindow = window;
                 window.Show();
                
