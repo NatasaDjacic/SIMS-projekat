@@ -36,6 +36,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
 
         public AppointmentController appointmentController = GLOBALS.appointmentController;
+        public AuthService authService=GLOBALS.authService;
 
         Appointment? a;
 
@@ -71,8 +72,21 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
                     appointmentController.MoveAppointmentById(a.id, a.startTime);
                 }
-                NavigationService.Navigate(new Appointments());
+                
 
+                if (authService.user == null)
+                {
+
+                    var window = new MainWindow();
+                    Application.Current.MainWindow.Hide();
+                    Application.Current.MainWindow = window;
+                    window.Show();
+
+                }
+                else
+                {
+                    NavigationService.Navigate(new Appointments());
+                }
 
             }
             catch (Exception ex)
