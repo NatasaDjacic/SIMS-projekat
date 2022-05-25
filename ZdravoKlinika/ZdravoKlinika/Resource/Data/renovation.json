@@ -138,5 +138,68 @@
     "startTime": "2022-05-19T01:00:00",
     "duration": 16,
     "description": "Merging"
+  },
+  {
+    "renovationId": 21,
+    "roomId": "N1",
+    "startTime": "2022-05-20T01:00:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 22,
+    "roomId": "NR2",
+    "startTime": "2022-05-20T01:00:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 23,
+    "roomId": "Id1",
+    "startTime": "2022-05-20T00:00:00",
+    "duration": 2,
+    "description": "Separation"
+  },
+  {
+    "renovationId": 24,
+    "roomId": "AH7",
+    "startTime": "2022-05-20T01:00:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 25,
+    "roomId": "NR1",
+    "startTime": "2022-05-20T01:00:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 26,
+    "roomId": "sd",
+    "startTime": "2022-05-20T00:30:00",
+    "duration": 18,
+    "description": "Separation"
+  },
+  {
+    "renovationId": 27,
+    "roomId": "ds",
+    "startTime": "2022-05-20T01:00:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 28,
+    "roomId": "6",
+    "startTime": "2022-05-20T01:00:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "renovationId": 29,
+    "roomId": "Idnova",
+    "startTime": "2022-05-20T00:30:00",
+    "duration": 2,
+    "description": "Separation"
   }
 ]

@@ -22,5 +22,21 @@
     "patientJMBG": "1231231231231",
     "doctorJMBG": "1111111111111",
     "reportId": "7bbf9689-ffba-4c3c-8387-fc275be34c3f"
+  },
+  {
+    "id": 4,
+    "hospitalMark": 5,
+    "doctorMark": 5,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "1111111111111",
+    "reportId": "4177a3c9-2366-4849-984d-0ecb7fe36a29"
+  },
+  {
+    "id": 5,
+    "hospitalMark": 5,
+    "doctorMark": 5,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "1111111111111",
+    "reportId": "05223471-dff1-4dcd-b9d3-e789e016d1f0"
   }
 ]

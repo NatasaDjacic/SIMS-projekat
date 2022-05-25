@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "roomSeparateId": 1,
+    "roomId": "sd",
+    "startTime": "2022-05-20T00:30:00",
+    "duration": 18,
+    "firstRoomId": "d",
+    "firstRoomName": "dsdsf",
+    "firstRoomType": "dsf",
+    "firstRoomDescription": "sfd",
+    "secondRoomId": "fds",
+    "secondRoomName": "sfd",
+    "secondRoomType": "dsf",
+    "secondRoomDescription": "sfd"
+  }
+]

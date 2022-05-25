@@ -44,7 +44,7 @@
           "reportId": "4177a3c9-2366-4849-984d-0ecb7fe36a29",
           "diagnostica": "Nizak pritisak",
           "description": "Vrtoglavica",
-          "date": "2022-01-16T20:22:33.4810037+02:00",
+          "date": "2022-01-16T19:22:33.4810037+01:00",
           "patient_note": "",
           "prescriptions": [
             {
@@ -61,7 +61,7 @@
           "reportId": "05223471-dff1-4dcd-b9d3-e789e016d1f0",
           "diagnostica": "Neispavanost",
           "description": "Jake glavobolje",
-          "date": "2022-03-17T20:25:35.7682049+02:00",
+          "date": "2022-03-17T19:25:35.7682049+01:00",
           "patient_note": "",
           "prescriptions": []
         },
@@ -165,6 +165,82 @@
     "lastName": "Filipovic",
     "JMBG": "1231231231238",
     "username": "1231231231238",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "",
+    "city": "",
+    "address": ""
+  },
+  {
+    "gender": "None",
+    "bloodType": "None",
+    "dateOfBirth": "2022-05-20T10:43:49.2432178+02:00",
+    "allergens": [],
+    "medicalRecord": {
+      "reports": []
+    },
+    "firstName": "Neko",
+    "lastName": "Neko",
+    "JMBG": "1231231231232",
+    "username": "1231231231232",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "",
+    "city": "",
+    "address": ""
+  },
+  {
+    "gender": "None",
+    "bloodType": "None",
+    "dateOfBirth": "2022-05-20T13:19:30.4125047+02:00",
+    "allergens": [],
+    "medicalRecord": {
+      "reports": []
+    },
+    "firstName": "Nek",
+    "lastName": "Neko",
+    "JMBG": "1231231231234",
+    "username": "1231231231234",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "",
+    "city": "",
+    "address": ""
+  },
+  {
+    "gender": "None",
+    "bloodType": "None",
+    "dateOfBirth": "2022-05-20T13:20:32.4205106+02:00",
+    "allergens": [],
+    "medicalRecord": {
+      "reports": []
+    },
+    "firstName": "Neeko",
+    "lastName": "nesto",
+    "JMBG": "1231231238425",
+    "username": "1231231238425",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "",
+    "city": "",
+    "address": ""
+  },
+  {
+    "gender": "None",
+    "bloodType": "None",
+    "dateOfBirth": "2022-05-20T13:20:47.5853104+02:00",
+    "allergens": [],
+    "medicalRecord": {
+      "reports": []
+    },
+    "firstName": "evljo",
+    "lastName": "veljo",
+    "JMBG": "2525252525658",
+    "username": "2525252525658",
     "password": "zdravo",
     "phone": "",
     "email": "",

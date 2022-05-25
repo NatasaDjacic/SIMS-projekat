@@ -182,5 +182,37 @@
     "message": "Your appointment at 5/18/2022 21:43:51 in room 5 is moved to 5/18/2022 21:43:51.",
     "seen": false,
     "showDate": "2022-05-18T20:46:10.7955754+02:00"
+  },
+  {
+    "id": 24,
+    "JMBG": "3213213213213",
+    "title": "New appointment",
+    "message": "You have new appointment at 20.5.2022. 13:19:30 in room 6.",
+    "seen": false,
+    "showDate": "2022-05-20T13:20:56.3873602+02:00"
+  },
+  {
+    "id": 25,
+    "JMBG": "2525252525658",
+    "title": "New appointment",
+    "message": "You have new appointment at 20.5.2022. 13:19:30 in room 6.",
+    "seen": false,
+    "showDate": "2022-05-20T13:20:56.396569+02:00"
+  },
+  {
+    "id": 26,
+    "JMBG": "3213213213213",
+    "title": "Moved appointment",
+    "message": "Your appointment at 20.5.2022. 14:19:30 in room 6 is moved to 20.5.2022. 14:19:30.",
+    "seen": false,
+    "showDate": "2022-05-20T13:20:56.4062571+02:00"
+  },
+  {
+    "id": 27,
+    "JMBG": "1231231231234",
+    "title": "Moved appointment",
+    "message": "Your appointment at 20.5.2022. 14:19:30 in room 6 is moved to 20.5.2022. 14:19:30.",
+    "seen": false,
+    "showDate": "2022-05-20T13:20:56.4145825+02:00"
   }
 ]

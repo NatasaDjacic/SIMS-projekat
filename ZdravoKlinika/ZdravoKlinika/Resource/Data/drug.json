@@ -37,12 +37,12 @@
   },
   {
     "drugId": 5,
-    "name": "Nimulid",
+    "name": "Nimulidin",
     "ingredients": "Bronzepedan, Natrijum hlorid",
     "approved": false,
     "checkedBy": null,
     "comment": "",
-    "alternative": null
+    "alternative": "Aerius"
   },
   {
     "drugId": 6,
@@ -61,5 +61,14 @@
     "checkedBy": null,
     "comment": "",
     "alternative": "Aerius"
+  },
+  {
+    "drugId": 8,
+    "name": "Nikli",
+    "ingredients": "Voda",
+    "approved": false,
+    "checkedBy": null,
+    "comment": "",
+    "alternative": "Nimuid"
   }
 ]

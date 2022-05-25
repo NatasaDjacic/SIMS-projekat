@@ -1,38 +1,32 @@
 [
   {
-    "roomId": "AH7",
-    "name": "Soba7",
-    "description": "Soba za operaciju",
-    "type": "Sala za operaciju"
-  },
-  {
     "roomId": "1",
     "name": "Soba1",
     "description": "Prostorija prethodnog direktora. Trenutno se koristi kao operaciona sala za kraće operacije.",
     "type": "Operacijska sala"
   },
   {
-    "roomId": "NR1",
-    "name": "Soba12",
-    "description": "Opis",
-    "type": "Operaciona sala"
-  },
-  {
-    "roomId": "NR2",
-    "name": "Soba21",
-    "description": "Opis",
-    "type": "Operaciona sala"
-  },
-  {
     "roomId": "2",
-    "name": "Soba 1",
+    "name": "Soba 2",
     "description": "Sala za operacije.",
     "type": "Operaciona sala"
   },
   {
-    "roomId": "N1",
-    "name": "Nova soba",
-    "description": "Sala za sastanke.",
+    "roomId": "5",
+    "name": "Soba doktor",
+    "description": "Soba doktora Todorovica",
     "type": "Kancelarija"
+  },
+  {
+    "roomId": "Id12",
+    "name": "Id21",
+    "description": "sala",
+    "type": "Operaciona sala"
+  },
+  {
+    "roomId": "id21",
+    "name": "Sala2",
+    "description": "sala",
+    "type": "Operaciona sala"
   }
 ]
