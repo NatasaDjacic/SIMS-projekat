@@ -56,7 +56,7 @@ namespace ZdravoKlinika.Service
             Room room = new Room(roomMerge.newRoomId, roomMerge.newRoomName, roomMerge.newRoomDescription, roomMerge.newRoomType);
 
             roomService.Save(room);
-            roomMergeRepository.DeleteById(roomMerge.roomMergeId);
+            roomMergeRepository.DeleteById(roomMerge.id);
         }
     }
 }

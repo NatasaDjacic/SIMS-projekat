@@ -24,9 +24,21 @@
     "type": "Operaciona sala"
   },
   {
-    "roomId": "id21",
-    "name": "Sala2",
-    "description": "sala",
+    "roomId": "RT1",
+    "name": "SobaTest",
+    "description": "Testna soba",
     "type": "Operaciona sala"
+  },
+  {
+    "roomId": "ID1",
+    "name": "SobaNova1",
+    "description": "Sala za operacije",
+    "type": "Operaciona sala"
+  },
+  {
+    "roomId": "ID2",
+    "name": "TestnaSoba",
+    "description": "Soba za testiranje",
+    "type": "Kancelarija"
   }
 ]

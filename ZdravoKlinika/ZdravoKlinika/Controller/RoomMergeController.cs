@@ -25,7 +25,7 @@ namespace ZdravoKlinika.Controller
             roomMerge.duration = duration;
             roomMerge.roomFirstId = roomFirstId;
             roomMerge.roomSecondId = roomSecondId;
-            roomMerge.roomMergeId = roomMergeService.GenerateNewId();
+            roomMerge.id = roomMergeService.GenerateNewId();
             roomMerge.newRoomId = newRoomId;
             roomMerge.newRoomName = newRoomName;
             roomMerge.newRoomType = newRoomType;

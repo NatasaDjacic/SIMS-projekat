@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Model
 {
-    public class RoomSeparate
+    public class RoomSeparate : Renovation
     {
-        public int roomSeparateId;
-        public string roomId;
-        public DateTime startTime;
-        public int duration;
+        public int id;
         public string firstRoomId;
         public string firstRoomName;
         public string firstRoomType;
@@ -21,9 +18,9 @@ namespace ZdravoKlinika.Model
         public string secondRoomType;
         public string secondRoomDescription;
 
-        public RoomSeparate(int roomSeparateId, string roomId, DateTime startTime, int duration, string firstRoomId, string firstRoomName, string firstRoomType, string firstRoomDescription, string secondRoomId, string secondRoomName, string secondRoomType, string secondRoomDescription)
+        public RoomSeparate(int id, string roomId, DateTime startTime, int duration, string firstRoomId, string firstRoomName, string firstRoomType, string firstRoomDescription, string secondRoomId, string secondRoomName, string secondRoomType, string secondRoomDescription)
         {
-            this.roomSeparateId = roomSeparateId;
+            this.id = id;
             this.roomId = roomId;
             this.startTime = startTime;
             this.duration = duration;

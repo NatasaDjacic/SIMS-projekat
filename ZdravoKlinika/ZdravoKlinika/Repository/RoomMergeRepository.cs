@@ -32,7 +32,7 @@ namespace ZdravoKlinika.Repository
         {
             bool added = false;
             var values = this.GetAll();
-            var found = values.FindIndex(value => roomMerge.roomMergeId == value.roomMergeId);
+            var found = values.FindIndex(value => roomMerge.id == value.id);
             if (found != -1)
             {
                 values[found] = roomMerge;
@@ -49,13 +49,13 @@ namespace ZdravoKlinika.Repository
         public RoomMerge? GetById(int id)
         {
             var values = this.GetAll();
-            return values.Find(value => id == value.roomMergeId);
+            return values.Find(value => id == value.id);
         }
 
         public bool DeleteById(int id)
         {
             var values = this.GetAll();
-            var deleted = values.RemoveAll(value => value.roomMergeId == id);
+            var deleted = values.RemoveAll(value => value.id == id);
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return deleted > 0;
         }
@@ -64,7 +64,7 @@ namespace ZdravoKlinika.Repository
         {
             try
             {
-                return GetAll().Max(a => a.roomMergeId) + 1;
+                return GetAll().Max(a => a.id) + 1;
             }
             catch
             {

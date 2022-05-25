@@ -24,7 +24,7 @@ namespace ZdravoKlinika.Controller
             separationRenovation.startTime = startTime;
             separationRenovation.duration = duration;
             separationRenovation.roomId = roomId;
-            separationRenovation.roomSeparateId = roomSeparateService.GenerateNewId();
+            separationRenovation.id = roomSeparateService.GenerateNewId();
             separationRenovation.firstRoomId = firstRoomId;
             separationRenovation.firstRoomName = firstRoomName;
             separationRenovation.firstRoomType = firstRoomType;

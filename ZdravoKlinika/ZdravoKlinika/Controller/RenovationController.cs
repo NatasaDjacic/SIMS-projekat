@@ -23,7 +23,7 @@ namespace ZdravoKlinika.Controller
             renovation.startTime = startTime;
             renovation.duration = duration;
             renovation.roomId = roomId;
-            var id = renovation.renovationId = renovationService.GenerateNewId();
+            var id = renovation.id = renovationService.GenerateNewId();
             renovation.description = description;
             renovation.Validate();
 

@@ -54,7 +54,7 @@ namespace ZdravoKlinika.Service
 
             roomService.Save(room1);
             roomService.Save(room2);
-            roomSeparateRepository.DeleteById(roomSeparate.roomSeparateId);
+            roomSeparateRepository.DeleteById(roomSeparate.id);
         }
 
     }

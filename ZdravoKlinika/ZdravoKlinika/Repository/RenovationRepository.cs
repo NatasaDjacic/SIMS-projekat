@@ -33,7 +33,7 @@ namespace ZdravoKlinika.Repository
       {
             bool added = false;
             var values = this.GetAll();
-            var found = values.FindIndex(value => ren.renovationId==value.renovationId);
+            var found = values.FindIndex(value => ren.id==value.id);
             if (found != -1)
             {
                 values[found] = ren;
@@ -50,13 +50,13 @@ namespace ZdravoKlinika.Repository
       public Renovation? GetById(int id)
       {
             var values = this.GetAll();
-            return values.Find(value => id==value.renovationId);
+            return values.Find(value => id==value.id);
       }
       
       public bool DeleteById(int id)
       {
             var values = this.GetAll();
-            var deleted = values.RemoveAll(value => value.renovationId==id);
+            var deleted = values.RemoveAll(value => value.id==id);
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return deleted > 0;
       }
@@ -65,7 +65,7 @@ namespace ZdravoKlinika.Repository
       {
             try
             {
-                return GetAll().Max(a => a.renovationId) + 1;
+                return GetAll().Max(a => a.id) + 1;
             }
             catch
             {

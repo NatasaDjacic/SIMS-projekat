@@ -1,204 +1,232 @@
 [
   {
-    "renovationId": 1,
+    "id": 0,
     "roomId": "3",
     "startTime": "2022-05-04T00:00:00",
     "duration": 1,
     "description": "Renoviranje"
   },
   {
-    "renovationId": 2,
+    "id": 0,
     "roomId": "6",
     "startTime": "2022-05-04T02:00:00",
     "duration": 1,
     "description": "Krecenje"
   },
   {
-    "renovationId": 3,
+    "id": 0,
     "roomId": "6",
     "startTime": "2022-05-05T08:30:00",
     "duration": 240,
     "description": "Nove plocice"
   },
   {
-    "renovationId": 4,
+    "id": 0,
     "roomId": "1",
     "startTime": "2022-05-06T01:00:00",
     "duration": 5,
     "description": "Zamena podova"
   },
   {
-    "renovationId": 5,
+    "id": 0,
     "roomId": "3",
     "startTime": "2022-05-15T00:00:00",
     "duration": 5,
     "description": "Popravka kupatila."
   },
   {
-    "renovationId": 6,
+    "id": 0,
     "roomId": "6",
     "startTime": "2022-05-18T00:00:00",
     "duration": 5,
     "description": "Krecenje"
   },
   {
-    "renovationId": 7,
+    "id": 0,
     "roomId": "1",
     "startTime": "2022-05-19T00:00:00",
     "duration": 2,
     "description": "Separation"
   },
   {
-    "renovationId": 8,
+    "id": 0,
     "roomId": "1",
     "startTime": "2022-05-19T02:00:00",
     "duration": 2,
     "description": "Separation"
   },
   {
-    "renovationId": 9,
+    "id": 0,
     "roomId": "id1",
     "startTime": "2022-05-19T00:00:00",
     "duration": 2,
     "description": "Separation"
   },
   {
-    "renovationId": 10,
+    "id": 0,
     "roomId": "id1",
     "startTime": "2022-05-19T02:30:00",
     "duration": 5,
     "description": "Merging"
   },
   {
-    "renovationId": 11,
+    "id": 0,
     "roomId": "id2",
     "startTime": "2022-05-18T00:00:00",
     "duration": 1,
     "description": "Merging"
   },
   {
-    "renovationId": 12,
+    "id": 0,
     "roomId": "9",
     "startTime": "2022-05-18T00:00:00",
     "duration": 1,
     "description": "Merging"
   },
   {
-    "renovationId": 13,
+    "id": 0,
     "roomId": "3",
     "startTime": "2022-05-18T00:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 14,
+    "id": 0,
     "roomId": "fg",
     "startTime": "2022-05-18T00:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 15,
+    "id": 0,
     "roomId": "3",
     "startTime": "2022-05-18T03:30:00",
     "duration": 2,
     "description": "Separation"
   },
   {
-    "renovationId": 16,
+    "id": 0,
     "roomId": "fd",
     "startTime": "2022-05-19T00:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 17,
+    "id": 0,
     "roomId": "df",
     "startTime": "2022-05-19T00:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 18,
+    "id": 0,
     "roomId": "Nova",
     "startTime": "2022-05-19T01:00:00",
     "duration": 6,
     "description": "Separation"
   },
   {
-    "renovationId": 19,
+    "id": 0,
     "roomId": "N3",
     "startTime": "2022-05-19T01:00:00",
     "duration": 16,
     "description": "Merging"
   },
   {
-    "renovationId": 20,
+    "id": 0,
     "roomId": "N4",
     "startTime": "2022-05-19T01:00:00",
     "duration": 16,
     "description": "Merging"
   },
   {
-    "renovationId": 21,
+    "id": 0,
     "roomId": "N1",
     "startTime": "2022-05-20T01:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 22,
+    "id": 0,
     "roomId": "NR2",
     "startTime": "2022-05-20T01:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 23,
+    "id": 0,
     "roomId": "Id1",
     "startTime": "2022-05-20T00:00:00",
     "duration": 2,
     "description": "Separation"
   },
   {
-    "renovationId": 24,
+    "id": 0,
     "roomId": "AH7",
     "startTime": "2022-05-20T01:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 25,
+    "id": 0,
     "roomId": "NR1",
     "startTime": "2022-05-20T01:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 26,
+    "id": 0,
     "roomId": "sd",
     "startTime": "2022-05-20T00:30:00",
     "duration": 18,
     "description": "Separation"
   },
   {
-    "renovationId": 27,
+    "id": 0,
     "roomId": "ds",
     "startTime": "2022-05-20T01:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 28,
+    "id": 0,
     "roomId": "6",
     "startTime": "2022-05-20T01:00:00",
     "duration": 2,
     "description": "Merging"
   },
   {
-    "renovationId": 29,
+    "id": 0,
     "roomId": "Idnova",
     "startTime": "2022-05-20T00:30:00",
+    "duration": 2,
+    "description": "Separation"
+  },
+  {
+    "id": 1,
+    "roomId": "5",
+    "startTime": "2022-05-25T01:00:00",
+    "duration": 2,
+    "description": "Nova soba"
+  },
+  {
+    "id": 2,
+    "roomId": "fds",
+    "startTime": "2022-05-25T00:30:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "id": 3,
+    "roomId": "d",
+    "startTime": "2022-05-25T00:30:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "id": 4,
+    "roomId": "id21",
+    "startTime": "2022-05-25T00:30:00",
     "duration": 2,
     "description": "Separation"
   }
