@@ -51,6 +51,11 @@ namespace ZdravoKlinika.Repository
             var values = this.GetAll();
             return values.Find(value => id.Equals(value.JMBG));
         }
+        public Manager? GetManager()
+        {
+            var values = this.GetAll();
+            return values.Find(value => value.JMBG.Equals(value.JMBG));
+        }
 
         public bool DeleteById(string id)
         {

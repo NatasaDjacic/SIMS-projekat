@@ -229,5 +229,19 @@
     "startTime": "2022-05-25T00:30:00",
     "duration": 2,
     "description": "Separation"
+  },
+  {
+    "id": 5,
+    "roomId": "Id12",
+    "startTime": "2022-05-26T00:30:00",
+    "duration": 2,
+    "description": "Merging"
+  },
+  {
+    "id": 6,
+    "roomId": "RT1",
+    "startTime": "2022-05-26T00:30:00",
+    "duration": 2,
+    "description": "Merging"
   }
 ]

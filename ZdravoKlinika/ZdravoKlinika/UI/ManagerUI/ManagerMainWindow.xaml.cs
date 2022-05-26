@@ -139,6 +139,10 @@ namespace ZdravoKlinika.UI.ManagerUI
         {
             ContentFrame.NavigationService.Navigate(new View.RoomsSeparate());
         }
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Profile());
+        }
 
     }
 }

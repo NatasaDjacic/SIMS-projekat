@@ -109,10 +109,12 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
 
         public RoomController roomController;
+        RoomMergeController roomMergeController = GLOBALS.roomMergeController;
 
         public RoomsSeparate()
         {
             roomSeparateController.ExecuteRoomSeparating();
+            roomMergeController.ExecuteRoomMerging();
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);

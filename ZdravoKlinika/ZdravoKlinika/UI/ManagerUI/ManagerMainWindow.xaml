@@ -35,7 +35,7 @@
                 <MenuItem Click="English_Click" Name="EnglishMenu" Header="{DynamicResource StrEnglish }" IsCheckable="True" IsChecked="False" />
                 <MenuItem Click="Russian_Click" Name="RussianMenu" Header="Русский" IsCheckable="True" IsChecked="False" />
             </MenuItem>
-            <MenuItem Header="{DynamicResource StrProfil}"/>
+            <MenuItem Click="Profile_Click" Header="{DynamicResource StrProfil}"/>
             <MenuItem HorizontalAlignment="Right" Click="SignOut_Click" Header="{DynamicResource StrSignOut}"/>
 
         </Menu>
