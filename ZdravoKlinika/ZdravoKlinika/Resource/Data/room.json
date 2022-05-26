@@ -18,18 +18,6 @@
     "type": "Kancelarija"
   },
   {
-    "roomId": "Id12",
-    "name": "Id21",
-    "description": "sala",
-    "type": "Operaciona sala"
-  },
-  {
-    "roomId": "RT1",
-    "name": "SobaTest",
-    "description": "Testna soba",
-    "type": "Operaciona sala"
-  },
-  {
     "roomId": "ID1",
     "name": "SobaNova1",
     "description": "Sala za operacije",
@@ -39,6 +27,12 @@
     "roomId": "ID2",
     "name": "TestnaSoba",
     "description": "Soba za testiranje",
+    "type": "Kancelarija"
+  },
+  {
+    "roomId": "ID3",
+    "name": "SobaId3",
+    "description": "Kancelarija za sastanke.",
     "type": "Kancelarija"
   }
 ]

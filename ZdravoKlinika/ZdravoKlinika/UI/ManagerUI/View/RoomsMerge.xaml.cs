@@ -120,9 +120,11 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         SuggestionController suggestionController = GLOBALS.suggestionController;
         RoomMergeController roomMergeController = GLOBALS.roomMergeController;
         RenovationController renovationController = GLOBALS.renovationController;
+        RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
 
         public RoomsMerge()
         {
+            roomSeparateController.ExecuteRoomSeparating();
             roomMergeController.ExecuteRoomMerging();
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
