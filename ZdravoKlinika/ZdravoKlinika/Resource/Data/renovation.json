@@ -243,5 +243,54 @@
     "startTime": "2022-05-26T00:30:00",
     "duration": 2,
     "description": "Merging"
+  },
+  {
+    "id": 7,
+    "roomId": "ID3",
+    "startTime": "2022-05-27T00:30:00",
+    "duration": 2,
+    "description": "Krecenje"
+  },
+  {
+    "id": 8,
+    "roomId": "1",
+    "startTime": "2022-05-27T00:30:00",
+    "duration": 2,
+    "description": "Krecenje"
+  },
+  {
+    "id": 9,
+    "roomId": "ID1",
+    "startTime": "2022-05-27T00:30:00",
+    "duration": 2,
+    "description": "Krecenje"
+  },
+  {
+    "id": 10,
+    "roomId": "ID1",
+    "startTime": "0001-01-01T00:00:00",
+    "duration": 0,
+    "description": "Test"
+  },
+  {
+    "id": 11,
+    "roomId": "5",
+    "startTime": "2022-05-27T00:30:00",
+    "duration": 2,
+    "description": "Krecenje"
+  },
+  {
+    "id": 12,
+    "roomId": "2",
+    "startTime": "2022-05-27T00:30:00",
+    "duration": 2,
+    "description": "OpisTest"
+  },
+  {
+    "id": 13,
+    "roomId": "1",
+    "startTime": "2022-05-27T02:30:00",
+    "duration": 2,
+    "description": "Renoviranje"
   }
 ]

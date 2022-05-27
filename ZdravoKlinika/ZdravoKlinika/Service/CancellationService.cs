@@ -46,7 +46,7 @@ namespace ZdravoKlinika.Service
             return numberOfCancelledAppointments;
 
         }
-
+       
         public int GenerateNewId()
         {
             return this.cancellationRepository.GenerateNewId();

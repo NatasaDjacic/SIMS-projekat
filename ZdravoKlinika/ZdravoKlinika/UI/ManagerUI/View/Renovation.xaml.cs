@@ -109,13 +109,10 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 }
             }
         }
-        public RoomController roomController;
+        public RoomController roomController = GLOBALS.roomController;
         public Renovations(string value)
         {
             val = value;
-            RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
-            RoomService roomService = new RoomService(roomRepository);
-            roomController = new RoomController(roomService);
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
             StartDate = DateTime.Now;
@@ -206,10 +203,11 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
-            string val;
-            System.Collections.IList list = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration);
-       
-            foreach(Renovation ren in suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration))
+           // string val;
+            //System.Collections.IList list = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration);
+            NavigationService.Navigate(new RenovationsAppointments(SelectedRoom.roomId, StartDate, EndDate, Duration));
+
+            /*foreach (Renovation ren in suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration))
             {
                 Console.WriteLine(ren.startTime.ToString());
                 
@@ -223,7 +221,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             var first = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration)[index];
             renovationController.SaveRenovation(first.startTime, first.duration, first.roomId, desc);
 
-
+            */
 
         }
 

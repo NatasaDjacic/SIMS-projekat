@@ -7,11 +7,11 @@ using ZdravoKlinika.Model.Enums;
 
 namespace ZdravoKlinika.Model {
     public class Renovation {
-        public int id;
-        public string roomId;
-        public DateTime startTime;
-        public int duration;
-        public string description;
+        public int id { get; set; }
+        public string roomId { get; set; }
+        public DateTime startTime { get; set; }
+        public int duration { get; set; }
+        public string description { get; set; }
         public Renovation(int id, string roomId, DateTime startTime, int duration, string description) { 
             this.id = id;
             this.roomId = roomId;

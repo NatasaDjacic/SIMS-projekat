@@ -24,10 +24,11 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Grid.Column="0" Background="AliceBlue" Height="auto" Grid.RowSpan="2" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="11*"/>
-                    <ColumnDefinition Width="69*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -47,7 +48,7 @@
                 <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="Menadzer"></Label>
 
                 <Label  Grid.Row="1" Grid.Column="0" Content="Ime"></Label>
-                <Label  Grid.Row="1" Grid.Column="1" Content="{Binding FirstName}"></Label>
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding FirstName}"></Label>
                 
                 <Label Grid.Row="2" Grid.Column="0" Content="Prezime"></Label>
                 <Label  Grid.Row="2" Grid.Column="1" Content="{Binding LastName}"></Label>
@@ -60,7 +61,9 @@
 
                 <Label  Grid.Row="5" Grid.Column="0" Content="Lozinka"></Label>
                 <Label  Grid.Row="5" Grid.Column="1" Content="{Binding Password}"></Label>
-                <Button Grid.Row="5" Grid.Column="2" x:Name="btnShow" Content="Prikaži lozinku" PreviewMouseDown="btnShow_MouseDown" PreviewMouseUp="btnShow_MouseReleased" Width="50"/>
+                <Button Grid.Row="5" Grid.Column="2" Height="25" Width="90" ToolTipService.InitialShowDelay='1'
+         ToolTipService.ShowDuration='7000'
+         ToolTipService.BetweenShowDelay='2' ToolTip="Zadrzati za prikaz lozinke." x:Name="btnShow" Content="Prikaži lozinku" PreviewMouseDown="btnShow_MouseDown" PreviewMouseUp="btnShow_MouseReleased"/>
 
                 <Label  Grid.Row="6" Grid.Column="0" Content="Broj telefona"></Label>
                 <Label  Grid.Row="6" Grid.Column="1" Content="{Binding Phone}"></Label>
