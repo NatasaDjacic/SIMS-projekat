@@ -6,33 +6,15 @@
     "type": "Operacijska sala"
   },
   {
-    "roomId": "2",
-    "name": "Soba 2",
-    "description": "Sala za operacije.",
+    "roomId": "IDN1",
+    "name": "Nova soba 1",
+    "description": "Nova operaciona sala, nastala 28. maja",
     "type": "Operaciona sala"
   },
   {
-    "roomId": "5",
-    "name": "Soba doktor",
-    "description": "Soba doktora Todorovica",
-    "type": "Kancelarija"
-  },
-  {
-    "roomId": "ID1",
-    "name": "SobaNova1",
-    "description": "Sala za operacije",
-    "type": "Operaciona sala"
-  },
-  {
-    "roomId": "ID2",
-    "name": "TestnaSoba",
-    "description": "Soba za testiranje",
-    "type": "Kancelarija"
-  },
-  {
-    "roomId": "ID3",
-    "name": "SobaId3",
-    "description": "Kancelarija za sastanke.",
+    "roomId": "IDN2",
+    "name": "Nova soba 2",
+    "description": "Nova kancelarija, nastala iz sobe 2",
     "type": "Kancelarija"
   }
 ]

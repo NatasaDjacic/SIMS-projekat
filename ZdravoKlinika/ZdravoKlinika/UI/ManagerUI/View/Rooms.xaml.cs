@@ -8,6 +8,9 @@ using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace ZdravoKlinika.UI.ManagerUI.View {
    
@@ -86,10 +89,20 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         private void Button_Click_New(object sender, RoutedEventArgs e) {
             NavigationService.Navigate(new AddRoom(val));
         }
-
+        private void GeneratePDF_Click(object sender, RoutedEventArgs e)
+        {
+            Document doc = new Document(PageSize.A4, 25, 25, 30, 30);
+            PdfWriter.GetInstance(doc, new FileStream("E:/CreatePdf.pdf", FileMode.Create));
+            doc.Open();
+            Paragraph p1 = new Paragraph("Test");
+            doc.Add(p1);
+            doc.Close();
+            MessageBox.Show("PDF File Created Suessfully.");
+        }
+        
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+         
         }
       
     }

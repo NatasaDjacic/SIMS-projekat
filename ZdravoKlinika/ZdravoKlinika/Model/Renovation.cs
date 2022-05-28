@@ -24,7 +24,7 @@ namespace ZdravoKlinika.Model {
         {
 
 
-            if (roomId.Trim().Length == 0)
+           /* if (roomId.Trim().Length == 0)
             {
                 throw new Exception("Please choose room.");
             }
@@ -44,3 +44,4 @@ namespace ZdravoKlinika.Model {
         }
     }
 }
+

@@ -19,8 +19,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.UI.ManagerUI.View
 {
-    
-    public partial class RenovationsAppointments : Page, INotifyPropertyChanged
+    public partial class MergeAppointments : Page, INotifyPropertyChanged
     {
         protected virtual void OnPropertyChanged(string name)
         {
@@ -29,6 +28,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+
 
         private ObservableCollection<Room> rooms;
         public ObservableCollection<Room> RoomsCollection
@@ -43,15 +43,15 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 }
             }
         }
-        private ObservableCollection<Renovation> renovations;
+        private ObservableCollection<Renovation> merges;
         public ObservableCollection<Renovation> DateCollection
         {
-            get => renovations;
+            get => merges;
             set
             {
-                if (renovations != value)
+                if (merges != value)
                 {
-                    renovations = value;
+                    merges = value;
                     OnPropertyChanged("DateCollection");
                 }
             }
@@ -60,7 +60,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         public event PropertyChangedEventHandler? PropertyChanged;
         SuggestionController suggestionController = GLOBALS.suggestionController;
+        RoomMergeController roomMergeController = GLOBALS.roomMergeController;
         RenovationController renovationController = GLOBALS.renovationController;
+        RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
         string val = string.Empty;
         private DateTime startDate;
         public DateTime StartDate
@@ -104,19 +106,34 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        private Room selectedRoom;
-        public Room SelectedRoom
+        private Room selectedRoomFrom;
+        public Room SelectedRoomFrom
         {
-            get => selectedRoom;
+            get => selectedRoomFrom;
             set
             {
-                if (selectedRoom != value)
+                if (selectedRoomFrom != value)
                 {
-                    selectedRoom = value;
-                    OnPropertyChanged("SelectedRoom");
+                    selectedRoomFrom = value;
+                    OnPropertyChanged("SelectedRoomFrom");
                 }
             }
         }
+
+        private Room selectedRoomTo;
+        public Room SelectedRoomTo
+        {
+            get => selectedRoomTo;
+            set
+            {
+                if (selectedRoomTo != value)
+                {
+                    selectedRoomTo = value;
+                    OnPropertyChanged("SelectedRoomTo");
+                }
+            }
+        }
+
         private Renovation selectedRenovation;
         public Renovation SelectedRenovation
         {
@@ -127,6 +144,20 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 {
                     selectedRenovation = value;
                     OnPropertyChanged("SelectedRenovation");
+                }
+            }
+        }
+
+        private RoomMerge selectedMerging;
+        public RoomMerge SelectedMerging
+        {
+            get => selectedMerging;
+            set
+            {
+                if (selectedMerging != value)
+                {
+                    selectedMerging = value;
+                    OnPropertyChanged("SelectedMerging");
                 }
             }
         }
@@ -144,25 +175,84 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        public RenovationsAppointments(String roomId, DateTime StartDate, DateTime EndDate, int Duration)
+        private string newRoomId;
+        public string NewRoomId
         {
-            System.Collections.IList list = suggestionController.getRenovationSuggestion(roomId, StartDate, EndDate, Duration);
+            get => newRoomId;
+            set
+            {
+                if (newRoomId != value)
+                {
+                    newRoomId = value;
+                    OnPropertyChanged("NewRoomId");
+                }
+            }
+        }
+
+        private string newRoomName;
+        public string NewRoomName
+        {
+            get => newRoomName;
+            set
+            {
+                if (newRoomName != value)
+                {
+                    newRoomName = value;
+                    OnPropertyChanged("NewRoomName");
+                }
+            }
+        }
+
+        private string newRoomType;
+        public string NewRoomType
+        {
+            get => newRoomType;
+            set
+            {
+                if (newRoomType != value)
+                {
+                    newRoomType = value;
+                    OnPropertyChanged("NewRoomType");
+                }
+            }
+        }
+
+        private string newRoomDescription;
+        public string NewRoomDescription
+        {
+            get => newRoomDescription;
+            set
+            {
+                if (newRoomDescription != value)
+                {
+                    newRoomDescription = value;
+                    OnPropertyChanged("NewRoomDescription");
+                }
+            }
+        }
+        string roomFirstId = "";
+        string roomSecondId = "";
+        public MergeAppointments(string roomIdFirst, string roomIdSecond, DateTime StartDate, DateTime EndDate, int Duration)
+        {
+            roomFirstId = roomIdFirst;
+            roomSecondId = roomIdSecond;
+            roomSeparateController.ExecuteRoomSeparating();
+            roomMergeController.ExecuteRoomMerging();
+            System.Collections.IList list = suggestionController.getTwoRoomsRenovationSuggestion(roomIdFirst, roomIdSecond, StartDate, EndDate, Duration);
             DateCollection = new ObservableCollection<Renovation>((List<Renovation>)list);
 
-           
-         
-            //var first = suggestionController.getRenovationSuggestion(roomId, StartDate, EndDate, Duration)[index];
-            //renovationController.SaveRenovation(first.startTime, first.duration, first.roomId, desc);
-          
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
+
             InitializeComponent();
         }
-        
         private void Button_Click_Renovation(object sender, RoutedEventArgs e)
         {
-           renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, selectedRenovation.roomId, Description);
-           NavigationService.Navigate(new Renovations("srb"));
+            renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomFirstId, "Merging");
+            renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomSecondId, "Merging");
+            roomMergeController.Save(selectedRenovation.startTime, selectedRenovation.duration, roomFirstId, roomSecondId, NewRoomId, NewRoomName, NewRoomType, NewRoomDescription);
+
+            NavigationService.Navigate(new Renovations("srb"));
         }
         private void Button_Click_New(object sender, RoutedEventArgs e)
         {

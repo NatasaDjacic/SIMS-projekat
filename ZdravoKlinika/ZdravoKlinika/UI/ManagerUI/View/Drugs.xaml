@@ -13,7 +13,7 @@
             <ColumnDefinition Width="502*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="30" />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -21,7 +21,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="2" Grid.RowSpan="5" HorizontalAlignment="Center" Width="auto" >
+        <StackPanel Grid.Row="1" Grid.RowSpan="5" HorizontalAlignment="Center" Width="auto" >
             <Grid Margin="50 0 50 0" Background="AliceBlue">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -99,7 +99,7 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        
+
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.Header>
                                 <TextBlock Text="Izmeni lek"/>
@@ -113,14 +113,12 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
-                    
+
                 </DataGrid>
                 <StackPanel Grid.Row="1" DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button  Content="Dodaj lek" Background="Green" Height="25" Width="90" HorizontalAlignment="Right" Margin="0 0 30 15"  FontSize="13" FontWeight="SemiBold" Click="Button_Click_New_Drug" ></Button>
                 </StackPanel>
             </Grid>
-        </StackPanel>
-        <StackPanel  Grid.Row="0" Grid.RowSpan="2" Width="auto" Grid.ColumnSpan="2">
         </StackPanel>
     </Grid>
 </Page>

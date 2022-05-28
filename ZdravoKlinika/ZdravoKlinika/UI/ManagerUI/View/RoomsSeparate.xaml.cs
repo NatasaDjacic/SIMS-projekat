@@ -128,7 +128,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
-            string val;
+            NavigationService.Navigate(new SeparateAppointments(SelectedRoom.roomId, StartDate, EndDate, Duration));
+           /* string val;
             System.Collections.IList list = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration);
 
             foreach (Renovation ren in suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration))
@@ -159,7 +160,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
             roomSeparateController.Save(first.startTime, first.duration, first.roomId, firstRoomId, firstRoomName, firstRoomType, firstRoomDescription, secondRoomId, secondRoomName, secondRoomType, secondRoomDescription);
             renovationController.SaveRenovation(first.startTime, first.duration, first.roomId, "Separation");
-
+           */
         }
     }
 }

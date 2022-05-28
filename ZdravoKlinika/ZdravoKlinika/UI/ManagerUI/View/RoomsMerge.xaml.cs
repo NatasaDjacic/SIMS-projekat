@@ -138,14 +138,14 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
-            string val;
+            /*string val;
             System.Collections.IList list = suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration);
             foreach (Renovation ren in suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration))
             {
                 Console.WriteLine(ren.startTime.ToString());
-            }
+            }*/
 
-            Console.Write("Enter index: ");
+            /*Console.Write("Enter index: ");
             val = Console.ReadLine();
             int index = Convert.ToInt32(val);
             var first = suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration)[index];
@@ -156,14 +156,15 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             Console.Write("Enter type of new room: ");
             var newRoomType = Console.ReadLine();
             Console.Write("Enter description of new room: ");
-            var newRoomDescription = Console.ReadLine();
-       
+            var newRoomDescription = Console.ReadLine();*/
+            NavigationService.Navigate(new MergeAppointments(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration));
 
 
-            roomMergeController.Save(first.startTime, first.duration, selectedRoomFrom.roomId, selectedRoomTo.roomId, newRoomId, newRoomName, newRoomType, newRoomDescription);
+
+            /*roomMergeController.Save(first.startTime, first.duration, selectedRoomFrom.roomId, selectedRoomTo.roomId, newRoomId, newRoomName, newRoomType, newRoomDescription);
             renovationController.SaveRenovation(first.startTime, first.duration, selectedRoomFrom.roomId, "Merging");
             renovationController.SaveRenovation(first.startTime, first.duration, selectedRoomTo.roomId, "Merging");
-
+            */
         }
 
     }

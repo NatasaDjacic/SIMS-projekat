@@ -110,9 +110,13 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
         public RoomController roomController = GLOBALS.roomController;
+        RoomMergeController roomMergeController = GLOBALS.roomMergeController;
+        RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
         public Renovations(string value)
         {
             val = value;
+            roomSeparateController.ExecuteRoomSeparating();
+            roomMergeController.ExecuteRoomMerging();
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
             StartDate = DateTime.Now;
