@@ -6,9 +6,7 @@
     <system:String x:Key="StrProfil">Profile</system:String>
     <system:String x:Key="StrTheme">Change theme ▼</system:String>
     <system:String x:Key="StrEquip">Equipment overview</system:String>
-    <system:String x:Key="StrPools">Pools ▼</system:String>
-    <system:String x:Key="StrHosPools">Hospital pools</system:String>
-    <system:String x:Key="StrDocPools">Doctor's pools</system:String>
+    <system:String x:Key="StrPolls">Polls</system:String>
     <system:String x:Key="StrMed">Drug review</system:String>
     <system:String x:Key="StrRen">Renovation ▼</system:String> 
     <system:String x:Key="StrSimpleRen">Renovation</system:String> 

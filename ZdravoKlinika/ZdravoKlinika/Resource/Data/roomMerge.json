@@ -1,15 +1,1 @@
-[
-  {
-    "roomFirstId": "5",
-    "roomSecondId": "ID3",
-    "newRoomId": "tI",
-    "newRoomName": "tN",
-    "newRoomType": "tt",
-    "newRoomDescription": "testDes",
-    "id": 1,
-    "roomId": null,
-    "startTime": "2022-05-28T04:30:00",
-    "duration": 24,
-    "description": null
-  }
-]
+[]

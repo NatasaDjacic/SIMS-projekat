@@ -64,7 +64,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         }
 
         public RoomController roomController;
-        Room? r;
+        DoctorsMarkDTO? r;
         RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
 
         public EditRoom(string roomId, string value) {

@@ -79,8 +79,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        private Room selectedRoom;
-        public Room SelectedRoom
+        private DoctorsMarkDTO selectedRoom;
+        public DoctorsMarkDTO SelectedRoom
         {
             get => selectedRoom;
             set
@@ -94,8 +94,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
 
 
-        private ObservableCollection<Room> rooms;
-        public ObservableCollection<Room> RoomsCollection
+        private ObservableCollection<DoctorsMarkDTO> rooms;
+        public ObservableCollection<DoctorsMarkDTO> RoomsCollection
         {
             get => rooms;
             set
@@ -118,7 +118,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
-            RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
+            RoomsCollection = new ObservableCollection<DoctorsMarkDTO>(roomController.GetAll());
 
             this.DataContext = this;
             StartDate = DateTime.Now;

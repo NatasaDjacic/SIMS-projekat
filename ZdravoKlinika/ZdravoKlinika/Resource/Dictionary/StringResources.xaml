@@ -6,9 +6,7 @@
     <system:String x:Key="StrProfil">Profil</system:String>
     <system:String x:Key="StrTheme">Promena teme ▼</system:String>
     <system:String x:Key="StrEquip">Pregled opreme</system:String>
-    <system:String x:Key="StrPools">Ankete ▼</system:String>
-    <system:String x:Key="StrHosPools">Ankete bolnice</system:String>
-    <system:String x:Key="StrDocPools">Ankete lekara</system:String>
+    <system:String x:Key="StrPolls">Ankete</system:String>
     <system:String x:Key="StrMed">Pregled lekova</system:String>
     <system:String x:Key="StrRen">Renoviranje ▼</system:String>
     <system:String x:Key="StrSimpleRen">Renoviranje</system:String>

@@ -143,6 +143,9 @@ namespace ZdravoKlinika.UI.ManagerUI
         {
             ContentFrame.NavigationService.Navigate(new View.Profile());
         }
-
+        private void Polls_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Polls());
+        }
     }
 }

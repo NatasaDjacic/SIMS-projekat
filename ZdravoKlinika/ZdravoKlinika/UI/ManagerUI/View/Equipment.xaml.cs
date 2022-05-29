@@ -49,8 +49,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        private Room selectedRoom;
-        public Room SelectedRoom
+        private DoctorsMarkDTO selectedRoom;
+        public DoctorsMarkDTO SelectedRoom
         {
             get => selectedRoom;
             set
@@ -63,8 +63,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 }
             }
         }
-        private Room selectedRoomTo;
-        public Room SelectedRoomTo
+        private DoctorsMarkDTO selectedRoomTo;
+        public DoctorsMarkDTO SelectedRoomTo
         {
             get => selectedRoomTo;
             set
@@ -159,7 +159,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             equipmentController = new EquipmentController(equipmentService);
             DynamicEquipmentCollection = new ObservableCollection<Equipment>(equipmentController.GetAllDynamic());
             equipMovingController.CheckEquipMoving();
-            RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
+            RoomsCollection = new ObservableCollection<DoctorsMarkDTO>(roomController.GetAll());
             this.DataContext = this;
             ResourceDictionary dictionary = new ResourceDictionary();
             var g = EquipRoomGroupDTO.groupEquip(equipmentController.GetAll().FindAll(e => e.type == "Staticka"));
@@ -189,8 +189,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
         }
 
-        private ObservableCollection<Room> rooms;
-        public ObservableCollection<Room> RoomsCollection
+        private ObservableCollection<DoctorsMarkDTO> rooms;
+        public ObservableCollection<DoctorsMarkDTO> RoomsCollection
         {
             get => rooms;
             set

@@ -6,9 +6,7 @@
     <system:String x:Key="StrProfil">Профиль</system:String>
     <system:String x:Key="StrTheme">Смена темы ▼</system:String>
     <system:String x:Key="StrEquip">Обзор оборудования</system:String>
-    <system:String x:Key="StrPools">Опросы ▼</system:String>
-    <system:String x:Key="StrHosPools">Больничные обследования</system:String>
-    <system:String x:Key="StrDocPools">Осмотры врача</system:String>
+    <system:String x:Key="StrPolls">Опросы</system:String>
     <system:String x:Key="StrMed">Обзор лекарств</system:String>
     <system:String x:Key="StrRen">Ремонт ▼</system:String>
     <system:String x:Key="StrSimpleRen">Ремонт</system:String>

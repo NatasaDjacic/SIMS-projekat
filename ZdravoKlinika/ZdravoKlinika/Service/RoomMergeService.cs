@@ -53,7 +53,7 @@ namespace ZdravoKlinika.Service
         }
 
         public void FinishMergingRooms(RoomMerge roomMerge) {
-            Room room = new Room(roomMerge.newRoomId, roomMerge.newRoomName, roomMerge.newRoomDescription, roomMerge.newRoomType);
+            DoctorsMarkDTO room = new DoctorsMarkDTO(roomMerge.newRoomId, roomMerge.newRoomName, roomMerge.newRoomDescription, roomMerge.newRoomType);
 
             roomService.Save(room);
             roomMergeRepository.DeleteById(roomMerge.id);

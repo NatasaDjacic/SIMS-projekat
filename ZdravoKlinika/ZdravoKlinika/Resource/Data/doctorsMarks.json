@@ -1,0 +1,20 @@
+[
+  {
+    "doctorJMBG": "3213213213213",
+    "Ones": 0,
+    "Twos": 0,
+    "Threes": 0,
+    "Fours": 0,
+    "Fives": 2,
+    "Average": 5.0
+  },
+  {
+    "doctorJMBG": "1111111111111",
+    "Ones": 0,
+    "Twos": 0,
+    "Threes": 0,
+    "Fours": 0,
+    "Fives": 3,
+    "Average": 5.0
+  }
+]

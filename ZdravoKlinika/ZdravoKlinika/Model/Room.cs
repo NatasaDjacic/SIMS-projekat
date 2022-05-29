@@ -2,20 +2,20 @@
 using System.Text.RegularExpressions;
 
 namespace ZdravoKlinika.Model {
-    public class Room {
+    public class DoctorsMarkDTO {
         public string roomId { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public string type { get; set; }
 
-        public Room(string roomId, string name, string description, string type) {
+        public DoctorsMarkDTO(string roomId, string name, string description, string type) {
             this.roomId = roomId;
             this.name = name;
             this.description = description;
             this.type = type;
         }
 
-        public Room() {
+        public DoctorsMarkDTO() {
         }
 
         public void Validate() {

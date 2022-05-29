@@ -21,10 +21,7 @@
                 <MenuItem Click="RoomsSeparation_Click" Header="{DynamicResource StrSep}" />
             </MenuItem>
             <MenuItem Click="Drug_Click" Header="{DynamicResource StrMed}"/>
-            <MenuItem Header="{DynamicResource StrPools}">
-                <MenuItem Header="{DynamicResource StrHosPools}" />
-                <MenuItem Header="{DynamicResource StrDocPools}" />
-            </MenuItem>
+            <MenuItem Click="Polls_Click" Header="{DynamicResource StrPolls}"/>
             <MenuItem Click="Equip_Click" Header="{DynamicResource StrEquip}"/>
             <MenuItem Header="{DynamicResource StrTheme}">
                 <MenuItem Click="LightTheme_Click" Name="LightTheme" Header="{DynamicResource StrLight}" IsCheckable="True" IsChecked="True" />

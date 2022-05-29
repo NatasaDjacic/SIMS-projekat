@@ -81,8 +81,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        private Room selectedRoom;
-        public Room SelectedRoom
+        private DoctorsMarkDTO selectedRoom;
+        public DoctorsMarkDTO SelectedRoom
         {
             get => selectedRoom;
             set
@@ -96,8 +96,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
 
 
-        private ObservableCollection<Room> rooms;
-        public ObservableCollection<Room> RoomsCollection
+        private ObservableCollection<DoctorsMarkDTO> rooms;
+        public ObservableCollection<DoctorsMarkDTO> RoomsCollection
         {
             get => rooms;
             set
@@ -117,7 +117,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             val = value;
             roomSeparateController.ExecuteRoomSeparating();
             roomMergeController.ExecuteRoomMerging();
-            RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
+            RoomsCollection = new ObservableCollection<DoctorsMarkDTO>(roomController.GetAll());
             this.DataContext = this;
             StartDate = DateTime.Now;
             EndDate = DateTime.Now;
@@ -187,7 +187,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             Console.WriteLine(roomId);
             if (roomId is null) return;
             roomController.Delete(roomId);
-            RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
+            RoomsCollection = new ObservableCollection<DoctorsMarkDTO>(roomController.GetAll());
         }
 
         private void Button_Click_Edit(object sender, RoutedEventArgs e)

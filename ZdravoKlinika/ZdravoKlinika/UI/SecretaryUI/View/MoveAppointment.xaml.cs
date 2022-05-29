@@ -60,9 +60,9 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             }
         }
 
-        public List<Room> rooms { get; set; }
-        private Room? selectedRoom;
-        public Room? SelectedRoom {
+        public List<DoctorsMarkDTO> rooms { get; set; }
+        private DoctorsMarkDTO? selectedRoom;
+        public DoctorsMarkDTO? SelectedRoom {
             get => selectedRoom;
             set {
                 if (selectedRoom != value) {

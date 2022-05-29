@@ -14,7 +14,7 @@ namespace ZdravoKlinika.Service
         public RoomService(RoomRepository roomRepository) {
             this.roomRepository = roomRepository;
         }
-        public bool Create(Room room)
+        public bool Create(DoctorsMarkDTO room)
         {
             if (this.roomRepository.GetById(room.roomId) is null)
             {
@@ -22,22 +22,22 @@ namespace ZdravoKlinika.Service
             }
             return false;
         }
-        public List<Room> GetAll()
+        public List<DoctorsMarkDTO> GetAll()
         {
             return this.roomRepository.GetAll();
         }
 
-        public Room GetById(string roomId)
+        public DoctorsMarkDTO GetById(string roomId)
         {
             return this.roomRepository.GetById(roomId);
         }
 
-        public bool Save(Room room)
+        public bool Save(DoctorsMarkDTO room)
         {
             return this.roomRepository.Save(room);
         }
 
-        public bool Update(Room room)
+        public bool Update(DoctorsMarkDTO room)
         {
            
             

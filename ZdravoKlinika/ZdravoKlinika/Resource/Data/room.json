@@ -16,5 +16,11 @@
     "name": "Nova soba 2",
     "description": "Nova kancelarija, nastala iz sobe 2",
     "type": "Kancelarija"
+  },
+  {
+    "roomId": "tI",
+    "name": "tN",
+    "description": "testDes",
+    "type": "tt"
   }
 ]

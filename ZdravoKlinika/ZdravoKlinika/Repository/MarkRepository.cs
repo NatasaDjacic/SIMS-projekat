@@ -29,7 +29,6 @@ namespace ZdravoKlinika.Repository
             return values;
         }
 
-
         public List<Mark> GetByPatient(string patientJMBG)
         {
             var values = this.GetAll();

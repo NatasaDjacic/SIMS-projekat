@@ -18,17 +18,17 @@ namespace ZdravoKlinika.Repository
             this.fileLocation = fileLocation;
         }
 
-        public List<Room> GetAll()
+        public List<DoctorsMarkDTO> GetAll()
         {
-            var values = JsonConvert.DeserializeObject<List<Room>>(File.ReadAllText(fileLocation));
+            var values = JsonConvert.DeserializeObject<List<DoctorsMarkDTO>>(File.ReadAllText(fileLocation));
             if (values == null)
             {
-                values = new List<Room>();
+                values = new List<DoctorsMarkDTO>();
             }
             return values;
         }
 
-        public bool Save(Room room)
+        public bool Save(DoctorsMarkDTO room)
         {
             bool added = false;
             var values = this.GetAll();
@@ -46,7 +46,7 @@ namespace ZdravoKlinika.Repository
             return added;
         }
 
-        public Room? GetById(string id)
+        public DoctorsMarkDTO? GetById(string id)
         {
             var values = this.GetAll();
             return values.Find(value => id.Equals(value.roomId));

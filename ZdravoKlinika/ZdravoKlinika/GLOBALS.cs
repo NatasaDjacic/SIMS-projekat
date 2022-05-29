@@ -27,6 +27,7 @@ namespace ZdravoKlinika
         public static RoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
         public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
         public static MarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
+        public static DoctorsMarksRepository doctorsMarksRepository = new DoctorsMarksRepository(@"..\..\..\Resource\Data\doctorsMarks.json");
 
         public static MarkService markService = new MarkService(markRepository);
         public static CancellationService cancellationService = new CancellationService(cancellationRepository);
@@ -45,8 +46,8 @@ namespace ZdravoKlinika
         public static OrderEquipmentService orderEquipmentService = new OrderEquipmentService(orderEquipmentRepository, equipmentRepository);
         public static RoomSeparateService roomSeparateService = new RoomSeparateService(roomSeparateRepository);
         public static RoomMergeService roomMergeService = new RoomMergeService(roomMergeRepository);
-
         public static EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService(suggestionService, appointmentService, roomService, doctorService);
+        public static DoctorsMarksService doctorsMarksService = new DoctorsMarksService(doctorsMarksRepository);
 
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
@@ -63,6 +64,7 @@ namespace ZdravoKlinika
         public static OrderEquipmentController orderEquipmentController = new OrderEquipmentController(orderEquipmentService);
         public static RoomSeparateController roomSeparateController = new RoomSeparateController(roomSeparateService);
         public static RoomMergeController roomMergeController = new RoomMergeController(roomMergeService);
-
+        public static DoctorMarksController doctorsMarksController = new DoctorMarksController(doctorsMarksService);
+        
     }
 }

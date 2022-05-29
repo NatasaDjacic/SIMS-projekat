@@ -8,10 +8,10 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.UI.SecretaryUI.Converters {
     public class RoomIdConverter : IValueConverter {
-        public Dictionary<string,Room> Rooms { get; set; }
+        public Dictionary<string,DoctorsMarkDTO> Rooms { get; set; }
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
             try { 
-                Room f = Rooms[value.ToString()];
+                DoctorsMarkDTO f = Rooms[value.ToString()];
                 return f.name;
             }catch(Exception ex) {
                 return "unknown";
