@@ -27,6 +27,7 @@ namespace ZdravoKlinika
         public static RoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
         public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
         public static MarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
+        public static HolidayRequestRepository holidayRequestRepository = new HolidayRequestRepository(@"..\..\..\Resource\Data\holiday_request.json");
 
         public static MarkService markService = new MarkService(markRepository);
         public static CancellationService cancellationService = new CancellationService(cancellationRepository);
@@ -38,15 +39,18 @@ namespace ZdravoKlinika
         public static RoomService roomService = new RoomService(roomRepository);
         public static NotificationService notificationService = new NotificationService(notificationRepository, authService);
         public static RenovationService renovationService = new RenovationService(renovationRepository);
-        public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService);
         public static EquipMovingService equipMovingService = new EquipMovingService(equipMovingRepository, roomService, equipmentService);
         public static ReportService reportService = new ReportService(patientService);
         public static PrescriptionService prescriptionService = new PrescriptionService(patientService);
         public static OrderEquipmentService orderEquipmentService = new OrderEquipmentService(orderEquipmentRepository, equipmentRepository);
         public static RoomSeparateService roomSeparateService = new RoomSeparateService(roomSeparateRepository);
         public static RoomMergeService roomMergeService = new RoomMergeService(roomMergeRepository);
+        public static HolidayRequestService holidayRequestService = new HolidayRequestService(holidayRequestRepository);
 
+        public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService, holidayRequestService);
         public static EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService(suggestionService, appointmentService, roomService, doctorService);
+
+
 
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
@@ -63,6 +67,7 @@ namespace ZdravoKlinika
         public static OrderEquipmentController orderEquipmentController = new OrderEquipmentController(orderEquipmentService);
         public static RoomSeparateController roomSeparateController = new RoomSeparateController(roomSeparateService);
         public static RoomMergeController roomMergeController = new RoomMergeController(roomMergeService);
+        public static HolidayRequestController holidayRequestController = new HolidayRequestController(holidayRequestService);
 
     }
 }

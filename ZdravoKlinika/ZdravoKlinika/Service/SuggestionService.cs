@@ -14,10 +14,12 @@ namespace ZdravoKlinika.Service {
         AppointmentService appointmentService;
         DoctorService doctorService;
         RenovationService renovationService;
-        public SuggestionService(AppointmentService appointmentService, DoctorService doctorService,RenovationService renovationService) { 
+        HolidayRequestService holidayRequestService;
+        public SuggestionService(AppointmentService appointmentService, DoctorService doctorService,RenovationService renovationService, HolidayRequestService holidayRequestService) { 
             this.appointmentService = appointmentService;
             this.doctorService = doctorService;
             this.renovationService = renovationService;
+            this.holidayRequestService = holidayRequestService;
         }
         #region renovation_sugestion
         public List<Renovation> GetRenovationSuggestions(string roomId, DateTime startTime, DateTime endTime, int duration) {
@@ -134,9 +136,9 @@ namespace ZdravoKlinika.Service {
             // Appointment 
             appointments = appointments.Where(a => a.roomId == roomId).ToList();
 
-            intervals.AddRange(appointments.Select(a => new DateTime[] { a.startTime, a.startTime.AddMinutes(a.duration) }));
+            intervals.AddRange(appointments.Select(a => new DateTime[] { a.startTime, a.endTime }));
             // Renovations
-            List<Renovation> renovations = renovationService.GetAllInInterval(startTime, endTime).Where(r => r.roomId == roomId).ToList();
+            var renovations = renovationService.GetAllInInterval(startTime, endTime).Where(r => r.roomId == roomId);
 
             intervals.AddRange(renovations.Select(r => new DateTime[] { r.startTime, r.startTime.AddHours(r.duration) }));
             
@@ -147,10 +149,11 @@ namespace ZdravoKlinika.Service {
         }
         private List<DateTime[]> getPatientBusyInterval(string patientJMBG, List<Appointment> appointments, DateTime startTime, DateTime endTime) {
             List<DateTime[]> intervals = new List<DateTime[]>();
-            
+
+            // Appointments 
             appointments = appointments.Where(a => a.patientJMBG == patientJMBG).ToList();
 
-            intervals.AddRange(appointments.Select(a => new DateTime[] { a.startTime, a.startTime.AddMinutes(a.duration) }));
+            intervals.AddRange(appointments.Select(a => new DateTime[] { a.startTime, a.endTime }));
 
             intervals.Sort((a, b) => a[0].CompareTo(b[0]));
 
@@ -163,7 +166,12 @@ namespace ZdravoKlinika.Service {
 
             appointments = appointments.Where(a => a.doctorJMBG == doctorJMBG).ToList();
 
-            intervals.AddRange(appointments.Select(a => new DateTime[] { a.startTime, a.startTime.AddMinutes(a.duration) }));
+            intervals.AddRange(appointments.Select(a => new DateTime[] { a.startTime, a.endTime }));
+
+            // Holidays
+            var holidayRequests = holidayRequestService.GetAllInInterval(startTime, endTime).Where(hr => hr.doctorJMBG == doctorJMBG);
+
+            intervals.AddRange(holidayRequests.Select(hr => new DateTime[] { hr.startTime, hr.endTime }));
 
             intervals.Sort((a, b) => a[0].CompareTo(b[0]));
 

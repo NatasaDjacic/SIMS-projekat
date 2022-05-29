@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.UI.SecretaryUI.View"
+      xmlns:converters="clr-namespace:ZdravoKlinika.UI.SecretaryUI.Converters"
+      xmlns:mi="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SickDays">
@@ -11,7 +13,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary.MergedDictionaries>
+            <converters:DoctorJMBGConverter x:Key="DocConverter"  Doctors="{x:Static local:SickDays.doctorsLookup}"></converters:DoctorJMBGConverter>
         </ResourceDictionary>
     </Page.Resources>
     <DockPanel Margin="10">
@@ -24,6 +27,69 @@
             </Grid.RowDefinitions>
             <TextBlock Text="Sick Days" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="32" FontWeight="Bold"></TextBlock>
         </Grid>
-        <Grid DockPanel.Dock="Bottom"></Grid>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 10" ItemsSource="{Binding HolidayRequests}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Doctor" Width="*" Binding="{Binding doctorJMBG, Converter={StaticResource DocConverter}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Start Date" Binding="{Binding startDate}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Duration" Binding="{Binding duration}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Reason" Width="*" Binding="{Binding reason}"></DataGridTextColumn>
+                    <DataGridCheckBoxColumn Header="Urgent" Binding="{Binding urgent}" IsReadOnly="True"></DataGridCheckBoxColumn>
+                    <DataGridTemplateColumn Header="Actions">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Tag="{Binding id}" Margin="10 5" Padding="5" Background="Red" Foreground="White" Click="Button_Click_1">
+                                        <mi:PackIcon Kind="Close" Height="24" Width="24"/>
+                                    </Button>
+                                    <Button Tag="{Binding id}" Margin="0 5 10 5" Padding="5" Background="Green" Foreground="White" Click="Button_Click">
+                                        <mi:PackIcon Kind="Tick" Height="24" Width="24"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" Margin="0 0 5 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label>Number of sick days:</Label>
+                <ListView FontSize="24" FontWeight="SemiBold" Grid.Row="1" VerticalAlignment="Stretch" SelectionMode="Multiple"  ItemsSource="{Binding doctors}" >
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="firstName" />
+                                        <Binding Path="lastName" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Border Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="1"></Border>
+        </Grid>
     </DockPanel>
 </Page>

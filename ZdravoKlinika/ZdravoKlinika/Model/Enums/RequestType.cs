@@ -8,8 +8,8 @@ namespace ZdravoKlinika.Model.Enums
 {
     public enum RequestType
     {
-        accepted,
-        declined,
-        pending
+        ACCEPTED,
+        DECLINED,
+        PENDING
     }
 }

@@ -214,5 +214,21 @@
     "message": "Your appointment at 20.5.2022. 14:19:30 in room 6 is moved to 20.5.2022. 14:19:30.",
     "seen": false,
     "showDate": "2022-05-20T13:20:56.4145825+02:00"
+  },
+  {
+    "id": 28,
+    "JMBG": "2222222222222",
+    "title": "New appointment",
+    "message": "You have new appointment at 5/29/2022 02:00:00 in room 1.",
+    "seen": false,
+    "showDate": "2022-05-29T18:00:04.338913+02:00"
+  },
+  {
+    "id": 29,
+    "JMBG": "1231231231231",
+    "title": "New appointment",
+    "message": "You have new appointment at 5/29/2022 02:00:00 in room 1.",
+    "seen": false,
+    "showDate": "2022-05-29T18:00:04.3581072+02:00"
   }
 ]
