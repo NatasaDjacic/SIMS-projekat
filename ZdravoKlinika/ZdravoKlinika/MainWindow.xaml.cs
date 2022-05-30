@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Service;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika
 {
@@ -41,13 +42,13 @@ namespace ZdravoKlinika
         private void OnLoginRedirect() {
             var role = GLOBALS.authService.user_role;
             Window window;
-            if(role == AuthService.ROLE.MANAGER) {
+            if(role == ROLE.MANAGER) {
                 window = new UI.ManagerUI.ManagerMainWindow();
-            }else if(role == AuthService.ROLE.SECRETARY) {
+            }else if(role == ROLE.SECRETARY) {
                 window = new UI.SecretaryUI.SecretaryMainWindow();
-            }else if(role == AuthService.ROLE.PATIENT) {
+            }else if(role == ROLE.PATIENT) {
                 window = new UI.PatientUI.PatientMainWindow();
-            }else if(role == AuthService.ROLE.DOCTOR) {
+            }else if(role == ROLE.DOCTOR) {
                 window = new UI.DoctorUI.DoctorMainWindow();
             } else {
                 return;

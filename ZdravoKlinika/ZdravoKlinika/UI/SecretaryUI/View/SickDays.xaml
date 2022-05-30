@@ -8,7 +8,7 @@
       xmlns:mi="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SickDays">
+      Title="SickDays" Unloaded="Page_Unloaded">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -40,9 +40,18 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Doctor" Width="*" Binding="{Binding doctorJMBG, Converter={StaticResource DocConverter}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Start Date" Binding="{Binding startDate}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Duration" Binding="{Binding duration}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Duration" Binding="{Binding duration, StringFormat={}{0} days}">
+                        
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Reason" Width="*" Binding="{Binding reason}"></DataGridTextColumn>
-                    <DataGridCheckBoxColumn Header="Urgent" Binding="{Binding urgent}" IsReadOnly="True"></DataGridCheckBoxColumn>
+                    <DataGridCheckBoxColumn Header="Urgent" Binding="{Binding urgent}" IsReadOnly="True">
+                        <DataGridCheckBoxColumn.ElementStyle>
+                            <Style TargetType="CheckBox">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridCheckBoxColumn.ElementStyle>
+                    </DataGridCheckBoxColumn>
                     <DataGridTemplateColumn Header="Actions">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

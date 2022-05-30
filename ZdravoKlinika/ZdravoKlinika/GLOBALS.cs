@@ -28,6 +28,7 @@ namespace ZdravoKlinika
         public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
         public static MarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
         public static HolidayRequestRepository holidayRequestRepository = new HolidayRequestRepository(@"..\..\..\Resource\Data\holiday_request.json");
+        public static MeetingRepository meetingRepository = new MeetingRepository(@"..\..\..\Resource\Data\meeting.json");
 
         public static MarkService markService = new MarkService(markRepository);
         public static CancellationService cancellationService = new CancellationService(cancellationRepository);
@@ -46,8 +47,10 @@ namespace ZdravoKlinika
         public static RoomSeparateService roomSeparateService = new RoomSeparateService(roomSeparateRepository);
         public static RoomMergeService roomMergeService = new RoomMergeService(roomMergeRepository);
         public static HolidayRequestService holidayRequestService = new HolidayRequestService(holidayRequestRepository);
+        public static EmployeService employeService = new EmployeService(doctorRepository, managerRepository, secretaryRepository);
+        public static MeetingService meetingService = new MeetingService(meetingRepository);
 
-        public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService, holidayRequestService);
+        public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService, holidayRequestService, meetingService, employeService);
         public static EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService(suggestionService, appointmentService, roomService, doctorService);
 
 
@@ -68,6 +71,8 @@ namespace ZdravoKlinika
         public static RoomSeparateController roomSeparateController = new RoomSeparateController(roomSeparateService);
         public static RoomMergeController roomMergeController = new RoomMergeController(roomMergeService);
         public static HolidayRequestController holidayRequestController = new HolidayRequestController(holidayRequestService);
+        public static MeetingController meetingController = new MeetingController(meetingService);
+        public static EmployeController employeController = new EmployeController(employeService);
 
     }
 }

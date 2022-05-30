@@ -86,7 +86,19 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
                 this.holidayRequestController.Decline(active, sw.TextInputTB.Text);
                 sw.TextInput.Visibility = Visibility.Hidden;
+                sw.TextInputTB.Text = "";
                 loadHR();
+            }
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e) {
+            var sw = Application.Current.Windows
+           .Cast<Window>()
+           .FirstOrDefault(window => window is SecretaryMainWindow) as SecretaryMainWindow;
+           if (sw != null) {
+                sw.TextInputBtn.RemoveHandler(Button.ClickEvent, new RoutedEventHandler(Button_Click_Save));
+                sw.TextInput.Visibility = Visibility.Hidden;
+                sw.TextInputTB.Text = "";
             }
         }
     }

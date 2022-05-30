@@ -87,12 +87,12 @@ namespace ZdravoKlinika.UI.PatientUI.View
             if(priority=="doctor")
             {
                startTime = DateTime.Now;
-                AppointmentsList = suggestionController.getAppointmentSuggestion(patientJMBG, doctorJMBG, roomId, startTime, startTime.AddDays(7), duration, priority, appointmentType);
+                AppointmentsList = suggestionController.GetAppointmentSuggestion(patientJMBG, doctorJMBG, roomId, startTime, startTime.AddDays(7), duration, priority, appointmentType);
 
             }
             else
             {       
-                AppointmentsList = suggestionController.getAppointmentSuggestion(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType);
+                AppointmentsList = suggestionController.GetAppointmentSuggestion(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration, priority, appointmentType);
 
 
             }

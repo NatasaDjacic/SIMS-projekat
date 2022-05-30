@@ -10,13 +10,7 @@ namespace ZdravoKlinika.Service
 {
     public class AuthService
     {
-        public static class ROLE { 
-            public static readonly string NONE = "none";
-            public static readonly string PATIENT = "patient";
-            public static readonly string DOCTOR = "doctor";
-            public static readonly string MANAGER = "manager";
-            public static readonly string SECRETARY = "secretary";
-        }
+        
         public User? user { get; set; }
         public string user_role { get; set; }
         public bool restricted;

@@ -139,8 +139,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
             string val;
-            System.Collections.IList list = suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration);
-            foreach (Renovation ren in suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration))
+            System.Collections.IList list = suggestionController.GetTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration);
+            foreach (Renovation ren in suggestionController.GetTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration))
             {
                 Console.WriteLine(ren.startTime.ToString());
             }
@@ -148,7 +148,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             Console.Write("Enter index: ");
             val = Console.ReadLine();
             int index = Convert.ToInt32(val);
-            var first = suggestionController.getTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration)[index];
+            var first = suggestionController.GetTwoRoomsRenovationSuggestion(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration)[index];
             Console.Write("Enter identification of new room: ");
             var newRoomId = Console.ReadLine();
             Console.Write("Enter name of new room: ");

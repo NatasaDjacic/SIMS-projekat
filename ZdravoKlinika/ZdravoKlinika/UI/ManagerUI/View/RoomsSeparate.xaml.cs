@@ -129,16 +129,16 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
             string val;
-            System.Collections.IList list = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration);
+            System.Collections.IList list = suggestionController.GetRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration);
 
-            foreach (Renovation ren in suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration))
+            foreach (Renovation ren in suggestionController.GetRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration))
             {
                 Console.WriteLine(ren.startTime.ToString());
             }
             Console.Write("Enter index: ");
             val = Console.ReadLine();
             int index = Convert.ToInt32(val);
-            var first = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration)[index];
+            var first = suggestionController.GetRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration)[index];
             Console.Write("Enter identification of first room: ");
             var firstRoomId = Console.ReadLine();
             Console.Write("Enter name of first room: ");
