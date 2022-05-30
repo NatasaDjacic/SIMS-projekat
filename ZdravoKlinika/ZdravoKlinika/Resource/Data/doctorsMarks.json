@@ -1,6 +1,21 @@
 [
   {
-    "doctorJMBG": "3213213213213",
+    "DoctorJMBG": null,
+    "Username": "anna",
+    "FirstName": "Ana",
+    "LastName": "Anic",
+    "Ones": 0,
+    "Twos": 0,
+    "Threes": 0,
+    "Fours": 0,
+    "Fives": 0,
+    "Average": 0.0
+  },
+  {
+    "DoctorJMBG": "3213213213213",
+    "Username": "mikamikic",
+    "FirstName": "Mika",
+    "LastName": "Mikic",
     "Ones": 0,
     "Twos": 0,
     "Threes": 0,
@@ -9,7 +24,10 @@
     "Average": 5.0
   },
   {
-    "doctorJMBG": "1111111111111",
+    "DoctorJMBG": "1111111111111",
+    "Username": "anna",
+    "FirstName": "Ana",
+    "LastName": "Anic",
     "Ones": 0,
     "Twos": 0,
     "Threes": 0,

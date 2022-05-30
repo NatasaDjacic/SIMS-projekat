@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Model.Enums;
 
 namespace ZdravoKlinika.Model
 {
@@ -11,7 +12,7 @@ namespace ZdravoKlinika.Model
         public int drugId { get; set; }
         public string name { get; set; }
         public string ingredients { get; set; }
-        public bool approved { get; set; }
+        public DrugStatus approved { get; set; }
         public string checkedBy { get; set; }
         public string comment { get; set; }
         public string alternative { get; set; }

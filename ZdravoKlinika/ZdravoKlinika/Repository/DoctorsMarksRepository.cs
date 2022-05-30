@@ -30,13 +30,13 @@ namespace ZdravoKlinika.Repository
         {
             var values = this.GetAll();
             Console.WriteLine(values);
-            return values.Find(value => jmbg == value.doctorJMBG);
+            return values.Find(value => jmbg == value.DoctorJMBG);
         }
         public void Save(DoctorsMarks doctorsMarks)
         {
             bool added = false;
             var values = this.GetAll();
-            var found = values.FindIndex(value => doctorsMarks.doctorJMBG == value.doctorJMBG);
+            var found = values.FindIndex(value => doctorsMarks.DoctorJMBG == value.DoctorJMBG);
             if (found != -1)
             {
                 values[found] = doctorsMarks;

@@ -57,9 +57,31 @@
         <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Content="Statistika ocena lekara"></Label>
         <DataGrid Grid.Row="2" Background="AliceBlue" Grid.Column="1" ItemsSource="{Binding Path=DoctorsPollsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
             <DataGrid.Columns>
-                    <DataGridTextColumn Width="auto"  Binding="{Binding doctorJMBG}" >
+                    <DataGridTextColumn Width="*"  Binding="{Binding Username}" >
                         <DataGridTextColumn.Header>
-                            <TextBlock Text="Lekar"/>
+                            <TextBlock Text="Korisničko ime"/>
+                        </DataGridTextColumn.Header>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="*"  Binding="{Binding FirstName}" >
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Ime"/>
+                        </DataGridTextColumn.Header>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="*"  Binding="{Binding LastName}" >
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Prezime"/>
                         </DataGridTextColumn.Header>
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -70,7 +92,7 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Width="auto"  Binding="{Binding Ones}" >
                     <DataGridTextColumn.Header>
-                        <TextBlock Text="1"/>
+                        <TextBlock Text="Broj ocena 1"/>
                     </DataGridTextColumn.Header>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -81,7 +103,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Width="auto"  Binding="{Binding Twos}" >
                     <DataGridTextColumn.Header>
-                        <TextBlock Text="2"/>
+                        <TextBlock Text="Broj ocena 2"/>
                     </DataGridTextColumn.Header>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -90,9 +112,9 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="*"  Binding="{Binding Threes}" >
+                <DataGridTextColumn Width="auto"  Binding="{Binding Threes}" >
                     <DataGridTextColumn.Header>
-                        <TextBlock Text="3"/>
+                        <TextBlock Text="Broj ocena 3"/>
                     </DataGridTextColumn.Header>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -102,9 +124,9 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Fours}" Width="*" MaxWidth="200">
+                <DataGridTextColumn Binding="{Binding Fours}" Width="auto">
                     <DataGridTextColumn.Header>
-                        <TextBlock Text="4"/>
+                        <TextBlock Text="Broj ocena 4"/>
                     </DataGridTextColumn.Header>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -114,9 +136,9 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Fives}" Width="*" MaxWidth="200">
+                <DataGridTextColumn Binding="{Binding Fives}" Width="auto">
                     <DataGridTextColumn.Header>
-                        <TextBlock Text="5"/>
+                        <TextBlock Text="Broj ocena 5"/>
                     </DataGridTextColumn.Header>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -126,7 +148,7 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Average}" Width="*" MaxWidth="200">
+                <DataGridTextColumn Binding="{Binding Average}" Width="auto">
                     <DataGridTextColumn.Header>
                         <TextBlock Text="Prosečna ocena"/>
                     </DataGridTextColumn.Header>

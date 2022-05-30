@@ -64,6 +64,14 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
         {
             int drugId = Convert.ToInt32(((Button)sender).Tag);
+            DrugRepository drugRepository = new DrugRepository(@"..\..\..\Resource\Data\drug.json");
+            if (drugRepository.GetById(drugId).approved is 0 or (Model.Enums.DrugStatus)2)
+            {
+                Console.WriteLine(drugRepository.GetById(drugId).approved.ToString());
+                NavigationService.Navigate(new Drugs());
+                return;
+            }
+            Console.WriteLine(drugRepository.GetById(drugId).approved.ToString());
             Console.WriteLine(drugId);
             if (drugId == 0) return;
             NavigationService.Navigate(new EditDrug((drugId)));

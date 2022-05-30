@@ -27,7 +27,7 @@ namespace ZdravoKlinika.Controller
             drug.ingredients = ingredients;
             drug.alternative = alternative;
             drug.comment = "";
-            drug.approved = false;
+            drug.approved = Model.Enums.DrugStatus.OnHold;
             return this.drugService.Create(drug);
         }
         public Drug GetById(int drugId)

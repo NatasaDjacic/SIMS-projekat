@@ -11,11 +11,13 @@ namespace ZdravoKlinika.Service
     public class DoctorsMarksService
     {
         public DoctorsMarksRepository doctorsMarksRepository;
+        public DoctorRepository doctorRepository;
         public MarkService markService = GLOBALS.markService;
 
-        public DoctorsMarksService(DoctorsMarksRepository doctorsMarksrepository)
+        public DoctorsMarksService(DoctorsMarksRepository doctorsMarksrepository, DoctorRepository doctorRepository)
         {
             this.doctorsMarksRepository = doctorsMarksrepository;
+            this.doctorRepository = doctorRepository;
         }
         public List<Mark> GetAllMarks()
         {
@@ -28,7 +30,10 @@ namespace ZdravoKlinika.Service
             DoctorsMarks doctorsMarks = new DoctorsMarks();
             foreach (Mark mark in GetAllMarks())
             {
-                doctorsMarks.doctorJMBG = mark.doctorJMBG;
+                doctorsMarks.DoctorJMBG = mark.doctorJMBG;
+                doctorsMarks.Username = doctorRepository.GetById(mark.doctorJMBG).username;
+                doctorsMarks.FirstName = doctorRepository.GetById(mark.doctorJMBG).firstName;
+                doctorsMarks.LastName = doctorRepository.GetById(mark.doctorJMBG).lastName;
                 doctorsMarks.Ones = 0;
                 doctorsMarks.Twos = 0;
                 doctorsMarks.Threes = 0;

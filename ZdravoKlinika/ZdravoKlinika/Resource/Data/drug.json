@@ -3,7 +3,7 @@
     "drugId": 1,
     "name": "Aerius",
     "ingredients": "Nema informacija",
-    "approved": false,
+    "approved": 2,
     "checkedBy": null,
     "comment": "Dodati nove alergene",
     "alternative": "Brufen"
@@ -12,7 +12,7 @@
     "drugId": 2,
     "name": "Aerius 2.0",
     "ingredients": "Hidrociklin, HNO3",
-    "approved": false,
+    "approved": 1,
     "checkedBy": null,
     "comment": "Dodati nove alergene",
     "alternative": "Hidrociklin"
@@ -21,7 +21,7 @@
     "drugId": 3,
     "name": "Bromazepam",
     "ingredients": "Voda, Stroncijum, H2SO4",
-    "approved": false,
+    "approved": 1,
     "checkedBy": null,
     "comment": "",
     "alternative": "Brufen"
@@ -30,7 +30,7 @@
     "drugId": 4,
     "name": "Hidrociklin",
     "ingredients": "Voda, Šećer",
-    "approved": false,
+    "approved": 0,
     "checkedBy": null,
     "comment": "",
     "alternative": "Brufen"
@@ -39,7 +39,7 @@
     "drugId": 5,
     "name": "Nimulidin",
     "ingredients": "Bronzepedan, Natrijum hlorid",
-    "approved": false,
+    "approved": 1,
     "checkedBy": null,
     "comment": "",
     "alternative": "Aerius"
@@ -48,7 +48,7 @@
     "drugId": 6,
     "name": "Diklofen",
     "ingredients": "H2NO3",
-    "approved": false,
+    "approved": 2,
     "checkedBy": null,
     "comment": "",
     "alternative": "Nimulid"
@@ -57,7 +57,7 @@
     "drugId": 7,
     "name": "Diklofenak",
     "ingredients": "Natrijum hlorid",
-    "approved": false,
+    "approved": 1,
     "checkedBy": null,
     "comment": "",
     "alternative": "Aerius"
@@ -66,7 +66,7 @@
     "drugId": 8,
     "name": "Nikli",
     "ingredients": "Voda",
-    "approved": false,
+    "approved": 2,
     "checkedBy": null,
     "comment": "",
     "alternative": "Nimuid"

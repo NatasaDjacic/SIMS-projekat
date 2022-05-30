@@ -8,7 +8,11 @@ namespace ZdravoKlinika.Model
 {
     public class DoctorsMarks
     {
-        public string doctorJMBG { get; set; }
+        public string DoctorJMBG { get; set; }
+        public string Username { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
         public int Ones { get; set; }
         public int Twos { get; set; }
 
@@ -17,9 +21,12 @@ namespace ZdravoKlinika.Model
         public int Fives { get; set; }
         public double Average { get; set; }
 
-        public DoctorsMarks(string doctorJMBG, int ones, int twos, int threes, int fours, int fives, double average)
+        public DoctorsMarks(string DoctorJMBG, string Username, string FirstName, string LastName, int ones, int twos, int threes, int fours, int fives, double average)
         {
-            this.doctorJMBG = doctorJMBG;
+            this.DoctorJMBG = DoctorJMBG;
+            this.Username = Username;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
             Ones = ones;
             Twos = twos;
             Threes = threes;

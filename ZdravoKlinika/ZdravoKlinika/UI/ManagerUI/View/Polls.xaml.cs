@@ -31,7 +31,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-        private int doctorJMBG;
+        private string userName;
+        private string firstName;
+        private string lastName;
         private int ones;
         private int twos;
         private int threes;
@@ -39,7 +41,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         private int fives;
         private double average;
 
-        public int DoctorJMBG { get { return doctorJMBG; } set { doctorJMBG = value; OnPropertyChanged("DoctorJMBG"); } }
+        public string Username { get { return userName; } set { userName = value; OnPropertyChanged("Username"); } }
+        public string FirstName { get { return firstName; } set { firstName = value; OnPropertyChanged("FirstName"); } }
+        public string LastName { get { return lastName; } set { lastName = value; OnPropertyChanged("LastName"); } }
         public int Ones { get { return ones; } set { ones = value; OnPropertyChanged("Ones"); } }
         public int Twos { get { return twos; } set { twos = value; OnPropertyChanged("Twos"); } }
         public int Threes { get { return threes; } set { threes = value; OnPropertyChanged("Threes"); } }
