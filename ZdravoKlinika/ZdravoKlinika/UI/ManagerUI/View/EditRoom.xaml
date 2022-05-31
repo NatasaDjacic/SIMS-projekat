@@ -9,7 +9,7 @@
       xmlns:converters="clr-namespace:ZdravoKlinika.UI.ManagerUI"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="EditRoom" FontSize="15" Background="Snow">
+      Title="EditRoom" FontSize="15" Style="{StaticResource PageStyle}">
     
     <DockPanel>
         <Grid DockPanel.Dock="Bottom" Margin="10">
@@ -24,7 +24,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Grid.Column="0" Background="AliceBlue">
+            <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource GridStyle}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="25*"/>
                     <ColumnDefinition Width="11*"/>

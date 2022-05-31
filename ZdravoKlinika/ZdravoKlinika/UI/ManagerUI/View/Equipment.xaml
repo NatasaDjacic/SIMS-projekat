@@ -7,7 +7,7 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="Upravljanje opremom" Background ="Snow">
+      Title="Upravljanje opremom"  Style="{StaticResource PageStyle}">
 
     <DockPanel Margin="10">
 
@@ -39,7 +39,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="3" Grid.RowSpan="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="auto" >
-                <Grid Margin="50 0 50 0" Background="AliceBlue">
+                <Grid Margin="50 0 50 0" Style="{StaticResource GridStyle}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -90,7 +90,7 @@
                 </Grid>
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2">
-                <Grid Background="AliceBlue" HorizontalAlignment="Center">
+                <Grid Style="{StaticResource GridStyle}" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -150,7 +150,7 @@
                 </Grid>
             </StackPanel>
             <StackPanel Grid.Column="3" Grid.Row="0" Grid.RowSpan="2">
-                <Grid Background="AliceBlue" HorizontalAlignment="Left">
+                <Grid Style="{StaticResource GridStyle}" HorizontalAlignment="Left">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -170,7 +170,7 @@
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.RowSpan="6" Grid.Column="2" Grid.ColumnSpan="2">
-                <Grid Margin="50 0 50 0" Background="AliceBlue">
+                <Grid Margin="50 0 50 0" Style="{StaticResource GridStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="42*"/>
                         <ColumnDefinition Width="71*"/>

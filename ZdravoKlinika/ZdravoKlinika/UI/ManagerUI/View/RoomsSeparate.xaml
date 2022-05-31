@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="RoomsSeparate">
+      Title="RoomsSeparate" Style="{StaticResource PageStyle}">
 
     <DockPanel Margin="10">
 
@@ -34,7 +34,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="2" Grid.RowSpan="5" HorizontalAlignment="Center" Width="auto" >
-                <Grid Margin="50 0 50 0" Background="AliceBlue">
+                <Grid Margin="50 0 50 0" Style="{StaticResource GridStyle}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -95,7 +95,7 @@
                 </Grid>
             </StackPanel>
             <StackPanel  Grid.Row="0" Grid.RowSpan="3" Width="auto" Grid.ColumnSpan="2">
-                <Grid Background="AliceBlue" HorizontalAlignment="Center">
+                <Grid Style="{StaticResource GridStyle}" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>

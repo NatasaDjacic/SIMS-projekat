@@ -98,13 +98,44 @@ namespace ZdravoKlinika.UI.ManagerUI
 
             DarkTheme.IsChecked = false;
             LightTheme.IsChecked = true;
+            BlueTheme.IsChecked = false;
+            PinkTheme.IsChecked = false;
+            Properties.Settings.Default.ColorMode = "Light";
+            Properties.Settings.Default.Save();
         }
         private void DarkTheme_Click(object sender, RoutedEventArgs e)
         {
 
             DarkTheme.IsChecked = true;
             LightTheme.IsChecked = false;
+            BlueTheme.IsChecked = false;
+            PinkTheme.IsChecked = false;
+            Properties.Settings.Default.ColorMode = "Dark";
+            Properties.Settings.Default.Save();
         }
+
+        private void BlueTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+            DarkTheme.IsChecked = false;
+            LightTheme.IsChecked = false;
+            BlueTheme.IsChecked = true;
+            PinkTheme.IsChecked = false;
+            Properties.Settings.Default.ColorMode = "Blue";
+            Properties.Settings.Default.Save();
+        }
+
+        private void PinkTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+            DarkTheme.IsChecked = false;
+            LightTheme.IsChecked = false;
+            BlueTheme.IsChecked = false;
+            PinkTheme.IsChecked = true;
+            Properties.Settings.Default.ColorMode = "Pink";
+            Properties.Settings.Default.Save();
+        }
+
         private void Equip_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.NavigationService.Navigate(new View.Equipments());

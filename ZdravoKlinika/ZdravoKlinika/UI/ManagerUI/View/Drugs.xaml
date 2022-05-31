@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="Drugs">
+      Title="Drugs"  Style="{StaticResource PageStyle}">
 
     <Grid Margin="0 15" >
         <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.RowSpan="5" HorizontalAlignment="Center" Width="auto" >
-            <Grid Margin="50 0 50 0" Background="AliceBlue">
+            <Grid Margin="50 0 50 0" Style="{StaticResource GridStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>

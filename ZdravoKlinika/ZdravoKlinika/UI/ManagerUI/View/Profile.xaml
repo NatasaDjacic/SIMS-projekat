@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="Profile">
+      Title="Profile" Style="{StaticResource PageStyle}">
 
-    <DockPanel Background="Snow">
+    <DockPanel>
 
         <Grid DockPanel.Dock="Bottom" Margin="10">
             <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Grid.Column="0" Background="AliceBlue" Height="auto" Grid.RowSpan="2" VerticalAlignment="Top">
+            <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource GridStyle}" Height="auto" Grid.RowSpan="2" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>

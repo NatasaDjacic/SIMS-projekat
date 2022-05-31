@@ -26,6 +26,8 @@
             <MenuItem Header="{DynamicResource StrTheme}">
                 <MenuItem Click="LightTheme_Click" Name="LightTheme" Header="{DynamicResource StrLight}" IsCheckable="True" IsChecked="True" />
                 <MenuItem Click="DarkTheme_Click" Name="DarkTheme" Header="{DynamicResource StrDark}" IsCheckable="True" IsChecked="False"/>
+                <MenuItem Click="BlueTheme_Click" Name="BlueTheme" Header="Plava" IsCheckable="True" IsChecked="False"/>
+                <MenuItem Click="PinkTheme_Click" Name="PinkTheme" Header="Pink" IsCheckable="True" IsChecked="False"/>
             </MenuItem>
             <MenuItem Header="{DynamicResource StrLangChoose}">
                 <MenuItem Click="Serbian_Click" Name="SerbianMenu" Header="Srpski" IsCheckable="True" IsChecked="True" />
