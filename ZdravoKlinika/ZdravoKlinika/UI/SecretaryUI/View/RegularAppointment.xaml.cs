@@ -162,6 +162,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             this.DataContext = this;
             InitializeComponent();
             CheckDoctorRoom();
+            
         }
 
         private void CheckPatientJMBG() {

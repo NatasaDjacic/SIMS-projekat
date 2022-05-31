@@ -31,9 +31,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Margin="0 0 0 10">
+            <StackPanel Grid.Row="0" Margin="0 0 0 0">
                 <Label>Subject*</Label>
-                <TextBox Text="{Binding Subject, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox x:Name="SubjectTB" Text="{Binding Subject, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=SubjectTB}" Foreground="Red"/>
             </StackPanel>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -49,19 +50,22 @@
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <StackPanel>
                         <Label>Date from*</Label>
-                        <DatePicker FontSize="24" SelectedDate="{Binding DateFrom, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+                        <DatePicker x:Name="DateFromDP" FontSize="24" SelectedDate="{Binding DateFrom, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></DatePicker>
+                        <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=DateFromDP}" Foreground="Red"/>
                     </StackPanel>
-                    <StackPanel Margin="0 18 0 0">
+                    <StackPanel Margin="0 0 0 0">
                         <Label>Date to*</Label>
-                        <DatePicker FontSize="24" SelectedDate="{Binding DateTo, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+                        <DatePicker x:Name="DateToDP" FontSize="24" SelectedDate="{Binding DateTo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></DatePicker>
+                        <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=DateToDP}" Foreground="Red"/>
                     </StackPanel>
-                    <StackPanel Margin="0 18 0 0">
+                    <StackPanel Margin="0 0 0 0">
                         <Label>Duration*</Label>
-                        <TextBox Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                        <TextBox x:Name="DurationTB" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                        <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=DurationTB}" Foreground="Red"/>
                     </StackPanel>   
-                    <StackPanel Margin="0 20 0 0">
+                    <StackPanel Margin="0 0 0 0">
                         <Label>Room*</Label>
-                        <ComboBox FontSize="24" SelectedItem="{Binding SelectedRoom, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Rooms}">
+                        <ComboBox x:Name="SelectedRoomCB" FontSize="24" SelectedItem="{Binding SelectedRoom, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" ItemsSource="{Binding Rooms}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding name}">
@@ -70,15 +74,17 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
+                        <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=SelectedRoomCB}" Foreground="Red"/>
                     </StackPanel>
                 </StackPanel>
                 <Grid Grid.Row="0" Grid.Column="1" Margin="20 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Label>Attendees*</Label>
-                    <ListView Grid.Row="1" ItemsSource="{Binding Employees}" SelectionMode="Multiple" SelectionChanged="ListView_SelectionChanged" FontSize="24" FontWeight="SemiBold">
+                    <ListView x:Name="SelectAttendeesLV" Grid.Row="1" ItemsSource="{Binding Employees}" SelectionMode="Multiple" SelectionChanged="ListView_SelectionChanged" FontSize="24" FontWeight="SemiBold">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>
@@ -92,15 +98,17 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <TextBlock Grid.Row="2" FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding SelectAttendessError}" Foreground="Red"/>
                 </Grid>
                 <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" BorderThickness="1" BorderBrush="Gray" Margin="0 0 20 0"></Border>
                 <Grid Grid.Row="0" Grid.Column="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Label>Proposed time*</Label>
-                    <ListView Grid.Row="1" ItemsSource="{Binding MeetingsSuggestion}" SelectedItem="{Binding SelectedMeeting}" FontSize="24" FontWeight="SemiBold">
+                    <ListView x:Name="SelectedMeetingLV" Grid.Row="1" ItemsSource="{Binding MeetingsSuggestion}" SelectedItem="{Binding SelectedMeeting, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" FontSize="24" FontWeight="SemiBold">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding startTime}">
@@ -109,15 +117,51 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <TextBlock Grid.Row="2" FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=SelectedMeetingLV}" Foreground="Red"/>
                 </Grid>
-                <Button Grid.Row="1" Grid.Column="1" Height="40" Margin="20 20" Background="Green" Foreground="White" Click="Button_Click">Find meeting time</Button>
+                <Button Grid.Row="1" Grid.Column="1" Height="40" Margin="20 20" Background="Green" Foreground="White" Click="Button_Click" Content="Find meeting time">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource baseStyle}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=SubjectTB}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=SelectedRoomCB}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=DurationTB}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=DateFromDP}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=DateToDP}" Value="False"/>
+                                        <Condition Binding="{Binding SelectAttendessValid}" Value="True"></Condition>
+
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <Grid Grid.Row="1" Grid.Column="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Width="100" Height="40" Margin="0 20" Background="Red" Foreground="White" HorizontalAlignment="Left" Click="Button_Click_1">Cancel</Button>
-                    <Button Grid.Column="1" Width="100" Height="40" Margin="0 20" Background="Green" Foreground="White" Click="Button_Click_2">Save</Button>
+                    <Button Grid.Column="1" Width="100" Height="40" Margin="0 20" Background="Green" Foreground="White" Click="Button_Click_2" Content="Save">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource baseStyle}">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=SelectedMeetingLV}" Value="False"/>
+
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
 
                 </Grid>
             </Grid>

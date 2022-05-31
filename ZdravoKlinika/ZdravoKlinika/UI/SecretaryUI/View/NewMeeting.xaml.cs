@@ -21,13 +21,51 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
     /// <summary>
     /// Interaction logic for NewMeeting.xaml
     /// </summary>
-    public partial class NewMeeting : Page, INotifyPropertyChanged {
+    public partial class NewMeeting : Page, INotifyPropertyChanged, IDataErrorInfo {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+        public string Error {
+            get {
+                return null;
+            }
+        }
+        public string this[string name] {
+            get {
+                string result = null;
+                switch (name) {
+                    case "SelectedMeeting":
+                        if (SelectedMeeting == null) result = "You didn't select meeting start time.";
+                        break;
+                    case "FromDate":
+                        if (DateFrom < DateTime.Today) result = "From date must be greather than today.";
+                        break;
+                    case "ToDate":
+                        if (DateTo < DateFrom) result = "To date can't be greater then from date.";
+                        break;
+                    case "Subject":
+                        if (string.IsNullOrEmpty(Subject)) result = "Subject is requred.";
+                        break;
+                    case "SelectedRoom":
+                        if (SelectedRoom == null) result = "You need to select room.";
+                        break;
+                    case "Duration":
+                        if (Duration <= 0) result = "Duration can not be negativ or zero.";
+                        break;
+                    case "attendeesJMBG":
+                        if (attendeesJMBG.Count < 2) result = "You need to select at least 2 attendees.";
+                        break;
+                    default: break;
+                }
+                return result;
+            }
+        }
+
+
+
         private string subject;
         public string Subject {
             get => subject;
@@ -89,6 +127,18 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                 OnPropertyChanged("SelectedRoom");
             }
         }
+        private string selectAttendessError;
+        public string SelectAttendessError {
+            get => selectAttendessError;
+            set {
+                selectAttendessError = value;
+                OnPropertyChanged("SelectAttendessError");
+                OnPropertyChanged("SelectAttendessValid");
+            }
+        }
+        public bool SelectAttendessValid {
+            get => attendeesJMBG.Count >= 2 ? true : false;
+        }
         private List<string> attendeesJMBG;
         EmployeController employeController = GLOBALS.employeController;
         SuggestionController suggestionController = GLOBALS.suggestionController;
@@ -104,8 +154,9 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             this.attendeesJMBG = new List<string>();
             this.meetingsSuggestion = new ObservableCollection<Meeting>();
             this.DataContext = this;
+            this.SelectAttendessError = "You need to select at least 2 attendees";
             InitializeComponent();
-
+            
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -118,6 +169,12 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             removedUsers.ForEach(user => {
                 attendeesJMBG.Remove(user.JMBG);
             });
+            if (attendeesJMBG.Count >= 2) {
+                this.SelectAttendessError = "";
+            } else {
+
+                this.SelectAttendessError = "You need to select at least 2 attendees";
+            }
 
             Console.WriteLine();
         }

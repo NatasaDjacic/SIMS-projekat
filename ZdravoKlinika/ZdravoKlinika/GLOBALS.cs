@@ -71,7 +71,7 @@ namespace ZdravoKlinika
         public static RoomSeparateController roomSeparateController = new RoomSeparateController(roomSeparateService);
         public static RoomMergeController roomMergeController = new RoomMergeController(roomMergeService);
         public static HolidayRequestController holidayRequestController = new HolidayRequestController(holidayRequestService);
-        public static MeetingController meetingController = new MeetingController(meetingService);
+        public static MeetingController meetingController = new MeetingController(meetingService, notificationService);
         public static EmployeController employeController = new EmployeController(employeService);
 
     }

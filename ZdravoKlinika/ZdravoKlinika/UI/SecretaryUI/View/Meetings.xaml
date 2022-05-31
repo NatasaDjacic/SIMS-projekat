@@ -48,7 +48,7 @@
                     <DataGridTextColumn Header="Date" Binding="{Binding startTime}">
 
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Duration" Binding="{Binding duration}">
+                    <DataGridTextColumn Header="Duration" Binding="{Binding duration, StringFormat={}{0} mins}">
 
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Room" Binding="{Binding roomId, Converter={StaticResource RoomIdConverter}}">
