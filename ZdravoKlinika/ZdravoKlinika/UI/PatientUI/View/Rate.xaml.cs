@@ -18,6 +18,7 @@ using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
+using System.Text.RegularExpressions;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
@@ -85,14 +86,17 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
 
         }
+        private void NumberValidation(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-5]+");
+            e.Handled=regex.IsMatch(e.Text);
+        }
 
         private void CheckMarks()
         {
             if (doctorTB == null) return;
             if (5<doctorMark  || doctorMark<1 )
             {
-
-
                 doctorTB.Text = "Mark has to be between 1 and 5!";
 
                 doctorTB.Foreground = Brushes.Red;
@@ -129,7 +133,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home());
+            NavigationService.Navigate(new Reports());
         }
 
 

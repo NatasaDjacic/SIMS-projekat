@@ -32,10 +32,12 @@
             <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="Rate"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Click="Click_Rate"></Button>
         </Grid>
 
-        <Grid Margin="10" Height="374">
+        <Border BorderBrush="Black" BorderThickness="1" Height="374" Width="350" Background="LightGray">
+            <Grid Margin="10" Height="374" Width="350" Background="LightGray" >
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="643.1" />
+                <ColumnDefinition Width="*" />
 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -46,33 +48,32 @@
 
 
             </Grid.RowDefinitions>
-
-
-
-            <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
-                <Label FontSize="16" Content="Rate doctor :"/>
-                <TextBox x:Name="doctorMarkTB" Width="641" Text="{Binding DoctorMark, UpdateSourceTrigger=PropertyChanged}" Height="64"/>
+            
+                <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
+                <Label FontSize="20" Content="Rate doctor :" Width="191"/>
+                <TextBox x:Name="doctorMarkTB" Width="191" PreviewTextInput="NumberValidation" Text="{Binding DoctorMark, UpdateSourceTrigger=PropertyChanged}" Height="38"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2">
-                <TextBlock x:Name="doctorTB" Foreground="Gray"></TextBlock>
+            <StackPanel Grid.Row="1" Grid.Column="1" 
+                        >
+                <TextBlock x:Name="doctorTB" Foreground="Gray" HorizontalAlignment="Center"></TextBlock>
 
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
-                <Label Grid.Row="2" FontSize="16" >Rate hospital :</Label>
-                <TextBox x:Name="hospitalMarkTB" Width="641" Text="{Binding HospitalMark, UpdateSourceTrigger=PropertyChanged}" Height="64"/>
+                <Label Grid.Row="2" FontSize="20" Width="191" >Rate hospital :</Label>
+                    <TextBox x:Name="hospitalMarkTB" Width="191"  PreviewTextInput="NumberValidation" Text="{Binding HospitalMark, UpdateSourceTrigger=PropertyChanged}" Height="37"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="2">
-                <TextBlock x:Name="hospitalTB" Foreground="Gray" ></TextBlock>
+            <StackPanel Grid.Row="3" Grid.Column="1" >
+                <TextBlock x:Name="hospitalTB" Foreground="Gray" HorizontalAlignment="Center" ></TextBlock>
 
             </StackPanel>
 
-
+            
 
         </Grid>
-
+        </Border>
 
 
     </DockPanel>

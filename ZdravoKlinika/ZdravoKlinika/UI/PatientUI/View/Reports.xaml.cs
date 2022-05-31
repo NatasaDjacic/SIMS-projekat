@@ -99,9 +99,9 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
             else
             {
-
+                
                 Console.WriteLine("Already rated");
-                // NavigationService.Navigate(new Rate(selectedreport.reportId));
+                NavigationService.Navigate(new Marks(selectedreport.reportId));
             }
           
 

@@ -65,7 +65,7 @@ namespace ZdravoKlinika.UI.PatientUI {
 
         private void Enable_Notifications(object sender, ExecutedRoutedEventArgs e)
         {
-            ContentFrame.NavigationService.Navigate(new View.Notifications());
+            ContentFrame.NavigationService.Navigate(new View.Reminders());
         }
 
         private void Log_Out_CanExecute(object sender, CanExecuteRoutedEventArgs e)
