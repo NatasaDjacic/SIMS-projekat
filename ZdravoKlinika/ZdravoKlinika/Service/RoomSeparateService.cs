@@ -49,8 +49,8 @@ namespace ZdravoKlinika.Service
         }
 
         public void FinishRoomSeparation(RoomSeparate roomSeparate) {
-            DoctorsMarkDTO room1 = new DoctorsMarkDTO(roomSeparate.firstRoomId, roomSeparate.firstRoomName, roomSeparate.firstRoomDescription, roomSeparate.firstRoomType);
-            DoctorsMarkDTO room2 = new DoctorsMarkDTO(roomSeparate.secondRoomId, roomSeparate.secondRoomName, roomSeparate.secondRoomDescription, roomSeparate.secondRoomType);
+            Room room1 = new Room(roomSeparate.firstRoomId, roomSeparate.firstRoomName, roomSeparate.firstRoomDescription, roomSeparate.firstRoomType);
+            Room room2 = new Room(roomSeparate.secondRoomId, roomSeparate.secondRoomName, roomSeparate.secondRoomDescription, roomSeparate.secondRoomType);
 
             roomService.Save(room1);
             roomService.Save(room2);

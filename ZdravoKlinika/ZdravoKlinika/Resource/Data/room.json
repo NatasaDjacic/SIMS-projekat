@@ -22,5 +22,17 @@
     "name": "tN",
     "description": "testDes",
     "type": "tt"
+  },
+  {
+    "roomId": "ID1",
+    "name": "Kancelarija direktor",
+    "description": null,
+    "type": "Kancelarija"
+  },
+  {
+    "roomId": "Test2",
+    "name": "Testna soba",
+    "description": "Kancelarija",
+    "type": "sdffd"
   }
 ]

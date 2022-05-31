@@ -12,115 +12,183 @@
       Title="EditRoom" FontSize="15" Style="{StaticResource PageStyle}">
     
     <DockPanel>
-        <Grid DockPanel.Dock="Bottom" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <Grid HorizontalAlignment="Center" Margin="0 50 0 0">
-
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource GridStyle}">
+            <Grid DockPanel.Dock="Bottom" Margin="10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="11*"/>
-                    <ColumnDefinition Width="69*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+            </Grid>
+            <Grid HorizontalAlignment="Center" Margin="0 30 0 0">
+
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="{DynamicResource StrRoomChange}"></Label>
+                <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource GridStyle}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="69*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="Izmena sobe"></Label>
 
-                <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrId*}"></Label>
-                <TextBox x:Name="Idtb" Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
-                    <TextBox.Text>
-                        <Binding Path="RoomId" UpdateSourceTrigger="PropertyChanged">
-                            <Binding.ValidationRules>
-                                <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                    <Validation.ErrorTemplate>
-                        <ControlTemplate>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                    <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="Id*"></Label>
+                    <TextBox x:Name="Idtb" Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
+                        <TextBox.Text>
+                            <Binding Path="RoomId" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
 
-                                <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
-                                <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                            </Grid>
-                        </ControlTemplate>
-                    </Validation.ErrorTemplate>
-                </TextBox>
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                    <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
 
-                <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrName*}"></Label>
-                <TextBox x:Name="name" Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
-                    <TextBox.Text>
-                        <Binding Path="_Name" UpdateSourceTrigger="PropertyChanged">
-                            <Binding.ValidationRules>
-                                <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                    <Validation.ErrorTemplate>
-                        <ControlTemplate>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                    <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="Naziv*"></Label>
+                    <TextBox x:Name="name" Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220" Grid.ColumnSpan="2">
+                        <TextBox.Text>
+                            <Binding Path="_Name" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
 
-                                <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
-                                <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                            </Grid>
-                        </ControlTemplate>
-                    </Validation.ErrorTemplate>
-                </TextBox>
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                    <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
 
-                <Label  Margin="20,10,0,10" Grid.Row="3" Grid.Column="0" Content="{DynamicResource StrDesc}"></Label>
-                <TextBox  Margin="20,10,20,10" Grid.Row="3" Grid.Column="1" Width="220" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+                    <Label  Margin="20,10,0,10" Grid.Row="3" Grid.Column="0" Content="Opis"></Label>
+                    <TextBox  Margin="20,10,20,10" Grid.Row="3" Grid.Column="1" Width="220" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
-                <Label Margin="20,10,0,10" Grid.Row="4" Grid.Column="0" Content="{DynamicResource StrType*}"></Label>
-                <TextBox IsEnabled="False" Margin="20,10,20,10" Grid.Row="4" Grid.Column="1" Width="220"  Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+                    <Label Margin="20,10,0,10" Grid.Row="4" Grid.Column="0" Content="Tip*"></Label>
+                    <TextBox IsEnabled="False" Margin="20,10,20,10" Grid.Row="4" Grid.Column="1" Width="220"  Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
-                <Button Grid.Row="5" Grid.Column="0" Margin="20 20 0 30" Height="25" Width="90" Background="Red" Foreground="White" Content="{DynamicResource StrCancel}" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
-                <Button Grid.Row="5" Grid.Column="2"  Margin="20 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="{DynamicResource StrSubmit}" FontWeight="SemiBold" Click="Button_Click_Save">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Style.Triggers>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Idtb}" Value="False"/>
-                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=name}" Value="False"/>
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="IsEnabled" Value="True"/>
-                                </MultiDataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+                    <Button Grid.Row="5" Grid.Column="0" Margin="20 20 0 30" Height="25" Width="90" Background="Red" Foreground="White" Content="Poništi" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
+                    <Button Grid.Row="5" Grid.Column="2"  Margin="20 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="Potvrdi" FontWeight="SemiBold" Click="Button_Click_Save">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Idtb}" Value="False"/>
+                                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=name}" Value="False"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
 
+                </Grid>
             </Grid>
-        </Grid>
 
+
+            <StackPanel Grid.Row="1" HorizontalAlignment="Left" Width="auto" Grid.ColumnSpan="2" >
+                <Grid Style="{StaticResource GridStyle}" Margin="50 0 50 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="0 30 0 5" Content="Pregled soba"></Label>
+                    <DataGrid Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Id"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Naziv"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="*"  Binding="{Binding description}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Opis"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding type}" Width="*" MaxWidth="200">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Tip"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </StackPanel>
+
+        </Grid>
     </DockPanel>
 </Page>

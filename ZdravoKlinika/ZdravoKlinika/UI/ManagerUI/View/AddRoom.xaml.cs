@@ -20,6 +20,7 @@ using System.ComponentModel;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.UI.ManagerUI.View;
 using System.Collections;
+using System.Collections.ObjectModel;
 
 namespace ZdravoKlinika.UI.ManagerUI.View {
    
@@ -98,6 +99,20 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             }
         }
 
+        private ObservableCollection<Room> rooms;
+        public ObservableCollection<Room> RoomsCollection
+        {
+            get => rooms;
+            set
+            {
+                if (rooms != value)
+                {
+                    rooms = value;
+                    OnPropertyChanged("RoomsCollection");
+                }
+            }
+        }
+
 
         public RoomController roomController;
         RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
@@ -107,6 +122,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             ResourceDictionary dictionary = new ResourceDictionary();
             switch (value)
             {
@@ -141,15 +157,15 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         private void Button_Click_Save(object sender, RoutedEventArgs e) {
             try {
                 roomController.Create(RoomId, _Name, Description, Type);
-                NavigationService.Navigate(new Rooms("srb"));
-                
+                NavigationService.Navigate(new AddRoom("srb"));
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
         }
+       
 
-        
     }
 }
