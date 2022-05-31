@@ -28,7 +28,9 @@ namespace ZdravoKlinika
         public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
         public static MarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
         public static DoctorsMarksRepository doctorsMarksRepository = new DoctorsMarksRepository(@"..\..\..\Resource\Data\doctorsMarks.json");
+        public static PatientReminderRepository patientReminderRepository = new PatientReminderRepository(@"..\..\..\Resource\Data\reminders.json");
 
+        public static PatientReminderService patientReminderService = new PatientReminderService(patientReminderRepository);
         public static MarkService markService = new MarkService(markRepository);
         public static CancellationService cancellationService = new CancellationService(cancellationRepository);
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
@@ -49,6 +51,7 @@ namespace ZdravoKlinika
         public static EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService(suggestionService, appointmentService, roomService, doctorService);
         public static DoctorsMarksService doctorsMarksService = new DoctorsMarksService(doctorsMarksRepository, doctorRepository);
 
+        public static PatientReminderController patientReminderController = new PatientReminderController(patientReminderService);
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
         public static AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService, authService, suggestionService, notificationService, emergencyAppointmentService);

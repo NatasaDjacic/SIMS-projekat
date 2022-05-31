@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
-using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
 
@@ -30,9 +39,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
         private DateTime _startTime = DateTime.Now;
 
 
-        public int duration { get { return _duration; } set { _duration = value; OnPropertyChanged("duration"); } }
-        public string doctorJMBG { get { return _doctorJMBG; } set { _doctorJMBG = value; OnPropertyChanged("doctorJMBG"); } }
-        public DateTime startTime { get { return _startTime; } set { _startTime = value; OnPropertyChanged("startTime"); } }
+       public DateTime startTime { get { return _startTime; } set { _startTime = value; OnPropertyChanged("startTime"); } }
 
 
         public AppointmentController appointmentController = GLOBALS.appointmentController;
@@ -49,8 +56,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
             if (a is not null)
             {
 
-                duration = a.duration;
-                doctorJMBG = a.doctorJMBG;
+                
                 startTime = a.startTime;
                
             }
@@ -60,19 +66,28 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
 
-        private void Button_Click_Save(object sender, RoutedEventArgs e)
+       
+
+
+        private void Save_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
+            e.CanExecute = true;
+        }
+
+        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+
             try
             {
                 if (a is not null)
                 {
-                    a.duration=duration;
-                    a.doctorJMBG= doctorJMBG ;
-                    a.startTime= startTime ;
+                   
+                    a.startTime = startTime;
 
                     appointmentController.MoveAppointmentById(a.id, a.startTime);
                 }
-                
+
 
                 if (authService.user == null)
                 {
@@ -93,12 +108,16 @@ namespace ZdravoKlinika.UI.PatientUI.View
             {
                 Console.WriteLine(ex.Message);
             }
-
         }
 
-        private void Button_Click_Cancel(object sender, RoutedEventArgs e)
+        private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            e.CanExecute = true;
+        }
+
+        private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Appointments());
         }
 
 

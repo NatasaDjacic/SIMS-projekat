@@ -27,6 +27,36 @@ namespace ZdravoKlinika.UI.PatientUI.View
         {
             this.DataContext = this;
             InitializeComponent();
+            CheckAlarm();
+        }
+
+        PatientReminderController patientReminderController = GLOBALS.patientReminderController;
+        AuthService authService = GLOBALS.authService;
+
+        private void CheckAlarm()
+        {
+            if (ReminderTB == null) return;
+            var list=patientReminderController.GetByPatientJMBG(authService.user.JMBG);
+            List<PatientReminder> reminders = new List<PatientReminder>();
+            foreach(var item in list)
+            {
+                if(item.date.CompareTo(DateTime.Now.AddMinutes(30)) < 0 && item.date.CompareTo(DateTime.Now) >= 0)
+                {
+                    reminders.Add(item);
+                }
+            }
+
+            foreach(var item in reminders)
+            {
+               if(item.date==reminders.Min(a => a.date))
+                {
+                    ReminderTB.Text = "ALARM at " + item.date + " name " + item.name;
+                    ReminderTB.Foreground = Brushes.Red;
+                }
+            
+            }
+            
+
         }
 
     }

@@ -79,5 +79,25 @@ namespace ZdravoKlinika.UI.PatientUI
           }
           );
 
+        public static readonly RoutedUICommand NewReminder = new RoutedUICommand(
+          "NewReminder",
+          "NewReminder",
+          typeof(RoutedCommands),
+          new InputGestureCollection()
+           {
+            new KeyGesture(Key.N, ModifierKeys.Control),
+          }
+          );
+
+
+        public static readonly RoutedUICommand Save = new RoutedUICommand(
+          "Save",
+          "Save",
+          typeof(RoutedCommands),
+          new InputGestureCollection()
+           {
+            new KeyGesture(Key.S, ModifierKeys.Control),
+          }
+          );
     }
 }
