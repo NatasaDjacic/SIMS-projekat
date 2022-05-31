@@ -49,7 +49,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         }
         public List<Doctor> doctors { get; set; }
         public static Dictionary<string, Doctor> doctorsLookup { get; set; }
-        public static Dictionary<string, DoctorsMarkDTO> roomsLookup { get; set; }
+        public static Dictionary<string, Room> roomsLookup { get; set; }
         private Doctor? selectedDoctor;
         public Doctor? SelectedDoctor {
             get => selectedDoctor;
@@ -61,9 +61,9 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             }
         }
 
-        public List<DoctorsMarkDTO> rooms { get; set; }
-        private DoctorsMarkDTO? selectedRoom;
-        public DoctorsMarkDTO? SelectedRoom {
+        public List<Room> rooms { get; set; }
+        private Room? selectedRoom;
+        public Room? SelectedRoom {
             get => selectedRoom;
             set {
                 if (selectedRoom != value) {

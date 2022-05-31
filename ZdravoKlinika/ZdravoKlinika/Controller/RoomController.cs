@@ -17,7 +17,7 @@ namespace ZdravoKlinika.Controller
         }
         public bool Create(string roomId, string name, string description, string type)
         {
-            var room = new DoctorsMarkDTO(roomId,name, description, type);
+            var room = new Room(roomId,name, description, type);
             room.Validate();
             return this.roomService.Create(room);
         }
@@ -27,18 +27,18 @@ namespace ZdravoKlinika.Controller
             return this.roomService.Delete(roomId);
         }
 
-        public bool Update(DoctorsMarkDTO room)
+        public bool Update(Room room)
         {
             room.Validate();
             return this.roomService.Update(room);
         }
 
-        public DoctorsMarkDTO GetById(string roomId)
+        public Room GetById(string roomId)
         {
             return roomService.GetById(roomId);
         }
 
-        public List<DoctorsMarkDTO> GetAll()
+        public List<Room> GetAll()
         {
            return roomService.GetAll();
         }

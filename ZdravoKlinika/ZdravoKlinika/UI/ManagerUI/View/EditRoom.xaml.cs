@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -64,8 +65,21 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         }
 
         public RoomController roomController;
-        DoctorsMarkDTO? r;
+        Room? r;
         RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
+        private ObservableCollection<Room> rooms;
+        public ObservableCollection<Room> RoomsCollection
+        {
+            get => rooms;
+            set
+            {
+                if (rooms != value)
+                {
+                    rooms = value;
+                    OnPropertyChanged("RoomsCollection");
+                }
+            }
+        }
 
         public EditRoom(string roomId, string value) {
             roomSeparateController.ExecuteRoomSeparating();
@@ -73,6 +87,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             r = roomController.GetById(roomId);
             if (r is not null) {
                 RoomId = r.roomId;

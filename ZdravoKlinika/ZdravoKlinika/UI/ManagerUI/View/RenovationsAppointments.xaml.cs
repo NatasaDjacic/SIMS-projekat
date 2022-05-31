@@ -30,8 +30,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        private ObservableCollection<DoctorsMarkDTO> rooms;
-        public ObservableCollection<DoctorsMarkDTO> RoomsCollection
+        private ObservableCollection<Room> rooms;
+        public ObservableCollection<Room> RoomsCollection
         {
             get => rooms;
             set
@@ -104,8 +104,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        private DoctorsMarkDTO selectedRoom;
-        public DoctorsMarkDTO SelectedRoom
+        private Room selectedRoom;
+        public Room SelectedRoom
         {
             get => selectedRoom;
             set
@@ -154,7 +154,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             //var first = suggestionController.getRenovationSuggestion(roomId, StartDate, EndDate, Duration)[index];
             //renovationController.SaveRenovation(first.startTime, first.duration, first.roomId, desc);
           
-            RoomsCollection = new ObservableCollection<DoctorsMarkDTO>(roomController.GetAll());
+            RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
             InitializeComponent();
         }
