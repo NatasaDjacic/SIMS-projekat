@@ -16,6 +16,8 @@
     <system:String x:Key="StrHos">Ordinacija</system:String>
     <system:String x:Key="StrLight">Svetla</system:String>
     <system:String x:Key="StrDark">Tamna</system:String>
+    <system:String x:Key="StrBlue">Plava</system:String>
+    <system:String x:Key="StrPink">Pink</system:String>
     <system:String x:Key="StrSignOut">Odjava</system:String>
     <system:String x:Key="StrStartDate">Odaberite početni datum provere</system:String>
     <system:String x:Key="StrEndDate">Odaberite krajnji datum provere</system:String>
@@ -37,8 +39,61 @@
     <system:String x:Key="StrCancel">Nazad</system:String>
     <system:String x:Key="StrSubmit">Potvrdi</system:String>
     <system:String x:Key="StrRoomChange">Izmena prostorije</system:String>
-
-
+    <system:String x:Key="StrRenSched">Zakazivanje renoviranja</system:String>
+    <system:String x:Key="StrSelectRoom">Odaberite sobu</system:String>
+    <system:String x:Key="StrDuration">Trajanje (u satima)</system:String>
+    <system:String x:Key="StrDur">Trajanje</system:String>
+    <system:String x:Key="StrSchedule">Zakaži</system:String>
+    <system:String x:Key="StrRoomList">Pregled soba</system:String>
+    <system:String x:Key="StrFirstRoom">Odaberite prvu sobu</system:String>
+    <system:String x:Key="StrSecondRoom">Odaberite drugu sobu</system:String>
+    <system:String x:Key="StrRoomMerge">Spajanje soba</system:String>
+    <system:String x:Key="StrRoomSeparate">Razdvajanje soba</system:String>
+    <system:String x:Key="StrDrugId">Id leka</system:String>
+    <system:String x:Key="StrIngred">Sastojci</system:String>
+    <system:String x:Key="StrApproved">Odobren</system:String>
+    <system:String x:Key="StrAlternative">Alternativni lek</system:String>
+    <system:String x:Key="StrComment">Komentar lekara</system:String>
+    <system:String x:Key="StrDrugList">Pregled lekova</system:String>
+    <system:String x:Key="StrDrugAdd">Dodaj lek</system:String>
+    <system:String x:Key="StrCreateDrug">Kreiranje novog leka</system:String>
+    <system:String x:Key="StrDrugEdit">Izmena leka</system:String>
+    <system:String x:Key="StrNumMarks1">Broj ocena 1</system:String>
+    <system:String x:Key="StrNumMarks2">Broj ocena 2</system:String>
+    <system:String x:Key="StrNumMarks3">Broj ocena 3</system:String>
+    <system:String x:Key="StrNumMarks4">Broj ocena 4</system:String>
+    <system:String x:Key="StrNumMarks5">Broj ocena 5</system:String>
+    <system:String x:Key="StrAverage">Prosečna ocena</system:String>
+    <system:String x:Key="StrLastName">Prezime</system:String>
+    <system:String x:Key="StrUsername">Korisničko ime</system:String>
+    <system:String x:Key="StrStatHospital">Statistika ocena bolnice</system:String>
+    <system:String x:Key="StrStatDoctor">Statistika ocena lekara</system:String>
+    <system:String x:Key="StrRoom1">Prva soba</system:String>
+    <system:String x:Key="StrRoom2">Druga soba</system:String>
+    <system:String x:Key="StrTermins">List termina</system:String>
+    <system:String x:Key="StrSeparating">Razdvajanje soba</system:String>
+    <system:String x:Key="StrEquipRel">Prebacivanje opreme</system:String>
+    <system:String x:Key="StrRoomFrom">Odaberite sobu iz koje se prebacuje</system:String>
+    <system:String x:Key="StrEquipChoose">Odaberite opremu</system:String>
+    <system:String x:Key="StrQuantity">Količina</system:String>
+    <system:String x:Key="StrRoomTo">Odaberite sobu u koje se prebacuje</system:String>
+    <system:String x:Key="StrDate">Datum</system:String>
+    <system:String x:Key="StrSearchEquip">Pretraga opreme</system:String>
+    <system:String x:Key="StrSearch">Pretraga</system:String>
+    <system:String x:Key="StrSearchBut">Pretraži</system:String>
+    <system:String x:Key="StrIdRoom">Id sobe</system:String>
+    <system:String x:Key="StrStaticList">Pregled statičke opreme</system:String>
+    <system:String x:Key="StrDynList">Pregled dinamičke opreme</system:String>
+    <system:String x:Key="StrRoomModify">Izmena sobe</system:String>
+    <system:String x:Key="StrJMBG">JMBG</system:String>
+    <system:String x:Key="StrPassword">Lozinka</system:String>
+    <system:String x:Key="StrNumber">Broj telefona</system:String>
+    <system:String x:Key="StrEmail">Imejl</system:String>
+    <system:String x:Key="StrCountry">Država</system:String>
+    <system:String x:Key="StrCity">Grad</system:String>
+    <system:String x:Key="StrAddress">Adresa</system:String>
+    <system:String x:Key="StrShowPass">Prikaži lozinku</system:String>
+    <system:String x:Key="StrDescRen">Opis renoviranja:</system:String>
 
 
 

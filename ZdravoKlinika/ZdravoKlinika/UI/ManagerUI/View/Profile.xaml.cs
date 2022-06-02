@@ -21,6 +21,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 {
     public partial class Profile : Page, INotifyPropertyChanged
     {
+        string val = string.Empty;
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -58,8 +59,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
        
 
 
-        public Profile()
+        public Profile(string value)
         {
+            val = value;
             ManagerRepository managerRepository = new ManagerRepository(@"..\..\..\Resource\Data\manager.json");
             manager = managerRepository.GetManager();
             if (manager is not null)
@@ -77,6 +79,26 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
             else { NavigationService.GoBack(); }
             this.DataContext = this;
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
             InitializeComponent();
         }
 

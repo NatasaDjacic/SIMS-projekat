@@ -23,6 +23,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 {
     public partial class EditDrug : Page, INotifyPropertyChanged
     {
+        string val = string.Empty;
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged(string name)
@@ -61,8 +62,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        public EditDrug(int drugId)
+        public EditDrug(int drugId, string value)
         {
+            val = value;
             this.DataContext = this;
             DrugRepository drugRepository = new DrugRepository(@"..\..\..\Resource\Data\drug.json");
             DrugService drugService = new DrugService(drugRepository);
@@ -78,6 +80,27 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             else { NavigationService.GoBack(); }
             DrugsCollection = new ObservableCollection<Drug>(drugController.GetAll());
             this.DataContext = this;
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
+
             InitializeComponent();
         }
 
@@ -100,7 +123,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
                     drugController.Update(drug);
                 }
-                NavigationService.Navigate(new Drugs());
+                NavigationService.Navigate(new Drugs("srb"));
             }
             catch (Exception ex)
             {

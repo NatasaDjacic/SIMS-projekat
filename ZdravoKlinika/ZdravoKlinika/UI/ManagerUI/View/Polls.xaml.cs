@@ -23,6 +23,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 {
     public partial class Polls : Page, INotifyPropertyChanged
     {
+        string val = string.Empty;
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -69,8 +70,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
         DoctorMarksController doctorMarksController = GLOBALS.doctorsMarksController;
-        public Polls()
+        public Polls(string value)
         {
+            val = value;
             MarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
             DoctorsMarksRepository doctorsMarksRepository = new DoctorsMarksRepository(@"..\..\..\Resource\Data\doctorsMarks.json");
             doctorMarksController.calculateMarks();
@@ -103,6 +105,27 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             Average = sum/number;
             DoctorsPollsCollection = new ObservableCollection<DoctorsMarks>(doctorMarksController.GetAll());
             this.DataContext = this;
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
+
             InitializeComponent();
         }
     }

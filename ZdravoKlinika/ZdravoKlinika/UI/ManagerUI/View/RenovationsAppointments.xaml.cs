@@ -22,6 +22,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
     
     public partial class RenovationsAppointments : Page, INotifyPropertyChanged
     {
+        string val = string.Empty;
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -61,7 +62,6 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         public event PropertyChangedEventHandler? PropertyChanged;
         SuggestionController suggestionController = GLOBALS.suggestionController;
         RenovationController renovationController = GLOBALS.renovationController;
-        string val = string.Empty;
         private DateTime startDate;
         public DateTime StartDate
         {
@@ -144,16 +144,36 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        public RenovationsAppointments(String roomId, DateTime StartDate, DateTime EndDate, int Duration)
+        public RenovationsAppointments(String roomId, DateTime StartDate, DateTime EndDate, int Duration, string value)
         {
+            val = value;
             System.Collections.IList list = suggestionController.getRenovationSuggestion(roomId, StartDate, EndDate, Duration);
             DateCollection = new ObservableCollection<Renovation>((List<Renovation>)list);
 
-           
-         
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
+
             //var first = suggestionController.getRenovationSuggestion(roomId, StartDate, EndDate, Duration)[index];
             //renovationController.SaveRenovation(first.startTime, first.duration, first.roomId, desc);
-          
+
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
             InitializeComponent();
@@ -162,11 +182,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         private void Button_Click_Renovation(object sender, RoutedEventArgs e)
         {
            renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, selectedRenovation.roomId, Description);
-           NavigationService.Navigate(new Renovations("srb"));
-        }
-        private void Button_Click_New(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddRoom("srb"));
+           NavigationService.Navigate(new Renovations(val));
         }
     }
 }

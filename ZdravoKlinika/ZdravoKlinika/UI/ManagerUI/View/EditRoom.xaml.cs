@@ -16,6 +16,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
    
     public partial class EditRoom : Page, INotifyPropertyChanged, IDataErrorInfo
     {
+        string val = string.Empty;
+
         public event PropertyChangedEventHandler? PropertyChanged;
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
@@ -82,6 +84,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
         }
 
         public EditRoom(string roomId, string value) {
+            val = value;
             roomSeparateController.ExecuteRoomSeparating();
             this.DataContext = this;
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");

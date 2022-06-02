@@ -10,7 +10,7 @@
 
     <DockPanel Margin="10">
 
-        <Grid DockPanel.Dock="Top" Margin="0 15" >
+        <Grid DockPanel.Dock="Top" Margin="0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
@@ -43,12 +43,12 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 30 0 5" Content="Pregled soba"></Label>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 30 0 5" Content="{DynamicResource StrRoomList}"></Label>
                     <DataGrid Grid.Row="2" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Id"/>
+                                    <TextBlock Text="{DynamicResource StrId}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -59,7 +59,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Naziv"/>
+                                    <TextBlock Text="{DynamicResource StrName}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -70,7 +70,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="*"  Binding="{Binding description}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Opis"/>
+                                    <TextBlock Text="{DynamicResource StrDesc}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -82,7 +82,7 @@
 
                             <DataGridTextColumn Binding="{Binding type}" Width="*" MaxWidth="200">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Tip"/>
+                                    <TextBlock Text="{DynamicResource StrType}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -94,14 +94,12 @@
 
                         </DataGrid.Columns>
                     </DataGrid>
-                    <StackPanel Grid.Row="1" DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button  Content="Dodaj sobu" Background="Green" Height="25" Width="90" HorizontalAlignment="Right" Margin="0 0 30 15"  FontSize="13" FontWeight="SemiBold" Click="Button_Click_New" ></Button>
-                    </StackPanel>
                 </Grid>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Width="auto" Margin="10" HorizontalAlignment="Center">
                 <Grid Style="{StaticResource GridStyle}">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -118,7 +116,8 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Label FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="17">Odabir termina renoviranja</Label>
+                    <Label Content="{DynamicResource StrSeparating}" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="17"></Label>
+                    <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Content="{DynamicResource StrTermins}" FontWeight="Bold"></Label>
                     <ListView Grid.Row="1" Grid.RowSpan="5" Grid.Column="0" Width="auto" Margin="30" HorizontalAlignment="Center" ItemsSource="{Binding DateCollection}" SelectedItem="{Binding SelectedRenovation}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -126,25 +125,27 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Label Grid.Row="1" Grid.Column="2">Id</Label>
-                    <TextBox Grid.Row="1" Width="90" Height="25" Text="{Binding NewRoomId}" Grid.Column="3"></TextBox>
-                    <Label Grid.Row="2" Grid.Column="2">Naziv</Label>
-                    <TextBox Grid.Row="2" Width="90" Height="25" Text="{Binding NewRoomName}" Grid.Column="3"></TextBox>
-                    <Label Grid.Row="3" Grid.Column="2">Tip</Label>
-                    <TextBox Grid.Row="3" Width="90" Height="25" Text="{Binding NewRoomType}" Grid.Column="3"></TextBox>
-                    <Label Grid.Row="4" Grid.Column="2">Opis</Label>
-                    <TextBox Grid.Row="4" Width="90" Height="25" Text="{Binding NewRoomDescription}" Grid.Column="3"></TextBox>
-                    
-                    <Label Grid.Row="1" Grid.Column="4">Id 2</Label>
-                    <TextBox Grid.Row="1" Width="90" Height="25" Text="{Binding NewRoomId2}" Grid.Column="5"></TextBox>
-                    <Label Grid.Row="2" Grid.Column="4">Naziv</Label>
-                    <TextBox Grid.Row="2" Width="90" Height="25" Text="{Binding NewRoomName2}" Grid.Column="5"></TextBox>
-                    <Label Grid.Row="3" Grid.Column="4">Tip</Label>
-                    <TextBox Grid.Row="3" Width="90" Height="25" Text="{Binding NewRoomType2}" Grid.Column="5"></TextBox>
-                    <Label Grid.Row="4" Grid.Column="4">Opis</Label>
-                    <TextBox Grid.Row="4" Width="90" Height="25" Text="{Binding NewRoomDescription2}" Grid.Column="5"></TextBox>
-                    <Button VerticalAlignment="Top" FontWeight="SemiBold" Background="Green" Grid.Row="5" Grid.Column="5" Click="Button_Click_Renovation" Height="25" Width="90">
-                        Zakaži
+                    <Label Content="{DynamicResource StrRoom1}" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"></Label>
+                    <Label Content="{DynamicResource StrId}" Grid.Row="2" Grid.Column="2"></Label>
+                    <TextBox Grid.Row="2" Width="90" Height="25" Text="{Binding NewRoomId}" Grid.Column="3"></TextBox>
+                    <Label Content="{DynamicResource StrName}" Grid.Row="3" Grid.Column="2"></Label>
+                    <TextBox Grid.Row="3" Width="90" Height="25" Text="{Binding NewRoomName}" Grid.Column="3"></TextBox>
+                    <Label Content="{DynamicResource StrType}" Grid.Row="4" Grid.Column="2"></Label>
+                    <TextBox Grid.Row="4" Width="90" Height="25" Text="{Binding NewRoomType}" Grid.Column="3"></TextBox>
+                    <Label Content="{DynamicResource StrDesc}" Grid.Row="5" Grid.Column="2"></Label>
+                    <TextBox Grid.Row="5" Width="90" Height="25" Text="{Binding NewRoomDescription}" Grid.Column="3"></TextBox>
+
+                    <Label Content="{DynamicResource StrRoom2}" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"></Label>
+                    <Label Content="{DynamicResource StrId}" Grid.Row="2" Grid.Column="4"></Label>
+                    <TextBox Grid.Row="2" Width="90" Height="25" Text="{Binding NewRoomId2}" Grid.Column="5"></TextBox>
+                    <Label Content="{DynamicResource StrName}" Grid.Row="3" Grid.Column="4"></Label>
+                    <TextBox Grid.Row="3" Width="90" Height="25" Text="{Binding NewRoomName2}" Grid.Column="5"></TextBox>
+                    <Label Content="{DynamicResource StrType}" Grid.Row="4" Grid.Column="4"></Label>
+                    <TextBox Grid.Row="4" Width="90" Height="25" Text="{Binding NewRoomType2}" Grid.Column="5"></TextBox>
+                    <Label Content="{DynamicResource StrDesc}" Grid.Row="5" Grid.Column="4"></Label>
+                    <TextBox Grid.Row="5" Width="90" Height="25" Text="{Binding NewRoomDescription2}" Grid.Column="5"></TextBox>
+                    <Button Content="{DynamicResource StrSchedule}" VerticalAlignment="Top" FontWeight="SemiBold" Background="Green" Grid.Row="6" Grid.Column="5" Click="Button_Click_Renovation" Height="25" Width="90">
+                        
                     </Button>
                 </Grid>
 

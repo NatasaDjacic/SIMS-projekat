@@ -44,20 +44,20 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="Kreiranje novog leka"></Label>
+                <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="{DynamicResource StrCreateDrug}"></Label>
 
-                <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="Naziv leka"></Label>
+                <Label  Margin="20,10,0,10" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrName}"></Label>
                 <TextBox  Margin="20,10,20,10" Grid.Row="1" Grid.Column="1" Width="220"  Text="{Binding _Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" ></TextBox>
 
 
-                <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="Sastojci"></Label>
+                <Label  Margin="20,10,0,10" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrIngred}"></Label>
                 <TextBox  Margin="20,10,20,10" Grid.Row="2" Grid.Column="1" Width="220"  Text="{Binding Ingredients, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
         
-                <Label  Margin="20,10,0,10" Grid.Row="3" Grid.Column="0" Content="Alternativni lek"></Label>
+                <Label  Margin="20,10,0,10" Grid.Row="3" Grid.Column="0" Content="{DynamicResource StrAlternative}"></Label>
                 <TextBox  Margin="20,10,20,10" Grid.Row="3" Grid.Column="1" Width="220"  Text="{Binding Alternative, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
 
-                <Button Grid.Row="5" Grid.Column="0" Margin="20 20 0 30" Height="25" Width="90" Background="Red" Foreground="White" Content="Poništi" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
-                <Button Grid.Row="5" Grid.Column="2" Margin="0 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="Pošalji" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
+                <Button Grid.Row="5" Grid.Column="0" Margin="20 20 0 30" Height="25" Width="90" Background="Red" Foreground="White" Content="{DynamicResource StrCancel}" FontSize="17" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
+                <Button Grid.Row="5" Grid.Column="2" Margin="0 20 20 30" Height="25" Width="90" Background="Green" Foreground="White" HorizontalAlignment="Right"  FontSize="17" Content="{DynamicResource StrSubmit}" FontWeight="SemiBold" Click="Button_Click_Save"></Button>
 
             </Grid>
         </Grid>
@@ -69,12 +69,12 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 30 0 5" Content="Pregled lekova"></Label>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 30 0 5" Content="{DynamicResource StrDrugList}"></Label>
                     <DataGrid Grid.Row="2" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=DrugsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="auto"  Binding="{Binding drugId}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Id leka"/>
+                                    <TextBlock Text="{DynamicResource StrDrugId}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -85,7 +85,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Naziv"/>
+                                    <TextBlock Text="{DynamicResource StrName}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -96,7 +96,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="*"  Binding="{Binding ingredients}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Sastojci"/>
+                                    <TextBlock Text="{DynamicResource StrIngred}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -107,7 +107,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="*"  Binding="{Binding alternative}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Alternativni lek"/>
+                                    <TextBlock Text="{DynamicResource StrAlternative}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -119,7 +119,7 @@
 
                             <DataGridTextColumn Binding="{Binding approved}" Width="*" MaxWidth="200">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Odobren"/>
+                                    <TextBlock Text="{DynamicResource StrApproved}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -130,7 +130,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Binding="{Binding comment}" Width="*" MaxWidth="200">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Komentar lekara"/>
+                                    <TextBlock Text="{DynamicResource StrComment}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">

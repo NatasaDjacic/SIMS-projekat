@@ -36,24 +36,28 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="17" FontWeight="Bold" Content="Statistika ocena bolnice"></Label>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="17" FontWeight="Bold" Content="{DynamicResource StrStatHospital}"></Label>
 
-                    <Label Grid.Row="1" Grid.Column="0" Content="Broj ocena 1"></Label>
+                    <Label FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrNumMarks1}"></Label>
                     <Label Grid.Row="1" Grid.Column="1" Content="{Binding Ones}"></Label>
 
-                    <Label Grid.Row="2" Grid.Column="0" Content="Broj ocena 2"></Label>
+                    <Label FontWeight="Bold" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrNumMarks2}"></Label>
                     <Label Grid.Row="2" Grid.Column="1" Content="{Binding Twos}"></Label>
 
-                    <Label Grid.Row="3" Grid.Column="0" Content="Broj ocena 3"></Label>
+                    <Label FontWeight="Bold" Grid.Row="3" Grid.Column="0" Content="{DynamicResource StrNumMarks3}"></Label>
                     <Label Grid.Row="3" Grid.Column="1" Content="{Binding Threes}"></Label>
 
-                    <Label Grid.Row="4" Grid.Column="0" Content="Broj ocena 4"></Label>
+                    <Label FontWeight="Bold" Grid.Row="4" Grid.Column="0" Content="{DynamicResource StrNumMarks4}"></Label>
                     <Label Grid.Row="4" Grid.Column="1" Content="{Binding Fours}"></Label>
 
-                    <Label Grid.Row="5" Grid.Column="0" Content="Broj ocena 5"></Label>
+                    <Label FontWeight="Bold" Grid.Row="5" Grid.Column="0" Content="{DynamicResource StrNumMarks5}"></Label>
                     <Label Grid.Row="5" Grid.Column="1" Content="{Binding Fives}"></Label>
 
-                    <Label Grid.Row="6" Grid.Column="0" Content="Prosečna ocena"></Label>
+                    <Label FontWeight="Bold" Grid.Row="6" Grid.Column="0" Content="{DynamicResource StrAverage}"></Label>
                     <Label Grid.Row="6" Grid.Column="1" Content="{Binding Average}"></Label>
                 </Grid>
             </StackPanel>
@@ -72,12 +76,12 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Content="Statistika ocena lekara"></Label>
+                <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Content="{DynamicResource StrStatDoctor}"></Label>
                     <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Path=DoctorsPollsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="*"  Binding="{Binding Username}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Korisničko ime"/>
+                                <TextBlock Text="{DynamicResource StrUsername}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -88,7 +92,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="*"  Binding="{Binding FirstName}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Ime"/>
+                                    <TextBlock Text="{DynamicResource StrName}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -99,7 +103,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="*"  Binding="{Binding LastName}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Prezime"/>
+                                <TextBlock Text="{DynamicResource StrLastName}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -110,7 +114,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="auto"  Binding="{Binding Ones}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Broj ocena 1"/>
+                                <TextBlock Text="{DynamicResource StrNumMarks1}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -121,7 +125,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="auto"  Binding="{Binding Twos}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Broj ocena 2"/>
+                                <TextBlock Text="{DynamicResource StrNumMarks2}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -132,7 +136,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="auto"  Binding="{Binding Threes}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Broj ocena 3"/>
+                                <TextBlock Text="{DynamicResource StrNumMarks3}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -144,7 +148,7 @@
 
                             <DataGridTextColumn Binding="{Binding Fours}" Width="auto">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Broj ocena 4"/>
+                                <TextBlock Text="{DynamicResource StrNumMarks4}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -156,7 +160,7 @@
 
                             <DataGridTextColumn Binding="{Binding Fives}" Width="auto">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Broj ocena 5"/>
+                                <TextBlock Text="{DynamicResource StrNumMarks5}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -168,7 +172,7 @@
 
                             <DataGridTextColumn Binding="{Binding Average}" Width="auto">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Prosečna ocena"/>
+                                <TextBlock Text="{DynamicResource StrAverage}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">

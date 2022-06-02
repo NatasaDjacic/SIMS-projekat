@@ -152,8 +152,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         EquipmentController equipmentController = GLOBALS.equipmentController;
         RoomController roomController = GLOBALS.roomController;
 
-        public Equipments()
+        public Equipments(string value)
         {
+            val = value;
             EquipmentRepository equipmentRepository = new EquipmentRepository(@"..\..\..\Resource\Data\equipment.json");
             EquipmentService equipmentService = new EquipmentService(equipmentRepository);
             equipmentController = new EquipmentController(equipmentService);
@@ -161,10 +162,29 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             equipMovingController.CheckEquipMoving();
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
-            ResourceDictionary dictionary = new ResourceDictionary();
             var g = EquipRoomGroupDTO.groupEquip(equipmentController.GetAll().FindAll(e => e.type == "Staticka"));
             EquipmentsCollection = new ObservableCollection<EquipRoomGroupDTO>(g);
             SelectedDate = DateTime.Now;
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
             InitializeComponent();
             CheckDates();
 

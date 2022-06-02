@@ -45,39 +45,39 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="Menadzer"></Label>
+                <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="{DynamicResource StrManager}"></Label>
 
-                <Label  Grid.Row="1" Grid.Column="0" Content="Ime"></Label>
+                <Label FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrName}"></Label>
                 <Label Grid.Row="1" Grid.Column="1" Content="{Binding FirstName}"></Label>
-                
-                <Label Grid.Row="2" Grid.Column="0" Content="Prezime"></Label>
+
+                <Label FontWeight="Bold" Grid.Row="2" Grid.Column="0" Content="{DynamicResource StrLastName}"></Label>
                 <Label  Grid.Row="2" Grid.Column="1" Content="{Binding LastName}"></Label>
 
-                <Label  Grid.Row="3" Grid.Column="0" Content="JMBG"></Label>
+                <Label FontWeight="Bold" Grid.Row="3" Grid.Column="0" Content="{DynamicResource StrJMBG}"></Label>
                 <Label  Grid.Row="3" Grid.Column="1" Content="{Binding JMBG}"></Label>
 
-                <Label  Grid.Row="4" Grid.Column="0" Content="Korisnicko ime"></Label>
+                <Label FontWeight="Bold" Grid.Row="4" Grid.Column="0" Content="{DynamicResource StrUsername}"></Label>
                 <Label  Grid.Row="4" Grid.Column="1" Content="{Binding UserName}"></Label>
 
-                <Label  Grid.Row="5" Grid.Column="0" Content="Lozinka"></Label>
+                <Label FontWeight="Bold" Grid.Row="5" Grid.Column="0" Content="{DynamicResource StrPassword}"></Label>
                 <Label  Grid.Row="5" Grid.Column="1" Content="{Binding Password}"></Label>
-                <Button Grid.Row="5" Grid.Column="2" Height="25" Width="90" ToolTipService.InitialShowDelay='1'
+                <Button Background="Orange" Grid.Row="5" Grid.Column="2" Height="25" Width="auto" ToolTipService.InitialShowDelay='1'
          ToolTipService.ShowDuration='7000'
-         ToolTipService.BetweenShowDelay='2' ToolTip="Zadrzati za prikaz lozinke." x:Name="btnShow" Content="Prikaži lozinku" PreviewMouseDown="btnShow_MouseDown" PreviewMouseUp="btnShow_MouseReleased"/>
+         ToolTipService.BetweenShowDelay='2' ToolTip="Zadrzati za prikaz lozinke." x:Name="btnShow" Content="{DynamicResource StrShowPass}" PreviewMouseDown="btnShow_MouseDown" PreviewMouseUp="btnShow_MouseReleased"/>
 
-                <Label  Grid.Row="6" Grid.Column="0" Content="Broj telefona"></Label>
+                <Label FontWeight="Bold" Grid.Row="6" Grid.Column="0" Content="{DynamicResource StrNumber}"></Label>
                 <Label  Grid.Row="6" Grid.Column="1" Content="{Binding Phone}"></Label>
 
-                <Label   Grid.Row="7" Grid.Column="0" Content="Email"></Label>
+                <Label FontWeight="Bold"  Grid.Row="7" Grid.Column="0" Content="{DynamicResource StrEmail}"></Label>
                 <Label  Grid.Row="7" Grid.Column="1" Content="{Binding Email}"></Label>
 
-                <Label   Grid.Row="8" Grid.Column="0" Content="Drzava"></Label>
+                <Label FontWeight="Bold"  Grid.Row="8" Grid.Column="0" Content="{DynamicResource StrCountry}"></Label>
                 <Label  Grid.Row="8" Grid.Column="1" Content="{Binding Country}"></Label>
 
-                <Label  Grid.Row="9" Grid.Column="0" Content="Grad"></Label>
+                <Label FontWeight="Bold" Grid.Row="9" Grid.Column="0" Content="{DynamicResource StrCity}"></Label>
                 <Label  Grid.Row="9" Grid.Column="1" Content="{Binding City}"></Label>
 
-                <Label  Grid.Row="10" Grid.Column="0" Content="Adresa"></Label>
+                <Label FontWeight="Bold" Grid.Row="10" Grid.Column="0" Content="{DynamicResource StrAddress}"></Label>
                 <Label  Grid.Row="10" Grid.Column="1" Content="{Binding Address}"></Label>
 
             </Grid>

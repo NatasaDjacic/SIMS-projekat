@@ -21,6 +21,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 {
     public partial class MergeAppointments : Page, INotifyPropertyChanged
     {
+        string val = string.Empty;
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -63,7 +64,6 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         RoomMergeController roomMergeController = GLOBALS.roomMergeController;
         RenovationController renovationController = GLOBALS.renovationController;
         RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
-        string val = string.Empty;
         private DateTime startDate;
         public DateTime StartDate
         {
@@ -232,8 +232,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
         string roomFirstId = "";
         string roomSecondId = "";
-        public MergeAppointments(string roomIdFirst, string roomIdSecond, DateTime StartDate, DateTime EndDate, int Duration)
+        public MergeAppointments(string roomIdFirst, string roomIdSecond, DateTime StartDate, DateTime EndDate, int Duration, string value)
         {
+            val = value;
             roomFirstId = roomIdFirst;
             roomSecondId = roomIdSecond;
             roomSeparateController.ExecuteRoomSeparating();
@@ -243,6 +244,26 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
             this.DataContext = this;
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
 
             InitializeComponent();
         }

@@ -41,12 +41,12 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 30 0 5" Content="Pregled soba"></Label>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 30 0 5" Content="{DynamicResource StrRoomList}"></Label>
                     <DataGrid Grid.Row="2" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Id"/>
+                                    <TextBlock Text="{DynamicResource StrId}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -57,7 +57,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Naziv"/>
+                                    <TextBlock Text="{DynamicResource StrName}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -68,7 +68,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="*"  Binding="{Binding description}" >
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Opis"/>
+                                    <TextBlock Text="{DynamicResource StrDesc}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -80,7 +80,7 @@
 
                             <DataGridTextColumn Binding="{Binding type}" Width="*" MaxWidth="200">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Tip"/>
+                                    <TextBlock Text="{DynamicResource StrType}"/>
                                 </DataGridTextColumn.Header>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -111,18 +111,18 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.ColumnSpan="9" Grid.Row="0" FontWeight="Bold" FontSize="17" Margin="0 10 0 10" HorizontalAlignment="Center" Content="Spajanje prostorija"/>
-                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="10 0 0 0" Content="Odaberite prvu sobu"></Label>
+                    <Label Grid.ColumnSpan="9" Grid.Row="0" FontWeight="Bold" FontSize="17" Margin="0 10 0 10" HorizontalAlignment="Center" Content="{DynamicResource StrRoomMerge}"/>
+                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="10 0 0 0" Content="{DynamicResource StrFirstRoom}"></Label>
                     <ComboBox Grid.Column="1" Grid.Row="1" Height="25" Width="110" ItemsSource="{Binding RoomsCollection}" SelectedItem="{Binding SelectedRoomFrom}"  DisplayMemberPath="name"></ComboBox>
-                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="10 0 0 0" Content="Odaberite drugu sobu"></Label>
+                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="10 0 0 0" Content="{DynamicResource StrSecondRoom}"></Label>
                     <ComboBox Grid.Column="1" Grid.Row="2" Height="25" Width="110" ItemsSource="{Binding RoomsCollection}" SelectedItem="{Binding SelectedRoomTo}"  DisplayMemberPath="name"></ComboBox>
-                    <Label Grid.Column="0" Grid.Row="3"  Margin="10 0 0 0" VerticalAlignment="Center"  Content="Unesite trajanje (u satima)"/>
+                    <Label Grid.Column="0" Grid.Row="3"  Margin="10 0 0 0" VerticalAlignment="Center"  Content="{DynamicResource StrDuration}"/>
                     <TextBox Grid.Column="1" Grid.Row="3" Height="25" Width="110" Text="{Binding Duration}"></TextBox>
-                    <Label Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Content="Odaberite početni datum provere"></Label>
+                    <Label Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Content="{DynamicResource StrStartDate}"></Label>
                     <DatePicker Grid.Column="3" Grid.Row="1" Height="25" Width="110" SelectedDate ="{Binding StartDate}"></DatePicker>
-                    <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Content="Odaberite krajnji datum provere"></Label>
+                    <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Content="{DynamicResource StrEndDate}"></Label>
                     <DatePicker Grid.Column="3" Grid.Row="2" Height="25" Width="110" SelectedDate ="{Binding EndDate}"></DatePicker>
-                    <Button Click="Button_Click_Check" FontWeight="SemiBold" Grid.Row="3" Grid.Column="2" Width="110" Margin="188,0,0,0" Background="Green" Content="Pronađi" Grid.ColumnSpan="2" Height="25" VerticalAlignment="Top"/>
+                    <Button Click="Button_Click_Check" FontWeight="SemiBold" Grid.Row="3" Grid.Column="2" Width="110" Margin="188,0,0,0" Background="Green" Content="{DynamicResource StrSchedule}" Grid.ColumnSpan="2" Height="25" VerticalAlignment="Top"/>
                 </Grid>
 
             </StackPanel>

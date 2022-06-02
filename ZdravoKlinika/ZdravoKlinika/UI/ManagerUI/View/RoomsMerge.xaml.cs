@@ -23,6 +23,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 {
     public partial class RoomsMerge : Page
     {
+        string val = string.Empty;
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -122,8 +123,9 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         RenovationController renovationController = GLOBALS.renovationController;
         RoomSeparateController roomSeparateController = GLOBALS.roomSeparateController;
 
-        public RoomsMerge()
+        public RoomsMerge(string value)
         {
+            val = value;
             roomSeparateController.ExecuteRoomSeparating();
             roomMergeController.ExecuteRoomMerging();
             RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
@@ -133,6 +135,26 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             this.DataContext = this;
             StartDate = DateTime.Now;
             EndDate = DateTime.Now;
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (value)
+            {
+                case "en":
+                    Console.WriteLine("en");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "rus":
+                    Console.WriteLine("rus");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.rus.xaml", UriKind.Relative);
+                    break;
+                case "srb":
+                    Console.WriteLine("srb");
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\..\\Resource\\Dictionary\\StringResources.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
             InitializeComponent();
         }
 
@@ -157,7 +179,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             var newRoomType = Console.ReadLine();
             Console.Write("Enter description of new room: ");
             var newRoomDescription = Console.ReadLine();*/
-            NavigationService.Navigate(new MergeAppointments(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration));
+            NavigationService.Navigate(new MergeAppointments(SelectedRoomFrom.roomId, SelectedRoomTo.roomId, StartDate, EndDate, Duration, val));
 
 
 

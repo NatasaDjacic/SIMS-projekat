@@ -138,7 +138,7 @@ namespace ZdravoKlinika.UI.ManagerUI
 
         private void Equip_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.NavigationService.Navigate(new View.Equipments());
+            ContentFrame.NavigationService.Navigate(new View.Equipments(global_language));
         }
         private void Renovation_Click(object sender, RoutedEventArgs e)
         {
@@ -160,23 +160,23 @@ namespace ZdravoKlinika.UI.ManagerUI
         }
         private void Drug_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.NavigationService.Navigate(new View.Drugs());
+            ContentFrame.NavigationService.Navigate(new View.Drugs(global_language));
         }
         private void RoomsMerge_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.NavigationService.Navigate(new View.RoomsMerge());
+            ContentFrame.NavigationService.Navigate(new View.RoomsMerge(global_language));
         }
         private void RoomsSeparation_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.NavigationService.Navigate(new View.RoomsSeparate());
+            ContentFrame.NavigationService.Navigate(new View.RoomsSeparate(global_language));
         }
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.NavigationService.Navigate(new View.Profile());
+            ContentFrame.NavigationService.Navigate(new View.Profile(global_language));
         }
         private void Polls_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.NavigationService.Navigate(new View.Polls());
+            ContentFrame.NavigationService.Navigate(new View.Polls(global_language));
         }
     }
 }

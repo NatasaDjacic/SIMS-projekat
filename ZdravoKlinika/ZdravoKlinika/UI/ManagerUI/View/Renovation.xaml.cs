@@ -209,7 +209,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         {
            // string val;
             //System.Collections.IList list = suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration);
-            NavigationService.Navigate(new RenovationsAppointments(SelectedRoom.roomId, StartDate, EndDate, Duration));
+            NavigationService.Navigate(new RenovationsAppointments(SelectedRoom.roomId, StartDate, EndDate, Duration, val));
 
             /*foreach (Renovation ren in suggestionController.getRenovationSuggestion(SelectedRoom.roomId, StartDate, EndDate, Duration))
             {
