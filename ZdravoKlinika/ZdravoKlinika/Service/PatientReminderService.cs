@@ -4,14 +4,15 @@ using ZdravoKlinika.Model;
 using System.Linq;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class PatientReminderService
     {
-        private PatientReminderRepository patientReminderRepository { get; set; }
+        private IPatientReminderRepository patientReminderRepository { get; set; }
 
-        public PatientReminderService(PatientReminderRepository patientReminderRepository)
+        public PatientReminderService(IPatientReminderRepository patientReminderRepository)
         {
             this.patientReminderRepository = patientReminderRepository;
 

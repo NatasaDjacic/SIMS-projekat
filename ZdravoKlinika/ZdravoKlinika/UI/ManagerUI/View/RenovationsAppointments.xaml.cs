@@ -147,7 +147,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         public RenovationsAppointments(String roomId, DateTime StartDate, DateTime EndDate, int Duration, string value)
         {
             val = value;
-            System.Collections.IList list = suggestionController.getRenovationSuggestion(roomId, StartDate, EndDate, Duration);
+            System.Collections.IList list = suggestionController.GetRenovationSuggestion(roomId, StartDate, EndDate, Duration);
             DateCollection = new ObservableCollection<Renovation>((List<Renovation>)list);
 
             ResourceDictionary dictionary = new ResourceDictionary();

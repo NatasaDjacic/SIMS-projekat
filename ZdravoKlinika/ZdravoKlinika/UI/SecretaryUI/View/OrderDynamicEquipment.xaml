@@ -35,20 +35,37 @@
             
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
                 <Label>Equipment name*</Label>
-                <TextBox Text="{Binding EquipmentName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox x:Name="EquipmentNameTB" Text="{Binding EquipmentName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=EquipmentNameTB}" Foreground="Red"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
                 <Label>Quantity*</Label>
-                <TextBox Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox x:Name="QuantityTB" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=QuantityTB}" Foreground="Red"/>
             </StackPanel>
             <Button Grid.Row="2" Grid.Column="0" Width="100" Background="Red" Foreground="White" Click="Button_Click">Cancel</Button>
-            <Button Grid.Row="2" Grid.Column="2" Width="100" Background="Green" Foreground="White" Click="Button_Click_1">Order</Button>
+            <Button Grid.Row="2" Grid.Column="2" Width="100" Background="Green" Foreground="White" Click="Button_Click_1" Content="Order">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource baseStyle}">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=EquipmentNameTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=QuantityTB}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </DockPanel>
 </Page>

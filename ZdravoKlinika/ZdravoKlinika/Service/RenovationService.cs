@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service {
     public class RenovationService {
-        RenovationRepository renovationRepository;
+        IRenovationRepository renovationRepository;
 
-        public RenovationService(RenovationRepository renovationRepository) { 
+        public RenovationService(IRenovationRepository renovationRepository) { 
             this.renovationRepository = renovationRepository;
         }
         public List<Renovation> GetAll() {

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository {
-    public class NotificationRepository {
+    public class NotificationRepository: INotificationRepository {
         private string fileLocation { get; set; }
 
         public NotificationRepository(string fileLocation) {

@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class DoctorsMarksRepository
+    public class DoctorsMarksRepository: IDoctorsMarksRepository
     {
         private string fileLocation { get; set; }
 
@@ -48,6 +49,17 @@ namespace ZdravoKlinika.Repository
             }
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
         }
-       
+
+        bool IGenericRepository<DoctorsMarks, int>.Save(DoctorsMarks model) {
+            throw new NotImplementedException();
+        }
+
+        public DoctorsMarks? GetById(int id) {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteById(int id) {
+            throw new NotImplementedException();
+        }
     }
 }

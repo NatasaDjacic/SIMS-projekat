@@ -6,10 +6,11 @@ using System.IO;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using Newtonsoft.Json;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class MarkRepository
+    public class MarkRepository: IMarkRepository
     {
         private string fileLocation { get; set; }
 

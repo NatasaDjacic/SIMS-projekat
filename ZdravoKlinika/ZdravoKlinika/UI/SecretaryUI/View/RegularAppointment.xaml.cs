@@ -162,6 +162,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             this.DataContext = this;
             InitializeComponent();
             CheckDoctorRoom();
+            
         }
 
         private void CheckPatientJMBG() {
@@ -193,7 +194,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             if(selectedDoctor != null && selectedRoom != null && patientFound) {
-                AppointmentsList = suggestionController.getAppointmentSuggestion(JMBG, selectedDoctor.JMBG, selectedRoom.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
+                AppointmentsList = suggestionController.GetAppointmentSuggestion(JMBG, selectedDoctor.JMBG, selectedRoom.roomId, fromDate, toDate, duration, priority, Model.Enums.AppointmentType.regular);
             }
         }
 

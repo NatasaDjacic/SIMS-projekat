@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class RoomSeparateService
     {
-        RoomSeparateRepository roomSeparateRepository;
+        IRoomSeparateRepository roomSeparateRepository;
 
-        public RoomSeparateService(RoomSeparateRepository advancedRenovationRepository)
+        public RoomSeparateService(IRoomSeparateRepository advancedRenovationRepository)
         {
             this.roomSeparateRepository = advancedRenovationRepository;
         }

@@ -283,7 +283,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             roomId = RoomId;
             roomSeparateController.ExecuteRoomSeparating();
             roomMergeController.ExecuteRoomMerging();
-            System.Collections.IList list = suggestionController.getRenovationSuggestion(roomId, StartDate, EndDate, Duration);
+            System.Collections.IList list = suggestionController.GetRenovationSuggestion(roomId, StartDate, EndDate, Duration);
             DateCollection = new ObservableCollection<Renovation>((List<Renovation>)list);
 
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());

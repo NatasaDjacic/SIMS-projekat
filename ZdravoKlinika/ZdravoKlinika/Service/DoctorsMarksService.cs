@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class DoctorsMarksService
     {
-        public DoctorsMarksRepository doctorsMarksRepository;
-        public DoctorRepository doctorRepository;
+        public IDoctorsMarksRepository doctorsMarksRepository;
+        public IDoctorRepository doctorRepository;
         public MarkService markService = GLOBALS.markService;
 
-        public DoctorsMarksService(DoctorsMarksRepository doctorsMarksrepository, DoctorRepository doctorRepository)
+        public DoctorsMarksService(IDoctorsMarksRepository doctorsMarksrepository, IDoctorRepository doctorRepository)
         {
             this.doctorsMarksRepository = doctorsMarksrepository;
             this.doctorRepository = doctorRepository;

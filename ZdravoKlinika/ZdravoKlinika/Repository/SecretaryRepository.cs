@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class SecretaryRepository
+    public class SecretaryRepository: ISecretaryRepository
     {
         private string fileLocation { get; set; }
 
@@ -28,7 +29,7 @@ namespace ZdravoKlinika.Repository
             return values;
         }
 
-        public bool Save(Doctor doctor)
+        public bool Save(Secretary secretary)
         {
 
             throw new NotImplementedException();

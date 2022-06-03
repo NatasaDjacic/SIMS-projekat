@@ -59,5 +59,10 @@ namespace ZdravoKlinika.UI.SecretaryUI {
             ContentFrame.NavigationService.Navigate(new View.Notifications());
 
         }
+
+
+        public void ShowTextInput() {
+            this.TextInput.Visibility = Visibility.Visible;
+        }
     }
 }

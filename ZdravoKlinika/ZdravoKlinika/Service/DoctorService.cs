@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service {
     public class DoctorService {
 
-        public DoctorRepository doctorRepository { get; set; }
+        public IDoctorRepository doctorRepository { get; set; }
 
-        public DoctorService(DoctorRepository doctorRepository) {
+        public DoctorService(IDoctorRepository doctorRepository) {
             this.doctorRepository = doctorRepository;
         }
 

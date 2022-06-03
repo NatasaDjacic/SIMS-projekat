@@ -12,6 +12,7 @@ namespace ZdravoKlinika.Model {
         public DateTime startTime { get; set; }
         public int duration { get; set; }
         public string description { get; set; }
+        public DateTime endTime { get => this.startTime.AddHours(duration); }
         public Renovation(int id, string roomId, DateTime startTime, int duration, string description) { 
             this.id = id;
             this.roomId = roomId;

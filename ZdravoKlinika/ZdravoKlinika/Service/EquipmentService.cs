@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class EquipmentService
     {
-        public EquipmentRepository equipmentRepository { get; set; }
+        public IEquipmentRepository equipmentRepository { get; set; }
 
-        public EquipmentService(EquipmentRepository equipmentRepository)
+        public EquipmentService(IEquipmentRepository equipmentRepository)
         {
             this.equipmentRepository = equipmentRepository;
         }

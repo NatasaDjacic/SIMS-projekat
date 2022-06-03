@@ -4,36 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Service
 {
     public class AuthService
     {
-        public static class ROLE { 
-            public static readonly string NONE = "none";
-            public static readonly string PATIENT = "patient";
-            public static readonly string DOCTOR = "doctor";
-            public static readonly string MANAGER = "manager";
-            public static readonly string SECRETARY = "secretary";
-        }
+        
         public User? user { get; set; }
         public string user_role { get; set; }
         public bool restricted;
-        PatientRepository patientRepository;
-        DoctorRepository doctorRepository;
-        ManagerRepository managerRepository;
-        SecretaryRepository secretaryRepository;
+        IPatientRepository patientRepository;
+        IDoctorRepository doctorRepository;
+        IManagerRepository managerRepository;
+        ISecretaryRepository secretaryRepository;
 
-        public AuthService(PatientRepository pr, DoctorRepository dr, ManagerRepository mr, SecretaryRepository sr)
+        public AuthService(IPatientRepository patientRepository, IDoctorRepository doctorRepository, IManagerRepository managerRepository, ISecretaryRepository secretaryRepository)
         {
             user = null;
             user_role = ROLE.NONE;
             restricted = false;
-            patientRepository = pr;
-            doctorRepository = dr;
-            managerRepository = mr;
-            secretaryRepository = sr;
+            this.patientRepository = patientRepository;
+            this.doctorRepository = doctorRepository;
+            this.managerRepository = managerRepository;
+            this.secretaryRepository = secretaryRepository;
         }
 
         public bool Login(string username, string password)
