@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service {
     public class NotificationService {
 
-        private NotificationRepository notificationRepository { get; set; }
+        private INotificationRepository notificationRepository { get; set; }
         private AuthService authService;
-        public NotificationService(NotificationRepository notificationRepository, AuthService authService) {
+        public NotificationService(INotificationRepository notificationRepository, AuthService authService) {
             this.notificationRepository = notificationRepository;
             this.authService = authService;
         }

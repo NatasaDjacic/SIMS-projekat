@@ -5,10 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-   public class DoctorRepository
+   public class DoctorRepository: IDoctorRepository
    {
       private string fileLocation{ get; set; }
 

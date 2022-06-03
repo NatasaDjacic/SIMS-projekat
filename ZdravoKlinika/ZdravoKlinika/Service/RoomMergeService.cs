@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class RoomMergeService
     {
-        RoomMergeRepository roomMergeRepository;
+        IRoomMergeRepository roomMergeRepository;
 
-        public RoomMergeService(RoomMergeRepository roomMergeRepository)
+        public RoomMergeService(IRoomMergeRepository roomMergeRepository)
         {
             this.roomMergeRepository = roomMergeRepository;
         }

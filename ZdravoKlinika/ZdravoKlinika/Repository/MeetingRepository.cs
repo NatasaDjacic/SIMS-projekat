@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using System.IO;
 using Newtonsoft.Json;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository {
-    public class MeetingRepository {
+    public class MeetingRepository: IMeetingRepository {
         private string fileLocation { get; set; }
         public MeetingRepository(string fileLocation) {
             this.fileLocation = fileLocation;

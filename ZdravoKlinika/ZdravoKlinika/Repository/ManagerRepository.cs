@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using Newtonsoft.Json;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class ManagerRepository
+    public class ManagerRepository: IManagerRepository
     {
         private string fileLocation { get; set; }
 

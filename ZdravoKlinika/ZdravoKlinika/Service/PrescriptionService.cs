@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Service;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {

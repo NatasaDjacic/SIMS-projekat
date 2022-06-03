@@ -4,15 +4,16 @@ using ZdravoKlinika.Model;
 using System.Linq;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class CancellationService
     {
 
-        private CancellationRepository cancellationRepository { get; set; }
+        private ICancellationRepository cancellationRepository { get; set; }
         
-        public CancellationService(CancellationRepository cancellationRepository)
+        public CancellationService(ICancellationRepository cancellationRepository)
         {
             this.cancellationRepository = cancellationRepository;
             

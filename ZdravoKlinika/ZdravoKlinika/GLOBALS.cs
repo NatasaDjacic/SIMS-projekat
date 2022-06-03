@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 using ZdravoKlinika.Service;
 using ZdravoKlinika.Controller;
 
@@ -12,24 +13,24 @@ namespace ZdravoKlinika
     public static class GLOBALS
     {
         // Repositories
-        public static AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
-        public static PatientRepository patientRepository = new PatientRepository(@"..\..\..\Resource\Data\patient.json");
-        public static DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
-        public static DrugRepository drugRepository = new DrugRepository(@"..\..\..\Resource\Data\drug.json");
-        public static EquipmentRepository equipmentRepository = new EquipmentRepository(@"..\..\..\Resource\Data\equipment.json");
-        public static ManagerRepository managerRepository = new ManagerRepository(@"..\..\..\Resource\Data\manager.json");
-        public static RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
-        public static SecretaryRepository secretaryRepository = new SecretaryRepository(@"..\..\..\Resource\Data\secretary.json");
-        public static NotificationRepository notificationRepository = new NotificationRepository(@"..\..\..\Resource\Data\notification.json");
-        public static RenovationRepository renovationRepository = new RenovationRepository(@"..\..\..\Resource\Data\renovation.json");
-        public static EquipMovingRepository equipMovingRepository = new EquipMovingRepository(@"..\..\..\Resource\Data\equipMoving.json");
-        public static OrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
-        public static RoomSeparateRepository roomSeparateRepository = new RoomSeparateRepository(@"..\..\..\Resource\Data\roomSeparation.json");
-        public static RoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
-        public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
-        public static MarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
-        public static HolidayRequestRepository holidayRequestRepository = new HolidayRequestRepository(@"..\..\..\Resource\Data\holiday_request.json");
-        public static MeetingRepository meetingRepository = new MeetingRepository(@"..\..\..\Resource\Data\meeting.json");
+        public static IAppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
+        public static IPatientRepository patientRepository = new PatientRepository(@"..\..\..\Resource\Data\patient.json");
+        public static IDoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
+        public static IDrugRepository drugRepository = new DrugRepository(@"..\..\..\Resource\Data\drug.json");
+        public static IEquipmentRepository equipmentRepository = new EquipmentRepository(@"..\..\..\Resource\Data\equipment.json");
+        public static IManagerRepository managerRepository = new ManagerRepository(@"..\..\..\Resource\Data\manager.json");
+        public static IRoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
+        public static ISecretaryRepository secretaryRepository = new SecretaryRepository(@"..\..\..\Resource\Data\secretary.json");
+        public static INotificationRepository notificationRepository = new NotificationRepository(@"..\..\..\Resource\Data\notification.json");
+        public static IRenovationRepository renovationRepository = new RenovationRepository(@"..\..\..\Resource\Data\renovation.json");
+        public static IEquipMovingRepository equipMovingRepository = new EquipMovingRepository(@"..\..\..\Resource\Data\equipMoving.json");
+        public static IOrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
+        public static IRoomSeparateRepository roomSeparateRepository = new RoomSeparateRepository(@"..\..\..\Resource\Data\roomSeparation.json");
+        public static IRoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
+        public static ICancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
+        public static IMarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
+        public static IHolidayRequestRepository holidayRequestRepository = new HolidayRequestRepository(@"..\..\..\Resource\Data\holiday_request.json");
+        public static IMeetingRepository meetingRepository = new MeetingRepository(@"..\..\..\Resource\Data\meeting.json");
 
         // Services
         public static MarkService markService = new MarkService(markRepository);

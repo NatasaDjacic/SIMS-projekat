@@ -5,16 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class EquipMovingService
     {
-        public EquipMovingRepository equipMovingRepository { get; set; }
+        public IEquipMovingRepository equipMovingRepository { get; set; }
        
         public RoomService roomService { get; set; }
 
         public EquipmentService equipmentService { get; set; }
+
+        public EquipMovingService(IEquipMovingRepository equipMovingRepository, RoomService roomService, EquipmentService equipmentService) {
+            this.equipMovingRepository = equipMovingRepository;
+            this.roomService = roomService;
+            this.equipmentService = equipmentService;
+        }
+
         public void CheckEquipMoving()
         {
             List<EquipMoving> equipMovings = new List<EquipMoving>(GetAllEquipMovings());
@@ -35,13 +43,7 @@ namespace ZdravoKlinika.Service
             }
            
         }
-        public EquipMovingService(EquipMovingRepository equipMovingRepository, RoomService roomService, EquipmentService equipmentService)
-        {
-            this.equipMovingRepository = equipMovingRepository;
-            this.roomService = roomService;
-            this.equipmentService = equipmentService;
-        }
-
+        
         public List<EquipMoving> GetAllEquipMovings()
         {
             return this.equipMovingRepository.GetAll();

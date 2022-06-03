@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 
 namespace ZdravoKlinika.Service {
     public class MeetingService {
 
-        MeetingRepository meetingRepository;
-        public MeetingService(MeetingRepository meetingRepository) {
+        IMeetingRepository meetingRepository;
+        public MeetingService(IMeetingRepository meetingRepository) {
             this.meetingRepository = meetingRepository;
         
         }

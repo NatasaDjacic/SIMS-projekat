@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using System.IO;
 using Newtonsoft.Json;
-
+using ZdravoKlinika.Repository.Interfaces;
 namespace ZdravoKlinika.Repository {
-    public class HolidayRequestRepository {
+    public class HolidayRequestRepository: IHolidayRequestRepository  {
         private string fileLocation { get; set; }
         public HolidayRequestRepository(string fileLocation) {
             this.fileLocation = fileLocation;

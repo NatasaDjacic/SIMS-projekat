@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class HolidayRequestService
     {
-        HolidayRequestRepository holidayRequestRepository;
+        IHolidayRequestRepository holidayRequestRepository;
 
-        public HolidayRequestService(HolidayRequestRepository holidayRequestRepository) {
+        public HolidayRequestService(IHolidayRequestRepository holidayRequestRepository) {
             this.holidayRequestRepository = holidayRequestRepository;
         }
 

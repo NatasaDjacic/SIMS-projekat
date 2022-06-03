@@ -7,6 +7,7 @@ using ZdravoKlinika.Model;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Service;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service {
     public class SuggestionService {

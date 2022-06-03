@@ -6,10 +6,11 @@ using System.IO;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using Newtonsoft.Json;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-   public class RenovationRepository
+   public class RenovationRepository: IRenovationRepository
    {
       private string fileLocation{ get; set; }
 
@@ -49,36 +50,29 @@ namespace ZdravoKlinika.Repository
       
       public Renovation? GetById(int id)
       {
-            var values = this.GetAll();
-            return values.Find(value => id==value.id);
+        var values = this.GetAll();
+        return values.Find(value => id==value.id);
       }
       
       public bool DeleteById(int id)
       {
-            var values = this.GetAll();
-            var deleted = values.RemoveAll(value => value.id==id);
-            File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
-            return deleted > 0;
+        var values = this.GetAll();
+        var deleted = values.RemoveAll(value => value.id==id);
+        File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
+        return deleted > 0;
       }
       
       public int GenerateNewId()
       {
-            try
-            {
-                return GetAll().Max(a => a.id) + 1;
-            }
-            catch
-            {
-                return 1;
-            }
-      }
-      /*public string DescriptionAdd(string description, int id)
+        try
         {
-            var value = this.GetById(id);
-            value.description = description;
-            return null;
-        }*/
-
+            return GetAll().Max(a => a.id) + 1;
+        }
+        catch
+        {
+            return 1;
+        }
+      }
 
    }
 }

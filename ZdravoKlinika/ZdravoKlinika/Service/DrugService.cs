@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Service;
+using ZdravoKlinika.Repository.Interfaces;
 
 
 namespace ZdravoKlinika.Service
 {
     public class DrugService
     {
-        public DrugRepository drugRepository { get; set; }
+        public IDrugRepository drugRepository { get; set; }
 
 
-        public DrugService(DrugRepository drugRepository)
+        public DrugService(IDrugRepository drugRepository)
         {
             this.drugRepository = drugRepository; 
         }

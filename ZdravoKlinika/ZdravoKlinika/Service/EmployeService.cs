@@ -5,15 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service {
     public class EmployeService {
+        
+        IDoctorRepository doctorRepository;
+        IManagerRepository managerRepository;
+        ISecretaryRepository secretaryRepository;
 
-        DoctorRepository doctorRepository;
-        ManagerRepository managerRepository;
-        SecretaryRepository secretaryRepository;
-
-        public EmployeService(DoctorRepository doctorRepository, ManagerRepository managerRepository, SecretaryRepository secretaryRepository) {
+        public EmployeService(IDoctorRepository doctorRepository, IManagerRepository managerRepository, ISecretaryRepository secretaryRepository) {
             this.doctorRepository = doctorRepository;
             this.managerRepository = managerRepository;
             this.secretaryRepository = secretaryRepository;
