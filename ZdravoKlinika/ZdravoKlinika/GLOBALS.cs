@@ -11,6 +11,7 @@ namespace ZdravoKlinika
 {
     public static class GLOBALS
     {
+        // Repositories
         public static AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
         public static PatientRepository patientRepository = new PatientRepository(@"..\..\..\Resource\Data\patient.json");
         public static DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
@@ -30,6 +31,7 @@ namespace ZdravoKlinika
         public static HolidayRequestRepository holidayRequestRepository = new HolidayRequestRepository(@"..\..\..\Resource\Data\holiday_request.json");
         public static MeetingRepository meetingRepository = new MeetingRepository(@"..\..\..\Resource\Data\meeting.json");
 
+        // Services
         public static MarkService markService = new MarkService(markRepository);
         public static CancellationService cancellationService = new CancellationService(cancellationRepository);
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
@@ -53,8 +55,7 @@ namespace ZdravoKlinika
         public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService, holidayRequestService, meetingService, employeService);
         public static EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService(suggestionService, appointmentService, roomService, doctorService);
 
-
-
+        // Controllers
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
         public static AppointmentController appointmentController = new AppointmentController(appointmentService, doctorService, authService, suggestionService, notificationService, emergencyAppointmentService);

@@ -17,13 +17,37 @@ using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.UI.SecretaryUI.View {
-    public partial class OrderDynamicEquipment : Page, INotifyPropertyChanged {
+    public partial class OrderDynamicEquipment : Page, INotifyPropertyChanged, IDataErrorInfo {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        public string Error {
+            get {
+                return null;
+            }
+        }
+        public string this[string name] {
+            get {
+                string result = null;
+                switch (name) {
+                    case "Quantity":
+                        if (Quantity <= 0) result = "Quantity must be positive.";
+                        break;
+                    case "EquipmentName":
+                        if (string.IsNullOrEmpty(EquipmentName)) result = "Equipment Name is requred.";
+                        break;
+                    default: break;
+                }
+                return result;
+            }
+        }
+
+
+
         private string equipmentName;
         public string EquipmentName { get { return equipmentName; } set { equipmentName = value; OnPropertyChanged("EquipmentName"); } }
         private int quantity;
