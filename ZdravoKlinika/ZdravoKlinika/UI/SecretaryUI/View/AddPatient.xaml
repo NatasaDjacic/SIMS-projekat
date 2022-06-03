@@ -37,7 +37,7 @@
             <Button Grid.Column="0" Width="100" Background="Red" Foreground="White" Content="Cancel" FontSize="24" FontWeight="SemiBold" Click="Button_Click_Cancel"></Button>
             <Button Grid.Column="1" Width="100" Background="Green" Foreground="White" HorizontalAlignment="Right" Content="Save"  FontSize="24" FontWeight="SemiBold" Click="Button_Click_Save">
                 <Button.Style>
-                    <Style TargetType="Button">
+                    <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
                         <Setter Property="IsEnabled" Value="False"/>
                         <Style.Triggers>
                             <MultiDataTrigger>
@@ -184,7 +184,7 @@
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
                 <Label>Allergies</Label>
-                <TextBox  Text="{Binding Allergy, UpdateSourceTrigger=PropertyChanged}" MinLines="4" MaxLines="4" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
+                <TextBox  Text="{Binding Allergy, UpdateSourceTrigger=PropertyChanged}" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
             </StackPanel>
         </Grid>
     </DockPanel>

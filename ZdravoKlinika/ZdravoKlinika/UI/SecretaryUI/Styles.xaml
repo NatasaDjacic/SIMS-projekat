@@ -4,17 +4,33 @@
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
-    <Style TargetType="Button" BasedOn="{StaticResource baseStyle}"></Style>
-    <Style TargetType="Label" BasedOn="{StaticResource baseStyle}"></Style>
-    <Style TargetType="TextBox" BasedOn="{StaticResource baseStyle}"></Style>
-    <Style TargetType="DataGrid" BasedOn="{StaticResource baseStyle}"></Style>
+    <Style TargetType="Button" BasedOn="{StaticResource baseStyle}" x:Key="ButtonStyle">
+        <Setter Property="Background" Value="#F9AA33"></Setter>
+        <Setter Property="Foreground" Value="#232F34"></Setter>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="7"></Setter>
+            </Style>
+        </Style.Resources>
+    </Style>
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}"/>
+    <Style TargetType="Label" BasedOn="{StaticResource baseStyle}">
 
+        <Setter Property="Foreground" Value="#232F34"/>
+    </Style>
+    <Style TargetType="TextBox" BasedOn="{StaticResource baseStyle}">
+        <Setter Property="Foreground" Value="#232F34"/></Style>
+    <Style TargetType="DataGrid" BasedOn="{StaticResource baseStyle}">
+        <Setter Property="Foreground" Value="#232F34"/>
+    </Style>
     <Style TargetType="TextBlock">
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#232F34"/>
     </Style>
     <Style TargetType="ComboBox">
         <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="#232F34"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
 </ResourceDictionary>
