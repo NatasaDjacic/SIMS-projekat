@@ -11,11 +11,11 @@ namespace ZdravoKlinika.Service
 {
     public class DoctorsMarksService
     {
-        public DoctorsMarksRepository doctorsMarksRepository;
+        public IDoctorsMarksRepository doctorsMarksRepository;
         public IDoctorRepository doctorRepository;
         public MarkService markService = GLOBALS.markService;
 
-        public DoctorsMarksService(DoctorsMarksRepository doctorsMarksrepository, IDoctorRepository doctorRepository)
+        public DoctorsMarksService(IDoctorsMarksRepository doctorsMarksrepository, IDoctorRepository doctorRepository)
         {
             this.doctorsMarksRepository = doctorsMarksrepository;
             this.doctorRepository = doctorRepository;

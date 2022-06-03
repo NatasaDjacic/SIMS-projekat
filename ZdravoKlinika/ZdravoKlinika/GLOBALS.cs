@@ -31,8 +31,8 @@ namespace ZdravoKlinika
         public static IMarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
         public static IHolidayRequestRepository holidayRequestRepository = new HolidayRequestRepository(@"..\..\..\Resource\Data\holiday_request.json");
         public static IMeetingRepository meetingRepository = new MeetingRepository(@"..\..\..\Resource\Data\meeting.json");
-        public static PatientReminderRepository patientReminderRepository = new PatientReminderRepository(@"..\..\..\Resource\Data\reminders.json");
-        public static DoctorsMarksRepository doctorsMarksRepository = new DoctorsMarksRepository(@"..\..\..\Resource\Data\doctorMarks.json");
+        public static IPatientReminderRepository patientReminderRepository = new PatientReminderRepository(@"..\..\..\Resource\Data\reminders.json");
+        public static IDoctorsMarksRepository doctorsMarksRepository = new DoctorsMarksRepository(@"..\..\..\Resource\Data\doctorMarks.json");
 
         // Services
         public static PatientReminderService patientReminderService = new PatientReminderService(patientReminderRepository);
