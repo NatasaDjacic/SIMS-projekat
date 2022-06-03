@@ -42,7 +42,9 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                         if (JMBG.Trim() == "") result = "JMBG should be set.";
                         else if (JMBG.Length != 13) result = "JMBG should have 13 digits.";
                         else if (!Regex.IsMatch(JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
-                        else if (!patientFound) result = "Patient not found";
+                        else if (!patientFound) {
+                            result = "Patient not found";
+                        };
                         break;
                     default: break;
                 }
@@ -51,10 +53,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         }
 
         DoctorController doctorController = GLOBALS.doctorController;
-        RoomController roomController = GLOBALS.roomController;
         AppointmentController appointmentController = GLOBALS.appointmentController;
         PatientController patientController = GLOBALS.patientController;
-        SuggestionController suggestionController = GLOBALS.suggestionController;
         EmergencyAppointmentSuggestionDTO emergencyAppointmentSuggestionDTO;
         public EmergencyAppointmentSuggestionDTO EAS {
             get => emergencyAppointmentSuggestionDTO;
@@ -76,7 +76,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         }
 
         private bool patientFound = false;
-        public bool PatientNotFound { get => !patientFound; set { patientFound = !value; OnPropertyChanged("PatientNotFound");} }
+        private bool patientNotFound = false;
+        public bool PatientNotFound { get => patientNotFound; set { patientNotFound = value; OnPropertyChanged("PatientNotFound");} }
         private string jmbg;
         public string JMBG {
             get => jmbg;
@@ -107,6 +108,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             this.jmbg = "";
             this.specialization = "";
             this.DataContext = this;
+            this.patientNotFound = false;
             InitializeComponent();
         }
 
@@ -116,17 +118,20 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                 PatientTB.Text = pat != null ? ("Found: " + pat.firstName + " " + pat.lastName) : "Not Found";
                 if (pat != null) {
                     patientFound = true;
+                    patientFound = false;
                     PatientTB.Foreground = Brushes.Green;
                     FirstName = pat.firstName;
                     LastName = pat.lastName;
                 } else {
                     patientFound = false;
+                    patientNotFound = true;
                     PatientTB.Foreground = Brushes.Red;
                     FirstName = "";
                     LastName = "";
                 }
             } else {
                 patientFound = false;
+                patientNotFound = false;
                 PatientTB.Text = "-------------------------------";
                 PatientTB.Foreground = Brushes.Gray;
                 FirstName = "";

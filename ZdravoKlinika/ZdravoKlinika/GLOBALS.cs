@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 using ZdravoKlinika.Service;
 using ZdravoKlinika.Controller;
 
@@ -11,25 +12,29 @@ namespace ZdravoKlinika
 {
     public static class GLOBALS
     {
-        public static AppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
-        public static PatientRepository patientRepository = new PatientRepository(@"..\..\..\Resource\Data\patient.json");
-        public static DoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
-        public static DrugRepository drugRepository = new DrugRepository(@"..\..\..\Resource\Data\drug.json");
-        public static EquipmentRepository equipmentRepository = new EquipmentRepository(@"..\..\..\Resource\Data\equipment.json");
-        public static ManagerRepository managerRepository = new ManagerRepository(@"..\..\..\Resource\Data\manager.json");
-        public static RoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
-        public static SecretaryRepository secretaryRepository = new SecretaryRepository(@"..\..\..\Resource\Data\secretary.json");
-        public static NotificationRepository notificationRepository = new NotificationRepository(@"..\..\..\Resource\Data\notification.json");
-        public static RenovationRepository renovationRepository = new RenovationRepository(@"..\..\..\Resource\Data\renovation.json");
-        public static EquipMovingRepository equipMovingRepository = new EquipMovingRepository(@"..\..\..\Resource\Data\equipMoving.json");
-        public static OrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
-        public static RoomSeparateRepository roomSeparateRepository = new RoomSeparateRepository(@"..\..\..\Resource\Data\roomSeparation.json");
-        public static RoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
-        public static CancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
-        public static MarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
-        public static DoctorsMarksRepository doctorsMarksRepository = new DoctorsMarksRepository(@"..\..\..\Resource\Data\doctorsMarks.json");
+        // Repositories
+        public static IAppointmentRepository appointmentRepository = new AppointmentRepository(@"..\..\..\Resource\Data\appointment.json");
+        public static IPatientRepository patientRepository = new PatientRepository(@"..\..\..\Resource\Data\patient.json");
+        public static IDoctorRepository doctorRepository = new DoctorRepository(@"..\..\..\Resource\Data\doctor.json");
+        public static IDrugRepository drugRepository = new DrugRepository(@"..\..\..\Resource\Data\drug.json");
+        public static IEquipmentRepository equipmentRepository = new EquipmentRepository(@"..\..\..\Resource\Data\equipment.json");
+        public static IManagerRepository managerRepository = new ManagerRepository(@"..\..\..\Resource\Data\manager.json");
+        public static IRoomRepository roomRepository = new RoomRepository(@"..\..\..\Resource\Data\room.json");
+        public static ISecretaryRepository secretaryRepository = new SecretaryRepository(@"..\..\..\Resource\Data\secretary.json");
+        public static INotificationRepository notificationRepository = new NotificationRepository(@"..\..\..\Resource\Data\notification.json");
+        public static IRenovationRepository renovationRepository = new RenovationRepository(@"..\..\..\Resource\Data\renovation.json");
+        public static IEquipMovingRepository equipMovingRepository = new EquipMovingRepository(@"..\..\..\Resource\Data\equipMoving.json");
+        public static IOrderEquipmentRepository orderEquipmentRepository = new OrderEquipmentRepository(@"..\..\..\Resource\Data\order_equipment.json");
+        public static IRoomSeparateRepository roomSeparateRepository = new RoomSeparateRepository(@"..\..\..\Resource\Data\roomSeparation.json");
+        public static IRoomMergeRepository roomMergeRepository = new RoomMergeRepository(@"..\..\..\Resource\Data\roomMerge.json");
+        public static ICancellationRepository cancellationRepository = new CancellationRepository(@"..\..\..\Resource\Data\cancellation.json");
+        public static IMarkRepository markRepository = new MarkRepository(@"..\..\..\Resource\Data\mark.json");
+        public static IHolidayRequestRepository holidayRequestRepository = new HolidayRequestRepository(@"..\..\..\Resource\Data\holiday_request.json");
+        public static IMeetingRepository meetingRepository = new MeetingRepository(@"..\..\..\Resource\Data\meeting.json");
         public static PatientReminderRepository patientReminderRepository = new PatientReminderRepository(@"..\..\..\Resource\Data\reminders.json");
+        public static DoctorsMarksRepository doctorsMarksRepository = new DoctorsMarksRepository(@"..\..\..\Resource\Data\doctorMarks.json");
 
+        // Services
         public static PatientReminderService patientReminderService = new PatientReminderService(patientReminderRepository);
         public static MarkService markService = new MarkService(markRepository);
         public static CancellationService cancellationService = new CancellationService(cancellationRepository);
@@ -41,16 +46,21 @@ namespace ZdravoKlinika
         public static RoomService roomService = new RoomService(roomRepository);
         public static NotificationService notificationService = new NotificationService(notificationRepository, authService);
         public static RenovationService renovationService = new RenovationService(renovationRepository);
-        public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService);
         public static EquipMovingService equipMovingService = new EquipMovingService(equipMovingRepository, roomService, equipmentService);
         public static ReportService reportService = new ReportService(patientService);
         public static PrescriptionService prescriptionService = new PrescriptionService(patientService);
         public static OrderEquipmentService orderEquipmentService = new OrderEquipmentService(orderEquipmentRepository, equipmentRepository);
         public static RoomSeparateService roomSeparateService = new RoomSeparateService(roomSeparateRepository);
         public static RoomMergeService roomMergeService = new RoomMergeService(roomMergeRepository);
+        public static HolidayRequestService holidayRequestService = new HolidayRequestService(holidayRequestRepository);
+        public static EmployeService employeService = new EmployeService(doctorRepository, managerRepository, secretaryRepository);
+        public static MeetingService meetingService = new MeetingService(meetingRepository);
+
+        public static SuggestionService suggestionService = new SuggestionService(appointmentService, doctorService, renovationService, holidayRequestService, meetingService, employeService);
         public static EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService(suggestionService, appointmentService, roomService, doctorService);
         public static DoctorsMarksService doctorsMarksService = new DoctorsMarksService(doctorsMarksRepository, doctorRepository);
 
+        // Controllers
         public static PatientReminderController patientReminderController = new PatientReminderController(patientReminderService);
         public static PatientController patientController = new PatientController(patientService);
         public static DoctorController doctorController = new DoctorController(doctorService);
@@ -67,6 +77,10 @@ namespace ZdravoKlinika
         public static OrderEquipmentController orderEquipmentController = new OrderEquipmentController(orderEquipmentService);
         public static RoomSeparateController roomSeparateController = new RoomSeparateController(roomSeparateService);
         public static RoomMergeController roomMergeController = new RoomMergeController(roomMergeService);
+        public static HolidayRequestController holidayRequestController = new HolidayRequestController(holidayRequestService);
+        public static MeetingController meetingController = new MeetingController(meetingService, notificationService);
+        public static EmployeController employeController = new EmployeController(employeService);
+
         public static DoctorMarksController doctorsMarksController = new DoctorMarksController(doctorsMarksService);
         
     }

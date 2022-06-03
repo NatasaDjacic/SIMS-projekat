@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class ManagerService
     {
-        public ManagerRepository managerRepository { get; set; }
+        public IManagerRepository managerRepository { get; set; }
 
-        public ManagerService(ManagerRepository managerRepository)
+        public ManagerService(IManagerRepository managerRepository)
         {
             this.managerRepository = managerRepository;
         }

@@ -4,15 +4,16 @@ using ZdravoKlinika.Model;
 using System.Linq;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class MarkService
     {
 
-        public MarkRepository markRepository { get; set; }
+        public IMarkRepository markRepository { get; set; }
 
-        public MarkService(MarkRepository markRepository)
+        public MarkService(IMarkRepository markRepository)
         {
             this.markRepository = markRepository;
         }

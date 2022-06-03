@@ -6,11 +6,11 @@ using System.IO;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using Newtonsoft.Json;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class EquipMovingRepository
-    {
+    public class EquipMovingRepository: IEquipMovingRepository {
         private string fileLocation { get; set; }
 
         public EquipMovingRepository(string fileLocation)

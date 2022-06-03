@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using Newtonsoft.Json;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository {
-    public class OrderEquipmentRepository {
+    public class OrderEquipmentRepository: IOrderEquipmentRepository {
         private string fileLocation { get; set; }
 
         public OrderEquipmentRepository(string fileLocation) {

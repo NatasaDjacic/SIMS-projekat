@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.UI.SecretaryUI.ViewModel;
 
 namespace ZdravoKlinika.UI.SecretaryUI.View {
     /// <summary>
@@ -19,6 +20,11 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
     /// </summary>
     public partial class Meetings : Page {
         public Meetings() {
+            var sw = Application.Current.Windows
+            .Cast<Window>()
+            .FirstOrDefault(window => window is SecretaryMainWindow) as SecretaryMainWindow;
+            
+            this.DataContext = new MeetingsVM(sw.ContentFrame.NavigationService);
             InitializeComponent();
         }
     }

@@ -6,10 +6,11 @@ using System.IO;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using Newtonsoft.Json;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class CancellationRepository
+    public class CancellationRepository: ICancellationRepository
     {
 
         private string fileLocation { get; set; }
@@ -58,5 +59,12 @@ namespace ZdravoKlinika.Repository
             return GetAll().Max(a => a.id) + 1;
         }
 
+        public Cancellation? GetById(int id) {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteById(int id) {
+            throw new NotImplementedException();
+        }
     }
 }

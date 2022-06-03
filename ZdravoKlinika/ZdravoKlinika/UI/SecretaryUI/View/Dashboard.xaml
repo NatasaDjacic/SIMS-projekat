@@ -12,7 +12,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="Button" BasedOn="{StaticResource baseStyle}">
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
                 <Setter Property="Height" Value="48"></Setter>
             </Style>
         </ResourceDictionary>

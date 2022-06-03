@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service {
     public class OrderEquipmentService {
-        OrderEquipmentRepository orderEquipmentRepository;
-        EquipmentRepository equipmentRepository;
+        IOrderEquipmentRepository orderEquipmentRepository;
+        IEquipmentRepository equipmentRepository;
 
-        public OrderEquipmentService(OrderEquipmentRepository orderEquipmentRepository, EquipmentRepository equipmentRepository) { 
+        public OrderEquipmentService(IOrderEquipmentRepository orderEquipmentRepository, IEquipmentRepository equipmentRepository) { 
             this.orderEquipmentRepository = orderEquipmentRepository;
             this.equipmentRepository = equipmentRepository;
         }

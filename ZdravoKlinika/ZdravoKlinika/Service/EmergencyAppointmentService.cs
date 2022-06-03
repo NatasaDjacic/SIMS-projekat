@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Model.DTO;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service {
     public class EmergencyAppointmentService {

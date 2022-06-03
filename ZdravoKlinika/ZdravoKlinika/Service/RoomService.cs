@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
 {
     public class RoomService
     {
-        public RoomRepository roomRepository { get; set; }
-        public RoomService(RoomRepository roomRepository) {
+        public IRoomRepository roomRepository { get; set; }
+        public RoomService(IRoomRepository roomRepository) {
             this.roomRepository = roomRepository;
         }
         public bool Create(Room room)

@@ -5,24 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service {
     public class NotificationService {
 
-        private NotificationRepository notificationRepository { get; set; }
+        private INotificationRepository notificationRepository { get; set; }
         private AuthService authService;
-        public NotificationService(NotificationRepository notificationRepository, AuthService authService) {
+        public NotificationService(INotificationRepository notificationRepository, AuthService authService) {
             this.notificationRepository = notificationRepository;
             this.authService = authService;
         }
         public List<Notification> getMyNotifications() {
-            if (authService.user == null) throw new Exception("User not loggedin");
+            if (authService.user == null) throw new Exception("User not logged in");
             return this.notificationRepository.GetAll().FindAll(n => n.JMBG == authService.user.JMBG && !n.seen);
         }
 
         public List<Notification> getPatientNotifications()
         {
-            if (authService.user == null) throw new Exception("User not loggedin");
+            if (authService.user == null) throw new Exception("User not logged in");
             return this.notificationRepository.GetAll().FindAll(n => n.JMBG == authService.user.JMBG && n.showDate<=DateTime.Now.AddHours(2) && n.showDate>=DateTime.Now);
         }
 
@@ -67,7 +68,17 @@ namespace ZdravoKlinika.Service {
             var patNotif = new Notification(this.GenerateNewId(), app.patientJMBG, "Canceled appointment", String.Format("Your appointment at {0} in room {1} has been canceled.", app.startTime, app.roomId), DateTime.Now);
             this.notificationRepository.Save(patNotif);
         }
-
+        public void NotificationForMeetingCreated(Meeting meeting) {
+            meeting.attendeesJMBG.ForEach(attendeJMBG => {
+                var attendeNotification = new Notification(
+                    this.GenerateNewId(), 
+                    attendeJMBG, 
+                    String.Format("New Meeting - {0}", meeting.title),
+                    String.Format("You have new meeting at {0} in room {1}.", meeting.startTime, meeting.roomId), 
+                    DateTime.Now);
+                this.notificationRepository.Save(attendeNotification);
+            });
+        }
         public int GenerateNewId() {
             return this.notificationRepository.GenerateNewId();
         }

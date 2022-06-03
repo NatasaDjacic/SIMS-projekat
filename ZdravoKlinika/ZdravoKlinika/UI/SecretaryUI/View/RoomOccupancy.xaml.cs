@@ -20,6 +20,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
     public partial class RoomOccupancy : Page {
         public RoomOccupancy() {
             InitializeComponent();
+
         }
     }
 }

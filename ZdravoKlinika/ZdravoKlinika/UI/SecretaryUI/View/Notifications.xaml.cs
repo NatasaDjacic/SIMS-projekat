@@ -12,13 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using ZdravoKlinika.Controller;
+using ZdravoKlinika.Model;
 namespace ZdravoKlinika.UI.SecretaryUI.View {
     /// <summary>
     /// Interaction logic for Notifications.xaml
     /// </summary>
     public partial class Notifications : Page {
+        NotificationController notificationController = GLOBALS.notificationController;
+        public List<Notification> NotificationsList { get; set; }
         public Notifications() {
+            NotificationsList = notificationController.GetMyNotifications();
+            this.DataContext = this;
             InitializeComponent();
         }
     }

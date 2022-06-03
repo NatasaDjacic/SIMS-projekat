@@ -55,7 +55,7 @@ namespace ZdravoKlinika.Controller {
 
             if (doctor == null) throw new Exception("Doctor not found");
             if (authService.user == null) throw new Exception("Not logged in");
-            if (authService.user_role != AuthService.ROLE.PATIENT) throw new Exception("Not patient role");
+            if (authService.user_role != ROLE.PATIENT) throw new Exception("Not patient role");
 
 
             Appointment appointment = new Appointment();
@@ -78,7 +78,7 @@ namespace ZdravoKlinika.Controller {
 
         public List<Appointment> GetDoctorAppointments() {
             if (authService.user == null) throw new Exception("Not logged in");
-            if (authService.user_role != AuthService.ROLE.DOCTOR) throw new Exception("Not doctore role");
+            if (authService.user_role != ROLE.DOCTOR) throw new Exception("Not doctore role");
             return this.appointmentService.GetAllAppointments().FindAll(a => a.doctorJMBG.Equals(authService.user.JMBG));
 
         }
@@ -90,7 +90,7 @@ namespace ZdravoKlinika.Controller {
 
         public bool IsDoctorAppointment(int id) {
             if (authService.user == null) throw new Exception("Not logged in");
-            if (authService.user_role != AuthService.ROLE.DOCTOR) throw new Exception("Not doctore role");
+            if (authService.user_role != ROLE.DOCTOR) throw new Exception("Not doctore role");
             var app = this.appointmentService.GetAppointmentById(id);
             return app is not null && app.doctorJMBG.Equals(authService.user.JMBG);
         }
