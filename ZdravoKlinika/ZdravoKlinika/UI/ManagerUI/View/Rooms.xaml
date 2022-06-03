@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="{DynamicResource StrRoomManage}" Style="{StaticResource PageStyle}" Name="startScreen">
-
     <DockPanel Margin="10">
 
         <Grid DockPanel.Dock="Top" Margin="0 15" >
@@ -44,12 +43,18 @@
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="0 30 0 5" Content="{DynamicResource StrRoomManage}"></Label>
-                    <DataGrid Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged" Margin="30 0 30 0" MinWidth="350" >
+                    <DataGrid Grid.Row="2" Grid.Column="0"  ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrId}"/>
                                 </DataGridTextColumn.Header>
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridHeaderStyle}"/>
+                                </DataGridTextColumn.HeaderStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                                </DataGridTextColumn.CellStyle>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -57,10 +62,13 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Width="auto"  Binding="{Binding name}" >
+                            <DataGridTextColumn Width="auto"  Binding="{Binding name}">
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrName}"/>
                                 </DataGridTextColumn.Header>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                                </DataGridTextColumn.CellStyle>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -72,6 +80,9 @@
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrDesc}"/>
                                 </DataGridTextColumn.Header>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                                </DataGridTextColumn.CellStyle>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -84,6 +95,9 @@
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrType}"/>
                                 </DataGridTextColumn.Header>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                                </DataGridTextColumn.CellStyle>
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />

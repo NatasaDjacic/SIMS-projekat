@@ -83,7 +83,10 @@
                                 <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource StrUsername}"/>
                                 </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />
@@ -94,7 +97,10 @@
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrName}"/>
                                 </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />
@@ -105,7 +111,10 @@
                                 <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource StrLastName}"/>
                                 </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />
@@ -113,10 +122,13 @@
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
                             <DataGridTextColumn Width="auto"  Binding="{Binding Ones}" >
-                                <DataGridTextColumn.Header>
+                            <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource StrNumMarks1}"/>
-                                </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn.Header>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />
@@ -127,7 +139,10 @@
                                 <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource StrNumMarks2}"/>
                                 </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />
@@ -138,7 +153,10 @@
                                 <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource StrNumMarks3}"/>
                                 </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />
@@ -150,7 +168,10 @@
                                 <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource StrNumMarks4}"/>
                                 </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />
@@ -162,7 +183,10 @@
                                 <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource StrNumMarks5}"/>
                                 </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />
@@ -174,7 +198,10 @@
                                 <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource StrAverage}"/>
                                 </DataGridTextColumn.Header>
-                                <DataGridTextColumn.ElementStyle>
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="Padding" Value="5 0" />

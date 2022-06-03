@@ -36,7 +36,7 @@
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Dark">
-                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Background" Value="#1f1b24"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Blue">
                     <Setter Property="Background" Value="DarkBlue"/>
@@ -65,6 +65,29 @@
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Pink">
                     <Setter Property="Background" Value="DeepPink"/>
                 </DataTrigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+        <Style TargetType="{x:Type DataGridCell}" x:Key="DataGridCellStyle">
+            <Style.Triggers>
+              
+
+                <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Dark">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Black"></Setter>
+                </DataTrigger>
+
+
+            </Style.Triggers>
+
+        </Style>
+
+        <Style TargetType="{x:Type DataGridColumnHeader}" x:Key="DataGridHeaderStyle">
+            <Style.Triggers>
+             
+
 
             </Style.Triggers>
 
