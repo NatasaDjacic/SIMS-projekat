@@ -1,7 +1,7 @@
 [
     {
         "specialization": "regular",
-        "roomId": "6",
+        "roomId": "SD1",
         "gender": 1,
         "firstName": "Mika",
         "lastName": "Mikic",
@@ -16,7 +16,7 @@
     },
     {
         "specialization": "regular",
-        "roomId": "5",
+        "roomId": "SD2",
         "gender": 2,
         "firstName": "Ana",
         "lastName": "Anic",

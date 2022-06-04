@@ -161,7 +161,7 @@ namespace ZdravoKlinika.Service {
         #endregion
 
         #region busy_intervals
-        private List<DateTime[]> getRoomBusyInterval(string roomId, List<Appointment> appointments, DateTime startTime, DateTime endTime) {
+        public List<DateTime[]> getRoomBusyInterval(string roomId, List<Appointment> appointments, DateTime startTime, DateTime endTime) {
             List<DateTime[]> intervals = new List<DateTime[]>();
 
             // Appointment 
@@ -180,7 +180,7 @@ namespace ZdravoKlinika.Service {
 
             return reduceListOfIntervals(intervals);
         }
-        private List<DateTime[]> getPatientBusyInterval(string patientJMBG, List<Appointment> appointments, DateTime startTime, DateTime endTime) {
+        public List<DateTime[]> getPatientBusyInterval(string patientJMBG, List<Appointment> appointments, DateTime startTime, DateTime endTime) {
             List<DateTime[]> intervals = new List<DateTime[]>();
 
             // Appointments 
@@ -191,7 +191,7 @@ namespace ZdravoKlinika.Service {
 
             return reduceListOfIntervals(intervals);
         }
-        private List<DateTime[]> getDoctorBusyInterval(string doctorJMBG, List<Appointment> appointments, DateTime startTime, DateTime endTime) {
+        public List<DateTime[]> getDoctorBusyInterval(string doctorJMBG, List<Appointment> appointments, DateTime startTime, DateTime endTime) {
             List<DateTime[]> intervals = new List<DateTime[]>();
 
             // Appointments 
@@ -211,7 +211,7 @@ namespace ZdravoKlinika.Service {
 
             return reduceListOfIntervals(intervals);
         }
-        private List<DateTime[]> getSecretaryBusyInterval(string secretaryJMBG, DateTime startTime, DateTime endTime) {
+        public List<DateTime[]> getSecretaryBusyInterval(string secretaryJMBG, DateTime startTime, DateTime endTime) {
             List<DateTime[]> intervals = new List<DateTime[]>();
 
             // Meettings
@@ -223,7 +223,7 @@ namespace ZdravoKlinika.Service {
 
             return reduceListOfIntervals(intervals);
         }
-        private List<DateTime[]> getManagerBusyInterval(string managerJMBG, DateTime startTime, DateTime endTime) {
+        public List<DateTime[]> getManagerBusyInterval(string managerJMBG, DateTime startTime, DateTime endTime) {
             List<DateTime[]> intervals = new List<DateTime[]>();
 
             // Meettings
@@ -235,7 +235,7 @@ namespace ZdravoKlinika.Service {
 
             return reduceListOfIntervals(intervals);
         }
-        private List<DateTime[]> getEmployeBusyInterval(string employeJMBG, List<Appointment> appointments , DateTime startTime, DateTime endTime) {
+        public List<DateTime[]> getEmployeBusyInterval(string employeJMBG, List<Appointment> appointments , DateTime startTime, DateTime endTime) {
             switch (employeService.GetEmployeRole(employeJMBG)) {
                 case ROLE.DOCTOR:
                     return getDoctorBusyInterval(employeJMBG, appointments, startTime, endTime);

@@ -75,5 +75,49 @@
     "doctorJMBG": "2222222222222",
     "roomId": "1",
     "endTime": "2022-05-31T12:06:54.5081644+02:00"
+  },
+  {
+    "id": 16,
+    "startTime": "2022-06-04T00:00:00+02:00",
+    "duration": 45,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "3213213213213",
+    "roomId": "SD1",
+    "endTime": "2022-06-04T00:45:00+02:00"
+  },
+  {
+    "id": 17,
+    "startTime": "2022-06-10T06:00:00",
+    "duration": 240,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "2222222222222",
+    "roomId": "4",
+    "endTime": "2022-06-10T10:00:00"
+  },
+  {
+    "id": 18,
+    "startTime": "2022-06-04T01:00:00+02:00",
+    "duration": 120,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231238",
+    "doctorJMBG": "1212121212121",
+    "roomId": "4",
+    "endTime": "2022-06-04T03:00:00+02:00"
+  },
+  {
+    "id": 19,
+    "startTime": "2022-06-04T04:00:00+02:00",
+    "duration": 30,
+    "urgency": false,
+    "appointmentType": 1,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "2222222222222",
+    "roomId": "4",
+    "endTime": "2022-06-04T04:30:00+02:00"
   }
 ]

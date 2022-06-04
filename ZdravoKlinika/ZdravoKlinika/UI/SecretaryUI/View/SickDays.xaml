@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKlinika.UI.SecretaryUI.View"
       xmlns:converters="clr-namespace:ZdravoKlinika.UI.SecretaryUI.Converters"
       xmlns:mi="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SickDays" Unloaded="Page_Unloaded">
@@ -33,7 +34,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="300"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 10" ItemsSource="{Binding HolidayRequests}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
@@ -74,7 +75,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label>Number of sick days:</Label>
-                <ListView FontSize="24" FontWeight="SemiBold" Grid.Row="1" VerticalAlignment="Stretch" SelectionMode="Multiple"  ItemsSource="{Binding doctors}" >
+                <ListView FontSize="24" FontWeight="SemiBold" Grid.Row="1" VerticalAlignment="Stretch" SelectionMode="Multiple"  ItemsSource="{Binding doctors}" SelectionChanged="ListView_SelectionChanged">
                     <ListView.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
@@ -98,7 +99,16 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
-            <Border Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="1"></Border>
+            <Border Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="1">
+                <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left" >
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Doctors" Labels="{Binding Labels}" FontSize="14"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Number of sick Days" LabelFormatter="{Binding Formatter}" FontSize="14"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </Border>
         </Grid>
     </DockPanel>
 </Page>

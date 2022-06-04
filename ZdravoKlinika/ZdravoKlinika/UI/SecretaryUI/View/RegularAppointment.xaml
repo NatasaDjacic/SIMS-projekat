@@ -109,7 +109,7 @@
             </StackPanel>
             <Button Click="Button_Click" FontSize="24" FontWeight="SemiBold"  Margin="0 24 0 0" Grid.Column="1" Height="40" Background="#009E0F" Foreground="#FFF" Grid.Row="2" Content="Find appointment time">
                 <Button.Style>
-                    <Style TargetType="Button">
+                    <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
                         <Setter Property="IsEnabled" Value="False"/>
                         <Style.Triggers>
                             <MultiDataTrigger>
