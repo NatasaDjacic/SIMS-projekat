@@ -71,6 +71,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 if (startDate != value)
                 {
                     startDate = value;
+                    CheckDates();
                     OnPropertyChanged("StartDate");
                 }
             }
@@ -85,6 +86,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 if (endDate != value)
                 {
                     endDate = value;
+                    CheckDates();
                     OnPropertyChanged("EndDate");
                 }
             }

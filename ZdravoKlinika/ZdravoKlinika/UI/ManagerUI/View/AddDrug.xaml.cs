@@ -35,10 +35,10 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
-        private string name = "";
+        private string _name = "";
         private string ingredients = "";
         private string alternative = "";
-        public string _Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
+        public string _Name { get { return _name; } set { _name = value; OnPropertyChanged("Name"); } }
         public string Ingredients { get { return ingredients; } set { ingredients = value; OnPropertyChanged("Ingredients"); } }
         public string Alternative { get { return alternative; } set { alternative = value; OnPropertyChanged("Alternative"); } }
 
@@ -98,7 +98,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         {
             try
             {
-                drugController.Create(name, ingredients, alternative);
+                drugController.Create(_name, ingredients, alternative);
                 NavigationService.Navigate(new Drugs("srb"));
 
             }

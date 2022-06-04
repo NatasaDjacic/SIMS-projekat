@@ -133,11 +133,11 @@
                     </StackPanel>
                     <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Content="{DynamicResource StrEndDate}"></Label>
                     <DatePicker Grid.Column="3" Grid.Row="2" Height="25" Width="110" SelectedDate ="{Binding EndDate}"></DatePicker>
-                    <StackPanel VerticalAlignment="Center" Margin="5" Grid.Row="2" Grid.Column="4"  Grid.ColumnSpan="2">
+                    <StackPanel VerticalAlignment="Center" Margin="5" Grid.Row="3" Grid.Column="2"  Grid.ColumnSpan="2">
                         <TextBlock x:Name="EndDateTB" FontWeight="SemiBold" Foreground="Gray" ></TextBlock>
                     </StackPanel>
                     <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="10 0 0 0" Content="{DynamicResource StrDur}"></Label>
-                    <TextBox Grid.Column="1" Grid.Row="2" Height="25" Width="110">
+                    <TextBox x:Name="dura" Grid.Column="1" Grid.Row="2" Height="25" Width="110">
                         <TextBox.Text>
                             <Binding Path="Duration" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
@@ -165,7 +165,21 @@
                             </ControlTemplate>
                         </Validation.ErrorTemplate>
                     </TextBox>
-                    <Button FontWeight="SemiBold" Grid.Row="2" Grid.Column="5" VerticalAlignment="Top" Height="25" Width="110" Margin="0" Background="Green" Content="{DynamicResource StrSchedule}" Grid.ColumnSpan="2" Click="Button_Click_Check"></Button>
+                    <Button FontWeight="SemiBold" Grid.Row="2" Grid.Column="5" VerticalAlignment="Top" Height="25" Width="110" Margin="10" Background="Green" Content="{DynamicResource StrSchedule}" Grid.ColumnSpan="2" Click="Button_Click_Check">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=dura}" Value="False"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </Grid>
 
             </StackPanel>
