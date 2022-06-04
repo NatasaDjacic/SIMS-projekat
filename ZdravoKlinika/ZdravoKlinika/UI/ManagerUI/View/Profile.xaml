@@ -45,7 +45,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Label Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="0,0,0,20" Content="{DynamicResource StrManager}"></Label>
+                <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="17" FontWeight="Bold" Margin="0,10,0,10" Content="{DynamicResource StrManager}"></Label>
 
                 <Label FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrName}"></Label>
                 <Label Grid.Row="1" Grid.Column="1" Content="{Binding FirstName}"></Label>

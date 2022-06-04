@@ -26,31 +26,19 @@ namespace ZdravoKlinika.Service
         }
         public void calculateMarks()
         {
-            int number = 0;
-            int sum = 0;
-            DoctorsMarks doctorsMarks = new DoctorsMarks();
+            Dictionary<string, DoctorsMarks> doctorsMarksDictionary = new Dictionary<string, DoctorsMarks>();
             foreach (Mark mark in GetAllMarks())
             {
-                doctorsMarks.DoctorJMBG = mark.doctorJMBG;
-                doctorsMarks.Username = doctorRepository.GetById(mark.doctorJMBG).username;
-                doctorsMarks.FirstName = doctorRepository.GetById(mark.doctorJMBG).firstName;
-                doctorsMarks.LastName = doctorRepository.GetById(mark.doctorJMBG).lastName;
-                doctorsMarks.Ones = 0;
-                doctorsMarks.Twos = 0;
-                doctorsMarks.Threes = 0;
-                doctorsMarks.Fours = 0;
-                doctorsMarks.Fives = 0;
-                doctorsMarks.Average = 0;
 
-                this.doctorsMarksRepository.Save(doctorsMarks);
+                if (!doctorsMarksDictionary.ContainsKey(mark.doctorJMBG))
+                {
+                    var doctor = doctorRepository.GetById(mark.doctorJMBG);
+                    if (doctor == null) continue;
+                    var newDoctorsMarks = new DoctorsMarks(doctor);
+                    doctorsMarksDictionary.Add(newDoctorsMarks.DoctorJMBG, newDoctorsMarks);
 
-            }
-                foreach (Mark mark in GetAllMarks())
-            {
-                number++;
-                sum = sum + mark.doctorMark;
-                doctorsMarks = this.doctorsMarksRepository.GetByJMBG(mark.doctorJMBG);
-                Console.WriteLine(doctorsMarks);
+                }
+                var doctorsMarks = doctorsMarksDictionary[mark.doctorJMBG];
                 switch (mark.doctorMark)
                 {
                     case 1:
@@ -70,8 +58,13 @@ namespace ZdravoKlinika.Service
                         break;
                     default: throw new Exception("Not valid marks.");
                 }
-                doctorsMarks.Average = sum / number;
+                
+            }
+            foreach(DoctorsMarks doctorsMarks in doctorsMarksDictionary.Values)
+            {
+                doctorsMarks.CalculateAverage();
                 doctorsMarksRepository.Save(doctorsMarks);
+
             }
         }
         public List<DoctorsMarks> GetAll()

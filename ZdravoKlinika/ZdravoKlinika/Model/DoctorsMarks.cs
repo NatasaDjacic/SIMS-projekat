@@ -35,8 +35,27 @@ namespace ZdravoKlinika.Model
             Average = average;
         }
 
+        public DoctorsMarks(Doctor doctor)
+        {
+            this.DoctorJMBG = doctor.JMBG;
+            this.Username = doctor.username;
+            this.FirstName = doctor.firstName;
+            this.LastName = doctor.lastName;
+            Ones = 0;
+            Twos = 0;
+            Threes = 0;
+            Fours = 0;
+            Fives = 0;
+            Average = 0;
+        }
+
         public DoctorsMarks()
         {
+        }
+        public void CalculateAverage() {
+            var sum = Ones * 1 + Twos * 2 + Threes * 3 + Fours * 4 + Fives * 5 ;
+            var N = Ones + Twos + Threes + Fours + Fives;
+            Average = (double)sum / N;
         }
     }
 }

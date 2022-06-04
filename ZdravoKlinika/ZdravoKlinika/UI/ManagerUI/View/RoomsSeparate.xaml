@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
+      xmlns:val="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="RoomsSeparate" Style="{StaticResource PageStyle}">
@@ -41,7 +41,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 30 0 5" Content="{DynamicResource StrRoomList}"></Label>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"   Margin="0,10,0,10" Content="{DynamicResource StrRoomList}"></Label>
                     <DataGrid Grid.Row="2" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
@@ -128,10 +128,43 @@
                     <ComboBox Grid.Column="1" Grid.Row="1" Height="25" Width="110" ItemsSource="{Binding RoomsCollection}" SelectedItem="{Binding SelectedRoom}"  DisplayMemberPath="name"></ComboBox>
                     <Label Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Content="{DynamicResource StrStartDate}"></Label>
                     <DatePicker Grid.Column="3" Grid.Row="1" Height="25" Width="110" SelectedDate ="{Binding StartDate}"></DatePicker>
+                    <StackPanel VerticalAlignment="Center" Margin="5" Grid.Row="1" Grid.Column="4"  Grid.ColumnSpan="2">
+                        <TextBlock x:Name="StartDateTB" FontWeight="SemiBold" Foreground="Gray"></TextBlock>
+                    </StackPanel>
                     <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Content="{DynamicResource StrEndDate}"></Label>
                     <DatePicker Grid.Column="3" Grid.Row="2" Height="25" Width="110" SelectedDate ="{Binding EndDate}"></DatePicker>
+                    <StackPanel VerticalAlignment="Center" Margin="5" Grid.Row="2" Grid.Column="4"  Grid.ColumnSpan="2">
+                        <TextBlock x:Name="EndDateTB" FontWeight="SemiBold" Foreground="Gray" ></TextBlock>
+                    </StackPanel>
                     <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="10 0 0 0" Content="{DynamicResource StrDur}"></Label>
-                    <TextBox Grid.Column="1" Grid.Row="2" Height="25" Width="110" Text="{Binding Duration}"></TextBox>
+                    <TextBox Grid.Column="1" Grid.Row="2" Height="25" Width="110">
+                        <TextBox.Text>
+                            <Binding Path="Duration" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:StringToDoubleValidationRule ValidationStep="RawProposedValue"/>
+                                    <val:MinMaxValidationRule ValidationStep="ConvertedProposedValue" Min="1" Max="1000"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                    <TextBlock FontSize="13" Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
                     <Button FontWeight="SemiBold" Grid.Row="2" Grid.Column="5" VerticalAlignment="Top" Height="25" Width="110" Margin="0" Background="Green" Content="{DynamicResource StrSchedule}" Grid.ColumnSpan="2" Click="Button_Click_Check"></Button>
                 </Grid>
 

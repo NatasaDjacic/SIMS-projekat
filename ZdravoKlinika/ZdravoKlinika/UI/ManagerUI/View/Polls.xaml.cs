@@ -102,7 +102,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                     default: throw new Exception("Not valid marks.");
                 }
             }
-            Average = sum/number;
+            Average = (double)sum/number;
             DoctorsPollsCollection = new ObservableCollection<DoctorsMarks>(doctorMarksController.GetAll());
             this.DataContext = this;
             ResourceDictionary dictionary = new ResourceDictionary();

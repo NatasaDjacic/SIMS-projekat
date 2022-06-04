@@ -156,6 +156,42 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
             this.Resources.MergedDictionaries.Add(dictionary);
             InitializeComponent();
+            CheckDates();
+        }
+        private void CheckDates()
+        {
+            if (StartDateTB == null) return;
+            if (startDate.CompareTo(DateTime.Today) < 0)
+            {
+
+
+                StartDateTB.Text = "Start date cannot be in past. Choose again!";
+
+                StartDateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                StartDateTB.Text = " ";
+                StartDateTB.Foreground = Brushes.Gray;
+            }
+
+
+            if (EndDateTB == null) return;
+            if (endDate.CompareTo(DateTime.Today) < 0 || endDate.CompareTo(startDate) < 0)
+            {
+
+
+                EndDateTB.Text = "End date cannot be in past or before start date. Choose again!";
+
+                EndDateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                EndDateTB.Text = " ";
+                EndDateTB.Foreground = Brushes.Gray;
+            }
+
+
         }
 
         private void Button_Click_Check(object sender, RoutedEventArgs e)

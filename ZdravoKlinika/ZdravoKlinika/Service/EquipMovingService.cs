@@ -29,21 +29,22 @@ namespace ZdravoKlinika.Service
             foreach(EquipMoving equipMoving in equipMovings)
             {
                 if (equipMoving.date <= System.DateTime.Now) {
-                    foreach (int equipmentId in equipMoving.equipments)
-                    {
-                        var equip = equipmentService.GetById(equipmentId);
-                        if(equip != null)
-                        {
-                            equip.roomId = equipMoving.roomTo;
-                            equipmentService.Update(equip);
-                        }
-                    }
-                    equipMovingRepository.DeleteById(equipMoving.id);
+                    MoveEquip(equipMoving);
                 }
             }
            
         }
-        
+        private void MoveEquip(EquipMoving equipMoving)
+        {
+            foreach (int equipmentId in equipMoving.equipments)
+            {
+                var equip = equipmentService.GetById(equipmentId);
+                if (equip == null) continue;
+                equip.roomId = equipMoving.roomTo;
+                equipmentService.Update(equip);
+            }
+            equipMovingRepository.DeleteById(equipMoving.id);
+        }
         public List<EquipMoving> GetAllEquipMovings()
         {
             return this.equipMovingRepository.GetAll();
@@ -65,26 +66,14 @@ namespace ZdravoKlinika.Service
 
         public List<int> GetEquipIdsForMove(List<int> ids, int amount)
         {
-            List<int> result = new List<int>();
             var moveEquips = GetAllEquipMovings();
-            HashSet<int> equipIds = new HashSet<int>();
-            foreach (var equip in moveEquips)
-            {
-                foreach(var e in equip.equipments)
-                {
-                    equipIds.Add(e);
-
-                }
-            }
+            HashSet<int> equipIds = moveEquips.SelectMany(equip => equip.equipments).ToHashSet();
             ids.RemoveAll(i => equipIds.Contains(i));
             if(ids.Count < amount)
             {
                 throw new Exception("No equipments for moving.");
             }
             return ids.Take(amount).ToList();
-
-            return result;
-
         }
 
         public bool DeleteEquipMovingById(int id)

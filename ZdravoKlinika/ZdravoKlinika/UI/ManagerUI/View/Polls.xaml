@@ -40,7 +40,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="17" FontWeight="Bold" Content="{DynamicResource StrStatHospital}"></Label>
+                    <Label  Margin="0,10,0,10" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="17" FontWeight="Bold" Content="{DynamicResource StrStatHospital}"></Label>
 
                     <Label FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="{DynamicResource StrNumMarks1}"></Label>
                     <Label Grid.Row="1" Grid.Column="1" Content="{Binding Ones}"></Label>
@@ -76,7 +76,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Content="{DynamicResource StrStatDoctor}"></Label>
+                <Label  Margin="0,10,0,10" Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Content="{DynamicResource StrStatDoctor}"></Label>
                     <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Path=DoctorsPollsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="*"  Binding="{Binding Username}" >

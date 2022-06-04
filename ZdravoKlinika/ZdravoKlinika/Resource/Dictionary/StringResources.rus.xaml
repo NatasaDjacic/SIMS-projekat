@@ -71,6 +71,7 @@
     <system:String x:Key="StrStatDoctor">Статистика рейтинга врачей</system:String>
     <system:String x:Key="StrRoom1">Первая комната</system:String>
     <system:String x:Key="StrRoom2">Другая комната</system:String>
+    <system:String x:Key="StrRoomNew">Kомната</system:String>
     <system:String x:Key="StrTermins">Список терминов</system:String>
     <system:String x:Key="StrSeparating">Разделение комнат</system:String>
     <system:String x:Key="StrEquipRel">Коммутационное оборудование</system:String>

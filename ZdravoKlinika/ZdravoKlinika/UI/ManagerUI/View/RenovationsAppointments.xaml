@@ -43,7 +43,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 30 0 5" Content="{DynamicResource StrRoomList}"></Label>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0 10 0 10" Content="{DynamicResource StrRoomList}"></Label>
                     <DataGrid Grid.Row="2" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=RoomsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
@@ -122,8 +122,9 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="{DynamicResource StrSimpleRen}" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="17"></Label>
+                    <Label Content="{DynamicResource StrSimpleRen}" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Center" FontSize="17"></Label>
                     <Label FontWeight="Bold" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Content="{DynamicResource StrTermins}"></Label>
                     <ListView Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Width="auto" Margin="30" HorizontalAlignment="Center" ItemsSource="{Binding DateCollection}" SelectedItem="{Binding SelectedRenovation}">
                         <ListView.ItemTemplate>
@@ -136,9 +137,9 @@
                     <TextBox VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" Height="25" Width="180">
 
                     </TextBox>
-                    <Button Content="{DynamicResource StrSubmit}" VerticalAlignment="Top" FontWeight="SemiBold" Background="Green" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Click="Button_Click_Renovation" Height="25" Width="90">
-                        
-                    </Button>
+                    <Button VerticalAlignment="Bottom" Content="{DynamicResource StrSubmit}"  FontWeight="SemiBold" Background="Green" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Click="Button_Click_Renovation" Height="25" Width="90"/>
+
+
 
 
 

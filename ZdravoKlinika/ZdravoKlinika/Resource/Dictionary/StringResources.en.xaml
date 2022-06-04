@@ -71,6 +71,7 @@
     <system:String x:Key="StrStatDoctor">Doctors rating statistics</system:String>
     <system:String x:Key="StrRoom1">First room</system:String>
     <system:String x:Key="StrRoom2">Second room</system:String>
+    <system:String x:Key="StrRoomNew">New room</system:String>
     <system:String x:Key="StrTermins">List of terms</system:String>
     <system:String x:Key="StrSeparating">Room separating</system:String>
     <system:String x:Key="StrEquipRel">Switching equipment</system:String>

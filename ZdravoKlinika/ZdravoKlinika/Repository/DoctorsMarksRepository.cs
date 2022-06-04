@@ -33,7 +33,7 @@ namespace ZdravoKlinika.Repository
             Console.WriteLine(values);
             return values.Find(value => jmbg == value.DoctorJMBG);
         }
-        public void Save(DoctorsMarks doctorsMarks)
+        public bool Save(DoctorsMarks doctorsMarks)
         {
             bool added = false;
             var values = this.GetAll();
@@ -48,11 +48,9 @@ namespace ZdravoKlinika.Repository
                 added = true;
             }
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
+            return added;
         }
 
-        bool IGenericRepository<DoctorsMarks, int>.Save(DoctorsMarks model) {
-            throw new NotImplementedException();
-        }
 
         public DoctorsMarks? GetById(int id) {
             throw new NotImplementedException();

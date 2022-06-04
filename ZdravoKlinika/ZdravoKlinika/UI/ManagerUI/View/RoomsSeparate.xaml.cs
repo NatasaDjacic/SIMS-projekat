@@ -121,7 +121,6 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
             RoomsCollection = new ObservableCollection<Room>(roomController.GetAll());
-
             this.DataContext = this;
             StartDate = DateTime.Now;
             EndDate = DateTime.Now;
@@ -145,9 +144,44 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                     break;
             }
             this.Resources.MergedDictionaries.Add(dictionary);
+            CheckDates();
             InitializeComponent();
         }
 
+        private void CheckDates()
+        {
+            if (StartDateTB == null) return;
+            if (startDate.CompareTo(DateTime.Today) < 0)
+            {
+
+
+                StartDateTB.Text = "Start date cannot be in past. Choose again!";
+                StartDateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                StartDateTB.Text = " test";
+                StartDateTB.Foreground = Brushes.Red;
+            }
+
+
+            if (EndDateTB == null) return;
+            if (endDate.CompareTo(DateTime.Today) < 0 || endDate.CompareTo(startDate) < 0)
+            {
+
+
+                EndDateTB.Text = "End date cannot be in past or before start date. Choose again!";
+
+                EndDateTB.Foreground = Brushes.Red;
+            }
+            else
+            {
+                EndDateTB.Text = " ";
+                EndDateTB.Foreground = Brushes.Gray;
+            }
+
+
+        }
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SeparateAppointments(SelectedRoom.roomId, StartDate, EndDate, Duration, val));

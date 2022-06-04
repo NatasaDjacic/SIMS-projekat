@@ -25,21 +25,21 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="auto"/>
                 <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="auto"/>
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="3" Grid.RowSpan="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="auto" >
-                <Grid Margin="50 0 50 0" Style="{StaticResource GridStyle}">
+            <StackPanel Grid.Row="5" Grid.RowSpan="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="auto" >
+                <Grid Margin="20 0 20 0" Style="{StaticResource GridStyle}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -47,7 +47,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="10 30 0 20" Content="{DynamicResource StrStaticList}"></Label>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0,10,0,10" Content="{DynamicResource StrStaticList}"></Label>
                     <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=EquipmentsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30 0 30 0" MinWidth="350" >
                         <DataGrid.Columns>
 
@@ -65,7 +65,7 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Width="*"  Binding="{Binding name}" >
+                            <DataGridTextColumn Width="*"  Binding="{Binding name}">
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrName}"/>
                                 </DataGridTextColumn.Header>
@@ -80,7 +80,7 @@
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Binding="{Binding equipIds.Count}" Width="*">
+                            <DataGridTextColumn  Width="auto" Binding="{Binding equipIds.Count}">
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrQuantity}"/>
                                 </DataGridTextColumn.Header>
@@ -98,13 +98,14 @@
                     </DataGrid>
                 </Grid>
             </StackPanel>
-            <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2">
+            <StackPanel Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="2">
                 <Grid Style="{StaticResource GridStyle}" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -114,7 +115,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Grid.ColumnSpan="4" FontWeight="Bold" FontSize="15"  Margin="0 10 0 10" Content="{DynamicResource StrEquipRel}"/>
+                    <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Grid.ColumnSpan="5" FontWeight="Bold" FontSize="17"  Margin="0 10 0 10" Content="{DynamicResource StrEquipRel}"/>
                     <Label Grid.Column="0" Grid.Row="1" Margin="10 5 5 5" Content="{DynamicResource StrRoomFrom}"></Label>
                     <Label Grid.Column="0" Grid.Row="2" Margin="10 5 5 5" Content="{DynamicResource StrEquipChoose}"></Label>
                     <Label Grid.Column="2" Grid.Row="1" Margin="10 5 5 5" Content="{DynamicResource StrQuantity}"></Label>
@@ -158,7 +159,7 @@
                     <Button Content="{DynamicResource StrSubmit}" Grid.Row="3" Grid.Column="3" Height="25" Width="90" Margin="5 5 10 5" Background="Green" Click="EquipMoving_Click"></Button>
                 </Grid>
             </StackPanel>
-            <StackPanel Grid.Column="3" Grid.Row="0" Grid.RowSpan="2">
+            <StackPanel Grid.Column="0" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="4" HorizontalAlignment="Center">
                 <Grid Style="{StaticResource GridStyle}" HorizontalAlignment="Left">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -171,15 +172,15 @@
                         <RowDefinition Height="0*"/>
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Grid.ColumnSpan="4" FontWeight="Bold" FontSize="15"  Margin="0 10 0 10" Content="{DynamicResource StrSearchEquip}"/>
+                    <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Grid.ColumnSpan="4" FontWeight="Bold" FontSize="17"  Margin="0 10 0 10" Content="{DynamicResource StrSearchEquip}"/>
                     <Label Grid.Column="0" Grid.Row="1" Margin="10 5 5 5" Content="{DynamicResource StrSearch}"></Label>
                     <TextBox Grid.Column="1" Grid.Row="1" Height="25" Width="90" Margin="5 5 10 5" Text="{Binding SearchEquip}"></TextBox>
                     <Button Content="{DynamicResource StrSearchBut}" Grid.Row="1" Grid.Column="3" Height="25" Width="90" Margin="5 5 10 5" Background="Green" Click="Search_Click"></Button>
                 </Grid>
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Grid.RowSpan="6" Grid.Column="2" Grid.ColumnSpan="2">
-                <Grid Margin="50 0 50 0" Style="{StaticResource GridStyle}">
+            <StackPanel Grid.Row="5" Grid.RowSpan="6" Grid.Column="2" Grid.ColumnSpan="2">
+                <Grid Margin="20 0 20 0" Style="{StaticResource GridStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="42*"/>
                         <ColumnDefinition Width="71*"/>
@@ -190,24 +191,11 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" Margin="0 30 0 20" Content="{DynamicResource StrDynList}" Grid.ColumnSpan="3"></Label>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="17"  Margin="0,10,0,10" Content="{DynamicResource StrDynList}" Grid.ColumnSpan="3"></Label>
                     <DataGrid Grid.Row="1" Background="AliceBlue" Grid.Column="0" ItemsSource="{Binding Path=DynamicEquipmentCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="13" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="30,0,30,0" MinWidth="350" Grid.ColumnSpan="2" Grid.RowSpan="2" >
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn Width="*"  Binding="{Binding name}" >
-                                <DataGridTextColumn.Header>
-                                    <TextBlock Text="{DynamicResource StrName}"/>
-                                </DataGridTextColumn.Header>
-                                <DataGridTextColumn.CellStyle>
-                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
-                                </DataGridTextColumn.CellStyle>
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="VerticalAlignment" Value="Center" />
-                                        <Setter Property="Padding" Value="5 0" />
-                                    </Style>
-                                </DataGridTextColumn.ElementStyle>
-                            </DataGridTextColumn>
+                            
                             <DataGridTextColumn Width="auto"  Binding="{Binding roomId}" >
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrIdRoom}"/>
@@ -222,8 +210,23 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
+                            
+                            <DataGridTextColumn Width="*"  Binding="{Binding name}" >
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="{DynamicResource StrName}"/>
+                                </DataGridTextColumn.Header>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}"/>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="5 0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Binding="{Binding quantity}" Width="auto">
+                            <DataGridTextColumn Width="auto" Binding="{Binding quantity}" >
                                 <DataGridTextColumn.Header>
                                     <TextBlock Text="{DynamicResource StrQuantity}"/>
                                 </DataGridTextColumn.Header>

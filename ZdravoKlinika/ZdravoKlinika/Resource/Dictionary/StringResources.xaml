@@ -70,6 +70,7 @@
     <system:String x:Key="StrStatDoctor">Statistika ocena lekara</system:String>
     <system:String x:Key="StrRoom1">Prva soba</system:String>
     <system:String x:Key="StrRoom2">Druga soba</system:String>
+    <system:String x:Key="StrRoomNew">Nova soba</system:String>
     <system:String x:Key="StrTermins">List termina</system:String>
     <system:String x:Key="StrSeparating">Razdvajanje soba</system:String>
     <system:String x:Key="StrEquipRel">Prebacivanje opreme</system:String>

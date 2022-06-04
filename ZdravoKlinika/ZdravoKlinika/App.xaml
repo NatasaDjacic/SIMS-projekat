@@ -18,11 +18,11 @@
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Blue">
-                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Background" Value="DeepSkyBlue"/>
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Pink">
-                    <Setter Property="Background" Value="DeepPink"/>
+                    <Setter Property="Background" Value="HotPink"/>
                 </DataTrigger>
 
             </Style.Triggers>
@@ -43,7 +43,7 @@
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Pink">
-                    <Setter Property="Background" Value="Pink"/>
+                    <Setter Property="Background" Value="DeepPink"/>
                 </DataTrigger>
             </Style.Triggers>
 
@@ -59,11 +59,11 @@
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Blue">
-                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Background" Value="DeepSkyBlue"/>
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Pink">
-                    <Setter Property="Background" Value="DeepPink"/>
+                    <Setter Property="Background" Value="HotPink"/>
                 </DataTrigger>
 
             </Style.Triggers>
@@ -76,6 +76,14 @@
 
                 <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Dark">
                     <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Black"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Blue">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Foreground" Value="Black"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ColorMode}" Value="Pink">
+                    <Setter Property="Background" Value="Pink"/>
                     <Setter Property="Foreground" Value="Black"></Setter>
                 </DataTrigger>
 
