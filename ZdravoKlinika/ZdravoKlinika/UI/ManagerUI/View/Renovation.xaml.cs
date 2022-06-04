@@ -148,19 +148,21 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
         private void CheckDates()
         {
+            int err = 0;
+            int err2 = 0;
             if (StartDateTB == null) return;
             if (startDate.CompareTo(DateTime.Today) < 0)
             {
 
-
                 StartDateTB.Text = "Start date cannot be in past. Choose again!";
-
                 StartDateTB.Foreground = Brushes.Red;
+                err = 1;
             }
             else
             {
                 StartDateTB.Text = " ";
                 StartDateTB.Foreground = Brushes.Gray;
+                err = 0;
             }
 
 
@@ -170,13 +172,22 @@ namespace ZdravoKlinika.UI.ManagerUI.View
 
 
                 EndDateTB.Text = "End date cannot be in past or before start date. Choose again!";
-
                 EndDateTB.Foreground = Brushes.Red;
+                err2 = 1;
             }
             else
             {
                 EndDateTB.Text = " ";
                 EndDateTB.Foreground = Brushes.Gray;
+                err2 = 0;
+            }
+            if (err == 1 || err2 == 1)
+            {
+                but.IsEnabled = false;
+            }
+            else
+            {
+                but.IsEnabled = true;
             }
 
 

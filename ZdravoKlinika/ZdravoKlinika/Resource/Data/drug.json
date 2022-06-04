@@ -37,7 +37,7 @@
   },
   {
     "drugId": 5,
-    "name": "Nimulidin",
+    "name": "Koks",
     "ingredients": "Bronzepedan, Natrijum hlorid",
     "approved": 1,
     "checkedBy": null,
@@ -70,5 +70,14 @@
     "checkedBy": null,
     "comment": "",
     "alternative": "Nimuid"
+  },
+  {
+    "drugId": 9,
+    "name": "Dartifin",
+    "ingredients": "Voda",
+    "approved": 2,
+    "checkedBy": null,
+    "comment": "",
+    "alternative": "Nimulid"
   }
 ]
