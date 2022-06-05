@@ -198,6 +198,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             document.Add(table);
             document.Add(lineSeparator);
             document.Close();
+            ActivityHistoryService.Instance.NewActivity(ActivityType.ROOM_REPORT, "New Room Report", String.Format("Room report for room \"{1}\" can be found \ninside Resource/PDFs/roomReport-{0}.pdf", selectedRoom.roomId, selectedRoom.name));
         }
         public string ToPrettyFormat(TimeSpan span) {
 

@@ -192,6 +192,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         private void Button_Click_2(object sender, RoutedEventArgs e) {
             if (selectedMeeting != null) { 
                 meetingController.SaveSuggestion(selectedMeeting);
+                ActivityHistoryService.Instance.NewActivity(ActivityType.MEETING, "New Meeting", String.Format("New meeting \"{3}\" created \nin room {0} at {1} {2}", selectedRoom.name, selectedMeeting.startTime.ToShortDateString(), selectedMeeting.startTime.ToShortTimeString(), selectedMeeting.title));
                 this.NavigationService.Navigate(new Meetings());
             }
         }

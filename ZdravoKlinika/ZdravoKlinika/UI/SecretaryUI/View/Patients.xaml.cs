@@ -43,6 +43,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             string? jmbg = ((Button)sender).Tag as string;
             if (jmbg is null) return;
             patientController.Delete(jmbg);
+            ActivityHistoryService.Instance.NewActivity(ActivityType.PATIENT, "Deleted Patient", String.Format("With JMBG: {0}", jmbg));
+
             PatientsCollection = new ObservableCollection<Patient>(patientController.GetAll());
         }
 

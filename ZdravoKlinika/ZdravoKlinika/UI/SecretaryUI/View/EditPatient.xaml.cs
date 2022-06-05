@@ -139,7 +139,9 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                     p.allergens = new List<string>(Allergy.Split("\r\n", StringSplitOptions.RemoveEmptyEntries));
                     p.phone = Phone;
                     p.bloodType = BloodType;
-                    patientController.Update(p);
+                    patientController.Update(p); 
+                    ActivityHistoryService.Instance.NewActivity(ActivityType.PATIENT, "Edited Patient", String.Format("{0} {1} with JMBG: {2}", FirstName, LastName, JMBG));
+
                 }
                 NavigationService.Navigate(new Patients());
 

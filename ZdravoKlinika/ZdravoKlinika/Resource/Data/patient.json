@@ -101,7 +101,7 @@
     "email": "todorovicveljko1@gmail.com",
     "country": "Srbija",
     "city": "Kraljevo",
-    "address": "Todorovica  38"
+    "address": "Todorovica  38a"
   },
   {
     "gender": "Male",
@@ -171,5 +171,24 @@
     "country": "",
     "city": "",
     "address": ""
+  },
+  {
+    "gender": "Male",
+    "bloodType": "None",
+    "dateOfBirth": "2000-06-05T00:00:00",
+    "allergens": [],
+    "medicalRecord": {
+      "reports": []
+    },
+    "firstName": "Petar",
+    "lastName": "Kralj",
+    "JMBG": "1233333333333",
+    "username": "1233333333333",
+    "password": "zdravo",
+    "phone": "",
+    "email": "",
+    "country": "SSS",
+    "city": "SSS",
+    "address": "SSS"
   }
 ]

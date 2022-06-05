@@ -167,6 +167,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         private void RemoveBtn_Click(object sender, RoutedEventArgs e) {
             if(this.SelectedAppointment != null) {
                 this.appointmentController.RemoveAppointmentSecretary(this.SelectedAppointment);
+                ActivityHistoryService.Instance.NewActivity(ActivityType.APPOINTMENT, "Removed Appointment", string.Format("For {0} at {1} \nin room {2}", SelectedAppointment.patientJMBG, SelectedAppointment.startTime, SelectedAppointment.roomId));
+
                 this.Show_Click(sender, e);
                 this.SelectedAppointment = null;
             }

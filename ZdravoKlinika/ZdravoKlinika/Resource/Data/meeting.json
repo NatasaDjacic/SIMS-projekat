@@ -1,42 +1,66 @@
 [
-    {
-        "id": 2,
-        "title": "Sastanak HITNO",
-        "startTime": "2022-05-30T01:00:00",
-        "duration": 60,
-        "roomId": "SZS1",
-        "attendeesJMBG": [
-            "0509000112469",
-            "1212121212121",
-            "2222222222222",
-            "1112223334445"
-        ]
-    },
-    {
-        "id": 3,
-        "title": "Subject",
-        "startTime": "2022-05-31T02:00:00",
-        "duration": 60,
-        "roomId": "SZS1",
-        "attendeesJMBG": [
-            "1111111111111",
-            "2222222222222",
-            "1212121212121"
-        ]
-    },
-    {
-        "id": 4,
-        "title": "Sastanak svih",
-        "startTime": "2022-05-31T05:00:00",
-        "duration": 90,
-        "roomId": "SZS1",
-        "attendeesJMBG": [
-            "3213213213213",
-            "1112223334445",
-            "0509000112469",
-            "1212121212121",
-            "2222222222222",
-            "1111111111111"
-        ]
-    }
+  {
+    "id": 2,
+    "title": "Sastanak HITNO",
+    "startTime": "2022-05-30T01:00:00",
+    "duration": 60,
+    "roomId": "SZS1",
+    "attendeesJMBG": [
+      "0509000112469",
+      "1212121212121",
+      "2222222222222",
+      "1112223334445"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Subject",
+    "startTime": "2022-05-31T02:00:00",
+    "duration": 60,
+    "roomId": "SZS1",
+    "attendeesJMBG": [
+      "1111111111111",
+      "2222222222222",
+      "1212121212121"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Sastanak svih",
+    "startTime": "2022-05-31T05:00:00",
+    "duration": 90,
+    "roomId": "SZS1",
+    "attendeesJMBG": [
+      "3213213213213",
+      "1112223334445",
+      "0509000112469",
+      "1212121212121",
+      "2222222222222",
+      "1111111111111"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "New meeting",
+    "startTime": "2022-06-10T12:00:00",
+    "duration": 60,
+    "roomId": "SZS1",
+    "attendeesJMBG": [
+      "3213213213213",
+      "1111111111111",
+      "2222222222222",
+      "1212121212121"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Sastakan uprave",
+    "startTime": "2022-06-05T01:00:00",
+    "duration": 60,
+    "roomId": "SZS1",
+    "attendeesJMBG": [
+      "0509000112469",
+      "1112223334445"
+    ]
+  }
 ]

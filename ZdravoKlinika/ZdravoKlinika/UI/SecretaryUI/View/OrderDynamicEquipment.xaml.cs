@@ -68,6 +68,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {
             orderEquipmentController.CrateOrderEquipment(EquipmentName, Quantity);
+            ActivityHistoryService.Instance.NewActivity(ActivityType.ORDER_DYNAMIC_EQUIPMENT, "New Equipment Order", string.Format("You have orderd {0}\nin quantity of {1}",EquipmentName, Quantity));
             NavigationService.Navigate(new Dashboard());
         }
     }

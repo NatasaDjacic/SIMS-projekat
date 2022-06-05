@@ -118,6 +118,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             try {
                 patientController.Create(FirstName, LastName, JMBG, JMBG,
                     BirthDate, Phone, Email, Country, City, Address, Gender, BloodType, new List<string>(Allergy.Split("\r\n",StringSplitOptions.RemoveEmptyEntries)));
+                ActivityHistoryService.Instance.NewActivity(ActivityType.PATIENT, "New Patient", String.Format("{0} {1} with JMBG: {2}", FirstName, LastName, JMBG));
                 NavigationService.Navigate(new Patients());
                 
 
