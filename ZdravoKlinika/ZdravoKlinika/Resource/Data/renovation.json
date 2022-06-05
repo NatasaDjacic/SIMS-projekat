@@ -14,5 +14,53 @@
     "duration": 12,
     "description": "Farbanje",
     "endTime": "2022-06-04T14:00:00"
+  },
+  {
+    "id": 3,
+    "roomId": "SZS1",
+    "startTime": "2022-06-05T00:00:00",
+    "duration": 24,
+    "description": "Krecenje",
+    "endTime": "2022-06-06T00:00:00"
+  },
+  {
+    "id": 4,
+    "roomId": "ID1",
+    "startTime": "2022-06-06T01:30:00",
+    "duration": 1,
+    "description": "Farbanje cevi",
+    "endTime": "2022-06-06T02:30:00"
+  },
+  {
+    "id": 5,
+    "roomId": "tI",
+    "startTime": "2022-06-05T01:30:00",
+    "duration": 120,
+    "description": "Merging",
+    "endTime": "2022-06-10T01:30:00"
+  },
+  {
+    "id": 6,
+    "roomId": "Test2",
+    "startTime": "2022-06-05T01:30:00",
+    "duration": 120,
+    "description": "Merging",
+    "endTime": "2022-06-10T01:30:00"
+  },
+  {
+    "id": 7,
+    "roomId": "IDN1",
+    "startTime": "2022-06-19T00:30:00",
+    "duration": 19,
+    "description": "Merging",
+    "endTime": "2022-06-19T19:30:00"
+  },
+  {
+    "id": 8,
+    "roomId": "IDN2",
+    "startTime": "2022-06-19T00:30:00",
+    "duration": 19,
+    "description": "Merging",
+    "endTime": "2022-06-19T19:30:00"
   }
 ]

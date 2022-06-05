@@ -1,56 +1,44 @@
 [
-    {
-        "roomId": "SD1",
-        "name": "SD1",
-        "description": "Prostorija jednog od doktora opste prakse.",
-        "type": "Soba za pregled"
-    },
-    {
-        "roomId": "SD2",
-        "name": "SD2",
-        "description": "Prostorija jednog od doktora opste prakse.",
-        "type": "Soba za pregled"
-    },
-    {
-        "roomId": "SZS1",
-        "name": "SZS1",
-        "description": "Prostorija predviđena za sastanke",
-        "type": "Soba za sastanke"
-    },
-    {
-        "roomId": "4",
-        "name": "Soba1",
-        "description": "Prostorija prethodnog direktora. Trenutno se koristi kao operaciona sala za kraće operacije.",
-        "type": "Operacijska sala"
-    },
-    {
-        "roomId": "IDN1",
-        "name": "Nova soba 1",
-        "description": "Nova operaciona sala, nastala 28. maja",
-        "type": "Operaciona sala"
-    },
-    {
-        "roomId": "IDN2",
-        "name": "Nova soba 2",
-        "description": "Nova kancelarija, nastala iz sobe 2",
-        "type": "Kancelarija"
-    },
-    {
-        "roomId": "tI",
-        "name": "tN",
-        "description": "testDes",
-        "type": "tt"
-    },
-    {
-        "roomId": "ID1",
-        "name": "Kancelarija direktor",
-        "description": null,
-        "type": "Kancelarija"
-    },
-    {
-        "roomId": "Test2",
-        "name": "Testna soba",
-        "description": "Kancelarija",
-        "type": "sdffd"
-    }
+  {
+    "roomId": "SD1",
+    "name": "SD1",
+    "description": "Prostorija jednog od doktora opste prakse.",
+    "type": "Soba za pregled"
+  },
+  {
+    "roomId": "SD2",
+    "name": "SD2",
+    "description": "Prostorija jednog od doktora opste prakse.",
+    "type": "Soba za pregled"
+  },
+  {
+    "roomId": "SZS1",
+    "name": "SZS1",
+    "description": "Prostorija predviđena za sastanke",
+    "type": "Soba za sastanke"
+  },
+  {
+    "roomId": "4",
+    "name": "Soba1",
+    "description": "Prostorija prethodnog direktora. Trenutno se koristi kao operaciona sala za kraće operacije.",
+    "type": "Operacijska sala"
+  },
+  {
+    "roomId": "IDN1",
+    "name": "Nova soba 1",
+    "description": "Nova operaciona sala, nastala 28. maja",
+    "type": "Operaciona sala"
+  },
+  {
+    "roomId": "IDN2",
+    "name": "Nova soba 2",
+    "description": "Nova kancelarija, nastala iz sobe 2",
+    "type": "Kancelarija"
+  },
+  {
+    "roomId": "ID1",
+    "name": "Kancelarija direktor",
+    "description": null,
+    "type": "Kancelarija"
+  }
 ]

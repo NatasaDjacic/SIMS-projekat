@@ -273,11 +273,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomSecondId, "Merging");
             roomMergeController.Save(selectedRenovation.startTime, selectedRenovation.duration, roomFirstId, roomSecondId, NewRoomId, NewRoomName, NewRoomType, NewRoomDescription);
 
-            NavigationService.Navigate(new Renovations("srb"));
-        }
-        private void Button_Click_New(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddRoom("srb"));
+            NavigationService.Navigate(new RoomsMerge(val));
         }
     }
 }

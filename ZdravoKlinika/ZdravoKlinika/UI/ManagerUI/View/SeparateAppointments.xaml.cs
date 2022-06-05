@@ -315,11 +315,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomId, "Separating");
             roomSeparateController.Save(selectedRenovation.startTime, selectedRenovation.duration, roomId, NewRoomId, NewRoomName, NewRoomType, NewRoomDescription, NewRoomId2, NewRoomName2, NewRoomType2, NewRoomDescription2);
 
-            NavigationService.Navigate(new Renovations("srb"));
-        }
-        private void Button_Click_New(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddRoom("srb"));
+            NavigationService.Navigate(new RoomsSeparate(val));
         }
     }
 }
