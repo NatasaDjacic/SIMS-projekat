@@ -113,6 +113,9 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         private void Button_Click(object sender, RoutedEventArgs e) {
             int id = int.Parse(((Button)sender).Tag.ToString());
             this.holidayRequestController.Accept(id);
+            var hr = holidayRequests.First(hr => hr.id == id);
+            var doc = doctorsLookup[hr.doctorJMBG];
+            ActivityHistoryService.Instance.NewActivity(ActivityType.SICK_DAYS, "Accepted Sick Days", String.Format("For dr. {0} {1}\nwon't work from {2} to {3}", doc.firstName, doc.lastName, hr.startTime.ToShortDateString(), hr.endTime.ToShortDateString()));
             loadHR();
             UpdateChartData();
         }
@@ -130,10 +133,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             }
         }
 
-        private void Button_Click_Save(object sender, RoutedEventArgs e) {
-
-
-
+        private void Button_Click_Save(object sender, RoutedEventArgs e) { 
             var sw = Application.Current.Windows
             .Cast<Window>()
             .FirstOrDefault(window => window is SecretaryMainWindow) as SecretaryMainWindow;
@@ -142,6 +142,10 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                 this.holidayRequestController.Decline(active, sw.TextInputTB.Text);
                 sw.TextInput.Visibility = Visibility.Hidden;
                 sw.TextInputTB.Text = "";
+                var hr = holidayRequests.First(hr => hr.id == active);
+                var doc = doctorsLookup[hr.doctorJMBG];
+                ActivityHistoryService.Instance.NewActivity(ActivityType.SICK_DAYS, "Decline Sick Days", String.Format("For dr. {0} {1}", doc.firstName, doc.lastName));
+
                 loadHR();
             }
         }

@@ -194,6 +194,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             if (SelectedAppointment != null) {
                 // Controler methods
                 this.appointmentController.MoveAppointmentSecretary(original, SelectedAppointment.startTime);
+                ActivityHistoryService.Instance.NewActivity(ActivityType.APPOINTMENT, "Move Appointment",string.Format("From {0} to {1}\nin room {2}", original.startTime, selectedAppointment.startTime, original.roomId));
                 NavigationService.Navigate(new Appointments());
 
             }

@@ -40,8 +40,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                 switch (name) {
                     case "JMBG":
                         if (JMBG.Trim() == "") result = "JMBG should be set.";
+                        else if (!Regex.IsMatch(JMBG, "^[0-9]*$")) result = "JMBG should countain only numbers.";
                         else if (JMBG.Length != 13) result = "JMBG should have 13 digits.";
-                        else if (!Regex.IsMatch(JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
                         else if (!patientFound) {
                             result = "Patient not found";
                         };
@@ -144,11 +144,14 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         private void Button_Click(object sender, RoutedEventArgs e) {
             var pat = patientController.GetById(JMBG);
             if(pat is null) {
-                patientController.CreateGuestAccount(FirstName, LastName, JMBG);
+                patientController.CreateGuestAccount(FirstName, LastName, JMBG); 
+                ActivityHistoryService.Instance.NewActivity(ActivityType.PATIENT, "New Guest Patient", string.Format("{0} {1} with JMBG: {2}", FirstName, LastName, JMBG));
+
                 pat = patientController.GetById(JMBG);
             }
             try {
                 this.EAS = appointmentController.createOrSuggestEmergencyAppointment(pat, specialization);
+                Console.WriteLine(this.EAS.found);
                 if (!this.EAS.found) {
                     this.DAM = new List<DoctorAndMove>();
                     for (int i = 0; i < this.EAS.pairsOfAppointmentAndMovedAppointment.Count; i++) {
@@ -158,6 +161,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                     }
                     OnPropertyChanged("DAM");
                 } else {
+                    var a = this.EAS.pairsOfAppointmentAndMovedAppointment.Last().Item1;
+                    ActivityHistoryService.Instance.NewActivity(ActivityType.APPOINTMENT, "New Emergency Appointment", string.Format("For {0} at {1} \nin room {2}",a.patientJMBG, a.startTime, a.roomId));
                     NavigationService.Navigate(new Dashboard());
                 }
 
@@ -172,7 +177,12 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
         private void Button_Click_2(object sender, RoutedEventArgs e) {
             if(Selected != null) {
                 this.appointmentController.CreateAppointmentFromSuggestion(this.EAS.pairsOfAppointmentAndMovedAppointment[Selected.index].Item1);
+                var a = this.EAS.pairsOfAppointmentAndMovedAppointment[Selected.index].Item1;
+                ActivityHistoryService.Instance.NewActivity(ActivityType.APPOINTMENT, "New Emergency Appointment", string.Format("For {0} at {1} \nin room {2}",a.patientJMBG, a.startTime, a.roomId));
                 this.appointmentController.MoveAppointmentSecretary(this.EAS.pairsOfAppointmentAndMovedAppointment[Selected.index].Item2, this.EAS.pairsOfAppointmentAndMovedAppointment[Selected.index].Item2.startTime);
+                var b = this.EAS.pairsOfAppointmentAndMovedAppointment[Selected.index].Item2;
+                ActivityHistoryService.Instance.NewActivity(ActivityType.APPOINTMENT, "Move Appointment", string.Format("From {0} to {1}\nin room {2}", a.startTime, b.startTime, a.roomId));
+
             }
         }
 

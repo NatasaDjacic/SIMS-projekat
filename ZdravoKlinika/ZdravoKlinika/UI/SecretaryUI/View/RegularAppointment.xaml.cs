@@ -49,8 +49,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
                         break;
                     case "JMBG":
                         if (JMBG.Trim() == "") result = "JMBG should be set.";
+                        else if (!Regex.IsMatch(JMBG, "^[0-9]*$")) result = "JMBG should countain only numbers.";
                         else if (JMBG.Length != 13) result = "JMBG should have 13 digits.";
-                        else if(!Regex.IsMatch(JMBG, "^[1-9]*$")) result = "JMBG should have 13 digits.";
                         else if(!patientFound) result = "Patient not found";
                         break;
                     default: break;
@@ -213,6 +213,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             if (SelectedAppointment != null) {
                 // Todo create controler method
                 appointmentController.CreateAppointmentFromSuggestion(SelectedAppointment);
+                ActivityHistoryService.Instance.NewActivity(ActivityType.APPOINTMENT, "New Appointment", string.Format("For {0} at {1} \nin room {2}", SelectedAppointment.patientJMBG, SelectedAppointment.startTime, SelectedAppointment.roomId));
+
                 NavigationService.GoBack();
             }
         }

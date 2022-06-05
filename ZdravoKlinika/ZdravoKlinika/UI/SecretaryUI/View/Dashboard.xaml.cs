@@ -26,10 +26,13 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             }
         }
         public string HiText { get; set; }
+        public ActivityHistoryService ActivityHistoryInstance {get; set;}
         public Dashboard() {
-            HiText = String.Format("Hi, {0} {1}!", GLOBALS.authService.user.lastName, GLOBALS.authService.user.firstName);
+            this.HiText = String.Format("Hi, {0} {1}!", GLOBALS.authService.user.lastName, GLOBALS.authService.user.firstName);
+            this.ActivityHistoryInstance = ActivityHistoryService.Instance;
             this.DataContext = this;
             InitializeComponent();
+            
         }
 
         private void Patients_Click(object sender, RoutedEventArgs e) {

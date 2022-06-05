@@ -36,10 +36,10 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Column="0" Grid.Row="0" Background="#009E0F" Foreground="#FFF" Content="Patients" Width="240" Margin="0 20 40 10" Click="Patients_Click"></Button>
-                    <Button Grid.Column="0" Grid.Row="1" Background="#009E0F" Foreground="#FFF" Content="New Patient" Width="240" Margin="0 0 40 20" Click="New_Patients_Click"></Button>
-                    <Button Grid.Column="1" Grid.Row="0" Background="#FF9900" Content="Meeting"  Width="240" Margin="0 20 15 10" Click="Mitting_Click"></Button>
-                    <Button Grid.Column="1" Grid.Row="1" Background="#FF9900" Content="New Meeting" Width="240" Margin="0 0 15 20" Click="NewMitting_Click"></Button>
+                    <Button Grid.Column="0" Grid.Row="0" Background="#009E0F" Foreground="#FFF" Content="Patients" Width="200" Margin="0 20 40 10" Click="Patients_Click"></Button>
+                    <Button Grid.Column="0" Grid.Row="1" Background="#009E0F" Foreground="#FFF" Content="New Patient" Width="200" Margin="0 0 40 20" Click="New_Patients_Click"></Button>
+                    <Button Grid.Column="1" Grid.Row="0" Background="#FF9900" Foreground="#000" Content="Meeting"  Width="200" Margin="0 20 15 10" Click="Mitting_Click"></Button>
+                    <Button Grid.Column="1" Grid.Row="1" Background="#FF9900" Foreground="#000" Content="New Meeting" Width="200" Margin="0 0 15 20" Click="NewMitting_Click"></Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -50,9 +50,9 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Column="0" Grid.Row="0" Background="#FFFF00" Content="Sick Days" Width="240" Margin="0 20 40 10" Click="SickDays_Click"></Button>
-                    <Button Grid.Column="0" Grid.Row="1" Background="#741B47" Foreground="#FFF" Content="Room Report" Width="240" Margin="0 0 40 20" Click="RoomReport_Click"></Button>
-                    <Button Grid.Column="1" Grid.Row="0" Background="#351C75" Foreground="#FFF" Content="Order Equipment" Width="240" Margin="0 20 15 10" Click="OrderDynamicEquipment_Click"></Button>
+                    <Button Grid.Column="0" Grid.Row="0" Background="#FFFF00" Foreground="#000" Content="Sick Days" Width="200" Margin="0 20 40 10" Click="SickDays_Click"></Button>
+                    <Button Grid.Column="0" Grid.Row="1" Background="#741B47" Foreground="#FFF" Content="Room Report" Width="200" Margin="0 0 40 20" Click="RoomReport_Click"></Button>
+                    <Button Grid.Column="1" Grid.Row="0" Background="#351C75" Foreground="#FFF" Content="Order Equipment" Width="200" Margin="0 20 15 10" Click="OrderDynamicEquipment_Click"></Button>
                     </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -63,17 +63,40 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Background="#00FFFF" Content="Patient Appointments" Margin="0 20 15 10" Click="Appointments_Click"></Button>
-                    <Button Grid.Row="1" Background="#00FFFF" Content="New Patient Appointment" Margin="0 0 15 10" Click="RegularAppointment_Click"></Button>
-                    <Button Grid.Row="2" Background="#00FFFF" Content="Emergency Patient Appointment" Margin="0 0 15 10" Click="EmergencyAppointment_Click"></Button>
-                    </Grid>
+                    <Button Grid.Row="0" Background="#00FFFF" Foreground="#000" Content="Patient Appointments" Margin="0 20 15 10" Click="Appointments_Click"></Button>
+                    <Button Grid.Row="1" Background="#00FFFF" Foreground="#000" Content="New Patient Appointment" Margin="0 0 15 10" Click="RegularAppointment_Click"></Button>
+                    <Button Grid.Row="2" Background="#00FFFF" Foreground="#000" Content="Emergency Patient Appointment" Margin="0 0 15 10" Click="EmergencyAppointment_Click"></Button>
+                </Grid>
                 
             </StackPanel>
             <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Width="2" Margin="-15,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
-            <StackPanel Grid.Column="2">
-                <TextBlock Margin="0 20 0 0" FontSize="28">Activity history</TextBlock>
-                <StackPanel x:Name="ActivityHistory"></StackPanel>
-            </StackPanel>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Margin="0 20 0 0" FontSize="28">Activity history</TextBlock>
+                <ListView MaxHeight="450"  Margin="0 20 0 0" Grid.Row="1" ItemsSource="{Binding ActivityHistoryInstance.Activities}" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="{Binding background}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Foreground="{Binding foreground}" Text="{Binding title}" FontSize="24" FontWeight="SemiBold" Padding="5 5 5 0"></TextBlock>
+                                <TextBlock Grid.Row="1" Foreground="{Binding foreground}" Text="{Binding description}" Padding="5 0 5 5" TextWrapping="Wrap" FontSize="20"></TextBlock>
+                                
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </Grid>
         </Grid>
     </StackPanel>
 </Page>

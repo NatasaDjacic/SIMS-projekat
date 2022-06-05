@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": 1,
+    "orderArrival": "2022-06-08T15:57:43.5282488+02:00",
+    "equipment": {
+      "id": -1,
+      "name": "Cackalice",
+      "roomId": "",
+      "type": "Dinamicka",
+      "quantity": 100
+    }
+  }
+]
