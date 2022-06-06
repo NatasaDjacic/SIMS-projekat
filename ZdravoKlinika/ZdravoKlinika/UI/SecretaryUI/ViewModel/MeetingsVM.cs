@@ -9,7 +9,7 @@ using ZdravoKlinika.UI.SecretaryUI;
 using System.Windows.Navigation;
 
 namespace ZdravoKlinika.UI.SecretaryUI.ViewModel {
-    public class MeetingsVM {
+    public class MeetingsVM: BaseVM {
 
         MeetingController meetingController = GLOBALS.meetingController;
         EmployeController employeController = GLOBALS.employeController;
@@ -23,7 +23,8 @@ namespace ZdravoKlinika.UI.SecretaryUI.ViewModel {
         public static Dictionary<string, Room> Rooms { get; set; }
 
 
-        public MeetingsVM(NavigationService navigationService) {
+        public MeetingsVM(NavigationService navigationService): base() {
+            
             this.navigationService = navigationService;
             this.NavigateNewMeeting = new RelayCommand(Execute_NavigateNewMeeting);
             this.Meetings = meetingController.GetAll();

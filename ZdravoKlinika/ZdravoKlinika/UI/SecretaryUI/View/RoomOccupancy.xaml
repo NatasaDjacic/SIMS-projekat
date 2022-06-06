@@ -47,7 +47,7 @@
                 <StackPanel Grid.Column="1" Margin="5 0">
                     <Label>Date to</Label>
                     <DatePicker x:Name="ToDateDP" FontSize="24" SelectedDate="{Binding ToDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></DatePicker>
-                    <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=ToDateDP}" Foreground="Red"/>
+                    <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=ToDateDP}" Foreground="Red"/>
                 </StackPanel>
                 
                 <StackPanel Grid.Column="2" Margin="5 0">
@@ -59,7 +59,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=RoomCB}" Foreground="Red"/>
+                    <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=RoomCB}" Foreground="Red"/>
                 </StackPanel>
                 <StackPanel Grid.Column="3" Margin="5 42 0 0">
                     <Button Height="38" Width="120" Content="Show" Click="Button_Click">

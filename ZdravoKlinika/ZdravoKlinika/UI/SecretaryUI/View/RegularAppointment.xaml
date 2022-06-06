@@ -34,7 +34,7 @@
                     <Label>Patient JMBG:*</Label>
                     <StackPanel Orientation="Vertical" Height="50">
                         <TextBox x:Name="patientTB" Text="{Binding JMBG, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
-                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=patientTB}" Foreground="Red"/>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=patientTB}" Foreground="Red"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel  Margin="0 10">
@@ -67,14 +67,14 @@
                     <Label>Date from:*</Label>
                     <StackPanel Orientation="Vertical" Height="50">
                         <DatePicker x:Name="fromDP" FontSize="20" SelectedDate="{Binding FromDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></DatePicker>
-                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=fromDP}" Foreground="Red"/>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=fromDP}" Foreground="Red"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel  Margin="0 10">
                     <Label>Duration (in minutes):*</Label>
                     <StackPanel Orientation="Vertical" Height="50">
                         <TextBox x:Name="durationTB" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
-                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=durationTB}" Foreground="Red"/>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=durationTB}" Foreground="Red"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
@@ -98,7 +98,7 @@
                       
                     
                         <DatePicker x:Name="toDateDP" FontSize="20" SelectedDate="{Binding ToDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></DatePicker>
-                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=toDateDP}" Foreground="Red"/>
+                        <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=toDateDP}" Foreground="Red"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Margin="0 10 0 0">
@@ -157,7 +157,7 @@
                 <Button Margin="0 24 0 0" Width="120" Grid.Column="0" Background="#CF2A27" Foreground="#FFF" Click="Button_Click_1">Cancel</Button>
                 <Button Margin="0 24 0 0" Width="120" Grid.Column="1" HorizontalAlignment="Right" Background="#009E0F" Foreground="#FFF" Click="Button_Click_2" FontSize="24" FontWeight="SemiBold" Content="Save">
                     <Button.Style>
-                        <Style TargetType="Button">
+                        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
                             <Setter Property="IsEnabled" Value="False"/>
                             <Style.Triggers>
                                 <MultiDataTrigger>
