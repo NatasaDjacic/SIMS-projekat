@@ -77,15 +77,6 @@ namespace ZdravoKlinika.UI.PatientUI.View
             CheckMarks();
         }
 
-        private void Click_Rate(object sender, RoutedEventArgs e)
-        {
-            markService.Save(markService.GenerateNewId(), hospitalMark, doctorMark, authService.user.JMBG, "1111111111111", reportId);
-            
-            NavigationService.Navigate(new Rated());
-            
-
-
-        }
         private void NumberValidation(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-5]+");
@@ -124,6 +115,18 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
 
 
+        }
+
+        private void Save_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            markService.Save(markService.GenerateNewId(), hospitalMark, doctorMark, authService.user.JMBG, "1111111111111", reportId);
+
+            NavigationService.Navigate(new Rated());
         }
 
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)

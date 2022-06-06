@@ -79,10 +79,30 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         }
 
-        private void Button_Click_Note(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Note(selectedPrescription.prescriptionId)) ;
+       
 
+
+        private void Edit_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Edit_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var patientPrescriptions = prescriptionService.GetAllPrescriptions( patientController.GetById(authService.user.JMBG) );
+            var prescription = patientPrescriptions.Find(r => r.prescriptionId == selectedPrescription.prescriptionId);
+            Console.WriteLine(prescription.patient_note);
+            if ( prescription.patient_note != "")
+            {
+                NavigationService.Navigate(new Noted(selectedPrescription.patient_note));
+
+            }
+            else
+            {
+                NavigationService.Navigate(new Note(selectedPrescription.prescriptionId));
+            }
+
+            
         }
 
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)

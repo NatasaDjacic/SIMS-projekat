@@ -17,6 +17,7 @@
         <CommandBinding Command="cmd:RoutedCommands.Reports" CanExecute="Reports_CanExecute" Executed="Enable_Reports"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.Prescriptions" CanExecute="Prescriptions_CanExecute" Executed="Enable_Prescriptions"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.Theraphy" CanExecute="Theraphy_CanExecute" Executed="Enable_Theraphy"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Profile" CanExecute="Profile_CanExecute" Executed="Enable_Profile"></CommandBinding>
 
     </Window.CommandBindings>
 
@@ -32,7 +33,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="   ZDRAVO KLINIKA"/></TextBlock>
 
-                <Button Grid.Column="1" Background="White"  HorizontalAlignment="Right">
+                <Button Grid.Column="1" Background="White"  HorizontalAlignment="Right" Command="cmd:RoutedCommands.Profile">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/profile.jpg" Width="78" Height="38" />
                     </StackPanel>

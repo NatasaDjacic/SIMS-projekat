@@ -12,6 +12,9 @@
 
 
     <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.Edit" CanExecute="Edit_CanExecute" Executed="Edit_Executed" ></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Delete" CanExecute="Delete_CanExecute" Executed="Delete_Executed" ></CommandBinding>
+
         <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" ></CommandBinding>
     </Page.CommandBindings>
 
@@ -57,13 +60,18 @@
                 </DataGridTextColumn>
 
 
-                <DataGridTemplateColumn Header="Rate" Width="85">
+                <DataGridTemplateColumn Header="Rate" Width="90">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate >
                           
                               <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Foreground="White" Background="Orange" Height="40" Click="Button_Click_Rate"  Tag="{Binding reportId}" >
-                                    <mi:PackIcon Kind="Star" Height="24" Width="34"/>
+                                <Button Foreground="White" Background="Red"  Margin="10 5" Padding="5" Command="cmd:RoutedCommands.Delete"  Tag="{Binding reportId}" >
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5"></Setter>
+                                        </Style>
+                                    </Button.Resources>
+                                    <mi:PackIcon Kind="Star" Height="24" Width="24"/>
                                 </Button>
                             </StackPanel>
                         </DataTemplate>
@@ -74,8 +82,13 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate >
                             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button  Background="Green" Foreground="White" Tag="{Binding reportId}"   Height="40" Click="Button_Click_Note">
-                                    <mi:PackIcon Kind="NotePlus" Height="24" Width="34"/>
+                                <Button  Background="Green" Foreground="White" Tag="{Binding reportId}"  Margin="10 5"  Padding="5" Command="cmd:RoutedCommands.Edit">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"></Setter>
+                                    </Style>
+                                    </Button.Resources>
+                                    <mi:PackIcon Kind="NotePlus" Height="24" Width="24"/>
                                 </Button>
                             </StackPanel>
                         </DataTemplate>

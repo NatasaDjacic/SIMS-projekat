@@ -77,12 +77,12 @@ namespace ZdravoKlinika.UI.PatientUI.View
         AuthService authService = GLOBALS.authService;
 
 
-        private void NewReminder_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        private void Save_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }
 
-        private void NewReminder_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             if(name == null) { name = "Alarm " + patientReminderController.GenerateNewId(); }
             PatientReminder reminder = new PatientReminder(patientReminderController.GenerateNewId(), authService.user.JMBG, date, name);
@@ -99,7 +99,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home());
+            NavigationService.Navigate(new Reminders());
         }
 
 

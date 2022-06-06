@@ -33,11 +33,12 @@
 
         <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=RemindersCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="359"   Binding="{Binding name}" >
+                <DataGridTextColumn Header="Name" Width="359"  Binding="{Binding name}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
                             <Setter Property="Padding" Value="5 0" />
+                            <Setter Property="Height" Value="50"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>

@@ -51,8 +51,21 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 }
             }
         }
+        private AppointmentDTO? selectedAppointments;
+        public AppointmentDTO? SelectedAppointment
+        {
+            get => selectedAppointments;
+            set
+            {
+                if (selectedAppointments != value)
+                {
+                    selectedAppointments = value;
+                    OnPropertyChanged("SelectedAppointment");
+                }
+            }
+        }
 
-     
+
 
         public AppointmentController appointmentController = GLOBALS.appointmentController ;
         public AuthService authService=GLOBALS.authService ;
@@ -64,12 +77,19 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         }
 
-        private void Button_Click_Remove(object sender, RoutedEventArgs e) {
-            int id = Convert.ToInt32(((Button)sender).Tag);
-            Console.WriteLine(id);
+
+        private void Delete_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Delete_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            int id = selectedAppointments.id;
+            //Console.WriteLine(id);
             appointmentController.DeleteAppointmentById(id);
 
-            if (authService.user == null) 
+            if (authService.user == null)
             {
 
                 var window = new MainWindow();
@@ -77,21 +97,25 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
                 Application.Current.MainWindow = window;
                 window.Show();
-               
+
             }
-            else 
+            else
             {
-            AppointmentCollection = new List<AppointmentDTO>(appointmentController.GetAppointmentsByPatient(authService.user.JMBG));
+                AppointmentCollection = new List<AppointmentDTO>(appointmentController.GetAppointmentsByPatient(authService.user.JMBG));
             }
-            
         }
 
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
-        {
-            int id = Convert.ToInt32(((Button)sender).Tag);
-            Console.WriteLine(((Button)sender).Tag);
-            NavigationService.Navigate(new EditAppointment(id));
 
+        private void Edit_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Edit_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            int id = selectedAppointments.id;
+           // Console.WriteLine(((Button)sender).Tag);
+            NavigationService.Navigate(new EditAppointment(id));
         }
 
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)

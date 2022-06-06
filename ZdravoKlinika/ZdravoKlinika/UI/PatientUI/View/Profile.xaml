@@ -1,0 +1,114 @@
+﻿<Page x:Class="ZdravoKlinika.UI.PatientUI.View.Profile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI.View"
+      xmlns:cmd="clr-namespace:ZdravoKlinika.UI.PatientUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="595" d:DesignWidth="718"      Title="Rating" >
+
+    
+
+    <DockPanel >
+        <Grid DockPanel.Dock="Top" Margin="0 15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Personal data" Grid.Column="0" FontSize="32" FontWeight="Bold" Margin="0,0,0,10"></TextBlock>
+        </Grid>
+        <Grid DockPanel.Dock="Bottom" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"  Foreground="White" Content="DEMO stop" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
+            <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="DEMO start"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold"  ></Button>
+        </Grid>
+
+        <Border BorderBrush="Black" BorderThickness="1" Height="374" Width="376" Background="LightGray">
+            <Grid Margin="10" Height="374" Width="350" Background="LightGray" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="46" />
+                    <RowDefinition Height="46" />
+                    <RowDefinition Height="46" />
+                    <RowDefinition Height="46" />
+                    <RowDefinition Height="46"   />
+                    <RowDefinition Height="46" />
+                    <RowDefinition Height="46" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label FontStyle="Italic" FontSize="20" Width="92" Content="Name:" Height="40" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="nameTB"> </TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label FontStyle="Italic" FontSize="20" Width="96" Content="Surname:" Height="40" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="surnameTB"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label FontStyle="Italic" FontSize="20" Width="96" Content="JMBG:" Height="40" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="jmbgTB"></TextBlock>
+                </StackPanel>
+                
+                
+                
+                <StackPanel Grid.Row="3" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label FontStyle="Italic" FontSize="20" Width="96" Content="Username:" Height="40" />
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="usernameTB"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label FontStyle="Italic" FontSize="20" Width="96" Content="Phone:" Height="40" />
+                </StackPanel>
+                <StackPanel Grid.Row="4" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="phoneTB"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label FontStyle="Italic" FontSize="20" Width="96" Content="E-mail:" Height="40" />
+                </StackPanel>
+                <StackPanel Grid.Row="5" Grid.Column="1" Width="270" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="emailTB"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="6" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label FontStyle="Italic" FontSize="20" Width="96" Content="Adress:" Height="40" />
+                </StackPanel>
+                <StackPanel Grid.Row="6" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="adressTB"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="7" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label FontStyle="Italic" FontSize="20" Width="96" Content="Password:" Height="40" />
+                </StackPanel>
+                <StackPanel Grid.Row="7" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="passwordTB"></TextBlock>
+                </StackPanel>
+
+
+            </Grid>
+        </Border>
+
+
+    </DockPanel>
+</Page>
+

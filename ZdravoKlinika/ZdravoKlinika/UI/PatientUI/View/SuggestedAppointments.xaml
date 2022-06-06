@@ -11,12 +11,14 @@
 
 
     <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.Save" CanExecute="Save_CanExecute" Executed="Save_Executed" ></CommandBinding>
+
         <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" ></CommandBinding>
     </Page.CommandBindings>
 
     <DockPanel >
         <StackPanel DockPanel.Dock="Top" Margin="10">
-            <TextBlock Text="Appointments" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="48"></TextBlock>
+            <TextBlock Text="Appointments suggestions" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="48"></TextBlock>
         </StackPanel>
         <Grid DockPanel.Dock="Bottom" Margin="10">
             <Grid.ColumnDefinitions>
@@ -57,7 +59,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button  Content="Save"  Margin="0 5 10 5" Padding="10 0" Click="Button_Click_Save" Background="Green" Foreground="White"></Button>
+                                <Button  Content="Save"  Margin="0 5 10 5" Padding="10 0" Command="cmd:RoutedCommands.Save" Background="Green" Foreground="White"></Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

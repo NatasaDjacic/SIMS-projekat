@@ -11,6 +11,9 @@
       Title="Appointments" >
 
     <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.Edit" CanExecute="Edit_CanExecute" Executed="Edit_Executed" ></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Delete" CanExecute="Delete_CanExecute" Executed="Delete_Executed" ></CommandBinding>
+
         <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" ></CommandBinding>
       </Page.CommandBindings>
 
@@ -29,9 +32,16 @@
         </Grid>
 
 
-        <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=AppointmentCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid   Height="432" Width="718" ItemsSource="{Binding AppointmentCollection,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAppointment}"   FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                
+                <DataGridTextColumn Header="ID" Width="40"   Binding="{Binding id}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="Padding" Value="5 0" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Date" Width="205"   Binding="{Binding startTime}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -60,10 +70,20 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Tag="{Binding id}"  Margin="10 5" Padding="5" Click="Button_Click_Remove" Background="Red" Foreground="White">
+                                <Button Tag="{Binding id}"  Margin="10 5" Padding="5" Command="cmd:RoutedCommands.Delete" Background="Red" Foreground="White">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5"></Setter>
+                                        </Style>
+                                    </Button.Resources>
                                     <mi:PackIcon Kind="Delete" Height="24" Width="24"/>
                                 </Button>
-                                <Button Tag="{Binding id}"  Margin="0 5 10 5" Padding="5" Click="Button_Click_Edit" Background="Green" Foreground="White">
+                                <Button Tag="{Binding id}"  Margin="0 5 10 5" Padding="5" Command="cmd:RoutedCommands.Edit" Background="Green" Foreground="White">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5"></Setter>
+                                        </Style>
+                                    </Button.Resources>
                                     <mi:PackIcon Kind="Edit" Height="24" Width="24"/>
                                 </Button>
                             </StackPanel>

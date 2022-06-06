@@ -17,6 +17,15 @@ namespace ZdravoKlinika.UI.PatientUI
                 new KeyGesture(Key.F1),
            }
            );
+        public static readonly RoutedUICommand Profile = new RoutedUICommand(
+           "Profile",
+           "Profile",
+           typeof(RoutedCommands),
+           new InputGestureCollection()
+           {
+                new KeyGesture(Key.F8),
+           }
+           );
 
 
         public static readonly RoutedUICommand Appointments = new RoutedUICommand(
@@ -129,5 +138,37 @@ namespace ZdravoKlinika.UI.PatientUI
             new KeyGesture(Key.S, ModifierKeys.Control),
           }
           );
+
+        public static readonly RoutedUICommand Edit = new RoutedUICommand(
+          "Edit",
+          "Edit",
+          typeof(RoutedCommands),
+          new InputGestureCollection()
+           {
+            new KeyGesture(Key.E, ModifierKeys.Control),
+          }
+          );
+
+        public static readonly RoutedUICommand Delete = new RoutedUICommand(
+         "Delete",
+         "Delete",
+         typeof(RoutedCommands),
+         new InputGestureCollection()
+          {
+            new KeyGesture(Key.D, ModifierKeys.Control),
+         }
+         );
+
+        public static readonly RoutedUICommand Print = new RoutedUICommand(
+         "Print",
+         "Print",
+         typeof(RoutedCommands),
+         new InputGestureCollection()
+          {
+            new KeyGesture(Key.P, ModifierKeys.Control),
+         }
+         );
+
+
     }
 }

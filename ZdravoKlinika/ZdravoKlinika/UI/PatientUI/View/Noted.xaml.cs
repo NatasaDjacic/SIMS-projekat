@@ -18,17 +18,44 @@ using ZdravoKlinika.Service;
 using ZdravoKlinika.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using ZdravoKlinika.UI;
+
 namespace ZdravoKlinika.UI.PatientUI.View
 {
-    public partial class Rated
+    public partial class Noted : Page, INotifyPropertyChanged
     {
 
-        public Rated()
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
         {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+
+        private string note;
+        public string patient_note
+        {
+            get => note;
+            set
+            {
+                if (note != value)
+                {
+                    note = value;
+
+                    OnPropertyChanged("patient_note");
+                }
+            }
+        }
+        public Noted(string patient_note)
+        {
+            this.note = patient_note;
             this.DataContext = this;
             InitializeComponent();
         }
-
 
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -37,7 +64,8 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home());
+            NavigationService.GoBack();
         }
+
     }
 }

@@ -100,19 +100,20 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         }
 
-       
-
-
-        //!!!!!!!!!!!!!!
-        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        private void Save_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            
-            
+            e.CanExecute = true;
+        }
+
+        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+
             if (selectedAppointment.doctorJMBG is null) return;
 
-            
+
             Console.WriteLine(selectedAppointment.doctorJMBG);
-            
+
             try
             {
 
@@ -128,10 +129,10 @@ namespace ZdravoKlinika.UI.PatientUI.View
             {
                 Console.WriteLine(ex.Message);
             }
-
         }
 
 
+        
 
 
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)

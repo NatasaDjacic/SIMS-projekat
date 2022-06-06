@@ -91,25 +91,39 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
 
 
-        private void Button_Click_Rate(object sender, RoutedEventArgs e)
+      
+
+        private void Delete_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            if(markService.GetByReportAndPatient(selectedreport.reportId, authService.user.JMBG)==null)
+            e.CanExecute = true;
+        }
+
+        private void Delete_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (markService.GetByReportAndPatient(selectedreport.reportId, authService.user.JMBG) == null)
             {
                 NavigationService.Navigate(new Rate(selectedreport.reportId));
             }
             else
             {
-                
+
                 Console.WriteLine("Already rated");
                 NavigationService.Navigate(new Marks(selectedreport.reportId));
             }
-          
-
         }
 
-        private void Button_Click_Note(object sender, RoutedEventArgs e)
+
+        private void Edit_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            NavigationService.Navigate(new ReportNote(selectedreport.reportId));
+            e.CanExecute = true;
+        }
+
+        private void Edit_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if(selectedreport.patient_note!= "") { NavigationService.Navigate(new Noted(selectedreport.patient_note)); }
+            else { NavigationService.Navigate(new ReportNote(selectedreport.reportId));}
+
+            
         }
 
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)

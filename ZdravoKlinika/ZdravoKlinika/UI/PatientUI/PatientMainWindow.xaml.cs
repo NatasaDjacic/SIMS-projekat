@@ -124,6 +124,16 @@ namespace ZdravoKlinika.UI.PatientUI {
             ContentFrame.NavigationService.Navigate(new View.Reports());
         }
 
+        private void Profile_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_Profile(object sender, ExecutedRoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Profile());
+        }
+
     }
 }
 

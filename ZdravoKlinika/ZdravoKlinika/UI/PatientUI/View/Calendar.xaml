@@ -9,10 +9,23 @@
       d:DesignHeight="595" d:DesignWidth="718"
 
       Title="schedulePage" Background="#FF0A0A0A">
+
+    <Page.CommandBindings>
+        <CommandBinding Command="cmd:RoutedCommands.Print" CanExecute="Print_CanExecute" Executed="Print_Executed" ></CommandBinding>
+    </Page.CommandBindings>
     <DockPanel>
 
         <StackPanel DockPanel.Dock="Top" Background="White">
+
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Theraphy schedule" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="48"></TextBlock>
+            <Button Margin="0 0 5 5 " Background="CornflowerBlue"  Foreground="White" Tag="{Binding prescriptionId}"  Command="cmd:RoutedCommands.Print" Width="56" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+                <mi:PackIcon Kind="FilePdfBox" Height="24" Width="24"/>
+            </Button>
         </StackPanel>
 
 
@@ -111,8 +124,8 @@
                     <TextBlock Height="39" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Left" Grid.Column="5" Margin="14,31,0,0" Grid.Row="1" ><Run Text="Cink"/></TextBlock>
                     <TextBlock Height="39" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Left" Grid.Column="5" Margin="14,51,0,0" Grid.Row="1" Grid.RowSpan="2" ><Run Text="Imunoglukan"/></TextBlock>
                     <TextBlock Height="39" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Left" Grid.Column="3" Margin="15,44,0,0" Grid.Row="1" ><Run Text="Imunoglukan"/></TextBlock>
-                    <Separator Grid.ColumnSpan="8" Height="19" Margin="0,78,0,64" x:Name="separator4" Width="Auto" Grid.Row="3" Background="Aqua" HorizontalContentAlignment="Stretch" Foreground="Aqua" OpacityMask="Aqua" Grid.RowSpan="2" />
-                    <Separator Margin="-10,76,0,65" x:Name="separator33" Background="Aqua" Grid.ColumnSpan="8" Width="Auto" HorizontalContentAlignment="Stretch" Foreground="Aqua" RenderTransformOrigin="0.502,0.467" Grid.Row="4" Grid.RowSpan="2" />
+                    <Separator Grid.ColumnSpan="8"  Margin="0,4,0,53" x:Name="separator4" Width="Auto" Grid.Row="4" Background="Aqua" HorizontalContentAlignment="Stretch" Foreground="Aqua" OpacityMask="Aqua" />
+                    <Separator Margin="5,0,5,60" x:Name="separator33" Background="Aqua" Grid.ColumnSpan="8" Width="Auto" HorizontalContentAlignment="Stretch" Foreground="Aqua" RenderTransformOrigin="0.502,0.467" Grid.Row="5" />
 
                 </Grid>
 

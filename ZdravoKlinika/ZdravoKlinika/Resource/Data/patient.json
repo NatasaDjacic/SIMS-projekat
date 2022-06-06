@@ -16,7 +16,7 @@
             {
               "prescriptionId": "f686c818-b560-499c-bdcf-a6949e482484",
               "drugId": 1,
-              "patient_note": "",
+              "patient_note": "MKLMKL",
               "drugName": "Aerius",
               "description": "Neki opis za koriscenje",
               "useDuration": 7,
@@ -30,7 +30,7 @@
           "diagnostica": "Stomacni",
           "description": "Povracanje,dijareja",
           "date": "2022-04-06T20:22:10.8242834+02:00",
-          "patient_note": "",
+          "patient_note": "XJKASNX NKAJS",
           "prescriptions": [
             {
               "prescriptionId": "2fb2e944-b901-4355-8bb0-3388674f165e",

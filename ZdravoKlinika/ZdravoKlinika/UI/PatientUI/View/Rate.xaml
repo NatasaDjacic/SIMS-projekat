@@ -10,7 +10,8 @@
       d:DesignHeight="595" d:DesignWidth="718"      Title="Rating" >
 
     <Page.CommandBindings>
-    
+        <CommandBinding Command="cmd:RoutedCommands.Save" CanExecute="Save_CanExecute" Executed="Save_Executed" ></CommandBinding>
+
         <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" ></CommandBinding>
     </Page.CommandBindings>
 
@@ -29,7 +30,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"  Foreground="White" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Cancel" ></Button>
-            <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="Rate"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Click="Click_Rate"></Button>
+            <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="Save"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Save"></Button>
         </Grid>
 
         <Border BorderBrush="Black" BorderThickness="1" Height="374" Width="350" Background="LightGray">
