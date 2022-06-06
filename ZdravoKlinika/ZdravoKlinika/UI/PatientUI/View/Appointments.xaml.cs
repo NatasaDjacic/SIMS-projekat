@@ -17,6 +17,7 @@ using ZdravoKlinika.Controller;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Model.DTO;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using ZdravoKlinika.UI;
@@ -37,8 +38,8 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-        private ObservableCollection<Appointment> appointments;
-        public ObservableCollection<Appointment> AppointmentCollection
+        private List<AppointmentDTO> appointments;
+        public List<AppointmentDTO> AppointmentCollection
         {
             get => appointments;
             set
@@ -50,11 +51,14 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 }
             }
         }
+
+     
+
         public AppointmentController appointmentController = GLOBALS.appointmentController ;
         public AuthService authService=GLOBALS.authService ;
         public Appointments()
         {
-            AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
+            AppointmentCollection = new List<AppointmentDTO>(appointmentController.GetAppointmentsByPatient(authService.user.JMBG));
             this.DataContext = this;
             InitializeComponent();
 
@@ -77,7 +81,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
             else 
             {
-            AppointmentCollection = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
+            AppointmentCollection = new List<AppointmentDTO>(appointmentController.GetAppointmentsByPatient(authService.user.JMBG));
             }
             
         }

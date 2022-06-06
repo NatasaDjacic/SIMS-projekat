@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Model.DTO;
 using System.Linq;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Repository;
@@ -29,6 +30,26 @@ namespace ZdravoKlinika.Service {
 
         public List<Appointment> GetAllAppointments() {
             return this.appointmentRepository.GetAll();
+        }
+
+        public List<AppointmentDTO> GetAppointmentsByPatient(string patientJMBG)
+        {
+            var allAppointmentsByPatient = this.GetAllAppointments();
+            List<AppointmentDTO> DTOappointments = new List<AppointmentDTO>();
+            foreach (var appointment in allAppointmentsByPatient) 
+            {
+
+                if(appointment.patientJMBG==patientJMBG)
+                {
+                var appointmentDTO = new AppointmentDTO(appointment.id, appointment.startTime, appointment.doctorJMBG, appointment.roomId,this.doctorService.GetById(appointment.doctorJMBG).firstName, this.doctorService.GetById(appointment.doctorJMBG).lastName);
+                DTOappointments.Add(appointmentDTO);
+                }
+                
+            }
+
+            return DTOappointments;
+
+
         }
 
         public List<Appointment> GetAllInInterval(DateTime start, DateTime end) {

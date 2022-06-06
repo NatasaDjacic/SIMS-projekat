@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,8 +22,9 @@ using ZdravoKlinika.UI;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
-    public partial class Perscriptions : Page, INotifyPropertyChanged
+    public partial class ReportNote: Page, INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -34,30 +34,49 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
 
-        private ObservableCollection<Prescription> perscriptions;
-        public ObservableCollection<Prescription> PrescriptionsCollection
+
+
+        private string note;
+        public string Notes
         {
-            get => perscriptions;
+            get => note;
             set
             {
-                if (perscriptions != value)
+                if (note != value)
                 {
-                    perscriptions = value;
-                    OnPropertyChanged("PrescriptionsCollection");
+                    note = value;
+
+                    OnPropertyChanged("Notes");
                 }
             }
         }
 
-        PrescriptionService prescriptionService = GLOBALS.prescriptionService;
-        AuthService authService = GLOBALS.authService;
-        PatientController patientController = GLOBALS.patientController;
-        public Perscriptions()
+
+        public Guid reportId;
+
+        public ReportNote(Guid reportId)
         {
-           // PrescriptionsCollection = new ObservableCollection<Prescription>(prescriptionService.GetAll(patientController.GetById(authService.user.JMBG)));
+            this.note = note;
+            this.reportId = reportId;
             this.DataContext = this;
             InitializeComponent();
-
         }
+
+        ReportService reportService = GLOBALS.reportService;
+        AuthService authService = GLOBALS.authService;
+        PatientService patientService = GLOBALS.patientService;
+        private void Save_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            reportService.SavingPatientNote(patientService.GetById(authService.user.JMBG), reportId, note);
+           
+            NavigationService.Navigate(new Reports());
+        }
+
 
 
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -67,11 +86,10 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home());
+            NavigationService.Navigate(new Reports());
         }
+
 
     }
 }
-
-
 

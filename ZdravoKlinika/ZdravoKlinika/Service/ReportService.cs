@@ -27,10 +27,14 @@ namespace ZdravoKlinika.Service
             return patientService.Update(patient);
         }
 
-       
 
-        
+        public void SavingPatientNote(Patient patient, Guid reportId, string note)
+        {
+            var report = patient.medicalRecord.reports.Find(r => r.reportId == reportId);
+            report.patient_note = note;
 
-        
+            patientService.Update(patient);
+        }
+
     }
 }

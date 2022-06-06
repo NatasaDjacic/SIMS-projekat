@@ -10,6 +10,8 @@ namespace ZdravoKlinika.Model
     {
         public Guid prescriptionId { get; set; }
         public int drugId { get; set; }
+        public string patient_note { get; set; }
+        public string drugName { get; set; }
         public string description { get; set; }
 
         // 7 days 3 times a day 1 tablet 
@@ -18,14 +20,16 @@ namespace ZdravoKlinika.Model
         public int useFrequency { get; set; }
         public double useAmount { get; set; }
 
-        public Prescription(Guid pId, int drugId, string description, int useDuration, int useFrequency, double useAmount)
+        public Prescription(Guid pId, int drugId, string description, int useDuration, int useFrequency, double useAmount,string drugName)
         {
             this.prescriptionId = pId;
             this.drugId = drugId;
+            this.drugName = drugName;
             this.description = description;
             this.useDuration = useDuration;
             this.useFrequency = useFrequency;
             this.useAmount = useAmount;
+            this.patient_note="";
         }
     }
 }

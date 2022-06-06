@@ -36,6 +36,10 @@ namespace ZdravoKlinika.Controller {
             return appointmentService.GetAllAppointments();
         }
 
+        public List<AppointmentDTO> GetAppointmentsByPatient(string patientJMBG)
+        {
+            return appointmentService.GetAppointmentsByPatient(patientJMBG);
+        }
 
         public Appointment? GetAppointmentById(int id) {
             return appointmentService.GetAppointmentById(id);

@@ -14,6 +14,9 @@
         <CommandBinding Command="cmd:RoutedCommands.New_Appointment" CanExecute="New_Appointment_CanExecute" Executed="Enable_New_Appointment"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.Notifications" CanExecute="Notifications_CanExecute" Executed="Enable_Notifications"></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.Log_Out" CanExecute="Log_Out_CanExecute" Executed="Enable_Log_Out"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Reports" CanExecute="Reports_CanExecute" Executed="Enable_Reports"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Prescriptions" CanExecute="Prescriptions_CanExecute" Executed="Enable_Prescriptions"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.Theraphy" CanExecute="Theraphy_CanExecute" Executed="Enable_Theraphy"></CommandBinding>
 
     </Window.CommandBindings>
 
@@ -68,19 +71,19 @@
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Zakazivanje"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Width="230" Height="70" Margin="5,296,10,248" Background="White">
+                <Button Width="230" Height="70" Margin="5,296,10,248" Background="White" Command="cmd:RoutedCommands.Theraphy">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/teraphy.jpg" />
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Terapija"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Width="230" Height="70" Margin="5,366,10,178" Background="White" Click="Click_reports">
+                <Button Width="230" Height="70" Margin="5,366,10,178" Background="White" Command="cmd:RoutedCommands.Reports">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/report.jpg" />
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Izvestaji"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Width="230" Height="70" Margin="5,436,10,108" Background="White">
+                <Button Width="230" Height="70" Margin="5,436,10,108" Background="White" Command="cmd:RoutedCommands.Prescriptions">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resource/Image/recipe.jpg" />
                         <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Recepti"/></TextBlock>

@@ -107,7 +107,10 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         }
 
-
+        private void Button_Click_Note(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ReportNote(selectedreport.reportId));
+        }
 
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {

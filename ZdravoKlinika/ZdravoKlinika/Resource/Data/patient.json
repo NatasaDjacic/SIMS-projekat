@@ -11,11 +11,13 @@
           "diagnostica": "Prehlada",
           "description": "Temp,kasalj",
           "date": "2022-05-06T17:00:30.2844091+02:00",
-          "patient_note": "",
+          "patient_note": "note1",
           "prescriptions": [
             {
               "prescriptionId": "f686c818-b560-499c-bdcf-a6949e482484",
               "drugId": 1,
+              "patient_note": "",
+              "drugName": "Aerius",
               "description": "Neki opis za koriscenje",
               "useDuration": 7,
               "useFrequency": 3,
@@ -33,6 +35,8 @@
             {
               "prescriptionId": "2fb2e944-b901-4355-8bb0-3388674f165e",
               "drugId": 1,
+              "patient_note": "",
+              "drugName": "Aerius",
               "description": "Neki opis za koriscenje",
               "useDuration": 7,
               "useFrequency": 3,
@@ -50,6 +54,8 @@
             {
               "prescriptionId": "0ca9678e-0b90-4085-ae8f-c6f3d0d87cba",
               "drugId": 1,
+              "patient_note": "",
+              "drugName": "Aerius",
               "description": "Neki opis za koriscenje",
               "useDuration": 7,
               "useFrequency": 3,
@@ -83,6 +89,8 @@
             {
               "prescriptionId": "ddee521f-1c09-4484-a7eb-2a8c04547ccd",
               "drugId": 1,
+              "patient_note": "",
+              "drugName": "Aerius",
               "description": "Neki opis za koriscenje",
               "useDuration": 7,
               "useFrequency": 3,
