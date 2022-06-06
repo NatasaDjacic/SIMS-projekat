@@ -42,12 +42,12 @@
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
                 <Label>Equipment name*</Label>
                 <TextBox x:Name="EquipmentNameTB" Text="{Binding EquipmentName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
-                <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=EquipmentNameTB}" Foreground="Red"/>
+                <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=EquipmentNameTB}" Foreground="Red"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
                 <Label>Quantity*</Label>
                 <TextBox x:Name="QuantityTB" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
-                <TextBlock FontSize="12" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=QuantityTB}" Foreground="Red"/>
+                <TextBlock FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=QuantityTB}" Foreground="Red"/>
             </StackPanel>
             <Button Grid.Row="2" Grid.Column="0" Width="100" Background="Red" Foreground="White" Click="Button_Click">Cancel</Button>
             <Button Grid.Row="2" Grid.Column="2" Width="100" Background="Green" Foreground="White" Click="Button_Click_1" Content="Order">

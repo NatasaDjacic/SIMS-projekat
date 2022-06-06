@@ -9,5 +9,16 @@
       "type": "Dinamicka",
       "quantity": 100
     }
+  },
+  {
+    "id": 2,
+    "orderArrival": "2022-06-09T17:19:24.7547307+02:00",
+    "equipment": {
+      "id": -1,
+      "name": "Igle",
+      "roomId": "",
+      "type": "Dinamicka",
+      "quantity": 100
+    }
   }
 ]
