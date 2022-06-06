@@ -45,7 +45,37 @@ namespace ZdravoKlinika.UI.PatientUI
            typeof(RoutedCommands),
            new InputGestureCollection()
             {
-            new KeyGesture(Key.F8),
+            new KeyGesture(Key.F7),
+           }
+           );
+
+        public static readonly RoutedUICommand Prescriptions = new RoutedUICommand(
+           "Prescriptions",
+           "Prescriptions",
+           typeof(RoutedCommands),
+           new InputGestureCollection()
+            {
+            new KeyGesture(Key.F6),
+           }
+           );
+
+        public static readonly RoutedUICommand Reports = new RoutedUICommand(
+           "Reports",
+           "Reports",
+           typeof(RoutedCommands),
+           new InputGestureCollection()
+            {
+            new KeyGesture(Key.F5),
+           }
+           );
+
+        public static readonly RoutedUICommand Theraphy = new RoutedUICommand(
+           "Theraphy",
+           "Theraphy",
+           typeof(RoutedCommands),
+           new InputGestureCollection()
+           {
+                new KeyGesture(Key.F4),
            }
            );
 
@@ -55,7 +85,7 @@ namespace ZdravoKlinika.UI.PatientUI
           typeof(RoutedCommands),
           new InputGestureCollection()
            {
-            new KeyGesture(Key.F10),
+            new KeyGesture(Key.F9),
           }
           );
 

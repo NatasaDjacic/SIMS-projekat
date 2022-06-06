@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mi="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:ZdravoKlinika.UI.PatientUI.View"
       xmlns:cmd="clr-namespace:ZdravoKlinika.UI.PatientUI"
       mc:Ignorable="d" 
@@ -37,7 +38,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Width="200"   Binding="{Binding description}" >
+                <DataGridTextColumn Header="Description" Width="170"   Binding="{Binding description}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -46,7 +47,7 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 
-                <DataGridTextColumn Header="Diagnostica" Width="180"   Binding="{Binding diagnostica}" >
+                <DataGridTextColumn Header="Diagnostica" Width="140"   Binding="{Binding diagnostica}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -55,14 +56,27 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
-                <DataGridTemplateColumn x:Name="rrr" Header="Actions" Width="*">
+
+                <DataGridTemplateColumn Header="Rate" Width="85">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate >
+                          
+                              <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Foreground="White" Background="Orange" Height="40" Click="Button_Click_Rate"  Tag="{Binding reportId}" >
+                                    <mi:PackIcon Kind="Star" Height="24" Width="34"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Add note" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate >
                             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button   Content="Rate"  Margin="0 5 10 5" Padding="10 0" Click="Button_Click_Rate" Background="Green" Foreground="White">
-                                    
+                                <Button  Background="Green" Foreground="White" Tag="{Binding reportId}"   Height="40" Click="Button_Click_Note">
+                                    <mi:PackIcon Kind="NotePlus" Height="24" Width="34"/>
                                 </Button>
-                              
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

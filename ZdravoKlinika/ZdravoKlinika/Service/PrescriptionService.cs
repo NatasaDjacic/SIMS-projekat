@@ -26,7 +26,27 @@ namespace ZdravoKlinika.Service
             report.prescriptions.Add(prescription);
             return patientService.Update(patient);
         }
-        
+
+        public List<Prescription>? GetAllPrescriptions(Patient patient)
+        { 
+            if(patient != null) {
+            
+                var patientPrescriptions = patient.medicalRecord.reports.SelectMany(report => report.prescriptions).ToList();
+                return patientPrescriptions;
+            }
+
+            return null;
+        }
+
+        public void SavingPatientNote(Patient patient, Guid prescriptionId,string note)
+        {
+            var patientPrescriptions = patient.medicalRecord.reports.SelectMany(report => report.prescriptions).ToList();
+            var prescription=patientPrescriptions.Find(r => r.prescriptionId == prescriptionId);
+            prescription.patient_note=note;
+           
+           patientService.Update(patient);
+            Console.WriteLine(prescription.patient_note);
+        }
 
 
     }

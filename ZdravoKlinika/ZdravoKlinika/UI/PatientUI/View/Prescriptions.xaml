@@ -1,8 +1,9 @@
-﻿<Page x:Class="ZdravoKlinika.UI.PatientUI.View.Perscriptions"
+﻿<Page x:Class="ZdravoKlinika.UI.PatientUI.View.Prescriptions"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mi="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:cmd="clr-namespace:ZdravoKlinika.UI.PatientUI"
       mc:Ignorable="d" 
       d:DesignHeight="595" d:DesignWidth="718"
@@ -26,9 +27,9 @@
 
 
 
-        <DataGrid   Height="432" Width="718" ItemsSource="{Binding Path=PrescriptionsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="18" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid   Height="432" Width="718"  SelectedItem="{Binding SelectedPrescription}" ItemsSource="{Binding Path=PrescriptionsCollection, UpdateSourceTrigger=PropertyChanged}"  FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="120" Binding="{Binding id}" >
+                <DataGridTextColumn Header="Name" Width="120" Binding="{Binding drugName}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -36,7 +37,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Width="250"   Binding="{Binding description}" >
+                <DataGridTextColumn Header="Description" Width="225"   Binding="{Binding description}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="VerticalAlignment" Value="Center" />
@@ -44,16 +45,8 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Days" Width="50"   Binding="{Binding useDuration}" >
-                   
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Times per day" Width="125"   Binding="{Binding useFrequency}" >
+             
+                <DataGridTextColumn Header="Times per day" Width="163"   Binding="{Binding useFrequency}" >
 
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -63,7 +56,7 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="Amount" Width="*"   Binding="{Binding useAmount}" >
+                <DataGridTextColumn Header="Amount" Width="100"   Binding="{Binding useAmount}" >
 
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -76,7 +69,11 @@
                 <DataGridTemplateColumn Header="Actions" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button  Background="Green" Foreground="White" Tag="{Binding prescriptionId}"   Height="40" Click="Button_Click_Note">
+                                    <mi:PackIcon Kind="NotePlus" Height="24" Width="34"/>
+                                </Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

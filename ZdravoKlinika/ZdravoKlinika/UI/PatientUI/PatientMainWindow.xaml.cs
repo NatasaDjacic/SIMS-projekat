@@ -68,6 +68,16 @@ namespace ZdravoKlinika.UI.PatientUI {
             ContentFrame.NavigationService.Navigate(new View.Reminders());
         }
 
+        private void Theraphy_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_Theraphy(object sender, ExecutedRoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Calendar());
+        }
+
         private void Log_Out_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -94,7 +104,22 @@ namespace ZdravoKlinika.UI.PatientUI {
 
         }
 
-        private void Click_reports(object sender, RoutedEventArgs e)
+        private void Prescriptions_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_Prescriptions(object sender, ExecutedRoutedEventArgs e)
+        {
+            ContentFrame.NavigationService.Navigate(new View.Prescriptions());
+        }
+
+        private void Reports_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Enable_Reports(object sender, ExecutedRoutedEventArgs e)
         {
             ContentFrame.NavigationService.Navigate(new View.Reports());
         }
