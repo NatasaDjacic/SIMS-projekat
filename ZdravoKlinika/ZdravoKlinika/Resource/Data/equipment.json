@@ -2,43 +2,50 @@
   {
     "id": 1,
     "name": "Operacijski sto",
-    "roomId": "AH7",
+    "roomId": "SD1",
     "type": "Staticka",
     "quantity": 1
   },
   {
     "id": 2,
     "name": "Operacijski sto",
-    "roomId": "AH7",
+    "roomId": "SD1",
     "type": "Staticka",
     "quantity": 1
   },
   {
     "id": 3,
     "name": "Polica sa instrumentima",
-    "roomId": "6",
+    "roomId": "4",
     "type": "Staticka",
     "quantity": 1
   },
   {
     "id": 4,
     "name": "Pomocni sto",
-    "roomId": "5",
+    "roomId": "IDN1",
     "type": "Staticka",
     "quantity": 1
   },
   {
     "id": 7,
     "name": "Stalak za infuziju",
-    "roomId": "AH2",
+    "roomId": "IDN2",
     "type": "Dinamicka",
     "quantity": 100
   },
   {
     "id": 8,
     "name": "Igle",
-    "roomId": "",
+    "roomId": "ID1",
     "type": "Dinamicka",
     "quantity": 100
+  },
+  {
+    "id": 9,
+    "name": "Spric",
+    "roomId": "ID1",
+    "type": "Dinamicka",
+    "quantity": 20
   }
 ]

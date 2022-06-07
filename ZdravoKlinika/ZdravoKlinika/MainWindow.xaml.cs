@@ -44,7 +44,10 @@ namespace ZdravoKlinika
             Window window;
             if(role == ROLE.MANAGER) {
                 window = new UI.ManagerUI.ManagerMainWindow();
-            }else if(role == ROLE.SECRETARY) {
+                Properties.Settings.Default.ColorMode = "Light";
+                Properties.Settings.Default.Save();
+            }
+            else if(role == ROLE.SECRETARY) {
                 window = new UI.SecretaryUI.SecretaryMainWindow();
             }else if(role == ROLE.PATIENT) {
                 window = new UI.PatientUI.PatientMainWindow();
