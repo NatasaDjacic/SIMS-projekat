@@ -14,5 +14,37 @@
     "patientJMBG": "1231231231231",
     "doctorJMBG": "1111111111111",
     "reportId": "4177a3c9-2366-4849-984d-0ecb7fe36a29"
+  },
+  {
+    "id": 3,
+    "hospitalMark": 4,
+    "doctorMark": 4,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "1111111111111",
+    "reportId": "e1132bfd-afa3-4017-ac7a-804f9b935442"
+  },
+  {
+    "id": 4,
+    "hospitalMark": 5,
+    "doctorMark": 4,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "1111111111111",
+    "reportId": "05223471-dff1-4dcd-b9d3-e789e016d1f0"
+  },
+  {
+    "id": 5,
+    "hospitalMark": 5,
+    "doctorMark": 5,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "1111111111111",
+    "reportId": "7bbf9689-ffba-4c3c-8387-fc275be34c3f"
+  },
+  {
+    "id": 6,
+    "hospitalMark": 4,
+    "doctorMark": 4,
+    "patientJMBG": "1231231231231",
+    "doctorJMBG": "1111111111111",
+    "reportId": "e2b7be73-ecc8-4785-a26e-866f0db7d195"
   }
 ]
