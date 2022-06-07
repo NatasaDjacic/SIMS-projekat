@@ -31,8 +31,7 @@ namespace ZdravoKlinika.Service
                 if (equipMoving.date <= System.DateTime.Now) {
                     MoveEquip(equipMoving);
                 }
-            }
-           
+            }          
         }
         private void MoveEquip(EquipMoving equipMoving)
         {
@@ -80,8 +79,6 @@ namespace ZdravoKlinika.Service
         {
             return this.equipMovingRepository.DeleteById(id);
         }
-
-       
         public int GenerateNewId()
         {
             return this.equipMovingRepository.GenerateNewId();

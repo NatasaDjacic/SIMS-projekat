@@ -62,5 +62,13 @@
     "duration": 19,
     "description": "Merging",
     "endTime": "2022-06-19T19:30:00"
+  },
+  {
+    "id": 9,
+    "roomId": "IDN1",
+    "startTime": "2022-06-06T03:00:00",
+    "duration": 2,
+    "description": "Pera",
+    "endTime": "2022-06-06T05:00:00"
   }
 ]

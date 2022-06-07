@@ -23,11 +23,6 @@ namespace ZdravoKlinika.Service {
             this.authService = authService;
         }
 
-       
-       
-        
-       
-
         public List<Appointment> GetAllAppointments() {
             return this.appointmentRepository.GetAll();
         }
@@ -48,7 +43,6 @@ namespace ZdravoKlinika.Service {
             }
 
             return DTOappointments;
-
 
         }
 
@@ -100,20 +94,10 @@ namespace ZdravoKlinika.Service {
 
             old.startTime = newtime;
 
-          //  int number = cancellationService.GetCancellationNumber(authService.user.JMBG, DateTime.Now);
-
-          /*  if(number>=4) 
-            {   authService.Restrict(); 
-                Console.WriteLine("RESTRICTED!");
-                return false; 
-            }*/
-
             Cancellation cancellation = new Cancellation(cancellationService.GenerateNewId(),authService.user.JMBG, DateTime.Now);
             cancellationService.SaveCancellation(cancellation);
             
             return !this.appointmentRepository.Save(old);
-
-
         }
 
         public Appointment? GetDoctorsNextAppointment(string doctorJMBG) {

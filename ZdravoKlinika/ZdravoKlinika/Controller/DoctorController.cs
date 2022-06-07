@@ -8,8 +8,6 @@ using System.Collections.Generic;
 namespace ZdravoKlinika.Controller {
     public class DoctorController {
         public DoctorService doctorService;
-        // Information from authService
-        public readonly string DOCTORJMBG = "1111111111111";
         public DoctorController(DoctorService doctorService) {
             this.doctorService = doctorService;
         }

@@ -39,12 +39,8 @@ namespace ZdravoKlinika.Service
         }
 
         public bool Update(Room room)
-        {
-           
-            
-            return !this.roomRepository.Save(room);
-            
-          
+        {     
+            return !this.roomRepository.Save(room);    
         }
 
         public bool Delete(string roomId)

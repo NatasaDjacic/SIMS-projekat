@@ -25,8 +25,10 @@ namespace ZdravoKlinika.Service {
         public EmergencyAppointmentSuggestionDTO createOrSuggestEmergencyAppointment(string patientJMBG, string specialization) {
 
             EmergencyAppointmentSuggestionDTO emergencyAppointmentReturn = new EmergencyAppointmentSuggestionDTO();
+
             List<Doctor> doctors = this.doctorService.GetAll().FindAll(doctor => doctor.specialization == specialization);
             string? roomId = this.getFreeRoomIdsForEmergency().FirstOrDefault();
+
             foreach(var doctor in doctors) {
                 var appointment = this.appointmentService.GetDoctorsNextAppointment(doctor.JMBG);
                 if(appointment is null || appointment.startTime >= DateTime.Now.AddMinutes(EMERGENCY_APPOINTMENT_DURATION)) {
@@ -36,6 +38,7 @@ namespace ZdravoKlinika.Service {
                     emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Add(MoveAppointmentSuggestionPair(appointment, patientJMBG));
                 }
             }
+
             if (emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Count == 0) throw new Exception("Emergency appointment can not be created or suggested");
             emergencyAppointmentReturn.pairsOfAppointmentAndMovedAppointment.Sort((a, b) => a.Item2.startTime.CompareTo(b.Item2.startTime));
 

@@ -41,7 +41,7 @@ namespace ZdravoKlinika.Service {
             return this.MakeMeetingSuggestionFromBusyIntervals(busyIntervals, roomId, title, attendeesJMBG, startTime, endTime, duration);
         }
         public List<Meeting> MakeMeetingSuggestionFromBusyIntervals(List<DateTime[]> busyIntervals, string roomId, string title, List<string> attendeesJMBG, DateTime startTime, DateTime endTime, int duration) {
-            var startTimes = this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(busyIntervals, startTime, endTime, duration));
+            var startTimes = this.ConvertFromBusyIntervalsToDateTimes(busyIntervals, startTime, endTime, duration);
 
             List<Meeting> meetings = new List<Meeting>();
             startTimes.ForEach(startTime => {
@@ -56,10 +56,10 @@ namespace ZdravoKlinika.Service {
         public List<Renovation> GetRenovationSuggestions(string roomId, DateTime startTime, DateTime endTime, int duration) {
             List<Appointment> appointments = this.appointmentService.GetAllInInterval(startTime, endTime);
             List<DateTime[]> busyIntervals = this.getRoomBusyInterval(roomId, appointments, startTime, endTime);
-            var renStartTime = this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(busyIntervals, startTime, endTime, duration * 60));
+            var renovationStartTimes = this.ConvertFromBusyIntervalsToDateTimes(busyIntervals, startTime, endTime, duration * 60);
             List<Renovation> renovations = new List<Renovation>();
-            foreach(var rs in renStartTime) {
-                renovations.Add(new Renovation(-1, roomId, rs, duration, ""));
+            foreach(var renovationStartTime in renovationStartTimes) {
+                renovations.Add(new Renovation(-1, roomId, renovationStartTime, duration, ""));
             }
             return renovations;
         }
@@ -69,13 +69,11 @@ namespace ZdravoKlinika.Service {
             List<DateTime[]> busyIntervalsFirstRoom = this.getRoomBusyInterval(firstRoomId, appointments, startTime, endTime);
             List<DateTime[]> busyIntervalsSecondRoom = this.getRoomBusyInterval(secondRoomId, appointments, startTime, endTime);
             List<DateTime[]> busyIntervalsBothRoom = this.mergeListOfIntervals(busyIntervalsFirstRoom, busyIntervalsSecondRoom);
-            //List<DateTime[]> busyIntervalsBothRoom = busyIntervalsFirstRoom.Intersect<>(busyIntervalsSecondRoom);
-            var renStartTime = this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(busyIntervalsBothRoom, startTime, endTime, duration * 60));
+            var renovationStartTimes = this.ConvertFromBusyIntervalsToDateTimes(busyIntervalsBothRoom, startTime, endTime, duration * 60);
             List<Renovation> renovations = new List<Renovation>();
-            foreach (var rs in renStartTime)
+            foreach (var renovationStartTime in renovationStartTimes)
             {
-                //renovations.Add(new Renovation(-1, firstRoomId, rs, duration, ""));
-                renovations.Add(new Renovation(-1, secondRoomId, rs, duration, ""));
+                renovations.Add(new Renovation(-1, secondRoomId, renovationStartTime, duration, ""));
             }
             return renovations;
         }
@@ -90,21 +88,27 @@ namespace ZdravoKlinika.Service {
             return app;
         }
         public List<Appointment> GetAppointmentSuggestions(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration, string priority, AppointmentType appointmentType) {
-            List<Appointment> result = new List<Appointment>();
+            
             List<(Doctor, List<DateTime>)> startDateTimes = new List<(Doctor, List<DateTime>)>();
             Doctor? doctor = this.doctorService.GetById(doctorJMBG);
 
             if (doctor == null) throw new Exception("Doctor with JMBG not found");
 
             startDateTimes.Add((doctor, this.GetAppointmentStartSuggestions(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration)));
-            if (startDateTimes[0].Item2.Count == 0) {
-                startDateTimes.Clear();
-                if (priority == "time") {
-                    startDateTimes = this.GetAppointmentStartSuggestionsWithTimePriority(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration);
-                } else if (priority == "doctor") {
-                    startDateTimes.Add((doctor, this.GetAppointmentStartSuggestionsWithDoctorPriority(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration)));
-                }
+            if (startDateTimes[0].Item2.Count != 0)
+                return ConvertFromStartTimesToAppointments(startDateTimes, patientJMBG, roomId, duration, appointmentType);
+
+            startDateTimes.Clear();
+            if (priority == "time") {
+                startDateTimes = this.GetAppointmentStartSuggestionsWithTimePriority(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration);
+            } else if (priority == "doctor") {
+                startDateTimes.Add((doctor, this.GetAppointmentStartSuggestionsWithDoctorPriority(patientJMBG, doctorJMBG, roomId, startTime, endTime, duration)));
             }
+            
+            return ConvertFromStartTimesToAppointments(startDateTimes, patientJMBG, roomId, duration, appointmentType);
+        }
+        public List<Appointment> ConvertFromStartTimesToAppointments(List<(Doctor, List<DateTime>)> startDateTimes,string patientJMBG, string roomId, int duration, AppointmentType appointmentType) {
+            List<Appointment> result = new List<Appointment>();
             foreach (var pair in startDateTimes) {
                 foreach (var start in pair.Item2) {
                     result.Add(new Appointment(-1, start, duration, false, appointmentType, patientJMBG, pair.Item1.JMBG, pair.Item1.roomId ?? roomId));
@@ -121,7 +125,7 @@ namespace ZdravoKlinika.Service {
             busyIntervals = this.mergeListOfIntervals(busyIntervals, this.getPatientBusyInterval(patientJMBG, appointments, startTime, endTime));
             busyIntervals = this.mergeListOfIntervals(busyIntervals, this.getDoctorBusyInterval(doctorJMBG, appointments, startTime, endTime));
             
-            return this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(busyIntervals, startTime, endTime, duration));
+            return this.ConvertFromBusyIntervalsToDateTimes(busyIntervals, startTime, endTime, duration);
         }
 
         private List<(Doctor, List<DateTime>)> GetAppointmentStartSuggestionsWithTimePriority(string patientJMBG, string doctorJMBG, string roomId, DateTime startTime, DateTime endTime, int duration) {
@@ -288,7 +292,7 @@ namespace ZdravoKlinika.Service {
         }
         private List<DateTime> ConvertFromIntervalsToDateTimes(List<DateTime[]> intervals) {
 
-            const int ST_SHIFT = 30;
+            const int ST_SHIFT = 60;
             const int ST_MAX_PER_INTERVAL = 5;
 
             var startDateTimes = new List<DateTime>();
@@ -304,8 +308,10 @@ namespace ZdravoKlinika.Service {
         }
         private List<DateTime[]> ConvertFromBusyToFreeIntervals(List<DateTime[]> intervals, DateTime startTime, DateTime endTime, int duration) {
             if (intervals.Count == 0) return new List<DateTime[]>() { new DateTime[] { startTime, endTime.AddMinutes(-duration) } };
+
             if (intervals[0][0] > startTime) intervals.Insert(0, new DateTime[] { startTime.AddMinutes(-duration), startTime });
             if (intervals[intervals.Count - 1][1] < endTime) intervals.Add(new DateTime[] { endTime.AddMinutes(duration), endTime });
+
             for (int i = 0; i < intervals.Count - 1; i++) {
                 intervals[i][0] = intervals[i][1];
                 intervals[i][1] = intervals[i + 1][0].AddMinutes(-duration);
@@ -313,6 +319,10 @@ namespace ZdravoKlinika.Service {
             // Remove intervals that are not valid
             intervals.RemoveAt(intervals.Count - 1);
             return intervals.FindAll(dt => dt[1] >= dt[0]);
+        }
+
+        private List<DateTime> ConvertFromBusyIntervalsToDateTimes(List<DateTime[]> intervals, DateTime startTime, DateTime endTime, int duration) {
+            return this.ConvertFromIntervalsToDateTimes(this.ConvertFromBusyToFreeIntervals(intervals, startTime, endTime, duration));
         }
         #endregion
 

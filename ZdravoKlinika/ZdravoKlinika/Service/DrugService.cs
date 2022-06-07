@@ -30,7 +30,6 @@ namespace ZdravoKlinika.Service
             return drugRepository.GetAll();
         }
 
-
         public bool Create(Drug drug)
         {
             if (this.drugRepository.GetById(drug.drugId) is null)
@@ -51,6 +50,5 @@ namespace ZdravoKlinika.Service
             }
             return false;
         }
-
     }
 }
