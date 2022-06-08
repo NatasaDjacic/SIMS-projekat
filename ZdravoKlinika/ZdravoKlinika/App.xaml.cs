@@ -43,15 +43,6 @@ namespace ZdravoKlinika
             });*/
 
 
-            var patient = GLOBALS.patientController.GetById("1231231231231");
-            if(patient != null) {
-                // GLOBALS.authService.user.JMBG;
-                var patientPrescriptions = patient.medicalRecord.reports.SelectMany(report => report.prescriptions).ToList();
-                patientPrescriptions.ForEach(prescription => {
-                    Console.WriteLine(String.Format("{0}", prescription.prescriptionId));
-                });
-            }
-
         }
     }
 }
