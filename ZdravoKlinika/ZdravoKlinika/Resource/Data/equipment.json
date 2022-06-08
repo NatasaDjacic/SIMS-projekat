@@ -47,5 +47,12 @@
     "roomId": "ID1",
     "type": "Dinamicka",
     "quantity": 20
+  },
+  {
+    "id": 10,
+    "name": "Cackalice",
+    "roomId": "",
+    "type": "Dinamicka",
+    "quantity": 100
   }
 ]

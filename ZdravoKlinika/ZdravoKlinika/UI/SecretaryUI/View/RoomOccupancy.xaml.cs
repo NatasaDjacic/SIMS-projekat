@@ -119,7 +119,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             var appointments = appointmentService.GetAllInInterval(fromDate, toDate);
-            var roomBusyIntervals = suggestionService.getRoomBusyInterval(selectedRoom.roomId, appointments, fromDate, toDate);
+            var roomBusyIntervals = suggestionService.GetRoomBusyInterval(selectedRoom.roomId, appointments, fromDate, toDate);
             this.Labels.Clear();
             this.SeriesCollection.Clear();
             var values = new ChartValues<double>();
@@ -140,7 +140,7 @@ namespace ZdravoKlinika.UI.SecretaryUI.View {
             // Must have write permissions to the path folder
 
             var appointments = appointmentService.GetAllInInterval(fromDate, toDate);
-            var roomBusyIntervals = suggestionService.getRoomBusyInterval(selectedRoom.roomId, appointments, fromDate, toDate);
+            var roomBusyIntervals = suggestionService.GetRoomBusyInterval(selectedRoom.roomId, appointments, fromDate, toDate);
             var counts = new List<int>();
             for (var temp = fromDate; temp <= toDate; temp = temp.AddDays(1)) {
                 counts.Add(0);

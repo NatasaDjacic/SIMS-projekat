@@ -66,7 +66,7 @@ namespace ZdravoKlinika.Service {
                 .Select(room => room.roomId)
                 .ToList();
 
-            return this.suggestionService.getFreeRoomsInInterval(roomIds, DateTime.Now, DateTime.Now.AddMinutes(EMERGENCY_APPOINTMENT_DURATION));
+            return this.suggestionService.GetFreeRoomsInInterval(roomIds, DateTime.Now, DateTime.Now.AddMinutes(EMERGENCY_APPOINTMENT_DURATION));
         }
 
     }
