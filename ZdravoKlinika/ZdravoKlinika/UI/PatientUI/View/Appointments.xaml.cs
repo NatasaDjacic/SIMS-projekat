@@ -71,7 +71,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
         public AuthService authService=GLOBALS.authService ;
         public Appointments()
         {
-            AppointmentCollection = new List<AppointmentDTO>(appointmentController.GetAppointmentsByPatient(authService.user.JMBG));
+            AppointmentCollection = new List<AppointmentDTO>(appointmentController.GetDTOAppointmentsByPatient(authService.user.JMBG));
             this.DataContext = this;
             InitializeComponent();
 
@@ -101,7 +101,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
             else
             {
-                AppointmentCollection = new List<AppointmentDTO>(appointmentController.GetAppointmentsByPatient(authService.user.JMBG));
+                AppointmentCollection = new List<AppointmentDTO>(appointmentController.GetDTOAppointmentsByPatient(authService.user.JMBG));
             }
         }
 

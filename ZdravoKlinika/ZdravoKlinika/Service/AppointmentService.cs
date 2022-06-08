@@ -27,24 +27,6 @@ namespace ZdravoKlinika.Service {
             return this.appointmentRepository.GetAll();
         }
 
-        public List<AppointmentDTO> GetAppointmentsByPatient(string patientJMBG)
-        {
-            var allAppointmentsByPatient = this.GetAllAppointments();
-            List<AppointmentDTO> DTOappointments = new List<AppointmentDTO>();
-            foreach (var appointment in allAppointmentsByPatient) 
-            {
-
-                if(appointment.patientJMBG==patientJMBG)
-                {
-                var appointmentDTO = new AppointmentDTO(appointment.id, appointment.startTime, appointment.doctorJMBG, appointment.roomId,this.doctorService.GetById(appointment.doctorJMBG).firstName, this.doctorService.GetById(appointment.doctorJMBG).lastName);
-                DTOappointments.Add(appointmentDTO);
-                }
-                
-            }
-
-            return DTOappointments;
-
-        }
 
         public List<Appointment> GetAllInInterval(DateTime start, DateTime end) {
             return this.GetAllAppointments().Where(a => (a.endTime >= start && a.startTime <= end)).ToList();
@@ -60,44 +42,65 @@ namespace ZdravoKlinika.Service {
             return this.appointmentRepository.GetById(id);
         }
 
-        public bool DeleteAppointmentById(int id) {
-            
-            int number = cancellationService.GetCancellationNumber(authService.user.JMBG, DateTime.Now);
+        public bool CheckNumOfCancelledAppointments()
+        { 
+            int numberOfCancelledAppointments = cancellationService.GetCancellationNumber(authService.user.JMBG, DateTime.Now);
 
-            if (number >= 4)
+            if (numberOfCancelledAppointments >= 4)
             {
                 authService.Restrict();
                 Console.WriteLine("RESTRICTED!");
                 return false;
             }
-           
+            return true;
+
+        }
+
+        public void SaveNewCancellation()
+        {
             Cancellation cancellation = new Cancellation(cancellationService.GenerateNewId(), authService.user.JMBG, DateTime.Now);
             cancellationService.SaveCancellation(cancellation);
+            
+
+        }
+
+        public bool DeleteAppointmentById(int id) {
+
+            if( this.CheckNumOfCancelledAppointments()==false) { return false; }
+            this.SaveNewCancellation();
 
             return this.appointmentRepository.DeleteById(id);
         }
 
-        public bool MoveAppointmentById(int id, DateTime newtime) {
-            var old = this.appointmentRepository.GetById(id);
-            if (old is null) {
-                return false;
-            }
-
-            if(DateTime.Compare(old.startTime.AddDays(-1), DateTime.Now)<0)
+        public bool CheckConditionsForMovingAppointment(Appointment appointment,DateTime newtime)
+        {
+            if (appointment is null)
             {
                 return false;
             }
 
-            if (DateTime.Compare(old.startTime.AddDays(4), newtime) < 0) {
+            if (DateTime.Compare(appointment.startTime.AddDays(-1), DateTime.Now) < 0)
+            {
                 return false;
             }
 
-            old.startTime = newtime;
+            if (DateTime.Compare(appointment.startTime.AddDays(4), newtime) < 0)
+            {
+                return false;
+            }
 
-            Cancellation cancellation = new Cancellation(cancellationService.GenerateNewId(),authService.user.JMBG, DateTime.Now);
-            cancellationService.SaveCancellation(cancellation);
+            return true;
+        }
+
+        public bool MoveAppointmentById(int id, DateTime newtime) {
+            var appointment = this.appointmentRepository.GetById(id);
             
-            return !this.appointmentRepository.Save(old);
+            if(this.CheckConditionsForMovingAppointment(appointment,newtime) == false) { return false; }
+
+            appointment.startTime = newtime;
+
+            this.SaveNewCancellation();
+            return !this.appointmentRepository.Save(appointment);
         }
 
         public Appointment? GetDoctorsNextAppointment(string doctorJMBG) {
@@ -110,5 +113,23 @@ namespace ZdravoKlinika.Service {
         {
             return this.appointmentRepository.GenerateNewId();
         }
+
+
+        // metoda kreirana preko DTO zbog lakseg prikaza na WPF-u za HCI-ja
+        public List<AppointmentDTO> GetDTOAppointmentsByPatient(string patientJMBG)
+        {
+            var allAppointmentsByPatient = this.GetAllAppointments().Where(a => a.patientJMBG == patientJMBG).ToList();
+            List<AppointmentDTO> DTOappointments = new List<AppointmentDTO>();
+            foreach (var appointment in allAppointmentsByPatient)
+            {
+                var appointmentDTO = new AppointmentDTO(appointment.id, appointment.startTime, appointment.doctorJMBG, appointment.roomId, this.doctorService.GetById(appointment.doctorJMBG).firstName, this.doctorService.GetById(appointment.doctorJMBG).lastName);
+                DTOappointments.Add(appointmentDTO);
+
+            }
+
+            return DTOappointments;
+
+        }
+
     }
 }

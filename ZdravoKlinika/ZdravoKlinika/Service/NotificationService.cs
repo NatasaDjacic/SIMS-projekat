@@ -27,6 +27,8 @@ namespace ZdravoKlinika.Service {
             return this.notificationRepository.GetAll().FindAll(n => n.JMBG == authService.user.JMBG && n.showDate<=DateTime.Now.AddHours(2) && n.showDate>=DateTime.Now);
         }
 
+
+       /*
         public List<Notification> getPatientPrescriptionNotifications()
         {
             List<Notification> notifications = new List<Notification>();
@@ -52,7 +54,7 @@ namespace ZdravoKlinika.Service {
             });
             return notifications;
         }
-
+      */
 
 
         public void NotificationForAppointmentCreated(Appointment app) {

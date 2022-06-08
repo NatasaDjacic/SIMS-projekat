@@ -29,7 +29,7 @@ namespace ZdravoKlinika.Controller
 
             return null;
         }
-        public List<Prescription>? GetPrescriptions(Patient patient, Guid reportId)
+        public List<Prescription>? GetPrescriptionsByReport(Patient patient, Guid reportId)
         {
             return patient.medicalRecord.reports.Find(r => r.reportId == reportId)?.prescriptions;
         }

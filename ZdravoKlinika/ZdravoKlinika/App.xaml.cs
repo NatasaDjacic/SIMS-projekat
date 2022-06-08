@@ -33,7 +33,7 @@ namespace ZdravoKlinika
 
 
             // AUTO LOGIN::
-            GLOBALS.authController.Login("secretary", "zdravo");
+            GLOBALS.authController.Login("1231231231231", "zdravo");
             // AUTO LOGIN MANAGER::
             //GLOBALS.authController.Login("manager", "zdravo");
             /*
