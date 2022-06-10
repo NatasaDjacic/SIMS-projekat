@@ -21,7 +21,7 @@ using ZdravoKlinika.Service;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
-    public partial class NewAppointment : Page, INotifyPropertyChanged
+    public partial class NewAppointment : Page, INotifyPropertyChanged, IDataErrorInfo
     {
 
 
@@ -34,7 +34,34 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
 
-        
+
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string name]
+        {
+            get
+            {
+                string result = null;
+                switch (name)
+                {
+                    case "FromDate":
+                        if(fromDate.CompareTo(DateTime.Now) < 0) result = "Start date can't be before today. Choose again!";
+                      break;
+                    case "ToDate":
+                        if (toDate.CompareTo(DateTime.Now) < 0 || toDate.CompareTo(fromDate) < 0) result = "End date can't be before today or before start date. Choose again!";
+                       break;
+
+                    default: break;
+                }
+                return result;
+            }
+        }
 
         DoctorController doctorController = GLOBALS.doctorController;
         RoomController roomController = GLOBALS.roomController;
@@ -71,7 +98,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
         public string priority = "time";
-        private DateTime fromDate;
+        private DateTime fromDate=DateTime.Now;
         public DateTime FromDate
         {
             get => fromDate;
@@ -80,12 +107,12 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 if (fromDate != value)
                 {
                     fromDate = value;
-                    CheckDates();
+              
                     OnPropertyChanged("FromDate");
                 }
             }
         }
-        private DateTime toDate;
+        private DateTime toDate=DateTime.Now.AddDays(1);
         public DateTime ToDate
         {
             get => toDate;
@@ -94,7 +121,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 if (toDate != value)
                 {
                     toDate = value;
-                    CheckDates();
+                 
                     OnPropertyChanged("ToDate");
                 }
             }
@@ -114,8 +141,20 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
         private string JMBG="1231231231231";
-        
-    
+
+        public NewAppointment()
+        {
+            this.JMBG = JMBG;
+          
+            this.Duration = 30;
+            this.doctors = new ListCollectionView(doctorController.GetAll());
+            this.doctors.GroupDescriptions.Add(new PropertyGroupDescription("specialization"));
+
+            this.DataContext = this;
+            InitializeComponent();
+            CheckDoctorRoom();
+          
+        }
 
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -159,22 +198,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
         
-
-
-        public NewAppointment()
-        {
-            this.JMBG = JMBG;
-            this.FromDate = DateTime.Today;
-            this.ToDate = DateTime.Today.AddDays(7);
-            this.Duration = 30;
-            this.doctors = new ListCollectionView(doctorController.GetAll());
-            this.doctors.GroupDescriptions.Add(new PropertyGroupDescription("specialization"));
-           
-            this.DataContext = this;
-            InitializeComponent();
-            CheckDoctorRoom();
-            CheckDates();
-        }
+        /*
 
 
         private void CheckDates()
@@ -211,7 +235,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
 
 
-        }
+        }*/
 
     }
 

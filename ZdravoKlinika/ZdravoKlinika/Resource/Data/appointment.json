@@ -130,16 +130,5 @@
     "doctorJMBG": "2222222222222",
     "roomId": "SD2",
     "endTime": "2022-06-05T17:10:17.6104389+02:00"
-  },
-  {
-    "id": 25,
-    "startTime": "2022-07-06T00:30:00",
-    "duration": 30,
-    "urgency": false,
-    "appointmentType": 1,
-    "patientJMBG": "1231231231231",
-    "doctorJMBG": "3213213213213",
-    "roomId": "SD1",
-    "endTime": "2022-07-06T01:00:00"
   }
 ]

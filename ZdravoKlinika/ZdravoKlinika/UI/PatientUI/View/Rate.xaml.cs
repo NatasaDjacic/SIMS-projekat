@@ -12,17 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using ZdravoKlinika.Controller;
-using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
 using System.Text.RegularExpressions;
+using ZdravoKlinika.Model;
+using System.ComponentModel;
+
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
-    public partial class Rate : Page, INotifyPropertyChanged
+    public partial class Rate : Page, INotifyPropertyChanged, IDataErrorInfo
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
@@ -33,98 +33,78 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
 
+
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string name]
+        {
+            get
+            {
+                string result = null;
+                switch (name)
+                {
+                    case "DoctorMark":
+                        if (doctorMark.Trim() == "") result = "Doctor mark should be set.";
+                        else if (doctorMark.Length != 1) result = "Doctor mark should have 1 digit.";
+                        else if (!Regex.IsMatch(doctorMark, "^[1-5]*$")) result = "Doctor mark should be between 1 and 5.";
+                        break;
+                    case "HospitalMark":
+                        if (hospitalMark.Trim() == "") result = "Hospital mark should be set.";
+                        else if (hospitalMark.Length != 1) result = "Hospital mark should have 1 digit.";
+                        else if (!Regex.IsMatch(hospitalMark, "^[1-5]*$")) result = "Hospital mark should be between 1 and 5.";
+                        break;
+                  
+                    default: break;
+                }
+                return result;
+            }
+        }
+
+
+
         MarkService markService = GLOBALS.markService;
         AuthService authService = GLOBALS.authService;
 
-        private int hospitalMark;
-        public int HospitalMark
+        private string hospitalMark ="";
+       
+        public string HospitalMark
         {
-            get => hospitalMark;
-            set
-            {
-                if (hospitalMark != value)
-                {
-                    hospitalMark = value;
-                    CheckMarks();
-                    OnPropertyChanged("HospitalMark");
-                }
-            }
+            get { return hospitalMark; }
+            set { hospitalMark = value; OnPropertyChanged("HospitalMark"); }
         }
 
-        private int doctorMark;
-        public int DoctorMark
-        {
-            get => doctorMark;
-            set
-            {
-                if (doctorMark != value)
-                {
-                    doctorMark = value;
-                    CheckMarks();
-                    OnPropertyChanged("DoctorMark");
-                }
-            }
+        private string doctorMark="";
+
+        public string DoctorMark
+        { get { return doctorMark; } 
+            set { doctorMark = value; OnPropertyChanged("DoctorMark"); } 
         }
+
 
         Guid reportId;
         public Rate(Guid reportId)
         {
             this.reportId = reportId;
-            this.doctorMark = doctorMark;
-            this.hospitalMark = hospitalMark;
             this.DataContext = this;
             InitializeComponent();
-            CheckMarks();
+            
         }
 
-        private void NumberValidation(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-5]+");
-            e.Handled=regex.IsMatch(e.Text);
-        }
-
-        private void CheckMarks()
-        {
-            if (doctorTB == null) return;
-            if (5<doctorMark  || doctorMark<1 )
-            {
-                doctorTB.Text = "Mark has to be between 1 and 5!";
-
-                doctorTB.Foreground = Brushes.Red;
-            }
-            else
-            {
-                doctorTB.Text = " ";
-                doctorTB.Foreground = Brushes.Gray;
-            }
-
-
-            if (hospitalTB == null) return;
-            if (hospitalMark<1 || hospitalMark>5)
-            {
-
-
-                hospitalTB.Text = "Mark has to be between 1 and 5!";
-
-                hospitalTB.Foreground = Brushes.Red;
-            }
-            else
-            {
-                hospitalTB.Text = " ";
-                hospitalTB.Foreground = Brushes.Gray;
-            }
-
-
-        }
-
+    
         private void Save_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }
 
-        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+       private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            markService.Save(markService.GenerateNewId(), hospitalMark, doctorMark, authService.user.JMBG, "1111111111111", reportId);
+            markService.Save(markService.GenerateNewId(), Convert.ToInt32(hospitalMark) , Convert.ToInt32(doctorMark) , authService.user.JMBG, "1111111111111", reportId);
 
             NavigationService.Navigate(new Rated());
         }
