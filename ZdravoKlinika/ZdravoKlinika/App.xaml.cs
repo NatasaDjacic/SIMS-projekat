@@ -11,6 +11,8 @@ using ZdravoKlinika.Service;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Model;
+using System.Globalization;
+using System.Threading;
 
 namespace ZdravoKlinika
 {
@@ -21,11 +23,14 @@ namespace ZdravoKlinika
     {
         public App() : base()
         {
+            CultureInfo ci = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            ci.DateTimeFormat.ShortDatePattern = "dd.MM.yyyy";
+            Thread.CurrentThread.CurrentCulture = ci;
             //Patient? p = GLOBALS.patientController.GetById("1231231231231"); 
             //Report? r = GLOBALS.reportController.AddReport(p, "Neka dijagnostika", "Neki opis", DateTime.Now);
             //GLOBALS.prescriptionController.AddPrescription(p, r.reportId, 1, "Neki opis za koriscenje", 7, 3, 1);
 
-            
+
 
             // AUTO LOGIN::
             //GLOBALS.authController.Login("secretary", "zdravo");
@@ -37,15 +42,6 @@ namespace ZdravoKlinika
                 Console.WriteLine(String.Format("{0} {1} {2}", e.roomId, e.name, e.equipIds.Count));
             });*/
 
-
-            var patient = GLOBALS.patientController.GetById("1231231231231");
-            if(patient != null) {
-                // GLOBALS.authService.user.JMBG;
-                var patientPrescriptions = patient.medicalRecord.reports.SelectMany(report => report.prescriptions).ToList();
-                patientPrescriptions.ForEach(prescription => {
-                    Console.WriteLine(String.Format("{0}", prescription.prescriptionId));
-                });
-            }
 
         }
     }

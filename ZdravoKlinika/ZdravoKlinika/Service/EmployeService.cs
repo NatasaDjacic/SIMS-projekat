@@ -39,9 +39,6 @@ namespace ZdravoKlinika.Service {
                 return ROLE.SECRETARY;
             }
             return ROLE.NONE;
-        }
-
-
-        
+        }    
     }
 }

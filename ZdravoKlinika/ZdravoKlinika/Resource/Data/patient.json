@@ -35,7 +35,7 @@
             {
               "prescriptionId": "2fb2e944-b901-4355-8bb0-3388674f165e",
               "drugId": 1,
-              "patient_note": "",
+              "patient_note": "mmmm",
               "drugName": "Aerius",
               "description": "Neki opis za koriscenje",
               "useDuration": 7,
@@ -49,7 +49,7 @@
           "diagnostica": "Nizak pritisak",
           "description": "Vrtoglavica",
           "date": "2022-01-16T19:22:33.4810037+01:00",
-          "patient_note": "",
+          "patient_note": "nnnnn",
           "prescriptions": [
             {
               "prescriptionId": "0ca9678e-0b90-4085-ae8f-c6f3d0d87cba",

@@ -40,12 +40,11 @@ namespace ZdravoKlinika.Service
 
         public void SavingPatientNote(Patient patient, Guid prescriptionId,string note)
         {
-            var patientPrescriptions = patient.medicalRecord.reports.SelectMany(report => report.prescriptions).ToList();
-            var prescription=patientPrescriptions.Find(r => r.prescriptionId == prescriptionId);
-            prescription.patient_note=note;
-           
-           patientService.Update(patient);
-            Console.WriteLine(prescription.patient_note);
+            var allpatientPrescriptions = patient.medicalRecord.reports.SelectMany(report => report.prescriptions).ToList();
+            var notedPrescription=allpatientPrescriptions.Find(r => r.prescriptionId == prescriptionId);
+            notedPrescription.patient_note=note;
+            patientService.Update(patient);
+            
         }
 
 

@@ -27,27 +27,34 @@ namespace ZdravoKlinika.Service {
             return this.notificationRepository.GetAll().FindAll(n => n.JMBG == authService.user.JMBG && n.showDate<=DateTime.Now.AddHours(2) && n.showDate>=DateTime.Now);
         }
 
+
+       /*
         public List<Notification> getPatientPrescriptionNotifications()
         {
-            List<Notification> list = new List<Notification>();
-            Patient? p = authService.user as Patient;
-            if (p == null) throw new Exception("Patient not looged in");
-            p.medicalRecord.reports.ForEach(report =>
-            {
-                report.prescriptions.ForEach(prescription =>
-                {
-                    var interval = 24 / prescription.useFrequency;
-
-                    if (report.date.AddDays(prescription.useDuration) >= DateTime.Today && DateTime.Now.Hour % interval >= interval-1  )
-                    {
-                        list.Add(new Notification(-1, p.JMBG, "Take medicine", String.Format("Take drug:{0} this amount {1}.", prescription.drugId, prescription.useAmount), DateTime.Now));
-                    }
-                });
+            List<Notification> notifications = new List<Notification>();
+            Patient? patient = authService.user as Patient;
+            if (patient == null) throw new Exception("Patient not looged in");
+            patient.medicalRecord.reports.ForEach(report => {
+                notifications.AddRange(ConvertReportPrescriptionToNotification(patient, report));
             });
-            return list;
+            return notifications;
 
         }
+        private List<Notification> ConvertReportPrescriptionToNotification(Patient patient,Report report) {
 
+            List<Notification> notifications = new List<Notification>();
+            report.prescriptions.ForEach(prescription =>
+            {
+                var interval = 24 / prescription.useFrequency;
+
+                if (report.date.AddDays(prescription.useDuration) >= DateTime.Today && DateTime.Now.Hour % interval >= interval - 1) {
+                    notifications.Add(new Notification(-1, patient.JMBG, "Take medicine", String.Format("Take drug:{0} this amount {1}.", prescription.drugId, prescription.useAmount), DateTime.Now));
+                }
+
+            });
+            return notifications;
+        }
+      */
 
 
         public void NotificationForAppointmentCreated(Appointment app) {

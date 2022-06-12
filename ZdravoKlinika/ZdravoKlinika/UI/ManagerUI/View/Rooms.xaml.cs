@@ -148,7 +148,7 @@ namespace ZdravoKlinika.UI.ManagerUI.View {
 
                 foreach (var room in rooms)
                 {
-                    var roomBusyIntervals = suggestionService.getRoomBusyInterval(room.roomId, appointments, fromDate, toDate);
+                    var roomBusyIntervals = suggestionService.GetRoomBusyInterval(room.roomId, appointments, fromDate, toDate);
                     var counts = new List<int>();
                     for (var temp = fromDate; temp <= toDate; temp = temp.AddDays(1))
                     {

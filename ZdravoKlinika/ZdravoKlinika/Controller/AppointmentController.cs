@@ -36,9 +36,9 @@ namespace ZdravoKlinika.Controller {
             return appointmentService.GetAllAppointments();
         }
 
-        public List<AppointmentDTO> GetAppointmentsByPatient(string patientJMBG)
+        public List<AppointmentDTO> GetDTOAppointmentsByPatient(string patientJMBG)
         {
-            return appointmentService.GetAppointmentsByPatient(patientJMBG);
+            return appointmentService.GetDTOAppointmentsByPatient(patientJMBG);
         }
 
         public Appointment? GetAppointmentById(int id) {
@@ -53,6 +53,21 @@ namespace ZdravoKlinika.Controller {
             return appointmentService.MoveAppointmentById(id, time);
         }
 
+
+        public Appointment CreateInstanceOfAppointment(DateTime startTime, Doctor doctor , int duration)
+        {
+            Appointment appointment = new Appointment();
+            appointment.startTime = startTime;
+            appointment.patientJMBG = authService.user.JMBG;
+            appointment.doctorJMBG = doctor.JMBG;
+            appointment.roomId = doctor.roomId;
+            appointment.urgency = false;
+            appointment.appointmentType = AppointmentType.regular;
+            appointment.duration = duration;
+            appointment.id = appointmentService.GenerateNewId();
+
+            return appointment;
+        }
         public bool CreateAppointmentPatient(DateTime startTime, int duration, string doctorJMBG) {
 
             var doctor = doctorService.GetById(doctorJMBG);
@@ -61,20 +76,8 @@ namespace ZdravoKlinika.Controller {
             if (authService.user == null) throw new Exception("Not logged in");
             if (authService.user_role != ROLE.PATIENT) throw new Exception("Not patient role");
 
-
-            Appointment appointment = new Appointment();
-            appointment.startTime = startTime;
-            appointment.patientJMBG = authService.user.JMBG;
-            appointment.doctorJMBG = doctorJMBG;
-            appointment.roomId = doctor.roomId;
-            appointment.urgency = false;
-            appointment.appointmentType = AppointmentType.regular;
-            appointment.duration = duration;
-            appointment.id = appointmentService.GenerateNewId();
-
+            var appointment = this.CreateInstanceOfAppointment(startTime, doctor, duration);
             appointment.Validate();
-
-
             return appointmentService.SaveAppointment(appointment);
 
         }

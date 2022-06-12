@@ -31,20 +31,24 @@ namespace ZdravoKlinika.Service
 
         }
 
-        public int GetCancellationNumber(string patientJMBG,DateTime dateTime)
+        public int CountingNumOfCancelledAppointments(List<Cancellation> allCancellations, string patientJMBG, DateTime dateTime)
         {
-            List<Cancellation> allCancellations = this.cancellationRepository.GetAll();
-            int numberOfCancelledAppointments=0;            
+            int numberOfCancelledAppointments = 0;
             foreach (Cancellation c in allCancellations)
             {
-                if(c.patientJMBG==patientJMBG && c.date.CompareTo(dateTime.AddDays(-30))>=0 )
+                if (c.patientJMBG == patientJMBG && c.date.CompareTo(dateTime.AddDays(-30)) >= 0)
                 {
                     numberOfCancelledAppointments = numberOfCancelledAppointments + 1;
 
                 }
             }
-
             return numberOfCancelledAppointments;
+        }
+
+        public int GetCancellationNumber(string patientJMBG,DateTime dateTime)
+        {
+            List<Cancellation> allCancellations = this.cancellationRepository.GetAll();
+            return this.CountingNumOfCancelledAppointments(allCancellations,patientJMBG,dateTime);
 
         }
        

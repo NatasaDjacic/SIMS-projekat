@@ -34,20 +34,9 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
 
 
-        private string name;
-        public string Name
-        {
-            get => name;
-            set
-            {
-                if (name != value)
-                {
-                    name = value;
-                    
-                    OnPropertyChanged("Name");
-                }
-            }
-        }
+        private string _name="";
+        public string FirstName { get { return _name; } set { _name = value; OnPropertyChanged("FirstName"); } }
+
 
         private DateTime date;
         public DateTime Date
@@ -66,7 +55,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         public NewReminder()
         {
-            this.name = name;
+            
             this.date = DateTime.Now;
             this.DataContext = this;
             InitializeComponent();
@@ -84,8 +73,9 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
         private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            if(name == null) { name = "Alarm " + patientReminderController.GenerateNewId(); }
-            PatientReminder reminder = new PatientReminder(patientReminderController.GenerateNewId(), authService.user.JMBG, date, name);
+            
+            if(FirstName == "") { FirstName = "Alarm " + patientReminderController.GenerateNewId(); } 
+            PatientReminder reminder = new PatientReminder(patientReminderController.GenerateNewId(), authService.user.JMBG, date, FirstName);
             patientReminderController.Save(reminder);
             NavigationService.Navigate(new Reminders());
         }
