@@ -1,19 +1,5 @@
 [
   {
-    "roomFirstId": "tI",
-    "roomSecondId": "Test2",
-    "newRoomId": "NS1",
-    "newRoomName": "Soba nova2",
-    "newRoomType": "Kancelarija",
-    "newRoomDescription": "Nova soba u nastanku",
-    "id": 1,
-    "roomId": null,
-    "startTime": "2022-06-05T01:30:00",
-    "duration": 120,
-    "description": null,
-    "endTime": "2022-06-10T01:30:00"
-  },
-  {
     "roomFirstId": "IDN1",
     "roomSecondId": "IDN2",
     "newRoomId": "K1",
@@ -26,5 +12,19 @@
     "duration": 19,
     "description": null,
     "endTime": "2022-06-19T19:30:00"
+  },
+  {
+    "roomFirstId": "4",
+    "roomSecondId": "IDN1",
+    "newRoomId": "Id15",
+    "newRoomName": "Soba15",
+    "newRoomType": "Kancelarija",
+    "newRoomDescription": null,
+    "id": 3,
+    "roomId": null,
+    "startTime": "2022-06-13T01:30:00",
+    "duration": 3,
+    "description": null,
+    "endTime": "2022-06-13T04:30:00"
   }
 ]

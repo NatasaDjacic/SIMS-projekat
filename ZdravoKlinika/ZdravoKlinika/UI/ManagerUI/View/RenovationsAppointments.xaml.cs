@@ -181,8 +181,47 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         
         private void Button_Click_Renovation(object sender, RoutedEventArgs e)
         {
-           renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, selectedRenovation.roomId, Description);
-           NavigationService.Navigate(new Renovations(val));
+            try
+            {
+                renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, selectedRenovation.roomId, Description);
+                if (val == "en")
+                {
+                    MessageBox.Show("You have successfully created a room renovation appointment.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                   
+                }
+                else
+                           if (val == "rus")
+                {
+                    MessageBox.Show("Вы успешно создали отчет о занятости номеров.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Uspešno ste zakazali renoviranje prostorije.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
+                }
+                NavigationService.Navigate(new Renovations(val));
+            }
+            catch
+            {
+                if (val == "en")
+                {
+                    MessageBox.Show("You cannot make a appoitment for renovation!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+              if (val == "rus")
+                {
+                    MessageBox.Show("Закройте его и попробуйте еще раз!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Neuspešno zakazivanje renoviranje prostorija!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+            }
         }
     }
 }

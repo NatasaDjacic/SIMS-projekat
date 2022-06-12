@@ -13,13 +13,11 @@ namespace ZdravoKlinika.Service
     {
         public IEquipMovingRepository equipMovingRepository { get; set; }
        
-        public RoomService roomService { get; set; }
 
         public EquipmentService equipmentService { get; set; }
 
-        public EquipMovingService(IEquipMovingRepository equipMovingRepository, RoomService roomService, EquipmentService equipmentService) {
+        public EquipMovingService(IEquipMovingRepository equipMovingRepository, EquipmentService equipmentService) {
             this.equipMovingRepository = equipMovingRepository;
-            this.roomService = roomService;
             this.equipmentService = equipmentService;
         }
 

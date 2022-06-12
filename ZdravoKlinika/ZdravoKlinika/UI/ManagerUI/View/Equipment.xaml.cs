@@ -233,8 +233,42 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             try
             {
                 equipMovingController.CreateEquipMovingRoomFrom(SelectedDate, SelectedRoom.roomId, SelectedRoomTo.roomId, equipMovingController.GetEquipIdsForMove(Equip.equipIds, int.Parse(EquipQuantity)));
+                if (val == "en")
+                {
+                    MessageBox.Show("You have successfully created appointment for moving equipments.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                          if (val == "rus")
+                {
+                    MessageBox.Show("Вы успешно создали отчет о занятости номеров.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Uspešno ste zakazali premeštanje opreme.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                NavigationService.Navigate(new Equipments(val));
+
             }
-            catch (Exception ex) { Console.WriteLine("Not enough equip in selected room."); };
+            catch
+            {
+                if (val == "en")
+                {
+                    MessageBox.Show("Not enough equipment in room!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+              if (val == "rus")
+                {
+                    MessageBox.Show("Закройте его и попробуйте еще раз!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Nedovoljno opreme u prostoriji!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+            }
         }
 
         private ObservableCollection<Equipment> dynEquips;

@@ -16,7 +16,7 @@
     "urgent": false,
     "reason": "Personal matter",
     "declineReason": "",
-    "status": 2,
+    "status": 0,
     "doctorJMBG": "1111111111111"
   },
   {
@@ -25,8 +25,8 @@
     "duration": 3,
     "urgent": false,
     "reason": "Vacation",
-    "declineReason": "Not good",
-    "status": 2,
+    "declineReason": "ff",
+    "status": 1,
     "doctorJMBG": "1212121212121"
   },
   {

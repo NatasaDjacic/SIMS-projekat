@@ -46,7 +46,7 @@ namespace ZdravoKlinika
         public static RoomService roomService = new RoomService(roomRepository);
         public static NotificationService notificationService = new NotificationService(notificationRepository, authService);
         public static RenovationService renovationService = new RenovationService(renovationRepository);
-        public static EquipMovingService equipMovingService = new EquipMovingService(equipMovingRepository, roomService, equipmentService);
+        public static EquipMovingService equipMovingService = new EquipMovingService(equipMovingRepository, equipmentService);
         public static ReportService reportService = new ReportService(patientService);
         public static PrescriptionService prescriptionService = new PrescriptionService(patientService);
         public static OrderEquipmentService orderEquipmentService = new OrderEquipmentService(orderEquipmentRepository, equipmentRepository);

@@ -24,21 +24,33 @@
     "type": "Operacijska sala"
   },
   {
-    "roomId": "IDN1",
-    "name": "Nova soba 1",
-    "description": "Nova operaciona sala, nastala 28. maja",
-    "type": "Operaciona sala"
-  },
-  {
     "roomId": "IDN2",
     "name": "Nova soba 2",
     "description": "Nova kancelarija, nastala iz sobe 2",
     "type": "Kancelarija"
   },
   {
-    "roomId": "ID1",
+    "roomId": "NS1",
+    "name": "Soba nova2",
+    "description": "Nova soba u nastanku",
+    "type": "Kancelarija"
+  },
+  {
+    "roomId": "ID11",
     "name": "Kancelarija direktor",
     "description": null,
     "type": "Kancelarija"
+  },
+  {
+    "roomId": "gf",
+    "name": "sgd",
+    "description": null,
+    "type": "dsg"
+  },
+  {
+    "roomId": "gs",
+    "name": "sdg",
+    "description": null,
+    "type": "dsg"
   }
 ]

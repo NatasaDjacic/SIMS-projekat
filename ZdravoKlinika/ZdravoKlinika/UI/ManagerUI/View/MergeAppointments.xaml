@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
+      xmlns:val="clr-namespace:ZdravoKlinika.UI.ManagerUI.View"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="MergeAppointments"  Style="{StaticResource PageStyle}">
@@ -137,15 +137,103 @@
                         </ListView.ItemTemplate>
                     </ListView>
                     <Label FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="{DynamicResource StrRoomNew}"></Label>
-                    <Label Content="{DynamicResource StrId}" Grid.Row="2" Grid.Column="2"></Label>
-                    <TextBox Grid.Row="2" Width="90" Height="25" Text="{Binding NewRoomId}" Grid.Column="3"></TextBox>
-                    <Label Content="{DynamicResource StrName}" Grid.Row="3" Grid.Column="2"></Label>
-                    <TextBox Grid.Row="3" Width="90" Height="25" Text="{Binding NewRoomName}" Grid.Column="3"></TextBox>
-                    <Label Content="{DynamicResource StrType}" Grid.Row="4" Grid.Column="2"></Label>
-                    <TextBox Grid.Row="4" Width="90" Height="25" Text="{Binding NewRoomType}" Grid.Column="3"></TextBox>
+                    <Label Content="{DynamicResource StrId*}" Grid.Row="2" Grid.Column="2"></Label>
+                    <TextBox x:Name="id" Grid.Row="2" Width="90" Height="25" Grid.Column="3">
+                        <TextBox.Text>
+                            <Binding Path="NewRoomId" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                    <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                    <Label Content="{DynamicResource StrName*}" Grid.Row="3" Grid.Column="2"></Label>
+                    <TextBox x:Name="name" Grid.Row="3" Width="90" Height="25" Grid.Column="3">
+                            <TextBox.Text>
+                            <Binding Path="NewRoomName" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                        <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+                    <Label Content="{DynamicResource StrType*}" Grid.Row="4" Grid.Column="2"></Label>
+                    <TextBox x:Name="type" Grid.Row="4" Width="90" Height="25" Grid.Column="3">
+                        <TextBox.Text>
+                            <Binding Path="NewRoomType" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:EmptyStringValidationRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                                    <TextBlock Margin="30 0 0 0" FontSize="13" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
                     <Label Content="{DynamicResource StrDesc}" Grid.Row="5" Grid.Column="2"></Label>
-                    <TextBox Grid.Row="5" Width="90" Height="25" Text="{Binding NewRoomDescription}" Grid.Column="3"></TextBox>
+                    <TextBox Text="{Binding NewRoomDescription}" Grid.Row="5" Width="90" Height="25" Grid.Column="3">
+                    </TextBox>
                     <Button Content="{DynamicResource StrSchedule}" VerticalAlignment="Top" FontWeight="SemiBold" Background="Green" Grid.Row="6" Grid.Column="3" Click="Button_Click_Renovation" Height="25" Width="90">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=id}" Value="False"/>
+                                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=name}" Value="False"/>
+                                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=type}" Value="False"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                     </Button>
                 </Grid>
 

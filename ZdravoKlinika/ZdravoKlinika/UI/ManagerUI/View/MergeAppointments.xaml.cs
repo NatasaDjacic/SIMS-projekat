@@ -19,7 +19,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.UI.ManagerUI.View
 {
-    public partial class MergeAppointments : Page, INotifyPropertyChanged
+    public partial class MergeAppointments : Page, INotifyPropertyChanged, IDataErrorInfo
     {
         string val = string.Empty;
         protected virtual void OnPropertyChanged(string name)
@@ -230,6 +230,17 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 }
             }
         }
+
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string columnName] => throw new NotImplementedException();
+
         string roomFirstId = "";
         string roomSecondId = "";
         public MergeAppointments(string roomIdFirst, string roomIdSecond, DateTime StartDate, DateTime EndDate, int Duration, string value)
@@ -269,11 +280,46 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
         private void Button_Click_Renovation(object sender, RoutedEventArgs e)
         {
-            renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomFirstId, "Merging");
-            renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomSecondId, "Merging");
-            roomMergeController.Save(selectedRenovation.startTime, selectedRenovation.duration, roomFirstId, roomSecondId, NewRoomId, NewRoomName, NewRoomType, NewRoomDescription);
+            try { 
+                renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomFirstId, "Merging");
+                renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomSecondId, "Merging");
+                roomMergeController.Save(selectedRenovation.startTime, selectedRenovation.duration, roomFirstId, roomSecondId, NewRoomId, NewRoomName, NewRoomType, NewRoomDescription);
+                if (val == "en")
+                {
+                    MessageBox.Show("You have successfully created a room merge appointment.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                            if (val == "rus")
+                {
+                    MessageBox.Show("Вы успешно создали отчет о занятости номеров.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Uspešno ste zakazali spajanje prostorija.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                NavigationService.Navigate(new RoomsMerge(val));
+            }
+            catch
+            {
+                if (val == "en")
+                {
+                    MessageBox.Show("You cannot make a appoitment for renovation!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+              if (val == "rus")
+                {
+                    MessageBox.Show("Закройте его и попробуйте еще раз!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Neuspešno zakazivanje spajanja prostorija!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
-            NavigationService.Navigate(new RoomsMerge(val));
+            }
         }
     }
 }

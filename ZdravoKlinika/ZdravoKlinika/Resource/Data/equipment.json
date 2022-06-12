@@ -2,14 +2,14 @@
   {
     "id": 1,
     "name": "Operacijski sto",
-    "roomId": "SD1",
+    "roomId": "SD2",
     "type": "Staticka",
     "quantity": 1
   },
   {
     "id": 2,
     "name": "Operacijski sto",
-    "roomId": "SD1",
+    "roomId": "SD2",
     "type": "Staticka",
     "quantity": 1
   },
@@ -39,7 +39,7 @@
     "name": "Igle",
     "roomId": "ID1",
     "type": "Dinamicka",
-    "quantity": 100
+    "quantity": 200
   },
   {
     "id": 9,
@@ -47,5 +47,12 @@
     "roomId": "ID1",
     "type": "Dinamicka",
     "quantity": 20
+  },
+  {
+    "id": 10,
+    "name": "Cackalice",
+    "roomId": "",
+    "type": "Dinamicka",
+    "quantity": 100
   }
 ]

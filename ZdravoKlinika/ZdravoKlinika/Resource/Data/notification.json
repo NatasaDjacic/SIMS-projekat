@@ -486,5 +486,21 @@
     "message": "You have new meeting at 6/5/2022 01:00:00 in room SZS1.",
     "seen": false,
     "showDate": "2022-06-05T16:11:29.7723353+02:00"
+  },
+  {
+    "id": 62,
+    "JMBG": "2222222222222",
+    "title": "New Meeting - dfs",
+    "message": "You have new meeting at 10.6.2022. 01:00:00 in room 4.",
+    "seen": false,
+    "showDate": "2022-06-10T13:09:06.6690276+02:00"
+  },
+  {
+    "id": 63,
+    "JMBG": "1212121212121",
+    "title": "New Meeting - dfs",
+    "message": "You have new meeting at 10.6.2022. 01:00:00 in room 4.",
+    "seen": false,
+    "showDate": "2022-06-10T13:09:06.7278294+02:00"
   }
 ]

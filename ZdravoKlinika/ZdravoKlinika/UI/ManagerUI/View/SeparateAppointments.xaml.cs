@@ -20,7 +20,7 @@ using ZdravoKlinika.Model;
 namespace ZdravoKlinika.UI.ManagerUI.View
 {
    
-    public partial class SeparateAppointments : Page, INotifyPropertyChanged
+    public partial class SeparateAppointments : Page, INotifyPropertyChanged, IDataErrorInfo
     {
         string val = string.Empty;
         protected virtual void OnPropertyChanged(string name)
@@ -44,6 +44,14 @@ namespace ZdravoKlinika.UI.ManagerUI.View
                 }
             }
         }
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
 
         public RoomController roomController = GLOBALS.roomController;
 
@@ -275,6 +283,8 @@ namespace ZdravoKlinika.UI.ManagerUI.View
             }
         }
 
+        public string this[string columnName] => throw new NotImplementedException();
+
         string roomId = "";
 
         public SeparateAppointments(string RoomId, DateTime StartDate, DateTime EndDate, int Duration, string value)
@@ -312,10 +322,45 @@ namespace ZdravoKlinika.UI.ManagerUI.View
         }
         private void Button_Click_Renovation(object sender, RoutedEventArgs e)
         {
-            renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomId, "Separating");
-            roomSeparateController.Save(selectedRenovation.startTime, selectedRenovation.duration, roomId, NewRoomId, NewRoomName, NewRoomType, NewRoomDescription, NewRoomId2, NewRoomName2, NewRoomType2, NewRoomDescription2);
+            try
+            {
+                renovationController.SaveRenovation(selectedRenovation.startTime, selectedRenovation.duration, roomId, "Separating");
+                roomSeparateController.Save(selectedRenovation.startTime, selectedRenovation.duration, roomId, NewRoomId, NewRoomName, NewRoomType, NewRoomDescription, NewRoomId2, NewRoomName2, NewRoomType2, NewRoomDescription2);
+                if (val == "en")
+                {
+                    MessageBox.Show("You have successfully created a room separation appointment.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                           if (val == "rus")
+                {
+                    MessageBox.Show("Вы успешно создали отчет о занятости номеров.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Uspešno ste zakazali razdvajanje prostorija.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                NavigationService.Navigate(new RoomsSeparate(val));
+            }
+            catch
+            {
+                if (val == "en")
+                {
+                    MessageBox.Show("You cannot make a appoitment for renovation!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+              if (val == "rus")
+                {
+                    MessageBox.Show("Закройте его и попробуйте еще раз!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Neuspešno zakazivanje spajanja prostorija!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
-            NavigationService.Navigate(new RoomsSeparate(val));
+            }
         }
     }
 }
