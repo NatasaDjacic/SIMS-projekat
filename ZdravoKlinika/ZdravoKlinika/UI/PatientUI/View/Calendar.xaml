@@ -15,10 +15,19 @@
     </Page.CommandBindings>
     <DockPanel>
 
-        <StackPanel DockPanel.Dock="Top" Background="White">
+        <Grid DockPanel.Dock="Top" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="504"/>
+                <ColumnDefinition Width="214"/>
 
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Theraphy schedule" Grid.Column="0" FontSize="32" FontWeight="Bold" Height="48"></TextBlock>
-            <Button Margin="0 0 5 5 " Background="CornflowerBlue"  Foreground="White" Tag="{Binding prescriptionId}"  Command="cmd:RoutedCommands.Print" Width="56" HorizontalAlignment="Right" VerticalAlignment="Top">
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock HorizontalAlignment="Center" Text="Theraphy schedule" Grid.Column="0" FontSize="32" FontWeight="Bold" Grid.ColumnSpan="2"></TextBlock>
+            <Button Grid.Column="1" Grid.Row="1" Margin="0 0 5 5 " Background="White"  Foreground="Black" Tag="{Binding prescriptionId}"  Command="cmd:RoutedCommands.Print" Width="56" HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -26,9 +35,9 @@
                 </Button.Resources>
                 <mi:PackIcon Kind="FilePdfBox" Height="24" Width="24"/>
             </Button>
-        </StackPanel>
 
-
+            <TextBlock x:Name="pdfTB" FontSize="20" Foreground="Red" Grid.Column="0" Grid.Row="1" ></TextBlock>
+        </Grid>
 
 
         <Grid Width="Auto">
@@ -40,7 +49,7 @@
                         <GradientStop Color="#FFEFF5FF" Offset="1" />
                     </RadialGradientBrush>
                 </Grid.Background>
-                <Grid Margin="0,62,0,0" Name="grid1" Width="Auto" OpacityMask="Black" Opacity="1" Background="LightSkyBlue" ShowGridLines="False">
+                <Grid Margin="0,62,0,0" Name="grid1" Width="Auto" OpacityMask="Black" Opacity="1" Background="DarkSeaGreen" ShowGridLines="False">
                     <Grid.Resources>
                         <Style x:Key="VerticalSeparatorStyle" 
                         TargetType="{x:Type Separator}"
@@ -77,18 +86,18 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Separator  Height="19" Margin="0,2,0,60" Name="separator2" Width="Auto" Background="Aqua" Grid.ColumnSpan="8" Grid.Row="2" HorizontalContentAlignment="Stretch" Foreground="Aqua" />
-                    <Separator Height="26" Name="separator1" Background="Aqua" Grid.Row="2" Grid.ColumnSpan="8" Margin="0,71,0,64" HorizontalContentAlignment="Stretch" Foreground="Aqua" Grid.RowSpan="2" />
-                    <Separator Height="27" Margin="0,70,0,65" Name="separator3" Background="Aqua" Grid.ColumnSpan="8" Width="Auto" HorizontalContentAlignment="Stretch" Foreground="Aqua" Grid.RowSpan="2" />
+                    <Separator  Height="19" Margin="0,2,0,60" Name="separator2" Width="Auto" Background="Black" Grid.ColumnSpan="8" Grid.Row="2" HorizontalContentAlignment="Stretch" Foreground="Black" />
+                    <Separator Height="26" Name="separator1" Background="Black" Grid.Row="2" Grid.ColumnSpan="8" Margin="0,71,0,64" HorizontalContentAlignment="Stretch" Foreground="Black" Grid.RowSpan="2" />
+                    <Separator Height="27" Margin="0,70,0,65" Name="separator3" Background="Black" Grid.ColumnSpan="8" Width="Auto" HorizontalContentAlignment="Stretch" Foreground="Black" Grid.RowSpan="2" />
 
-                    <Rectangle Height="Auto" Name="rectangle1" Stroke="Aqua" Width="Auto" Grid.RowSpan="6" Grid.ColumnSpan="2" Margin="0,0,90,0" />
-                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle2" Stroke="Aqua" Width="Auto" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,89,0" />
-                    <Rectangle Grid.RowSpan="6" Name="rectangle3" Stroke="Aqua" Width="Auto" Grid.Column="2" />
-                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle4" Stroke="Aqua" Grid.Column="2" Grid.ColumnSpan="2" Margin="90,0,0,0" />
-                    <Rectangle Grid.RowSpan="6" Height="533" Name="rectangle5" Stroke="Aqua" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Top" />
-                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle6" Stroke="Aqua" Grid.Column="5" />
-                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle7" Stroke="Aqua" Grid.Column="5" Grid.ColumnSpan="2" Margin="89,0,0,0" />
-                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle8" Stroke="Aqua" Grid.Column="6" Grid.ColumnSpan="2" Margin="90,0,0,0" />
+                    <Rectangle Height="Auto"  Name="rectangle1" Stroke="Black" Width="Auto" Grid.RowSpan="6" Grid.ColumnSpan="2" Margin="0,0,90,0"  />
+                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle2" Stroke="Black" Width="Auto" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,89,0" />
+                    <Rectangle Grid.RowSpan="6" Name="rectangle3" Stroke="Black" Width="Auto"  Grid.Column="2" />
+                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle4" Stroke="Black" Grid.Column="2" Grid.ColumnSpan="2" Margin="90,0,0,0" />
+                    <Rectangle Grid.RowSpan="6" Height="450" Name="rectangle5" Stroke="Black" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Top" />
+                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle6" Stroke="Black" Grid.Column="5" />
+                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle7" Stroke="Black" Grid.Column="5" Grid.ColumnSpan="2" Margin="89,0,0,0" />
+                    <Rectangle Grid.RowSpan="6" Height="Auto" Name="rectangle8" Stroke="Black" Grid.Column="6" Grid.ColumnSpan="2" Margin="90,0,0,0" />
 
 
                     <TextBlock Height="39" FontWeight="Bold"  Width="Auto"  Grid.ColumnSpan="2" Margin="0,0,90,0" HorizontalAlignment="Center" VerticalAlignment="Center"> 08:00</TextBlock>
@@ -124,8 +133,8 @@
                     <TextBlock Height="39" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Left" Grid.Column="5" Margin="14,31,0,0" Grid.Row="1" ><Run Text="Cink"/></TextBlock>
                     <TextBlock Height="39" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Left" Grid.Column="5" Margin="14,51,0,0" Grid.Row="1" Grid.RowSpan="2" ><Run Text="Imunoglukan"/></TextBlock>
                     <TextBlock Height="39" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Left" Grid.Column="3" Margin="15,44,0,0" Grid.Row="1" ><Run Text="Imunoglukan"/></TextBlock>
-                    <Separator Grid.ColumnSpan="8"  Margin="0,4,0,53" x:Name="separator4" Width="Auto" Grid.Row="4" Background="Aqua" HorizontalContentAlignment="Stretch" Foreground="Aqua" OpacityMask="Aqua" />
-                    <Separator Margin="5,0,5,60" x:Name="separator33" Background="Aqua" Grid.ColumnSpan="8" Width="Auto" HorizontalContentAlignment="Stretch" Foreground="Aqua" RenderTransformOrigin="0.502,0.467" Grid.Row="5" />
+                    <Separator Grid.ColumnSpan="8"  Margin="0,73,0,60" x:Name="separator4" Width="Auto" Grid.Row="3" Background="Black" HorizontalContentAlignment="Stretch" Foreground="Aqua" OpacityMask="Aqua" Grid.RowSpan="2" />
+                    <Separator Margin="5,0,5,60" x:Name="separator33" Background="Black" Grid.ColumnSpan="8" Width="Auto" HorizontalContentAlignment="Stretch" Foreground="Aqua" RenderTransformOrigin="0.502,0.467" Grid.Row="5" />
 
                 </Grid>
 

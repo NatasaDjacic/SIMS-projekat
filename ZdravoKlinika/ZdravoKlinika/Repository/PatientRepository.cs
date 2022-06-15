@@ -60,5 +60,11 @@ namespace ZdravoKlinika.Repository
             File.WriteAllText(fileLocation, JsonConvert.SerializeObject(values, Formatting.Indented));
             return deleted > 0;
         }
+
+        public Patient? GetPatient()
+        {
+            var values = this.GetAll();
+            return values.Find(value => value.JMBG.Equals(value.JMBG));
+        }
     }
 }

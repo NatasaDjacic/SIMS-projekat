@@ -18,10 +18,11 @@ using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
+using System.Threading;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
-    public partial class NewAppointment : Page, INotifyPropertyChanged
+    public partial class NewAppointment : Page, INotifyPropertyChanged, IDataErrorInfo
     {
 
 
@@ -34,7 +35,34 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
 
-        
+
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string name]
+        {
+            get
+            {
+                string result = null;
+                switch (name)
+                {
+                    case "FromDate":
+                        if(fromDate.CompareTo(DateTime.Now) < 0) result = "Start date can't be before today or today. Choose again!";
+                      break;
+                    case "ToDate":
+                        if (toDate.CompareTo(DateTime.Now) < 0 || toDate.CompareTo(fromDate) < 0) result = "End date can't be before today or before start date. Choose again!";
+                       break;
+
+                    default: break;
+                }
+                return result;
+            }
+        }
 
         DoctorController doctorController = GLOBALS.doctorController;
         RoomController roomController = GLOBALS.roomController;
@@ -71,7 +99,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
         public string priority = "time";
-        private DateTime fromDate;
+        private DateTime fromDate=DateTime.Now;
         public DateTime FromDate
         {
             get => fromDate;
@@ -80,12 +108,12 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 if (fromDate != value)
                 {
                     fromDate = value;
-                    CheckDates();
+              
                     OnPropertyChanged("FromDate");
                 }
             }
         }
-        private DateTime toDate;
+        private DateTime toDate=DateTime.Now.AddDays(1);
         public DateTime ToDate
         {
             get => toDate;
@@ -94,7 +122,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 if (toDate != value)
                 {
                     toDate = value;
-                    CheckDates();
+                 
                     OnPropertyChanged("ToDate");
                 }
             }
@@ -114,8 +142,20 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
         private string JMBG="1231231231231";
-        
-    
+
+        public NewAppointment()
+        {
+            this.JMBG = JMBG;
+          
+            this.Duration = 30;
+            this.doctors = new ListCollectionView(doctorController.GetAll());
+            this.doctors.GroupDescriptions.Add(new PropertyGroupDescription("specialization"));
+
+            this.DataContext = this;
+            InitializeComponent();
+            CheckDoctorRoom();
+          
+        }
 
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -158,60 +198,189 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
 
+
+        private void DemoStart_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void DemoStart_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            ExecuteDemo();
+        }
+
+        
         
 
 
-        public NewAppointment()
+        #region DEMO
+        public Thread DemoThread { get; set; }
+        public void ExecuteDemo()
         {
-            this.JMBG = JMBG;
-            this.FromDate = DateTime.Today;
-            this.ToDate = DateTime.Today.AddDays(7);
-            this.Duration = 30;
-            this.doctors = new ListCollectionView(doctorController.GetAll());
-            this.doctors.GroupDescriptions.Add(new PropertyGroupDescription("specialization"));
-           
-            this.DataContext = this;
-            InitializeComponent();
-            CheckDoctorRoom();
-            CheckDates();
+            DemoThread = new Thread(CallDemoMethods);
+            DemoThread.Start();
         }
 
-
-        private void CheckDates()
+        public void CallDemoMethods()
         {
-            if (StartDateTB == null) return;
-            if (fromDate.CompareTo(DateTime.Now) < 0)
+            while (true)
             {
+                comboboxDemo(DoctorsCB);
+                Thread.Sleep(500);
+                datepickerDemo();
+                Thread.Sleep(500);
 
+                datepickerDemo2();
+                Thread.Sleep(500);
 
-                StartDateTB.Text = "Start date can't be today or before. Choose again!";
+                radioButtonDemo();
+                Thread.Sleep(500);
 
-                StartDateTB.Foreground = Brushes.Red;
+                buttonDemo();
+               
+                               
             }
-            else
+        }
+
+      
+      
+        private void datepickerDemo()
+        {
+            try
             {
-                StartDateTB.Text = " ";
-                StartDateTB.Foreground = Brushes.Gray;
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    startDateTB.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
+                    startDateTB.IsEnabled = true;
+                    startDateTB.IsDropDownOpen = true;
+                    startDateTB.Text = new DateTime(2022, 06, 17).ToString();
+                }));
+                Thread.Sleep(300);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    startDateTB.BorderBrush = new SolidColorBrush(Colors.Gray);
+                    startDateTB.IsDropDownOpen = false;
+                    startDateTB.IsEnabled = false;
+                }));
             }
-
-
-            if (EndDateTB == null) return;
-            if (toDate.CompareTo(DateTime.Now) < 0 || toDate.CompareTo(fromDate) < 0)
+            catch (Exception ex)
             {
 
-
-                EndDateTB.Text = "End date can't be before today or before start date. Choose again!";
-
-                EndDateTB.Foreground = Brushes.Red;
-            }
-            else
-            {
-                EndDateTB.Text = " ";
-                EndDateTB.Foreground = Brushes.Gray;
             }
 
 
         }
+
+        private void datepickerDemo2()
+        {
+            try
+            {
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    endDateTB.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
+                    endDateTB.IsEnabled = true;
+                    endDateTB.IsDropDownOpen = true;
+                    endDateTB.Text = new DateTime(2022, 06, 20).ToString();
+                }));
+                Thread.Sleep(300);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    endDateTB.BorderBrush = new SolidColorBrush(Colors.Gray);
+                    endDateTB.IsDropDownOpen = false;
+                    endDateTB.IsEnabled = false;
+                }));
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
+
+        private void radioButtonDemo()
+        {
+            try
+            {
+                Thread.Sleep(450);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    Doctor.IsChecked = true;
+                    Time.IsChecked = false;
+                }));
+                Thread.Sleep(450);
+            }
+            catch (Exception ex) { }
+
+        }
+        private void comboboxDemo(ComboBox comboBox)
+        {
+            try
+            {
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    comboBox.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
+                    comboBox.IsDropDownOpen = true;
+                }));
+                Thread.Sleep(450);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    comboBox.SelectedIndex = 1;
+                    comboBox.IsDropDownOpen = false;
+                    comboBox.BorderBrush = new SolidColorBrush(Colors.Gray);
+                }));
+            }
+            catch (Exception ex) { }
+
+        }
+
+      
+
+
+        private void buttonDemo()
+        {
+            try
+            {
+                //Thread.Sleep(850);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    SaveButton.IsEnabled = true;
+                    SaveButton.Background = Brushes.GreenYellow;
+                }));
+                Thread.Sleep(300);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    BrushConverter bc = new BrushConverter();
+                    SaveButton.Background = (Brush)bc.ConvertFrom("#4267B2");
+                    SaveButton.IsEnabled = false;
+                }));
+                Thread.Sleep(450);
+            }
+            catch (Exception ex) { }
+
+        }
+
+        
+
+     
+
+        private void DemoStop_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void DemoStop_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                DemoThread.Abort();
+            }
+            catch (Exception ex) { }
+
+            NavigationService.Navigate(new NewAppointment());
+        }
+
+        #endregion
 
     }
 

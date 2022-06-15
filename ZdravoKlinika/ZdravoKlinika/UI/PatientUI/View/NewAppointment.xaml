@@ -10,18 +10,24 @@
 
     <Page.CommandBindings>
         <CommandBinding Command="cmd:RoutedCommands.Find" CanExecute="Find_CanExecute" Executed="Find_Executed" ></CommandBinding>
-
+        <CommandBinding Command="cmd:RoutedCommands.DemoStart" CanExecute="DemoStart_CanExecute" Executed="DemoStart_Executed" ></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.DemoStop" CanExecute="DemoStop_CanExecute" Executed="DemoStop_Executed" ></CommandBinding>
         <CommandBinding Command="cmd:RoutedCommands.Cancel" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" ></CommandBinding>
     </Page.CommandBindings>
 
     <DockPanel >
         <Grid DockPanel.Dock="Top" Margin="0 15" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="290"/>
+                <ColumnDefinition Width="214"/>
+                <ColumnDefinition Width="214"/>
+
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="New appointment" Grid.Column="0" FontSize="32" FontWeight="Bold"></TextBlock>
+            <Button Grid.Column="1" Foreground="White" Background="Green" Content="DEMO start" Command="cmd:RoutedCommands.DemoStart" Width="180" FontSize="20"></Button>
+            <Button Grid.Column="2" Foreground="White" Background="Red" Content="DEMO stop" Width="180" FontSize="20" Command="cmd:RoutedCommands.DemoStop" ></Button>
+
         </Grid>
         <Grid DockPanel.Dock="Bottom" Margin="10">
             <Grid.ColumnDefinitions>
@@ -29,7 +35,25 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"  Foreground="White" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Cancel" ></Button>
-            <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="Find"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Find"></Button>
+            <Button Grid.Column="1" x:Name="SaveButton" Foreground="White" HorizontalAlignment="Right" Content="Find"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Find">
+                <Button.Style>
+                    <Style TargetType="Button" >
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=startDateTB}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=endDateTB}" Value="False"/>
+
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+
+            </Button>
         </Grid>
 
         <Grid Margin="10" Height="417">
@@ -40,17 +64,15 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="90" />
-                <RowDefinition Height="90" />
-                <RowDefinition Height="20" />
-                <RowDefinition Height="90" />
-                <RowDefinition Height="20" />
+                <RowDefinition Height="110" />
+                <RowDefinition Height="110" />
                 <RowDefinition Height="90" />
                 <RowDefinition />
 
             </Grid.RowDefinitions>
             <StackPanel  Grid.Row="0" Grid.Column="1" Margin="0,0,0,15" Grid.ColumnSpan="2">
                 <Label FontSize="16" Content="Doctor* :"/>
-                <ComboBox FontSize="16" ItemsSource="{Binding doctors}" SelectedItem="{Binding SelectedDoctor}">
+                <ComboBox x:Name="DoctorsCB" FontSize="16" ItemsSource="{Binding doctors}" SelectedItem="{Binding SelectedDoctor}">
                     <ComboBox.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
@@ -77,29 +99,28 @@
 
             <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
                 <Label FontSize="16" Content="Date from* :"/>
-                <DatePicker FontSize="16" SelectedDate="{Binding FromDate,UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
-
-            <StackPanel Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="2">
-                <TextBlock x:Name="StartDateTB" Foreground="Gray"> </TextBlock>
+                <DatePicker x:Name="startDateTB"   FontSize="16" SelectedDate="{Binding FromDate,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                <TextBlock FontSize="12" Width="300" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=startDateTB}" Foreground="Red"/>
 
             </StackPanel>
+
+          
             
-            <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
+            <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" Grid.ColumnSpan="2">
                 <Label Grid.Row="2" FontSize="16" >Date to* :</Label>
-                <DatePicker FontSize="16" SelectedDate="{Binding ToDate, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
-            </StackPanel>
 
-            <StackPanel Grid.Row="4" Grid.Column="1"  Grid.ColumnSpan="2">
-                <TextBlock x:Name="EndDateTB" Foreground="Gray" > </TextBlock>
+                <DatePicker x:Name="endDateTB" FontSize="16" SelectedDate="{Binding ToDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></DatePicker>
+                <TextBlock FontSize="12" Width="300" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding (Validation.Errors)[0].ErrorContent, FallbackValue='',  ElementName=endDateTB}" Foreground="Red"/>
 
             </StackPanel>
 
-            <StackPanel Grid.Row="5" Grid.Column="1" Margin="0,0,-10,0" Grid.ColumnSpan="2" >
+            
+
+            <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,0,-10,0" Grid.ColumnSpan="2" >
 
                 <Label FontSize="16" Content="Priority* :"/>
-                <RadioButton GroupName="Priority" Checked="RadioButton_Checked" IsChecked="True" Content="time" Margin="0 2" VerticalContentAlignment="Center" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                    <RadioButton GroupName="Priority" Checked="RadioButton_Checked" Content="doctor" Margin="0 2" VerticalContentAlignment="Center" FontSize="16" FontWeight="SemiBold"/>
+                <RadioButton x:Name="Time" GroupName="Priority" Checked="RadioButton_Checked" IsChecked="True" Content="time" Margin="0 2" VerticalContentAlignment="Center" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    <RadioButton x:Name="Doctor" GroupName="Priority" Checked="RadioButton_Checked" Content="doctor" Margin="0 2" VerticalContentAlignment="Center" FontSize="16" FontWeight="SemiBold"/>
                 
             </StackPanel>
 

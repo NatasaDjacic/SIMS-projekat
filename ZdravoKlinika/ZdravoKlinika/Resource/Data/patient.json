@@ -16,9 +16,9 @@
             {
               "prescriptionId": "f686c818-b560-499c-bdcf-a6949e482484",
               "drugId": 1,
-              "patient_note": "MKLMKL",
+              "patient_note": "Kupi lek",
               "drugName": "Aerius",
-              "description": "Neki opis za koriscenje",
+              "description": "Uzeti na prazan stomak",
               "useDuration": 7,
               "useFrequency": 3,
               "useAmount": 1.0
@@ -30,17 +30,17 @@
           "diagnostica": "Stomacni",
           "description": "Povracanje,dijareja",
           "date": "2022-04-06T20:22:10.8242834+02:00",
-          "patient_note": "XJKASNX NKAJS",
+          "patient_note": "",
           "prescriptions": [
             {
               "prescriptionId": "2fb2e944-b901-4355-8bb0-3388674f165e",
-              "drugId": 1,
-              "patient_note": "mmmm",
-              "drugName": "Aerius",
-              "description": "Neki opis za koriscenje",
+              "drugId": 7,
+              "patient_note": "",
+              "drugName": "Diklofenat",
+              "description": "Uzeti po potrebi",
               "useDuration": 7,
-              "useFrequency": 3,
-              "useAmount": 1.0
+              "useFrequency": 2,
+              "useAmount": 2.0
             }
           ]
         },
@@ -49,14 +49,14 @@
           "diagnostica": "Nizak pritisak",
           "description": "Vrtoglavica",
           "date": "2022-01-16T19:22:33.4810037+01:00",
-          "patient_note": "nnnnn",
+          "patient_note": "note2",
           "prescriptions": [
             {
               "prescriptionId": "0ca9678e-0b90-4085-ae8f-c6f3d0d87cba",
-              "drugId": 1,
+              "drugId": 8,
               "patient_note": "",
-              "drugName": "Aerius",
-              "description": "Neki opis za koriscenje",
+              "drugName": "Nikli",
+              "description": "Uzeti po potrebi",
               "useDuration": 7,
               "useFrequency": 3,
               "useAmount": 1.0
@@ -87,14 +87,14 @@
           "patient_note": "",
           "prescriptions": [
             {
-              "prescriptionId": "ddee521f-1c09-4484-a7eb-2a8c04547ccd",
-              "drugId": 1,
-              "patient_note": "",
-              "drugName": "Aerius",
-              "description": "Neki opis za koriscenje",
-              "useDuration": 7,
-              "useFrequency": 3,
-              "useAmount": 1.0
+                "prescriptionId": "ddee521f-1c09-4484-a7eb-2a8c04547ccd",
+                "drugId": 9,
+                "patient_note": "",
+                "drugName": "Dartifin",
+                "description": "Uzeti uz obrok",
+                "useDuration": 7,
+                "useFrequency": 2,
+                "useAmount": 1.0
             }
           ]
         }

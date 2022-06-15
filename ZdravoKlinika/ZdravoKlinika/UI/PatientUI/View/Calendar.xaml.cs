@@ -334,6 +334,9 @@ namespace ZdravoKlinika.UI.PatientUI.View
 
             document.Close();
 
+            pdfTB.Text = "Your PDF is ready!";
+            
+
 
         }
     }

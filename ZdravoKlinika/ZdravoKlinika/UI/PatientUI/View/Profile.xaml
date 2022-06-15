@@ -25,9 +25,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"  Foreground="White" Content="DEMO stop" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" ></Button>
-            <Button Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Content="DEMO start"  Width="240" Background="Green" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold"  ></Button>
-        </Grid>
+      </Grid>
 
         <Border BorderBrush="Black" BorderThickness="1" Height="374" Width="376" Background="LightGray">
             <Grid Margin="10" Height="374" Width="350" Background="LightGray" >
@@ -55,53 +53,53 @@
                     <Label FontStyle="Italic" FontSize="20" Width="92" Content="Name:" Height="40" />
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="nameTB"> </TextBlock>
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="nameTB" Text="{Binding FirstName}"> </TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
                     <Label FontStyle="Italic" FontSize="20" Width="96" Content="Surname:" Height="40" />
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="surnameTB"></TextBlock>
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="surnameTB" Text="{Binding LastName}"  ></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
                     <Label FontStyle="Italic" FontSize="20" Width="96" Content="JMBG:" Height="40" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="jmbgTB"></TextBlock>
+                    <TextBlock Width="250" Height="46" FontSize="20"  Text="{Binding JMBG}"></TextBlock>
                 </StackPanel>
                 
                 
                 
                 <StackPanel Grid.Row="3" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
-                    <Label FontStyle="Italic" FontSize="20" Width="96" Content="Username:" Height="40" />
+                    <Label FontStyle="Italic" FontSize="20" Width="101" Content="Username:" Height="40" />
                 </StackPanel>
                 <StackPanel Grid.Row="3" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="usernameTB"></TextBlock>
+                    <TextBlock Width="227" Height="46" FontSize="20" x:Name="usernameTB" Text="{Binding UserName}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="4" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
                     <Label FontStyle="Italic" FontSize="20" Width="96" Content="Phone:" Height="40" />
                 </StackPanel>
                 <StackPanel Grid.Row="4" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="phoneTB"></TextBlock>
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="phoneTB" Text="{Binding Phone}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="5" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
                     <Label FontStyle="Italic" FontSize="20" Width="96" Content="E-mail:" Height="40" />
                 </StackPanel>
                 <StackPanel Grid.Row="5" Grid.Column="1" Width="270" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="emailTB"></TextBlock>
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="emailTB" Text="{Binding Email}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="6" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
                     <Label FontStyle="Italic" FontSize="20" Width="96" Content="Adress:" Height="40" />
                 </StackPanel>
                 <StackPanel Grid.Row="6" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="adressTB"></TextBlock>
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="adressTB" Text="{Binding Address}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="7" Grid.Column="0" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left">
                     <Label FontStyle="Italic" FontSize="20" Width="96" Content="Password:" Height="40" />
                 </StackPanel>
                 <StackPanel Grid.Row="7" Grid.Column="1" Width="250" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="passwordTB"></TextBlock>
+                    <TextBlock Width="250" Height="46" FontSize="20" x:Name="passwordTB" Text="{Binding Password}"></TextBlock>
                 </StackPanel>
 
 
