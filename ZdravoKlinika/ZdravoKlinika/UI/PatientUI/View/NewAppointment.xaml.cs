@@ -18,6 +18,7 @@ using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
 using ZdravoKlinika.Service;
+using System.Threading;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
@@ -51,7 +52,7 @@ namespace ZdravoKlinika.UI.PatientUI.View
                 switch (name)
                 {
                     case "FromDate":
-                        if(fromDate.CompareTo(DateTime.Now) < 0) result = "Start date can't be before today. Choose again!";
+                        if(fromDate.CompareTo(DateTime.Now) < 0) result = "Start date can't be before today or today. Choose again!";
                       break;
                     case "ToDate":
                         if (toDate.CompareTo(DateTime.Now) < 0 || toDate.CompareTo(fromDate) < 0) result = "End date can't be before today or before start date. Choose again!";
@@ -197,45 +198,189 @@ namespace ZdravoKlinika.UI.PatientUI.View
             }
         }
 
-        
-        /*
 
-
-        private void CheckDates()
+        private void DemoStart_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (StartDateTB == null) return;
-            if (fromDate.CompareTo(DateTime.Now) < 0)
+            e.CanExecute = true;
+        }
+
+        private void DemoStart_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            ExecuteDemo();
+        }
+
+        
+        
+
+
+        #region DEMO
+        public Thread DemoThread { get; set; }
+        public void ExecuteDemo()
+        {
+            DemoThread = new Thread(CallDemoMethods);
+            DemoThread.Start();
+        }
+
+        public void CallDemoMethods()
+        {
+            while (true)
+            {
+                comboboxDemo(DoctorsCB);
+                Thread.Sleep(500);
+                datepickerDemo();
+                Thread.Sleep(500);
+
+                datepickerDemo2();
+                Thread.Sleep(500);
+
+                radioButtonDemo();
+                Thread.Sleep(500);
+
+                buttonDemo();
+               
+                               
+            }
+        }
+
+      
+      
+        private void datepickerDemo()
+        {
+            try
+            {
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    startDateTB.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
+                    startDateTB.IsEnabled = true;
+                    startDateTB.IsDropDownOpen = true;
+                    startDateTB.Text = new DateTime(2022, 06, 17).ToString();
+                }));
+                Thread.Sleep(300);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    startDateTB.BorderBrush = new SolidColorBrush(Colors.Gray);
+                    startDateTB.IsDropDownOpen = false;
+                    startDateTB.IsEnabled = false;
+                }));
+            }
+            catch (Exception ex)
             {
 
-
-                StartDateTB.Text = "Start date can't be today or before. Choose again!";
-
-                StartDateTB.Foreground = Brushes.Red;
             }
-            else
+
+
+        }
+
+        private void datepickerDemo2()
+        {
+            try
             {
-                StartDateTB.Text = " ";
-                StartDateTB.Foreground = Brushes.Gray;
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    endDateTB.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
+                    endDateTB.IsEnabled = true;
+                    endDateTB.IsDropDownOpen = true;
+                    endDateTB.Text = new DateTime(2022, 06, 20).ToString();
+                }));
+                Thread.Sleep(300);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    endDateTB.BorderBrush = new SolidColorBrush(Colors.Gray);
+                    endDateTB.IsDropDownOpen = false;
+                    endDateTB.IsEnabled = false;
+                }));
             }
-
-
-            if (EndDateTB == null) return;
-            if (toDate.CompareTo(DateTime.Now) < 0 || toDate.CompareTo(fromDate) < 0)
+            catch (Exception ex)
             {
 
-
-                EndDateTB.Text = "End date can't be before today or before start date. Choose again!";
-
-                EndDateTB.Foreground = Brushes.Red;
             }
-            else
+
+
+        }
+
+        private void radioButtonDemo()
+        {
+            try
             {
-                EndDateTB.Text = " ";
-                EndDateTB.Foreground = Brushes.Gray;
+                Thread.Sleep(450);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    Doctor.IsChecked = true;
+                    Time.IsChecked = false;
+                }));
+                Thread.Sleep(450);
             }
+            catch (Exception ex) { }
+
+        }
+        private void comboboxDemo(ComboBox comboBox)
+        {
+            try
+            {
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    comboBox.BorderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
+                    comboBox.IsDropDownOpen = true;
+                }));
+                Thread.Sleep(450);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    comboBox.SelectedIndex = 1;
+                    comboBox.IsDropDownOpen = false;
+                    comboBox.BorderBrush = new SolidColorBrush(Colors.Gray);
+                }));
+            }
+            catch (Exception ex) { }
+
+        }
+
+      
 
 
-        }*/
+        private void buttonDemo()
+        {
+            try
+            {
+                //Thread.Sleep(850);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    SaveButton.IsEnabled = true;
+                    SaveButton.Background = Brushes.GreenYellow;
+                }));
+                Thread.Sleep(300);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    BrushConverter bc = new BrushConverter();
+                    SaveButton.Background = (Brush)bc.ConvertFrom("#4267B2");
+                    SaveButton.IsEnabled = false;
+                }));
+                Thread.Sleep(450);
+            }
+            catch (Exception ex) { }
+
+        }
+
+        
+
+     
+
+        private void DemoStop_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void DemoStop_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                DemoThread.Abort();
+            }
+            catch (Exception ex) { }
+
+            NavigationService.Navigate(new NewAppointment());
+        }
+
+        #endregion
 
     }
 

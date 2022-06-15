@@ -98,6 +98,26 @@ namespace ZdravoKlinika.UI.PatientUI
           }
           );
 
+        public static readonly RoutedUICommand DemoStart = new RoutedUICommand(
+          "DemoStart",
+          "DemoStart",
+          typeof(RoutedCommands),
+          new InputGestureCollection()
+           {
+            new KeyGesture(Key.F10),
+          }
+          );
+        public static readonly RoutedUICommand DemoStop = new RoutedUICommand(
+          "DemoStop",
+          "DemoStop",
+          typeof(RoutedCommands),
+          new InputGestureCollection()
+           {
+            new KeyGesture(Key.F11),
+          }
+          );
+
+
         public static readonly RoutedUICommand Cancel = new RoutedUICommand(
           "Cancel",
           "Cancel",

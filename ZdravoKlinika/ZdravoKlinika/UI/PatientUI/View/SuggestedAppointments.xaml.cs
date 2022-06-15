@@ -19,6 +19,7 @@ using ZdravoKlinika.Service;
 using ZdravoKlinika.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading;
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
@@ -145,7 +146,9 @@ namespace ZdravoKlinika.UI.PatientUI.View
             NavigationService.Navigate(new Home());
         }
 
-       
+
+        
+
 
     }
 }

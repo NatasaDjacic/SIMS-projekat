@@ -31,67 +31,99 @@
             <Button Grid.Column="0"  Foreground="White" Content="Cancel" Width="240" HorizontalAlignment="Left" Background="Red" Margin="0 15" Height="40" FontSize="24" FontWeight="SemiBold" Command="cmd:RoutedCommands.Cancel" ></Button>
         </Grid>
 
+        <Grid>
+           
+            <Grid.RowDefinitions>
+                <RowDefinition Height="170"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Viewbox VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Calendar DisplayMode="Month" x:Name="calendar" SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}" >
+                    <Calendar.CalendarDayButtonStyle>
+                        <Style TargetType="CalendarDayButton" BasedOn="{StaticResource {x:Type CalendarDayButton}}">
+                            <EventSetter Event="Loaded" Handler="calendarButton_Loaded" />
+                        </Style>
+                    </Calendar.CalendarDayButtonStyle>
+                    
+                    <Calendar.BlackoutDates>
+                        <CalendarDateRange Start = "1/1/2015" End = "6/14/2022"/>
+                        
+                    </Calendar.BlackoutDates>
 
-        <DataGrid   Height="432" Width="718" ItemsSource="{Binding AppointmentCollection,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAppointment}"   FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="40"   Binding="{Binding id}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Date" Width="205"   Binding="{Binding startTime}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Doctor" Width="250"   >
-                    <DataGridTextColumn.Binding>
-                        <MultiBinding StringFormat="{}{0} {1}">
-                            <Binding Path="firstName" />
-                            <Binding Path="lastName" />
-                        </MultiBinding>
-                    </DataGridTextColumn.Binding>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Room" Width="75"  Binding="{Binding roomId}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5 0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTemplateColumn Header="Actions" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Tag="{Binding id}"  Margin="10 5" Padding="5" Command="cmd:RoutedCommands.Delete" Background="Red" Foreground="White">
-                                    <Button.Resources>
-                                        <Style TargetType="Border">
-                                            <Setter Property="CornerRadius" Value="5"></Setter>
-                                        </Style>
-                                    </Button.Resources>
-                                    <mi:PackIcon Kind="Delete" Height="24" Width="24"/>
-                                </Button>
-                                <Button Tag="{Binding id}"  Margin="0 5 10 5" Padding="5" Command="cmd:RoutedCommands.Edit" Background="Green" Foreground="White">
-                                    <Button.Resources>
-                                        <Style TargetType="Border">
-                                            <Setter Property="CornerRadius" Value="5"></Setter>
-                                        </Style>
-                                    </Button.Resources>
-                                    <mi:PackIcon Kind="Edit" Height="24" Width="24"/>
-                                </Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                    <Calendar.Background>
+                        <LinearGradientBrush x:Name="BackgroundCal" EndPoint = "0.5,1" StartPoint = "0.5,0">
+                            <GradientStop Color = "White" Offset = "0" />
+                            <GradientStop Color = "#FFECF0F4" Offset = "0.16" />
+                            <GradientStop Color = "LightGray" Offset = "0.16" />
+                            <GradientStop Color = "Gray" Offset = "1" />
+                        </LinearGradientBrush>
+                    </Calendar.Background>
+                </Calendar>
+            </Viewbox>
+            <DataGrid Grid.Row="1"  Height="270" Width="718" ItemsSource="{Binding AppointmentCollection,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAppointment}"   FontSize="24" FontWeight="SemiBold"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="45"   Binding="{Binding id}" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Date" Width="180"   Binding="{Binding startTime}" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Doctor" Width="255"   >
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="firstName" />
+                                <Binding Path="lastName" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Room" Width="75"  Binding="{Binding roomId}" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="5 0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Actions" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Tag="{Binding id}"  Margin="10 5" Padding="5" Command="cmd:RoutedCommands.Delete" Background="Red" Foreground="White">
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="5"></Setter>
+                                            </Style>
+                                        </Button.Resources>
+                                        <mi:PackIcon Kind="Delete" Height="24" Width="24"/>
+                                    </Button>
+                                    <Button Tag="{Binding id}"  Margin="0 5 10 5" Padding="5" Command="cmd:RoutedCommands.Edit" Background="Green" Foreground="White">
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="5"></Setter>
+                                            </Style>
+                                        </Button.Resources>
+                                        <mi:PackIcon Kind="Edit" Height="24" Width="24"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-            </DataGrid.Columns>
-        </DataGrid>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        
+     
+       
     </DockPanel>
 </Page>
