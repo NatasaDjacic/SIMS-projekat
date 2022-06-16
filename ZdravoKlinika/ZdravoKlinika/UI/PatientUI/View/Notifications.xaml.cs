@@ -19,53 +19,31 @@ using ZdravoKlinika.Service;
 using ZdravoKlinika.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using ZdravoKlinika.UI.PatientUI.ViewModel;
 
 
 namespace ZdravoKlinika.UI.PatientUI.View
 {
-    public partial class Notifications: Page, INotifyPropertyChanged
+    public partial class Notifications: Page
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
+
+            public Notifications()
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
+                var sw = Application.Current.Windows
+                .Cast<Window>()
+                .FirstOrDefault(window => window is PatientMainWindow) as PatientMainWindow;
+
+                this.DataContext = new NotificationsVM(sw.ContentFrame.NavigationService);
+                InitializeComponent();
             }
-        }
-        private ObservableCollection<Notification> prescriptions;
-        public ObservableCollection<Notification> PrescriptionsCollection
-        {
-            get => prescriptions;
-            set
-            {
-                if (prescriptions != value)
-                {
-                    prescriptions = value;
-                    OnPropertyChanged("PrescriptionsCollection");
-                }
-            }
-        }
-
-        NotificationService notificationService= GLOBALS.notificationService;
-        public Notifications()
-        {
-            
-
-            PrescriptionsCollection = new ObservableCollection<Notification>(notificationService.getPatientNotifications());
-            this.DataContext = this;
-            InitializeComponent();
-
-        }
-
         private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+
         }
 
         private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home());
+
         }
     }
 }

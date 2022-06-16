@@ -35,7 +35,7 @@ namespace ZdravoKlinika
             // AUTO LOGIN::
             //GLOBALS.authController.Login("secretary", "zdravo");
             // AUTO LOGIN MANAGER::
-            GLOBALS.authController.Login("manager", "zdravo");
+            GLOBALS.authController.Login("1231231231231", "zdravo");
             /*
             var ge = EquipRoomGroupDTO.groupEquip(GLOBALS.equipmentController.GetAll());
             ge.ForEach(e => {

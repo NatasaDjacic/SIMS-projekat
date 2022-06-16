@@ -42,32 +42,12 @@ namespace ZdravoKlinika.Service {
             return this.appointmentRepository.GetById(id);
         }
 
-        public bool CheckNumOfCancelledAppointments()
-        { 
-            int numberOfCancelledAppointments = cancellationService.GetCancellationNumber(authService.user.JMBG, DateTime.Now);
-
-            if (numberOfCancelledAppointments >= 4)
-            {
-                authService.Restrict();
-                Console.WriteLine("RESTRICTED!");
-                return false;
-            }
-            return true;
-
-        }
-
-        public void SaveNewCancellation()
-        {
-            Cancellation cancellation = new Cancellation(cancellationService.GenerateNewId(), authService.user.JMBG, DateTime.Now);
-            cancellationService.SaveCancellation(cancellation);
-            
-
-        }
+       
 
         public bool DeleteAppointmentById(int id) {
 
-            if( this.CheckNumOfCancelledAppointments()==false) { return false; }
-            this.SaveNewCancellation();
+            if( cancellationService.CheckNumOfCancelledAppointments()==false) { return false; }
+            cancellationService.SaveNewCancellation();
 
             return this.appointmentRepository.DeleteById(id);
         }
@@ -99,7 +79,7 @@ namespace ZdravoKlinika.Service {
 
             appointment.startTime = newtime;
 
-            this.SaveNewCancellation();
+            cancellationService.SaveNewCancellation();
             return !this.appointmentRepository.Save(appointment);
         }
 

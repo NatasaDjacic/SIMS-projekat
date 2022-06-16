@@ -19,33 +19,26 @@ using ZdravoKlinika.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using ZdravoKlinika.UI.PatientUI.ViewModel;
+using ZdravoKlinika.UI.SecretaryUI;
 
-
-namespace ZdravoKlinika.UI.PatientUI.View
+namespace ZdravoKlinika.UI.PatientUI.ViewModel
 {
-    public partial class Rated
+    public class RatedVM
     {
-        RatedVM ratedVM;
-        public Rated()
+        NavigationService navigationService { get; set; }
+        public RelayCommand NavigateHome { get; set; }
+
+        public RatedVM(NavigationService navigationService)
         {
-            var sw = Application.Current.Windows
-           .Cast<Window>()
-           .FirstOrDefault(window => window is PatientMainWindow) as PatientMainWindow;
-
-            this.DataContext = new RatedVM(sw.ContentFrame.NavigationService);
-
-            InitializeComponent();
+            this.NavigateHome= new RelayCommand(Execute_Home);
+            this.navigationService = navigationService;
+        
+        }
+        private void Execute_Home(object? obj)
+        {
+            navigationService.Navigate(new View.Home());
         }
 
 
-        private void Cancel_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            
-        }
-
-        private void Cancel_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-           
-        }
     }
 }

@@ -54,16 +54,7 @@ namespace ZdravoKlinika.UI.PatientUI.ViewModel
             }
         }
 
-        public void btnShow_MouseDown()
-        {
-            Password = patient.password;
-        }
-
-        public void btnShow_MouseReleased()
-        {
-            Password = "******";
-        }
-        
+      
 
     }
 }

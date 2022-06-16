@@ -18,12 +18,6 @@
     "type": "Soba za sastanke"
   },
   {
-    "roomId": "4",
-    "name": "Soba1",
-    "description": "Prostorija prethodnog direktora. Trenutno se koristi kao operaciona sala za kraće operacije.",
-    "type": "Operacijska sala"
-  },
-  {
     "roomId": "IDN2",
     "name": "Nova soba 2",
     "description": "Nova kancelarija, nastala iz sobe 2",
@@ -52,5 +46,11 @@
     "name": "sdg",
     "description": null,
     "type": "dsg"
+  },
+  {
+    "roomId": "Id15",
+    "name": "Soba15",
+    "description": null,
+    "type": "Kancelarija"
   }
 ]

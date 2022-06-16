@@ -4,6 +4,8 @@ using ZdravoKlinika.Model;
 using System.Linq;
 using ZdravoKlinika.Model.Enums;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Service;
+
 using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Service
@@ -12,10 +14,12 @@ namespace ZdravoKlinika.Service
     {
 
         private ICancellationRepository cancellationRepository { get; set; }
+        private AuthService authService { get; set; }
         
-        public CancellationService(ICancellationRepository cancellationRepository)
+        public CancellationService(ICancellationRepository cancellationRepository, AuthService authService)
         {
             this.cancellationRepository = cancellationRepository;
+            this.authService = authService;
             
         }
 
@@ -55,6 +59,29 @@ namespace ZdravoKlinika.Service
         public int GenerateNewId()
         {
             return this.cancellationRepository.GenerateNewId();
+        }
+
+
+        public bool CheckNumOfCancelledAppointments()
+        {
+            int numberOfCancelledAppointments = this.GetCancellationNumber(authService.user.JMBG, DateTime.Now);
+
+            if (numberOfCancelledAppointments >= 4)
+            {
+                authService.Restrict();
+                Console.WriteLine("RESTRICTED!");
+                return false;
+            }
+            return true;
+
+        }
+
+        public void SaveNewCancellation()
+        {
+            Cancellation cancellation = new Cancellation(this.GenerateNewId(), authService.user.JMBG, DateTime.Now);
+            this.SaveCancellation(cancellation);
+
+
         }
 
     }

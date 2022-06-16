@@ -28,35 +28,5 @@
         "country": "Srbija",
         "city": "Beograd",
         "address": "Nikole Pasica 4"
-    },
-    {
-        "specialization": "cardiologists",
-        "roomId": null,
-        "gender": 1,
-        "firstName": "Aleksandar",
-        "lastName": "Aleksic",
-        "JMBG": "2222222222222",
-        "username": "aleksandar",
-        "password": "zdravo",
-        "phone": "321",
-        "email": "aleksandar@gmail.com",
-        "country": "Srbija",
-        "city": "Novi Sad",
-        "address": "Neka Adresa 55"
-    },
-    {
-        "specialization": "cardiologists",
-        "roomId": null,
-        "gender": 1,
-        "firstName": "Zika",
-        "lastName": "Zikic",
-        "JMBG": "1212121212121",
-        "username": "zika",
-        "password": "zdravo",
-        "phone": "111",
-        "email": "ana@gmail.com",
-        "country": "Srbija",
-        "city": "Beograd",
-        "address": "Nikole Pasica 41a"
     }
 ]

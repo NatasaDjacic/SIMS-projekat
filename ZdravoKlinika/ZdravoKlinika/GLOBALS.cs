@@ -37,7 +37,7 @@ namespace ZdravoKlinika
         // Services
         public static PatientReminderService patientReminderService = new PatientReminderService(patientReminderRepository);
         public static MarkService markService = new MarkService(markRepository);
-        public static CancellationService cancellationService = new CancellationService(cancellationRepository);
+        public static CancellationService cancellationService = new CancellationService(cancellationRepository,authService);
         public static AuthService authService = new AuthService(patientRepository, doctorRepository, managerRepository, secretaryRepository);
         public static DoctorService doctorService = new DoctorService(doctorRepository);
         public static AppointmentService appointmentService = new AppointmentService(appointmentRepository, doctorService, cancellationService, authService);

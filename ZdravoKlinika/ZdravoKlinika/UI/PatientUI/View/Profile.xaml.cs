@@ -35,16 +35,6 @@ namespace ZdravoKlinika.UI.PatientUI.View
         }
 
       
-        private void btnShow_MouseDown(object sender, EventArgs e)
-        {
-            profileVM.btnShow_MouseDown();
-        }
-
-        private void btnShow_MouseReleased(object sender, EventArgs e)
-        {
-            profileVM.btnShow_MouseReleased();
-
-        }
 
     }
 }
